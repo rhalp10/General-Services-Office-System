@@ -1,0 +1,10 @@
+ErrorDocument 500 /errorpages/404.php
+
+ # Mod for redirecting specific URL requests to a custom error page
+  RewriteEngine On
+  RewriteBase /
+  RewriteCond %{REQUEST_FILENAME} ^/404.php [NC]
+  RewriteRule . /404.php [L]
+  # End of custom mod
+
+  
