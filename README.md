@@ -2,9 +2,6 @@
 General Services Office System With Help Them To  Manage Their Files Import Data Easily And Generate Report
 
 
-## Contributing
-Build the library with `npm run build`. This will fetch all dependencies and then compile the `dist` files. To see the examples locally you can start a web server with `npm start` and go to `localhost:8000`.
-
 ## Credits
 - Big thanks to GSO(General Services Office) Employee Who Always Sponsor Food and Just Drop it in front of me ^_^
 - Thanks to Google,Stackoverflow,w3school,Youtube, Free source code  to make this system.
