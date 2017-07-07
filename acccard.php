@@ -254,7 +254,7 @@ include('session.php');
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal">&times;</button>
-        <h4 class="modal-title">Modal Header</h4>
+        <h4 class="modal-title">ADD NEW PERSON</h4>
       </div>
       <div class="modal-body">
         <div class="row">
@@ -275,25 +275,32 @@ include('session.php');
                                 <input type="text"  class="form-control" placeholder="Name" name="pgc_emp_ac_name">
                             </div>
                         </div>
-                        <br><br>
+                        <br>
                         <div class="form-group">
                             <label class="col-sm-2 control-label"><b>DESIGNATION</b></label>
                             <div class="col-sm-10">
                                 <input type="text"  class="form-control" placeholder="Designation" name="pgc_emp_ac_designation">
                             </div>
                         </div>
-                        <br><br>
+                        <br>
                         <div class="form-group">
                             <label class="col-sm-2 control-label"><b>OFFICE</b></label>
                             <div class="col-sm-10">
                                 <input type="text"  class="form-control" placeholder="Office" name="pgc_emp_ac_office">
+                            </div>
+                        </div>
+                        <br>  
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label"><b>NOTE</b></label>
+                            <div class="col-sm-10">
+                                <input type="text"  class="form-control" placeholder="Note" name="pgc_emp_ac_Note">
                             </div>
                         </div><br><br><br>
                         <div class="form-group">
                             <label class="col-sm-2 control-label"></label>
                             <div class="col-sm-10">
                                 
-                    <input class="btn btn-success "  type="submit" name="Submit" value="Submit"> 
+                            <input class="btn btn-success "  type="submit" name="Submit" value="Submit"> 
                             </div>
                         </div>
                     </form>

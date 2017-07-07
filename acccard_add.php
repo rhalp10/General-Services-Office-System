@@ -9,6 +9,7 @@ $rows = mysql_num_rows($result);
                 $emp_pgc_record_fullname=$test['fullName'] ;
                 $emp_pgc_record_office=$test['office'];
                 $emp_pgc_record_designation=$test['designation'] ;
+                
 
 ?>
 <!DOCTYPE html>

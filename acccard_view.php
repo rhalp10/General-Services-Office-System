@@ -36,12 +36,27 @@ $rows = mysql_num_rows($result);
     <link href="css/style.css" rel="stylesheet">
     <link href="css/style-responsive.css" rel="stylesheet" />
 
+    <link rel="stylesheet" type="text/css" href="css/jquery.dataTables.css">
+
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 -->
     <!--[if lt IE 9]>
       <script src="js/html5shiv.js"></script>
       <script src="js/respond.min.js"></script>
       <script src="js/lte-ie7.js"></script>
     <![endif]-->
+      <style type="text/css">
+      .dataTables_filter{
+        font-family: lato;
+        
+      }
+      .dataTables_filter > label > input{
+    
+    padding: 5px 20px;
+    margin: 8px 0;
+    box-sizing: border-box;
+
+      }
+      </style>
   </head>
 
   <body>
@@ -182,16 +197,21 @@ $rows = mysql_num_rows($result);
                                      <span><i class="icon_calendar"></i><div id="datetime" style="margin-top: -13px; margin-left: 16px;"></div></span>
 
                                 </h6>
+
                             </div>
                             
+                                        <a class="btn btn-info pull-right" href="assets/fpdf/acccard_person_report1.php?accID=<?php echo $ID ?>" title="Print" target="_blank"><span class="icon_printer"></span> PRINT</a>
                           </div>
                     </div>
+
                 </div>
+
               </div>
               <!-- page start-->
               <div class="row">
                  <div class="col-lg-12">
                     <section class="panel">
+
                           <header class="panel-heading tab-bg-info">
                               <ul class="nav nav-tabs">
                                   <li class="active">
@@ -213,6 +233,7 @@ $rows = mysql_num_rows($result);
                                       </a>
                                   </li>
                               </ul>
+
                           </header>
                           <div class="panel-body">
                               <div class="tab-content">
@@ -225,339 +246,23 @@ $rows = mysql_num_rows($result);
                                     </header>
                                     <div class="panel-body">
                                      
-                                          <table class="table table-striped table-advance table-hover">
-                                              <thead>
-                                              <tr style="font-size: 12px;text-align: justify;">
-                                                <th class="col-sm-1"> PAR/ICS NO</th>
-                                                <th class="col-sm-1"> QTY</th>
-                                                <th class="col-sm-1"> UNIT</th>
-                                                <th class="col-sm-2"> DESCRIPTION</th>
-                                                <th class="col-sm-1"> PROP NO.</th>
-                                                <th class="col-sm-1"> AMOUNT</th>
-                                                <th class="col-sm-1"> TRANSFER TO</th>
-                                                <th class="col-sm-1"> DATE TURN OVER</th>
-                                                <th class="col-sm-1"> REMARKS</th>
-                                                <th class="col-sm-1"> ACTION</th>
-                                                 
-                                              </tr>
-                                              </thead>
-                                              <tbody>
-                                              <?php
-                                              //Query for all accountability record
-                                              $result = mysql_query("SELECT * FROM emp_accountability_card WHERE Emp_ID ='$ID' " ); //
-                                              //Fetching all data
-                                              while($test = mysql_fetch_array($result))
-                                                  {
-                                                    
-                                                    
-                                                  $SpartSetID = $test['ItemSetID'];
-                                                  $SitemCode = $test['itemCode'];
-                                                //-------------------------------------------------
-                                                //SET IF STATEMENT
-                                                //-------------------------------------------------   
-                                                    if ("SET ".$test['ItemSetID'] == $test['itemCode'])//SET
-                                                    {
-                                                        
-                                                      if ($test['DateTurnOver'] == '0000-00-00'  && $test['TransferTo'] == 'null' || $test['TransferTo'] == ' ' )
-                                                      {
-                                                        
-                                                        echo "<tr>"; 
-                                                        echo"<td><font color='black'>" .$test['ParNo']."</font></td>";
-                                                        echo"<td><font color='black'>". $test['Qty']. "</font></td>";
-                                                        echo"<td><font color='black'>" .$test['Unit']."</font></td>";
-                                                        echo"<td><font color='black'>" .$test['Descrp']."</font></td>";
-                                                        echo"<td><font color='black'>" .$test['PropNo']."</font></td>";
-                                                        echo"<td><font color='black'>" .$test['Amount']."</font></td>";
-                                                        if ($test['TransferTo'] == 'null'){
-                                                        echo"<td><font color='black'></font></td>";
-                                                        }
-                                                        else{
-                                                        echo"<td><font color='black'> ".$test['TransferTo']."</font></td>"; 
-                                                        }
-                                                        echo"<td></td>";
-                                                        echo"<td><font color='black'>" .$test['DateTurnOver']."</font></td>";
-                                                        ?>
-                                                                                                  <td><div class="btn-group">
-                                                                                                <a class="btn btn-primary" href="" >Action</a>
-                                                                                                <a class="btn btn-primary dropdown-toggle" data-toggle="dropdown" href="" title="Bootstrap 3 themes generator"><span class="caret"></span></a>
-                                                                                                <ul class="dropdown-menu">
-                                                                                                  <li><a href="acccard_edit.php?acc_card_recordID=<?php echo $test['ID']; ?>" >Add Part</a></li>
-                                                                                                  <li><a href="acccard_edit.php?acc_card_recordID=<?php echo $test['ID']; ?>" >Edit Set</a></li>
-                                                                                                  <li class="divider"></li>
-                                                                                                  <li><a href="acccard_add.php?acc_card_recordID=<?php echo $test['ID']; ?>"  data-toggle="modal" data-target="#myModal">Delete Set</a></li>
-                                                                                                </ul>
-                                                                                          </div></td>
-                                                                                                  <?php 
-                                                                                                           
-                                                              echo "</tr>";
+                                      <table id="employee-grid"  class="table table-striped table-advance table-hover ">
+                                         <thead>
+                                           <tr>
+                                           <th>PAR #</th>
+                                           <th>QTY/UNIT</th>
+                                           <th>DESCRIPTION</th>
+                                           <th>SERIAL #</th>
+                                            <th>PROP. #</th>
+                                            <th>AMOUNT</th>
+                                            <th>TRANSFER TO </th>
+                                            <th>DATE TURN OVER</th>
+                                            <th>REMARKS</th>
+                                            <th>ACTION</th>
+                                           </tr>
+                                        </thead>
 
-                                                              //Query for all parts of sets
-                                                              $itemSet = "PART ".$test['ItemSetID'];
-                                                        $result1 = mysql_query("SELECT * FROM emp_accountability_card WHERE itemCode = '$itemSet'");
-                                                        while($test1 = mysql_fetch_array($result1))//PARTS OF SET 
-                                                          { //IF STATEMENT OF DATETURN OVER AND TRANSFER TO
-                                                            if ($test1['DateTurnOver'] == '0000-00-00'  && $test1['TransferTo'] == 'null' || $test1['TransferTo'] == ' ' )
-                                                            {
-                                                              echo "<tr>"; 
-                                                              echo"<td><font color='black'>" .$test['ParNo']."</font></td>";
-                                                            echo"<td><font color='black'>". $test['Qty']. "</font></td>";
-                                                            echo"<td><font color='black'>" .$test['Unit']."</font></td>";
-                                                            echo"<td><font color='black'>" .$test['Descrp']."</font></td>";
-                                                            echo"<td><font color='black'>" .$test['PropNo']."</font></td>";
-                                                            echo"<td><font color='black'>" .$test['Amount']."</font></td>";
-                                                              if ($test1['TransferTo'] == 'null'){
-                                                              echo"<td><font color='black'></font></td>";
-                                                              }
-                                                              else{
-                                                              echo"<td><font color='black'> ".$test1['TransferTo']."</font></td>";  
-                                                              }
-                                                              echo"<td></td>";
-                                                              echo"<td><font color='black'>" .$test1['DateTurnOver']."</font></td>";
-                                                              
-                                                              ?>
-                                                                                                  <td><div class="btn-group">
-                                                                                                <a class="btn btn-primary" href="" >Action</a>
-                                                                                                <a class="btn btn-primary dropdown-toggle" data-toggle="dropdown" href="" title="Bootstrap 3 themes generator"><span class="caret"></span></a>
-                                                                                                <ul class="dropdown-menu">
-                                                                                                  
-                                                                                                  <li><a href="acccard_edit.php?acc_card_recordID=<?php echo $test['ID']; ?>" >Edit Part</a></li>
-                                                                                                  <li class="divider"></li>
-                                                                                                  <li><a href="acccard_add.php?acc_card_recordID=<?php echo $test['ID']; ?>"  data-toggle="modal" data-target="#myModal">Delete Part</a></li>
-                                                                                                </ul>
-                                                                                          </div></td>
-                                                                              <?php 
-                                                                        echo "</tr>";
-
-                                                                                                           
-                                                            }
-                                                            else
-                                                            {
-                                                              echo "<tr>"; 
-                                                              echo"<td><font color='red'>" .$test['ParNo']."</font></td>";
-                                                            echo"<td><font color='red'>". $test['Qty']. "</font></td>";
-                                                            echo"<td><font color='red'>" .$test['Unit']."</font></td>";
-                                                            echo"<td><font color='red'>" .$test['Descrp']."</font></td>";
-                                                            echo"<td><font color='red'>" .$test['PropNo']."</font></td>";
-                                                            echo"<td><font color='red'>" .$test['Amount']."</font></td>";
-                                                              if ($test1['TransferTo'] == 'null'){
-                                                              echo"<td><font color='red'></font></td>";
-                                                              }
-                                                              else{
-                                                              echo"<td><font color='red'> ".$test1['TransferTo']."</font></td>";  
-                                                              }
-                                                              echo"<td></td>";
-                                                              echo"<td><font color='red'>" .$test1['DateTurnOver']."</font></td>";
-                                                               ?>
-                                                                                                  <td><div class="btn-group">
-                                                                                                <a class="btn btn-primary" href="" >Action</a>
-                                                                                                <a class="btn btn-primary dropdown-toggle" data-toggle="dropdown" href="" title="Bootstrap 3 themes generator"><span class="caret"></span></a>
-                                                                                                <ul class="dropdown-menu">
-                                                                                                  
-                                                                                                  <li><a href="acccard_edit.php?acc_card_recordID=<?php echo $test['ID']; ?>" >Edit Part</a></li>
-                                                                                                  <li class="divider"></li>
-                                                                                                  <li><a href="acccard_add.php?acc_card_recordID=<?php echo $test['ID']; ?>"  data-toggle="modal" data-target="#myModal">Delete Part</a></li>
-                                                                                                </ul>
-                                                                                          </div></td>
-                                                                              <?php 
-                                                                        echo "</tr>";
-                                                            }
-
-                                                          
-                                                          
-                                                              } //end of else of secod while
-                                                          }
-                                                          else
-                                                          {
-                                                              echo "<tr>"; 
-                                                              echo"<td><font color='red'>" .$test['ParNo']."</font></td>";
-                                                            echo"<td><font color='red'>". $test['Qty']. "</font></td>";
-                                                            echo"<td><font color='red'>" .$test['Unit']."</font></td>";
-                                                            echo"<td><font color='red'>" .$test['Descrp']."</font></td>";
-                                                            echo"<td><font color='red'>" .$test['PropNo']."</font></td>";
-                                                            echo"<td><font color='red'>" .$test['Amount']."</font></td>";
-                                                            if ($test['TransferTo'] == 'null'){
-                                                            echo"<td><font color='red'></font></td>";
-                                                            }
-                                                            else{
-                                                            echo"<td><font color='red'> ".$test['TransferTo']."</font></td>"; 
-                                                            }
-                                                            echo"<td></td>";
-                                                            echo"<td><font color='red'>" .$test['DateTurnOver']."</font></td>";
-
-                                                                                                  ?>
-                                                                                                  <td><div class="btn-group">
-                                                                                                <a class="btn btn-primary" href="" >Action</a>
-                                                                                                <a class="btn btn-primary dropdown-toggle" data-toggle="dropdown" href="" title="Bootstrap 3 themes generator"><span class="caret"></span></a>
-                                                                                                <ul class="dropdown-menu">
-                                                                                                  <li><a href="acccard_edit.php?acc_card_recordID=<?php echo $test['ID']; ?>" >Add Part</a></li>
-                                                                                                  <li><a href="acccard_edit.php?acc_card_recordID=<?php echo $test['ID']; ?>" >Edit Set</a></li>
-                                                                                                  <li class="divider"></li>
-                                                                                                  <li><a href="acccard_add.php?acc_card_recordID=<?php echo $test['ID']; ?>"  data-toggle="modal" data-target="#myModal">Delete Set</a></li>
-                                                                                                </ul>
-                                                                                          </div></td>
-                                                                                                  <?php 
-                                                                  echo "</tr>";
-
-                                                                   //Query for all parts of sets
-                                                                  $itemSet = "PART ".$test['ItemSetID'];
-                                                            $result1 = mysql_query("SELECT * FROM emp_accountability_card WHERE itemCode = '$itemSet'");
-                                                            while($test1 = mysql_fetch_array($result1))//PARTS OF SET 
-                                                              { //IF STATEMENT OF DATETURN OVER AND TRANSFER TO
-                                                                if ($test1['DateTurnOver'] == '0000-00-00'  && $test1['TransferTo'] == 'null' || $test1['TransferTo'] == ' ' )
-                                                                {
-                                                                  echo "<tr>";
-                                                                  echo"<td><font color='black'>" .$test['ParNo']."</font></td>";
-                                                                  echo"<td><font color='black'>". $test['Qty']. "</font></td>";
-                                                                  echo"<td><font color='black'>". $test['Unit']. "</font></td>";
-                                                                  echo"<td><font color='black'>". $test['Descrp']. "</font></td>";
-                                                                  echo"<td><font color='black'>". $test['PropNo']. "</font></td>";
-                                                                  echo"<td><font color='black'>". $test['Amount']. "</font></td>";
-                                                                  if ($test1['TransferTo'] == 'null'){
-                                                                  echo"<td><font color='black'></font></td>";
-                                                                  }
-                                                                  else{
-                                                                  echo"<td><font color='black'> ".$test1['TransferTo']."</font></td>";  
-                                                                  }
-                                                                  echo"<td></td>";
-                                                                  echo"<td><font color='black'>" .$test1['DateTurnOver']."</font></td>";
-                                                                   ?>
-                                                                                                  <td><div class="btn-group">
-                                                                                                <a class="btn btn-primary" href="" >Action</a>
-                                                                                                <a class="btn btn-primary dropdown-toggle" data-toggle="dropdown" href="" title="Bootstrap 3 themes generator"><span class="caret"></span></a>
-                                                                                                <ul class="dropdown-menu">
-                                                                                                  
-                                                                                                  <li><a href="acccard_edit.php?acc_card_recordID=<?php echo $test['ID']; ?>" >Edit Part</a></li>
-                                                                                                  <li class="divider"></li>
-                                                                                                  <li><a href="acccard_add.php?acc_card_recordID=<?php echo $test['ID']; ?>"  data-toggle="modal" data-target="#myModal">Delete Part</a></li>
-                                                                                                </ul>
-                                                                                          </div></td>
-                                                                              <?php 
-                                                                            echo "</tr>";
-                                                                }
-                                                                else
-                                                                {
-                                                                  echo "<tr>";
-                                                                  echo"<td><font color='red'>" .$test['ParNo']."</font></td>";
-                                                                  echo"<td><font color='red'>". $test['Qty']. "</font></td>";
-                                                                  echo"<td><font color='red'>". $test['Unit']. "</font></td>";
-                                                                  echo"<td><font color='red'>". $test['Descrp']. "</font></td>";
-                                                                  echo"<td><font color='red'>". $test['PropNo']. "</font></td>";
-                                                                  echo"<td><font color='red'>". $test['Amount']. "</font></td>";
-                                                                  if ($test['TransferTo'] == 'null'){
-                                                                  echo"<td><font color='black'></font></td>";
-                                                                  }
-                                                                  else{
-                                                                  echo"<td><font color='red'> ".$test1['TransferTo']."</font></td>";  
-                                                                  }
-                                                                  echo"<td></td>";
-                                                                  echo"<td><font color='red'>" .$test1['DateTurnOver']."</font></td>";
-                                                                   ?>
-                                                                                                  <td><div class="btn-group">
-                                                                                                <a class="btn btn-primary" href="" >Action</a>
-                                                                                                <a class="btn btn-primary dropdown-toggle" data-toggle="dropdown" href="" title="Bootstrap 3 themes generator"><span class="caret"></span></a>
-                                                                                                <ul class="dropdown-menu">
-                                                                                                  
-                                                                                                  <li><a href="acccard_edit.php?acc_card_recordID=<?php echo $test['ID']; ?>" >Edit Part</a></li>
-                                                                                                  <li class="divider"></li>
-                                                                                                  <li><a href="acccard_add.php?acc_card_recordID=<?php echo $test['ID']; ?>"  data-toggle="modal" data-target="#myModal">Delete Part</a></li>
-                                                                                                </ul>
-                                                                                          </div></td>
-                                                                              <?php 
-                                                                            echo "</tr>";
-                                                                }
-
-                                                              
-                                                              
-                                                                  } //end of else of secod while
-                                                          }
-                                                        }  
-
-                                                //-------------------------------------------------
-                                                //SET IF STATEMENT END
-                                                //------------------------------------------------- 
-
-                                                //-------------------------------------------------
-                                                //SINGLE PART/SET IF STATEMENT
-                                                //-------------------------------------------------
-
-                                                  if ("SPART ".$test['ItemSetID'] == $test['itemCode'])
-                                                  {
-                                                    
-                                                    if ($test['DateTurnOver'] == '0000-00-00'  && $test['TransferTo'] == 'null' || $test['TransferTo'] == ' ' )
-                                                    {
-                                                    echo "<tr>"; 
-                                                    echo"<td><font color='black'>" .$test['ParNo']."</font></td>";
-                                                    echo"<td><font color='black'>". $test['Qty']. "</font></td>";
-                                                    echo"<td><font color='black'>" .$test['Unit']."</font></td>";
-                                                    echo"<td><font color='black'>" .$test['Descrp']."</font></td>";
-                                                    echo"<td><font color='black'>" .$test['PropNo']."</font></td>";
-                                                    echo"<td><font color='black'>" .$test['Amount']."</font></td>";
-                                                    if ($test['TransferTo'] == 'null'){
-                                                    echo"<td><font color='black'></font></td>";
-                                                    }
-                                                    else{
-                                                    echo"<td><font color='black'> ".$test['TransferTo']."</font></td>"; 
-                                                    }
-                                                    echo"<td><font color='black'>" .$test['Remarks']."</font></td>";
-                                                    echo"<td><font color='black'>" .$test['DateTurnOver']."</font></td>";
-                                                    ?>
-                                                                                                  <td><div class="btn-group">
-                                                                                                <a class="btn btn-primary" href="" >Action</a>
-                                                                                                <a class="btn btn-primary dropdown-toggle" data-toggle="dropdown" href="" title="Bootstrap 3 themes generator"><span class="caret"></span></a>
-                                                                                                <ul class="dropdown-menu">
-                                                                                                  <li><a href="acccard_edit.php?acc_card_recordID=<?php echo $test['ID']; ?>" >Add Part</a></li>
-                                                                                                  <li><a href="acccard_edit.php?acc_card_recordID=<?php echo $test['ID']; ?>" >Edit Set</a></li>
-                                                                                                  <li class="divider"></li>
-                                                                                                  <li><a href="acccard_add.php?acc_card_recordID=<?php echo $test['ID']; ?>"  data-toggle="modal" data-target="#myModal">Delete Set</a></li>
-                                                                                                </ul>
-                                                                                          </div></td>
-                                                                                                  <?php 
-                                                      echo "</tr>";
-                                                        }
-                                                        else
-                                                        {
-                                                      
-                                                            echo "<tr>"; 
-                                                            echo"<td><font color='red'>" .$test['ParNo']."</font></td>";
-                                                            echo"<td><font color='red'>". $test['Qty']. "</font></td>";
-                                                            echo"<td><font color='red'>". $test['Unit']. "</font></td>";
-                                                            echo"<td><font color='red'>". $test['Descrp']. "</font></td>";
-                                                            echo"<td><font color='red'>". $test['PropNo']. "</font></td>";
-                                                            echo"<td><font color='red'>". $test['Amount']. "</font></td>";
-                                                            if ($test['TransferTo'] == 'null'){
-                                                            echo"<td><font color='black'></font></td>";
-                                                            }
-                                                            else{
-                                                            echo"<td><font color='red'> ".$test['TransferTo']."</font></td>"; 
-                                                            }
-                                                            echo"<td></td>";
-                                                            echo"<td><font color='red'>" .$test['DateTurnOver']."</font></td>";
-                                                            ?>
-                                                                                                  <td><div class="btn-group">
-                                                                                                <a class="btn btn-primary" href="" >Action</a>
-                                                                                                <a class="btn btn-primary dropdown-toggle" data-toggle="dropdown" href="" title="Bootstrap 3 themes generator"><span class="caret"></span></a>
-                                                                                                <ul class="dropdown-menu">
-                                                                                                  <li><a href="acccard_edit.php?acc_card_recordID=<?php echo $test['ID']; ?>" >Add Part</a></li>
-                                                                                                  <li><a href="acccard_edit.php?acc_card_recordID=<?php echo $test['ID']; ?>" >Edit Set</a></li>
-                                                                                                  <li class="divider"></li>
-                                                                                                  <li><a href="acccard_add.php?acc_card_recordID=<?php echo $test['ID']; ?>"  data-toggle="modal" data-target="#myModal">Delete Set</a></li>
-                                                                                                </ul>
-                                                                                          </div></td>
-                                                                                                  <?php 
-                                                                      echo "</tr>";
-                                                    }
-                                                      }
-                                                
-                                                //-------------------------------------------------
-                                                //SINGLE PART/SET IF STATEMENT END
-                                                //------------------------------------------------- 
-
-                                                  }// Parent While End
-                                              ?>
-                                           </tbody>
-
-                                        </table>
-                                        <a class="btn btn-info pull-right" href="" title="Print" name="submit"><span class="icon_printer"></span> PRINT</a>
+                                      </table>
                                     </div>
                                 </section>
                             </div>
@@ -780,7 +485,39 @@ $rows = mysql_num_rows($result);
   </section>
   <!-- container section end -->
     <!-- javascripts -->
-    <script src="js/jquery.js"></script>
+
+    <script type="text/javascript" language="javascript" src="js/jquery.js"></script>
+    <script type="text/javascript" language="javascript" src="js/jquery.dataTables.js"></script>
+    <script type="text/javascript" language="javascript" >
+      $(document).ready(function() {
+        var dataTable = $('#employee-grid').DataTable( {
+          "processing": true,
+          "serverSide": true,
+          "ajax":{
+            url :"acccard_view_emp-data.php?accID=<?php echo $ID ?>", // json datasource
+            type: "post",  // method  , by default get
+            error: function(){  // error handling
+              $(".employee-grid-error").html("");
+              $("#employee-grid").append('<tbody class="employee-grid-error"><tr><th colspan="3">No data found in the server</th></tr></tbody>');
+              $("#employee-grid_processing").css("display","none");
+              
+            }
+          }
+        } );
+      } );
+
+      
+//FOR DELETE FUNCTION RECORD
+function confirmDelete(id) {
+    
+    var r = confirm('Do you want to delete?');
+    if (r == true) {
+      window.location='acccard_delete_action.php?accID='+id;
+    } else {
+        window.location='acccard.php';
+    }
+}
+</script>
     <script src="js/bootstrap.min.js"></script>
     <!-- nice scroll -->
     <script src="js/jquery.scrollTo.min.js"></script>
@@ -790,6 +527,7 @@ $rows = mysql_num_rows($result);
     <script src="js/moment.js"></script>
     <script type="text/javascript">
   
+
   var datetime = null,
         date = null;
 
