@@ -201,16 +201,10 @@ $test = mysql_fetch_array($result);
             </tr>
              <tr>
               <td><b>OLD PASSWORD</b></td>
-                <td><input type="password" name="account_emp_edit_oldpass"  class="form-control"  placeholder="TYPE YOUR OLD PASSWORD"></td>
+                <td><label ><a type="button" data-toggle="modal" data-target="#passEdit">Change Password</a></label>
+</td>
             </tr>
-            <tr>
-              <td><b>NEW PASSWORD</b></td>
-                <td><input type="password" name="account_emp_edit_newpass"  class="form-control"   placeholder="TYPE YOUR NEW PASSWORD"></td>
-            </tr>
-            <tr>
-              <td><b>CONFIRM PASSWORD</b></td>
-                <td><input type="password" name="account_emp_edit_conpass"  class="form-control"   placeholder="CONFRIM PASSWORD"></td>
-            </tr>
+            
             <td><b>EMAIL</b></td>
                 <td><input type="email" name="account_emp_edit_email"  class="form-control" required="" value="<?php echo "$account_val_email";?>"></td>
               </tr>
@@ -243,6 +237,52 @@ $test = mysql_fetch_array($result);
         </div>
   </section>
   <!-- container section end -->
+  <!-- Modal -->
+<div id="passEdit" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Change Password</h4>
+      </div>
+      <div class="modal-body">
+      <form class="form-horizontal" role="form" action="account_pass_edit_action.php?accID=<?php echo "$ID";?>" method="post">
+                                                  <div class="form-group">
+                                                      <label class="col-lg-3 control-label">Old Password</label>
+                                                      <div class="col-lg-6">
+                                                          <input type="password" class="form-control" id="password" placeholder="Type your old Password" name="profile_edit_oldpass" required="" value="">
+                                                      </div>
+                                                  </div>
+                                                  <div class="form-group">
+                                                      <label class="col-lg-3 control-label">New Password</label>
+                                                      <div class="col-lg-6">
+                                                          <input type="password" class="form-control" id="password" placeholder="Type Your New Password" name="profile_edit_password" required="" value="">
+                                                      </div>
+                                                  </div>
+                                                  <div class="form-group">
+                                                      <label class="col-lg-3 control-label">Confirm Password</label>
+                                                      <div class="col-lg-6">
+                                                          <input type="password" class="form-control" id="password" placeholder="Confirm Your Password" name="profile_edit_repassword" required="" value="">
+                                                      </div>
+                                                  </div>
+                                                   <div class="form-group">
+                                                      <div class="col-lg-offset-2 col-lg-10">
+                                                         <input class="btn btn-primary"  type="submit" name="AccountEdit" value="Update">
+                                                          <button href="profile.php" type="button" class="btn btn-danger">Cancel</button>
+                                                      </div>
+                                                  </div>
+                                                  </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
     <!-- javascripts -->
     <script src="js/jquery.js"></script>
     <script src="js/bootstrap.min.js"></script>

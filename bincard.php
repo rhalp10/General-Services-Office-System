@@ -170,7 +170,7 @@ include('session.php');
           <div class="panel">
           <header class="panel-heading tab-bg-primary " style="padding:15px; height: 70px;">
                      <a class="btn btn-success pull-left" href="" data-toggle="modal" data-target="#myModal">Add Bin Record</a>
-
+                     <a class="btn btn-info pull-right" href="" >Print Bincard</a>
                         
                           </header>
                          
@@ -180,7 +180,6 @@ include('session.php');
           <thead>
             <tr>
                 <th>Date</th>
-                <th>Inventory Type</th>
                 <th>Supplier</th>
                 <th>Description</th>
                 <th>Qty</th>
@@ -273,52 +272,6 @@ include('session.php');
                                 <input type="text"  class="form-control" placeholder="Quantity" name="bincard_record_qty" required="">
                             </div>
                         </div>
-                        <br><br>
-                          <div class="form-group">
-                            <label class="col-sm-3 control-label"><b>INVENTORY TYPE</b></label>
-                                <div class="col-sm-9">
-                                     <select class="form-control" name="bin_invent_type" required="">
-                                            <?php 
-                                            $result=mysql_query("SELECT *  FROM inventory_dictionary");
-                                          
-                                            while($test = mysql_fetch_array($result))
-                                            {
-                                              if ($test['Invent_ID'] == '3')
-                                              { 
-                                               ?>
-                                               <option value="<?php echo $test['Invent_ID']?>"><?php echo $test['AC_name(New)']?></option>
-                                               <?php
-                                               }
-                                               else if($test['Invent_ID'] == '23')
-                                               { 
-                                               ?>
-                                               <option value="<?php echo $test['Invent_ID']?>"><?php echo $test['AC_Name(Old)']?></option>
-                                               <?php
-                                               }
-                                               else if ($test['AC_name(New)'] == 'Disaster Response & Rescue Equipment')
-                                               { 
-                                               ?>
-                                               <option value="<?php echo $test['Invent_ID']?>"><?php  echo $test['AC_Name(Old)']." (".$test['AC_name(New)'].")"?></option>
-                                               <?php
-                                               }
-                                               else if ($test['AC_name(New)'] == 'Construction in Progress- Infrastructure Assets')
-                                               { 
-                                               ?>
-                                               <option value="<?php echo $test['Invent_ID']?>"><?php  echo $test['AC_Name(Old)']." (".$test['AC_name(New)'].")"?></option>
-                                               <?php
-                                               }
-                                               else
-                                               { 
-                                               ?>
-                                               <option value="<?php echo $test['Invent_ID']?>"><?php echo $test['AC_name(New)']?></option>
-                                               <?php
-                                               }
-                                           }
-                                             ?>
-                                          </select>
-                                    </div>
-                                     
-                        </div>
                         <br><br><br>
                         <div class="form-group">
                             <label class="col-sm-2 control-label"></label>
@@ -364,6 +317,16 @@ include('session.php');
         } );
       } );
 
+    //FOR DELETE FUNCTION RECORD
+    function confirmDelete(id) {
+        
+        var r = confirm('Do you want to delete?');
+        if (r == true) {
+          window.location='bincard_delete_action.php?ID='+id;
+        } else {
+            window.location='acccard.php';
+        }
+    }
       
     </script>
     <script src="js/bootstrap.min.js"></script>

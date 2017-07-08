@@ -1,13 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 3.4.5
+-- version 4.1.12
 -- http://www.phpmyadmin.net
 --
--- Host: localhost
--- Generation Time: Jul 04, 2017 at 10:14 AM
--- Server version: 5.5.16
--- PHP Version: 5.3.8
+-- Host: 127.0.0.1
+-- Generation Time: Jul 08, 2017 at 04:21 PM
+-- Server version: 5.6.16
+-- PHP Version: 5.5.11
 
-SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
 
 
@@ -28,8 +28,21 @@ SET time_zone = "+00:00";
 
 CREATE TABLE IF NOT EXISTS `bincard_issued_record` (
   `ID` int(11) NOT NULL AUTO_INCREMENT,
+  `bin_ID` int(11) NOT NULL,
+  `recpnt` varchar(50) NOT NULL,
+  `issued_date` date NOT NULL,
+  `qty` int(11) NOT NULL,
   PRIMARY KEY (`ID`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
+
+--
+-- Dumping data for table `bincard_issued_record`
+--
+
+INSERT INTO `bincard_issued_record` (`ID`, `bin_ID`, `recpnt`, `issued_date`, `qty`) VALUES
+(1, 2, 'darren', '2017-07-12', 1),
+(2, 1, 'darren', '2017-07-12', 1),
+(3, 2, 'darren', '2017-07-12', 1);
 
 -- --------------------------------------------------------
 
@@ -38,26 +51,24 @@ CREATE TABLE IF NOT EXISTS `bincard_issued_record` (
 --
 
 CREATE TABLE IF NOT EXISTS `bincard_record` (
-  `ID` int(11) NOT NULL,
+  `ID` int(11) NOT NULL AUTO_INCREMENT,
   `bin_Date` date NOT NULL,
   `Supplier` varchar(100) NOT NULL,
   `Descrp` varchar(250) NOT NULL,
   `Qty` varchar(10) NOT NULL,
   `Issued` int(10) NOT NULL,
   `Balance` float NOT NULL,
-  `InventCode` int(11) NOT NULL,
-  PRIMARY KEY (`ID`),
-  KEY `inventory_dictionary` (`InventCode`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  PRIMARY KEY (`ID`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=7 ;
 
 --
 -- Dumping data for table `bincard_record`
 --
 
-INSERT INTO `bincard_record` (`ID`, `bin_Date`, `Supplier`, `Descrp`, `Qty`, `Issued`, `Balance`, `InventCode`) VALUES
-(0, '2017-07-19', '666as6d6', '66asd66', '666666', 0, 0, 1),
-(1, '2016-11-11', 'New Lines', 'cellphone', '20', 19, 1, 25),
-(2, '2016-11-11', 'New Lines', 'laptop', '40', 29, 11, 16);
+INSERT INTO `bincard_record` (`ID`, `bin_Date`, `Supplier`, `Descrp`, `Qty`, `Issued`, `Balance`) VALUES
+(1, '2017-07-19', '666as6d6', '66asd66', '50', 0, 0),
+(2, '2016-11-11', 'New Lines', 'laptop', '2', 2, 0),
+(6, '0001-01-01', '21', '21', '21', 0, 0);
 
 -- --------------------------------------------------------
 
@@ -90,25 +101,25 @@ CREATE TABLE IF NOT EXISTS `emp_accountability_card` (
 INSERT INTO `emp_accountability_card` (`ID`, `Emp_ID`, `ItemSetID`, `itemCode`, `ParNo`, `Qty`, `Unit`, `Descrp`, `SN`, `PropNo`, `Amount`, `TransferTo`, `Remarks`, `DateTurnOver`) VALUES
 (1, 1, 'SP-01', 'SET SP-01', 'T-457-16', 1, 'unit', 'Calculator HL-101 10 digits', '1 SN. MMLYKS01623C12311', '1995', 800, '', '', '0000-00-00'),
 (2, 1, 'SP-02', 'PART SP-01', 'T-457-16', 0, 'unit', 'Calculator HL-102 10 digits', '1 SN. MMLYKS01623C12311', 'OT-09-98', 0, '', '', '0000-00-00'),
-(4, 4, 'SP-04', 'PART SP-03', 'T-457-16', 0, 'unit', 'Calculator HL-104 10 digits', '1 SN. MMLYKS01623C12311', 'OT-09-98', 3.40282e38, '', '', '2010-10-30'),
-(5, 4, 'SP-05', 'PART SP-03', 'T-457-16', 0, 'unit', 'Calculator HL-105 10 digits', '1 SN. MMLYKS01623C12311', 'OT-09-98', 3.40282e38, '', '', '2010-10-30'),
+(4, 1, 'SP-04', 'PART SP-03', 'T-457-16', 0, 'unit', 'Calculator HL-104 10 digits', '1 SN. MMLYKS01623C12311', 'OT-09-98', 3.40282e38, '', '', '2010-10-30'),
+(5, 1, 'SP-05', 'PART SP-03', 'T-457-16', 0, 'unit', 'Calculator HL-105 10 digits', '1 SN. MMLYKS01623C12311', 'OT-09-98', 3.40282e38, '', '', '2010-10-30'),
 (6, 1, 'SP-06', 'PART SP-03', 'T-457-16', 0, 'unit', 'Calculator HL-106 10 digits', '1 SN. MMLYKS01623C12311', 'OT-09-98', 0, 'null', '', '0000-00-00'),
-(7, 4, 'SP-07', 'PART SP-03', 'T-457-16', 0, 'unit', 'Plate No. SCB-830', '1 SN. MMLYKS01623C12311', 'OT-09-98', 0, 'null', '', '0000-00-00'),
+(7, 1, 'SP-07', 'PART SP-03', 'T-457-16', 0, 'unit', 'Plate No. SCB-830', '1 SN. MMLYKS01623C12311', 'OT-09-98', 0, 'null', '', '0000-00-00'),
 (8, 1, 'SP-08', 'SPART SP-08', 'T-457-16', 0, 'unit', 'Plate No. SCB-831', '1 SN. MMLYKS01623C12311', 'OT-09-98', 321, 'null', '', '0000-00-00'),
-(9, 5, 'SP-09', 'SPART SP-09', 'T-457-16', 0, 'unit', 'Plate No. SCB-831', '1 SN. MMLYKS01623C12311', 'OT-09-98', 0, 'null', '', '0000-00-00'),
-(10, 0, 'SP-10', 'SPART SP-10', 'T-457-16', 0, 'unit', 'Plate No. SCB-833', '1 SN. MMLYKS01623C12311', 'OT-09-98', 0, 'null', '', '0000-00-00'),
-(11, 0, 'SP-11', 'SET SP-11', 'T-457-16', 52, 'unit', 'Plate No. SCB-834', '1 SN. MMLYKS01623C12311', 'OT-09-98', 0, 'null', '', '0058-02-28'),
-(12, 0, 'SP-12', 'PART SP-11', 'T3', 0, 'unit', 'Plate No. SCB-835', '1 SN. MMLYKS01623C12311', 'OT-09-98', 0, 'null', '33333333333', '0000-00-00'),
-(13, 2, 'SP-13', 'SPART SP-13', 'T-457-16', 1, 'unit', 'Plate No. SCB-836', '1 SN. MMLYKS01623C12311', 'OT-09-98', 0, 'null', '', '0000-00-00'),
-(14, 2, 'SP-14', 'SPART SP-14', 'T-457-16', 1, 'unit', 'Plate No. SCB-837', '1 SN. MMLYKS01623C12311', 'OT-09-98', 0, 'null', 'i and i 9/12/2013', '0000-00-00'),
+(9, 1, 'SP-09', 'SPART SP-09', 'T-457-16', 0, 'unit', 'Plate No. SCB-831', '1 SN. MMLYKS01623C12311', 'OT-09-98', 0, 'null', '', '0000-00-00'),
+(10, 1, 'SP-10', 'SPART SP-10', 'T-457-16', 0, 'unit', 'Plate No. SCB-833', '1 SN. MMLYKS01623C12311', 'OT-09-98', 0, 'null', '', '0000-00-00'),
+(11, 1, 'SP-11', 'SET SP-11', 'T-457-16', 52, 'unit', 'Plate No. SCB-834', '1 SN. MMLYKS01623C12311', 'OT-09-98', 0, 'null', '', '0058-02-28'),
+(12, 1, 'SP-12', 'PART SP-11', 'T3', 0, 'unit', 'Plate No. SCB-835', '1 SN. MMLYKS01623C12311', 'OT-09-98', 0, 'null', '33333333333', '0000-00-00'),
+(13, 1, 'SP-13', 'SPART SP-13', 'T-457-16', 1, 'unit', 'Plate No. SCB-836', '1 SN. MMLYKS01623C12311', 'OT-09-98', 0, 'null', '', '0000-00-00'),
+(14, 1, 'SP-14', 'SPART SP-14', 'T-457-16', 1, 'unit', 'Plate No. SCB-837', '1 SN. MMLYKS01623C12311', 'OT-09-98', 0, 'null', 'i and i 9/12/2013', '0000-00-00'),
 (15, 1, 'SP-15', 'SPART SP-15', 'T-457-16', 1, 'unit', 'Calculator HL-107 10 digits', '1 SN. MMLYKS01623C12311', 'OT-09-98', 0, 'Adoracion Mojica', 'Formerly to Adoracion Mojica', '0000-00-00'),
-(16, 2, 'SP-16', 'SET SP-16', 'T-457-16', 5, 'unit', 'Plate No. SCB-838', '1 SN. MMLYKS01623C12311', 'OT-09-98', 0, 'null', '', '0000-00-00'),
+(16, 1, 'SP-16', 'SET SP-16', 'T-457-16', 5, 'unit', 'Plate No. SCB-838', '1 SN. MMLYKS01623C12311', 'OT-09-98', 0, 'null', '', '0000-00-00'),
 (18, 1, 'SP-18', 'PART SP-16', 'T-457-16', 0, 'unit', 'Plate No. SCB-840', '1 SN. MMLYKS01623C12311', 'OT-09-98', 0, 'null', '', '2017-06-08'),
 (19, 1, 'SP-19', 'PART SP-16', 'T-457-16', 0, 'unit', 'Plate No. SCB-841', '1 SN. MMLYKS01623C12311', 'OT-09-98', 6, 'null', '', '2017-06-15'),
 (20, 1, 'SP-20', 'PART SP-16', 'T-457-16', 0, 'unit', 'Plate No. SCB-842', '1 SN. MMLYKS01623C12311', 'OT-09-98', 0, 'null', '', '0000-00-00'),
-(21, 12, 'SP-21', 'PART SP-16', 'T-457-16', 0, 'unit', 'Plate No. SCB-843', '1 SN. MMLYKS01623C12311', 'OT-09-98', 1321, 'null', '', '0000-00-00'),
-(22, 14, '', '', 'asdasdad', 0, 'JKJ', 'KJLJKL', 'LKJLKJ', 'LKJLKJ', 0, 'null', '', '0000-00-00'),
-(24, 26, '', '', 'lklj', 0, 'klj', 'lkj', 'lkj', 'klj', 0, 'null', '', '0000-00-00');
+(21, 1, 'SP-21', 'PART SP-16', 'T-457-16', 0, 'unit', 'Plate No. SCB-843', '1 SN. MMLYKS01623C12311', 'OT-09-98', 1321, 'null', '', '0000-00-00'),
+(22, 1, '', '', 'asdasdad', 0, 'JKJ', 'KJLJKL', 'LKJLKJ', 'LKJLKJ', 0, 'null', '', '0000-00-00'),
+(24, 1, '', '', 'lklj', 0, 'klj', 'lkj', 'lkj', 'klj', 0, 'null', '', '0000-00-00');
 
 -- --------------------------------------------------------
 
@@ -131,26 +142,24 @@ CREATE TABLE IF NOT EXISTS `emp_accounts_record` (
   `image` varchar(250) NOT NULL,
   PRIMARY KEY (`accID`),
   UNIQUE KEY `User` (`username`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=21 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=22 ;
 
 --
 -- Dumping data for table `emp_accounts_record`
 --
 
 INSERT INTO `emp_accounts_record` (`accID`, `accLevel`, `username`, `password`, `fullName`, `Age`, `Gender`, `Address`, `Email`, `Pos`, `Mobile`, `image`) VALUES
-(0, '0', 'admin', 'admin', 'Rhalp Darren Cabrera', 20, 'male', 'Blk 38 Lot 11 Phase 2b Brgy Aguado TMC', '555@yahoo.com', '55', '55', 'img/emp_profile/temp.jpg'),
+(0, '0', 'admin', 'Tzabaoth10', 'Rhalp Darren Cabrera', 20, 'male', 'Blk 38 Lot 11 Phase 2b Brgy Aguado TMC', '555@yahoo.com', '55', '55', 'img/emp_profile/temp.jpg'),
 (1, '1', 'employee', 'employee', 'mark', 20, 'Unknown', 'Mars', 'marcalien@gmail.com', 'staff', '09169158798', 'img/emp_profile/temp.jpg'),
-(8, '1', '987', '987', '987', 978, '987', '444444444', '987@yhoo.com', '987', '987', 'img/emp_profile/temp.jpg'),
+(8, '1', '987', '987', 'yehye', 978, '987', '444444444', '987@yhoo.com', '987', '987', 'img/emp_profile/temp.jpg'),
 (10, '0', 'asasdkld', '321', 'iouqou', 0, 'khakdhk', 'hhhhh', 'oiuoiu@yahoo.com', 'kkjh', 'jkasjd', 'img/emp_profile/temp.jpg'),
-(11, '1', '9798w7ad', '987', 'a9s8d7', 98, '987awd897', 'hhhh', 'a98sd7@yahoo.com', '978awd', 'as7d987', 'img/emp_profile/temp.jpg'),
-(12, '1', '111111', '111', 'error fix ?', 885, 'z851', '65as4654654', '555@yahoo.com', '55', '55', 'img/emp_profile/temp.jpg'),
-(13, '1', '78879978', '987', 'asd', 0, 'a98wd7', '987asd9', 'asd@yahoo.com', '98w', '78a987', 'img/emp_profile/temp.jpg'),
-(14, '1', 'iou', '321', 'franz', 3, 'male', 'Blk 38 Lot 11 Phase 2b Brgy Aguado TMC', 'jalksjd@yahoo.com', 'jklasdjd', 'kljaklsdj', 'img/emp_profile/temp.jpg'),
+(14, '1', 'iou', '555', 'franz1', 50, 'male', 'Blk 38 Lot 11 Phase 2b Brgy Aguado TMC', 'jalksjd@yahoo.com', 'jklasdjd', 'kljaklsdj', 'img/emp_profile/temp.jpg'),
 (15, '1', '9999', '9', 'tryyyyyyyyyyyyyyyyyyyyy', 50, '9', '9', '987@aksd.com', '9', '9', 'img/emp_profile/temp.jpg'),
 (17, '1', '8', '8', 'panget', 8, '8', '8', '8@yahoo.com', '8', '8', 'img/emp_profile/temp.jpg'),
 (18, '1', 'darren321', '321', 'OMAR DAUD', 15, 'Male', 'NAIC', '321@yahoo.com', '155', '321', 'img/emp_profile/temp.jpg'),
 (19, '1', 'rd2h1fs8jk2b6cz', 'yth3xk5slz8bd', 'Omar', 20, 'Male', 'Bucal 3-B, Maragondon, Cavite', 'Omardaud21000@gmail.com', '.....', '09355173381', 'img/emp_profile/temp.jpg'),
-(20, '3', 'bano12315', '55555', 'k4', 4, 'Male', '4k', 'k4@yaho1111.c1om1', '4k', '4k', 'img/emp_profile/temp.jpg');
+(20, '3', 'bano12315', '55555', 'k4', 4, 'Male', '4k', 'k4@yaho1111.c1om1', '4k', '4k', 'img/emp_profile/temp.jpg'),
+(21, '0', 'Asada', '555', 'Franz Marc Cabrera', 50, 'Male', 'Blk 38 Lot 11 Ph2b Southville2 Trece Martirez City', 'franzmarccabrera123@gmail.com', 'ADMIN', '09169158798', 'img/emp_profile/temp.jpg');
 
 -- --------------------------------------------------------
 
@@ -163,6 +172,7 @@ CREATE TABLE IF NOT EXISTS `emp_pgc_record` (
   `fullName` varchar(150) NOT NULL,
   `office` varchar(50) NOT NULL,
   `designation` varchar(100) NOT NULL,
+  `note` varchar(50) NOT NULL,
   PRIMARY KEY (`accID`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=29 ;
 
@@ -170,23 +180,22 @@ CREATE TABLE IF NOT EXISTS `emp_pgc_record` (
 -- Dumping data for table `emp_pgc_record`
 --
 
-INSERT INTO `emp_pgc_record` (`accID`, `fullName`, `office`, `designation`) VALUES
-(1, 'Rhalp Darren R. Cabrera ', 'IT DEP', 'IT DEP'),
-(4, 'New Line ', 'New Line', 'New Line'),
-(6, 'JOBELLE B. PELINA', 'Agency Employee', 'KAHIT SAAN'),
-(9, 'htrhrth', 'Emergency Employee', 'asatrh'),
-(11, 'thfghfgh', 'IT DEP', 'fghfghfgh'),
-(13, 'Princess Mononoke', 'Agency Employee', 'mountain'),
-(14, 'sample 1 sample 2', 'Agency Employee', 'dasdasd'),
-(15, 'jhgjj', 'Emergency Employee', 'cbcbcf'),
-(16, 'Mark Christopher dArc', 'Agency Employee', 'hgh'),
-(17, 'xfgdfjk', 'IT DEP', 'hdfsdf'),
-(18, 'sdfsdfsdf', 'IT DEP', 'sdfsdfs'),
-(22, 'Omar Raouf A. Daud', 'Property Management Section', 'Administrative Officer III'),
-(23, 'Ains Ooal Gown1', '  Nazareth21', 'KAHIT SAAN'),
-(24, 'Marc Kevin Manalo', 'BIDA OR FEED', 'BIDA GAMING'),
-(26, 'asdasd', 'shet', 'shet'),
-(28, 'yowwwwwwwwwwwww', 'yowwwwwwwwwwwwwwwwww', 'yowwwwwwwwwww');
+INSERT INTO `emp_pgc_record` (`accID`, `fullName`, `office`, `designation`, `note`) VALUES
+(1, 'Rhalp Darren R. Cabrera ', 'IT DEP', 'IT DEP', ''),
+(4, 'New Line ', 'New Line', 'New Line', ''),
+(6, 'JOBELLE B. PELINA', 'Agency Employee', 'KAHIT SAAN', ''),
+(9, 'htrhrth', 'Emergency Employee', 'asatrh', ''),
+(11, 'thfghfgh', 'IT DEP', 'fghfghfgh', ''),
+(13, 'Princess Mononoke', 'Agency Employee', 'mountain', ''),
+(14, 'sample 1 sample 2', 'Agency Employee', 'dasdasd', ''),
+(15, 'jhgjj', 'Emergency Employee', 'cbcbcf', ''),
+(16, 'Mark Christopher dArc', 'Agency Employee', 'hgh', ''),
+(17, 'xfgdfjk', 'IT DEP', 'hdfsdf', ''),
+(18, 'sdfsdfsdf', 'IT DEP', 'sdfsdfs', ''),
+(22, 'Omar Raouf A. Daud', 'Property Management Section', 'Administrative Officer III', ''),
+(23, 'Ains Ooal Gown1', '  Nazareth21', 'KAHIT SAAN', ''),
+(24, 'Marc Kevin Manalo', 'BIDA OR FEED', 'BIDA GAMING', ''),
+(26, 'asdasd', 'shet', 'shet', '');
 
 -- --------------------------------------------------------
 
@@ -416,12 +425,6 @@ INSERT INTO `prs_purpose_dictionary` (`ID`, `Pupose_Type`) VALUES
 --
 -- Constraints for dumped tables
 --
-
---
--- Constraints for table `bincard_record`
---
-ALTER TABLE `bincard_record`
-  ADD CONSTRAINT `inventory_dictionary` FOREIGN KEY (`InventCode`) REFERENCES `inventory_dictionary` (`Invent_ID`);
 
 --
 -- Constraints for table `property_return_slip_record`

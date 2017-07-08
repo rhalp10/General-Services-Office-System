@@ -1,7 +1,7 @@
 <?php
 include('session.php');
 
-$accID =$_REQUEST['accID'];
+$accID =$_REQUEST['ID'];
 $result = mysql_query("SELECT * FROM bincard_record WHERE ID = '$accID'");
 $test = mysql_fetch_array($result);
       $bin_Date=$test['bin_Date'];
@@ -10,7 +10,6 @@ $test = mysql_fetch_array($result);
       $Qty=$test['Qty'];
       $Issued=$test['Issued'];
       $Balance=$test['Balance'];
-      $InventCode=$test['InventCode'];
 
 
 ?>
@@ -173,51 +172,11 @@ $test = mysql_fetch_array($result);
               <table class="table table-striped table-advance table-hover ">
                  <tr>
               <td><b>BIN DATE</b></td>
-                <td><input type="text" name="bincard_edit_date"  class="form-control"  value="<?php echo "$bin_Date";?> "></td>
+                <td><input type="date" name="bincard_edit_date"  class="form-control"  value="<?php echo "$bin_Date";?> "></td>
             </tr>
 
              <tr>
-              <td><b>INVENTORY TYPE</b></td>
-                <td> <div >
-                                     <select class="form-control" name="bin_invent_type" required="">
-                                            <?php 
-                                            $result=mysql_query("SELECT *  FROM inventory_dictionary");
-                                            while($test = mysql_fetch_array($result))
-                                            {
-                                              if ($test['Invent_ID'] == '3')
-                                              { 
-                                               ?>
-                                               <option value="<?php echo $test['Invent_ID']?>"><?php echo $test['AC_name(New)']?></option>
-                                               <?php
-                                               }
-                                               else if($test['Invent_ID'] == '23')
-                                               { 
-                                               ?>
-                                               <option value="<?php echo $test['Invent_ID']?>"><?php echo $test['AC_Name(Old)']?></option>
-                                               <?php
-                                               }
-                                               else if ($test['AC_name(New)'] == 'Disaster Response & Rescue Equipment')
-                                               { 
-                                               ?>
-                                               <option value="<?php echo $test['Invent_ID']?>"><?php  echo $test['AC_Name(Old)']." (".$test['AC_name(New)'].")"?></option>
-                                               <?php
-                                               }
-                                               else if ($test['AC_name(New)'] == 'Construction in Progress- Infrastructure Assets')
-                                               { 
-                                               ?>
-                                               <option value="<?php echo $test['Invent_ID']?>"><?php  echo $test['AC_Name(Old)']." (".$test['AC_name(New)'].")"?></option>
-                                               <?php
-                                               }
-                                               else
-                                               { 
-                                               ?>
-                                               <option value="<?php echo $test['Invent_ID']?>"><?php echo $test['AC_name(New)']?></option>
-                                               <?php
-                                               }
-                                           }
-                                             ?>
-                                          </select>
-                                    </div></td>
+                
             </tr>
              <tr>
               <td><b>SUPPLIER</b></td>
@@ -233,11 +192,11 @@ $test = mysql_fetch_array($result);
             </tr>
             <tr>
               <td><b>ISSUED</b></td>
-                <td><input type="text" name="bincard_edit_issued"  class="form-control" required="" value="<?php echo "$Issued";?>"></td>
+                <td><?php echo "$Issued";?></td>
             </tr>
             <tr>
               <td><b>BALANCE</b></td>
-                <td><input type="text" name="bincard_edit_balance"  class="form-control" required="" value="<?php echo "$Balance";?>"></td>
+                <td><?php echo "$Balance";?></td>
             </tr>
            <tr>
            <td><input class="btn btn-success "  type="submit" name="Update" value="Update"></td>
@@ -260,7 +219,11 @@ $test = mysql_fetch_array($result);
         </div>
   </section>
   <!-- container section end -->
-    <!-- javascripts -->
+      <!-- javascripts -->
+    <script type="text/javascript">
+      var dateControl = document.querySelector('input[type="date"]');
+dateControl.value = '<?php echo "$bin_Date";?>';
+    </script>
     <script src="js/jquery.js"></script>
     <script src="js/bootstrap.min.js"></script>
     <!-- nice scroll -->
