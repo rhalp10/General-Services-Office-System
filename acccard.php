@@ -1,5 +1,9 @@
 <?php
 include('session.php');
+include('db.php');
+$sql = "SELECT *";
+$sql.=" FROM emp_pgc_record";
+$query=mysql_query($sql);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -24,7 +28,7 @@ include('session.php');
     <link href="css/style.css" rel="stylesheet">
     <link href="css/style-responsive.css" rel="stylesheet" />
 
-    <link rel="stylesheet" type="text/css" href="css/jquery.dataTables.css">
+    <link href="css/dataTables.bootstrap.min.css" rel="stylesheet">
 
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 -->
     <!--[if lt IE 9]>
@@ -177,7 +181,7 @@ include('session.php');
                          
                     
                     <div >
-      <table id="employee-grid"  class="table table-striped table-advance table-hover ">
+      <table id="myData"  class="table table-striped table-advance table-hover ">
           <thead>
             <tr>
               <th>Name</th>
@@ -186,6 +190,46 @@ include('session.php');
               <th>Action</th>
             </tr>
           </thead>
+          <tfoot>
+            <tr>
+              <th></th>
+              <th></th>
+              <th></th>
+              <th></th>
+            </tr>
+          </tfoot>
+          <tbody>
+          <?php 
+           while( $row=mysql_fetch_array($query) ) 
+           { 
+
+           $accID = $row['accID'];
+          ?>
+            <tr>
+              <td><?php echo $row['fullName'];?></td>
+              <td><?php echo $row['office'];?></td>
+              <td><?php echo $row['designation'];?></td>
+              <td>
+              <div class="btn-group">
+                <button type="button" class="btn btn-primary">Action</button>
+                <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  <span class="caret"></span>
+                  <span class="sr-only">Toggle Dropdown</span>
+                </button>
+                <ul class="dropdown-menu">
+                  <li><a href="acccard_view.php?accID=<?php echo $accID; ?>">View</a></li>
+                  <li><a href="acccard_edit.php?accID=<?php echo $accID; ?>">Edit</a></li>
+                  <li role="separator" class="divider"></li>
+                  <li><a onclick="confirmDelete(<?php echo $accID; ?>)">Delete</a></li>
+                </ul>
+              </div>
+              </td>
+
+            </tr>
+            <?php
+            }
+            ?>
+          </tbody>
 
       </table>
     </div>
@@ -326,22 +370,22 @@ include('session.php');
     <script type="text/javascript" language="javascript" src="js/jquery.js"></script>
     <script type="text/javascript" language="javascript" src="js/jquery.dataTables.js"></script>
     <script type="text/javascript" language="javascript" >
-      $(document).ready(function() {
-        var dataTable = $('#employee-grid').DataTable( {
-          "processing": true,
-          "serverSide": true,
-          "ajax":{
-            url :"acccard_emp-data.php", // json datasource
-            type: "post",  // method  , by default get
-            error: function(){  // error handling
-              $(".employee-grid-error").html("");
-              $("#employee-grid").append('<tbody class="employee-grid-error"><tr><th colspan="3">No data found in the server</th></tr></tbody>');
-              $("#employee-grid_processing").css("display","none");
-              
-            }
-          }
-        } );
-      } );
+    //  $(document).ready(function() {
+    //    var dataTable = $('#employee-grid').DataTable( {
+    //      "processing": true,
+    //      "serverSide": true,
+    //      "ajax":{
+    //        url :"acccard_emp-data.php", // json datasource
+    //        type: "post",  // method  , by default get
+    //        error: function(){  // error handling
+    //          $(".employee-grid-error").html("");
+    //          $("#employee-grid").append('<tbody class="employee-grid-error"><tr><th colspan="3">No data found in the server</th></tr></tbody>');
+    //          $("#employee-grid_processing").css("display","none");
+    //          
+    //        }
+    //      }
+    //    } );
+    //  } );
 
       
 //FOR DELETE FUNCTION RECORD
@@ -362,6 +406,12 @@ function confirmDelete(id) {
     <script src="js/jquery.nicescroll.js" type="text/javascript"></script><!--custome script for all page-->
     <script src="js/scripts.js"></script>
 
+    <script src="js/jquery.dataTables.min.js"></script>
+    <script src="js/dataTables.bootstrap.min.js"></script>
+    <script type="text/javascript">
+
+      $('#myData').dataTable();
+    </script>
 
   </body>
 </html>

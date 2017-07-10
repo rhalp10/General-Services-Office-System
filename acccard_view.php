@@ -1,8 +1,7 @@
 <?php
 include('session.php');
-
-
 $ID =$_REQUEST['accID'];
+include('db.php');
 
 $result = mysql_query("SELECT * FROM emp_pgc_record WHERE accID = '$ID'");
 $test = mysql_fetch_array($result);
@@ -11,7 +10,10 @@ $rows = mysql_num_rows($result);
                 $emp_pgc_record_fullname=$test['fullName'] ;
                 $emp_pgc_record_office=$test['office'];
                 $emp_pgc_record_designation=$test['designation'] ;
-               
+
+$sql = "SELECT *";
+$sql.=" FROM emp_accountability_card WHERE Emp_ID = $ID";
+$query = mysql_query($sql);      
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -36,7 +38,8 @@ $rows = mysql_num_rows($result);
     <link href="css/style.css" rel="stylesheet">
     <link href="css/style-responsive.css" rel="stylesheet" />
 
-    <link rel="stylesheet" type="text/css" href="css/jquery.dataTables.css">
+
+    <link href="css/dataTables.bootstrap.min.css" rel="stylesheet">
 
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 -->
     <!--[if lt IE 9]>
@@ -246,7 +249,7 @@ $rows = mysql_num_rows($result);
                                     </header>
                                     <div class="panel-body">
                                      
-                                      <table id="employee-grid"  class="table table-striped table-advance table-hover ">
+                                      <table id="myData"  class="table table-striped table-advance table-hover ">
                                          <thead>
                                            <tr>
                                            <th>PAR #</th>
@@ -261,6 +264,201 @@ $rows = mysql_num_rows($result);
                                             <th>ACTION</th>
                                            </tr>
                                         </thead>
+                                        <tbody>
+                                        <?php 
+while ( $row=mysql_fetch_array($query)) {
+
+  $accID = $row['Emp_ID'];
+  if ("SET ".$row['ItemSetID'] == $row['itemCode'])//SET
+      {
+        if ($row['DateTurnOver'] == '0000-00-00'  && $row['TransferTo'] == 'null' || $row['TransferTo'] == ' ' )
+        {
+        ?>
+
+        <tr>
+
+          <td><?php echo $row['PropNo'];?></td>
+          <?php
+          if ($row['Qty'] == 0) {
+            ?>
+            <td></td>
+            <?php
+          }
+          else
+          {
+            ?>
+            <td><?php echo $row['Qty']." ".$row['Unit']; ?></td>
+            <?php
+          } 
+          ?>
+
+          <td><?php echo $row['Descrp']; ?></td>
+          <td><?php echo $row['SN']; ?></td>
+          <td><?php echo $row['PropNo']; ?></td>
+          <?php 
+          if ($row["Amount"] == 0) 
+            {
+              ?>
+              <td></td>
+              <?php
+            }
+            else
+            {
+              ?>
+              <td><?php echo $row['Amount']; ?></td>
+              <?php
+            }
+
+          if ($row['TransferTo'] == 'null') 
+          {
+              ?>
+              <td></td>
+              <?php
+          }
+          else
+          {
+              ?>
+              <td><?php echo $row['TransferTo']; ?></td>
+              <?php
+
+          }
+          if ($row['DateTurnOver'] == '0000-00-00') 
+          {
+              ?>
+              <td></td>
+              <?php
+
+          }
+          else
+          {
+              ?>
+              <td><?php echo $row['DateTurnOver']; ?></td>
+              <?php
+
+          }
+          ?>
+          <td><?php echo $row['Remarks']; ?></td>
+          <td>
+            <div class="btn-group">
+            <button type="button" class="btn btn-primary">Action</button>
+            <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <span class="caret"></span>
+              <span class="sr-only">Toggle Dropdown</span>
+            </button>
+            <ul class="dropdown-menu">
+              <li><a href="acccard_view_edit-issued-data.php?issuedID=<?php echo "$issued_ID";?>">Edit</a></li>
+              <li role="separator" class="divider"></li>
+              <li><a onclick="confirmDelete(<?php echo $accID; ?>)">Delete</a></li>
+            </ul>
+          </div>
+          </td>
+
+      </tr>
+      <?php 
+        }
+        else
+        {
+          ?>
+
+        <tr>
+
+          <td><?php echo $row['PropNo'];?></td>
+          <?php
+          if ($row['Qty'] == 0) {
+            ?>
+            <td></td>
+            <?php
+          }
+          else
+          {
+            ?>
+            <td><?php echo $row['Qty']." ".$row['Unit']; ?></td>
+            <?php
+          } 
+          ?>
+
+          <td><?php echo $row['Descrp']; ?></td>
+          <td><?php echo $row['SN']; ?></td>
+          <td><?php echo $row['PropNo']; ?></td>
+          <?php 
+          if ($row["Amount"] == 0) 
+            {
+              ?>
+              <td></td>
+              <?php
+            }
+            else
+            {
+              ?>
+              <td><?php echo $row['Amount']; ?></td>
+              <?php
+            }
+
+          if ($row['TransferTo'] == 'null') 
+          {
+              ?>
+              <td></td>
+              <?php
+          }
+          else
+          {
+              ?>
+              <td><?php echo $row['TransferTo']; ?></td>
+              <?php
+
+          }
+          if ($row['DateTurnOver'] == '0000-00-00') 
+          {
+              ?>
+              <td></td>
+              <?php
+
+          }
+          else
+          {
+              ?>
+              <td><?php echo $row['DateTurnOver']; ?></td>
+              <?php
+
+          }
+          ?>
+          <td><?php echo $row['Remarks']; ?></td>
+          <td>
+            <div class="btn-group">
+            <button type="button" class="btn btn-primary">Action</button>
+            <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <span class="caret"></span>
+              <span class="sr-only">Toggle Dropdown</span>
+            </button>
+            <ul class="dropdown-menu">
+              <li><a href="acccard_view_edit-issued-data.php?issuedID=<?php echo "$issued_ID";?>">Edit</a></li>
+              <li role="separator" class="divider"></li>
+              <li><a onclick="confirmDelete(<?php echo $accID; ?>)">Delete</a></li>
+            </ul>
+          </div>
+          </td>
+
+      </tr>
+      <?php 
+        }
+      }
+}
+?>
+                                        </tbody>
+                                        <tfoot>
+                                           <tr>
+                                            <th></th>
+                                            <th></th>
+                                            <th></th>
+                                            <th></th>
+                                            <th></th>
+                                            <th></th>
+                                            <th></th>
+                                            <th></th>
+                                            <th></th>
+                                            <th></th>
+                                          </tr>
+                                        </tfoot>
 
                                       </table>
                                     </div>
@@ -489,32 +687,32 @@ $rows = mysql_num_rows($result);
     <script type="text/javascript" language="javascript" src="js/jquery.js"></script>
     <script type="text/javascript" language="javascript" src="js/jquery.dataTables.js"></script>
     <script type="text/javascript" language="javascript" >
-      $(document).ready(function() {
-        var dataTable = $('#employee-grid').DataTable( {
-          "processing": true,
-          "serverSide": true,
-          "ajax":{
-            url :"acccard_view_emp-data.php?accID=<?php echo $ID ?>", // json datasource
-            type: "post",  // method  , by default get
-            error: function(){  // error handling
-              $(".employee-grid-error").html("");
-              $("#employee-grid").append('<tbody class="employee-grid-error"><tr><th colspan="3">No data found in the server</th></tr></tbody>');
-              $("#employee-grid_processing").css("display","none");
-              
-            }
-          }
-        } );
-      } );
+  //    $(document).ready(function() {
+  //      var dataTable = $('#employee-grid').DataTable( {
+  //        "processing": true,
+  //        "serverSide": true,
+  //        "ajax":{
+  //          url :"acccard_view_emp-data.php?accID=<?php echo $ID ?>", // json datasource
+  //          type: "post",  // method  , by default get
+  //          error: function(){  // error handling
+  //            $(".employee-grid-error").html("");
+  //            $("#employee-grid").append('<tbody class="employee-grid-error"><tr><th colspan="3">No data found in the server</th></tr></tbody>');
+  //            $("#employee-grid_processing").css("display","none");
+  //            
+  //          }
+  //        }
+  //      } );
+  //    } );
 
       
 //FOR DELETE FUNCTION RECORD
-function confirmDelete(id) {
+function confirmDelete(issued_ID) {
     
     var r = confirm('Do you want to delete?');
     if (r == true) {
-      window.location='acccard_delete_action.php?accID='+id;
+      window.location='acccard_delete_action.php?accID='+issued_ID;
     } else {
-        window.location='acccard.php';
+        window.location='acccard_view.php?accID='+<?php echo $ID;?>;
     }
 }
 </script>
@@ -525,9 +723,12 @@ function confirmDelete(id) {
     <script src="js/scripts.js"></script>
     <script src="js/moment-with-locales.js"></script>
     <script src="js/moment.js"></script>
+    <script src="js/jquery.dataTables.min.js"></script>
+    <script src="js/dataTables.bootstrap.min.js"></script>
     <script type="text/javascript">
   
 
+      $('#myData').dataTable();
   var datetime = null,
         date = null;
 

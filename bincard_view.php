@@ -1,4 +1,4 @@
-<?php
+ <?php
 include('session.php');
 $ID = $_REQUEST['ID'];
 include ('db.php');
@@ -23,7 +23,7 @@ include ('db.php');
     <meta name="author" content="Rhalp Darren R. Cabrera / Omar Raouf A. Daud">
     <link rel="shortcut icon" href="img/favicon.png">
 
-    <title>BIN Card</title>
+    <title>BIN Card Issued</title>
 
     <!-- Bootstrap CSS -->    
     <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -37,7 +37,7 @@ include ('db.php');
     <link href="css/style.css" rel="stylesheet">
     <link href="css/style-responsive.css" rel="stylesheet" />
 
-    <link rel="stylesheet" type="text/css" href="css/jquery.dataTables.css">
+    <link href="css/dataTables.bootstrap.min.css" rel="stylesheet">
 
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 -->
     <!--[if lt IE 9]>
@@ -202,47 +202,67 @@ include ('db.php');
                          
                     
                     <div>
-      <table id="employee-grid"  class="table table-striped table-advance table-hover">
-          <thead>
-            <tr>
-                <th>Date</th>
-                <th>Description</th>
-                <th>Recipient</th>
-                <th>Qty</th>
-                <th>Balance</th>
-              <th class="col-sm-2">Action</th>
-            </tr>
-            <tr>
-              <?php 
+      <table class="table table-striped table-bordered table-hover" id="myData">
+      <thead>
+        <tr>
+          <th>Date</th>
+          <th>Description</th>
+          <th>Recipient</th>
+          <th>Qty</th>
+          <th>Balance</th>
+          <th class="col-sm-2">Action</th>
+        </tr>
+      </thead>
+      <tfoot>
+        <tr>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+        </tr>
+        
+      </tfoot>
+      <tbody>
+        
+         <?php 
               
 
               while( $row=mysql_fetch_array($query)) 
-
               {
+
                 $issuedCount = $issuedCount+1; 
                 $balance = $balance - $row["qty"];
                 $issued_ID = $row['ID'];
-                $value = "<td><div class='btn-group'><a class='btn btn-primary' href=''>Action</a><a class='btn btn-primary dropdown-toggle' data-toggle='dropdown' href=''><span class='caret'></span></a><ul class='dropdown-menu'><li></li><li><a  href='bincard_view_edit.php?ID=$issued_ID' >Edit</a></li><li></li><li class='divider'></li><li><a  onclick= 'confirmDelete($issued_ID)'>Delete</a></li></ul></div></td>";
-
-                echo "<tr>"; 
-                echo "<td>".$row["issued_date"]."</td>";    
-                echo "<td>".$row1["Descrp"]."</td>";
-                echo "<td>".$row["recpnt"]."</td>";
-                echo "<td>".$row["qty"]."</td>";
-                echo "<td>".$balance."</td>";
-                echo $value;
-                echo "</tr>";
-                $lastbalance = $balance;
-                $sqlUpdate = "UPDATE bincard_record";
-                $sqlUpdate.= " SET  Issued = '$issuedCount',Balance = '$lastbalance' WHERE ID = $ID";
-                $UpdateRes = mysql_query($sqlUpdate);
+              ?>
+              <tr>
+                <td><?php echo $row['issued_date'];?></td>
+                <td><?php echo $row1["Descrp"];?></td>
+                <td><?php echo $row["recpnt"];?></td>
+                <td><?php echo $row["qty"];?></td>
+                <td><?php echo $balance ;?></td>
+                <td>
+                <div class="btn-group">
+                  <button type="button" class="btn btn-primary">Action</button>
+                  <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <span class="caret"></span>
+                    <span class="sr-only">Toggle Dropdown</span>
+                  </button>
+                  <ul class="dropdown-menu">
+                    <li><a href="bincard_view_edit-issued-data.php?issuedID=<?php echo "$issued_ID";?>">Edit</a></li>
+                    <li role="separator" class="divider"></li>
+                    <li><a onclick="confirmDelete(<?php echo $issued_ID; ?>)">Delete</a></li>
+                  </ul>
+                </div>
+                </td>
+              </tr>
+              <?php 
               }
 
               ?>
-            </tr>
-          </thead>
-
-      </table>
+      </tbody>
+    </table>
     </div>
 
           
@@ -371,13 +391,13 @@ include ('db.php');
       } );
 */
     //FOR DELETE FUNCTION RECORD
-    function confirmDelete(id) {
+    function confirmDelete(issued_ID) {
         
         var r = confirm('Do you want to delete?');
         if (r == true) {
-          window.location='bincard_delete_action.php?ID='+id;
+          window.location='bincard_delete_action.php?ID='+issued_ID;
         } else {
-            window.location='bincard.php';
+            window.location='bincard_view.php?ID='+<?php echo $ID;?>;
         }
     }
       
@@ -387,6 +407,13 @@ include ('db.php');
     <script src="js/jquery.scrollTo.min.js"></script>
     <script src="js/jquery.nicescroll.js" type="text/javascript"></script><!--custome script for all page-->
     <script src="js/scripts.js"></script>
+
+    <script src="js/jquery.dataTables.min.js"></script>
+    <script src="js/dataTables.bootstrap.min.js"></script>
+    <script type="text/javascript">
+
+      $('#myData').dataTable();
+    </script>
 
 
   </body>

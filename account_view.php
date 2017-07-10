@@ -168,8 +168,8 @@ $rows = mysql_num_rows($result);
                     <h3 class="page-header"><i class="fa fa-user-md"></i> Profile View</h3>
                     <ol class="breadcrumb">
                         <li><i class="fa fa-home"></i><a href="index.php">Dashboard</a></li>
-                        <li><i class="icon_documents_alt"></i><a href="acccard.php">Account Management</a></li>
-                        <li><i class="fa fa-user-md"></i><a href="acccard_view.php">Account Profile View</a></li>
+                        <li><i class="icon_documents_alt"></i><a href="account.php">Account Management</a></li>
+                        <li><i class="fa fa-user-md"></i>Account Profile View</li>
                     </ol>
                 </div>
             </div>

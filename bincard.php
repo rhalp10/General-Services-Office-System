@@ -1,5 +1,10 @@
 <?php
 include('session.php');
+
+include('db.php');
+$sql = "SELECT *";
+$sql.=" FROM bincard_record";
+$query = mysql_query($sql);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -24,7 +29,8 @@ include('session.php');
     <link href="css/style.css" rel="stylesheet">
     <link href="css/style-responsive.css" rel="stylesheet" />
 
-    <link rel="stylesheet" type="text/css" href="css/jquery.dataTables.css">
+    <link href="css/dataTables.bootstrap.min.css" rel="stylesheet">
+
 
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 -->
     <!--[if lt IE 9]>
@@ -176,8 +182,8 @@ include('session.php');
                          
                     
                     <div>
-      <table id="employee-grid"  class="table table-striped table-advance table-hover">
-          <thead>
+      <table id="myData"  class="table table-bordered table-advance table-hover">
+          <thead >
             <tr>
                 <th>Date</th>
                 <th>Supplier</th>
@@ -188,7 +194,42 @@ include('session.php');
               <th class="col-sm-2">Action</th>
             </tr>
           </thead>
-
+          <tfoot>
+            
+          </tfoot>
+          <tbody>
+            <?php 
+            while( $row=mysql_fetch_array($query)) {  
+              $ID = $row['ID'];
+            ?>
+            <tr>
+              <td><?php echo  $row["bin_Date"];?></td>
+              <td><?php echo  $row["Supplier"];?></td>
+              <td><?php echo  $row["Descrp"];?></td>
+              <td><?php echo  $row["Qty"];?></td>
+              <td><?php echo  $row["Issued"];?></td>
+              <td><?php echo  $row["Balance"];?></td>
+              <td>
+                <div class="btn-group">
+                  <button type="button" class="btn btn-primary">Action</button>
+                  <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <span class="caret"></span>
+                    <span class="sr-only">Toggle Dropdown</span>
+                  </button>
+                  <ul class="dropdown-menu">
+                    <li><a href="bincard_view.php?ID=<?php echo $ID; ?>">View</a></li>
+                    <li><a href="bincard_edit.php?ID=<?php echo $ID; ?>">Edit</a></li>
+                    <li role="separator" class="divider"></li>
+                    <li><a onclick="confirmDelete(<?php echo $accID; ?>)">Delete</a></li>
+                  </ul>
+                </div>
+                </td>
+              </td>
+            </tr>
+            <?php 
+            }
+            ?>
+          </tbody>
       </table>
     </div>
 
@@ -297,25 +338,23 @@ include('session.php');
   </div>
 </div>
 
-    <script type="text/javascript" language="javascript" src="js/jquery.js"></script>
-    <script type="text/javascript" language="javascript" src="js/jquery.dataTables.js"></script>
     <script type="text/javascript" language="javascript" >
-      $(document).ready(function() {
-        var dataTable = $('#employee-grid').DataTable( {
-          "processing": true,
-          "serverSide": true,
-          "ajax":{
-            url :"bincard_emp-data.php", // json datasource
-            type: "post",  // method  , by default get
-            error: function(){  // error handling
-              $(".employee-grid-error").html("");
-              $("#employee-grid").append('<tbody class="employee-grid-error"><tr><th colspan="3">No data found in the server</th></tr></tbody>');
-              $("#employee-grid_processing").css("display","none");
+     // $(document).ready(function() {
+    //    var dataTable = $('#employee-grid').DataTable( {
+  //        "processing": true,
+   //       "serverSide": true,
+//"ajax":{
+//            url :"bincard_emp-data.php", // json datasource
+//            type: "post",  // method  , by default get
+  //          error: function(){  // error handling
+    //          $(".employee-grid-error").html("");
+      //        $("#employee-grid").append('<tbody class="employee-grid-error"><tr><th colspan="3">No data found in the server</th></tr></tbody>');
+        //      $("#employee-grid_processing").css("display","none");
               
-            }
-          }
-        } );
-      } );
+     //       }
+      //    }
+      //  } );
+     // } );
 
     //FOR DELETE FUNCTION RECORD
     function confirmDelete(id) {
@@ -324,17 +363,28 @@ include('session.php');
         if (r == true) {
           window.location='bincard_delete_action.php?ID='+id;
         } else {
-            window.location='acccard.php';
+            window.location='bincard.php';
         }
     }
       
     </script>
+    
+  
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script type="text/javascript" language="javascript" src="js/jquery.js"></script>
     <script src="js/bootstrap.min.js"></script>
     <!-- nice scroll -->
     <script src="js/jquery.scrollTo.min.js"></script>
     <script src="js/jquery.nicescroll.js" type="text/javascript"></script><!--custome script for all page-->
     <script src="js/scripts.js"></script>
 
+    <script src="js/jquery.dataTables.min.js"></script>
+    <script src="js/dataTables.bootstrap.min.js"></script>
+    <script type="text/javascript">
+
+      $('#myData').dataTable();
+    </script>
 
   </body>
 </html>

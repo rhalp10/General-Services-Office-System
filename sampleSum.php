@@ -7,7 +7,7 @@
     <meta name="author" content="Rhalp Darren R. Cabrera / Omar Raouf A. Daud">
     <link rel="shortcut icon" href="img/favicon.png">
 
-    <title>BINCARD</title>
+    <title>Edit Account</title>
 
     <!-- Bootstrap CSS -->    
     <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -21,6 +21,8 @@
     <link href="css/style.css" rel="stylesheet">
     <link href="css/style-responsive.css" rel="stylesheet" />
 
+    <link rel="stylesheet" type="text/css" href="css/jquery.dataTables.css">
+    <link rel="stylesheet" type="text/css" href="js/jquery-1.8.3.min.js">
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 -->
     <!--[if lt IE 9]>
       <script src="js/html5shiv.js"></script>
@@ -28,72 +30,48 @@
       <script src="js/lte-ie7.js"></script>
     <![endif]-->
   </head>
-<body>
+  <script type="text/javascript">
+      $(document).ready(function(){
+        function display({
+            $('#load').fadeIn("slow");
+            display();
+        })
+      })
+  </script>
+  <body>
 <?php
 include("db.php");
 
 
 
 
-$itemIssued_res = mysql_query("SELECT sum(Issued) As val_Issued FROM bincard_record WHERE itemCode = 'SET SP-01'") ;
-$itemIssued = mysql_fetch_assoc($itemIssued_res);//item issued summation 
+$query = mysql_query("SELECT *  FROM emp_accountability_card") ;
+$count = mysql_num_rows($query);
+$per_page=5;
+$total = ceil($count/$per_page);
 
-$itemSetQuantity_res = mysql_query("SELECT Qty FROM bincard_record WHERE ItemSetID = 'SP-01'") ;
-$itemSetQuantity = mysql_fetch_assoc($itemSetQuantity_res);//item sets
-
-$itemBalance = $itemSetQuantity['Qty'] - $itemIssued['val_Issued'];
-echo "Total item Issued:".$itemIssued['val_Issued']."<br>";
-echo "Item Quantity:".$itemSetQuantity['Qty']."<br>";
-echo "Item Balance: $itemBalance";
 
 
 	
 
- ?>
+ ?> <div class="text-center">
+         <ul class="pagination">
+             <?php 
+             for ($i=1; $i<=$total ; $i++) { 
+                 ?> 
+                <li><a href="#"><?php echo $i;?></a></li>
+                 <?php
+             }
+             ?>
+         </ul>
+       </div>
+<div id="load" align="center"></div>
 
- <table class="table table-striped table-advance table-hover">
- 	<thead>
- 		<tr>
- 			<td>SET</td>
- 			<td>BIN DATE</td>
- 			<td>SUPPLIER</td>
- 			<td>DESC</td>
- 			<td>SERIAL NUM</td>
- 			<td>RECIPIENT</td>
- 			<td>QTY</td>
- 			<td>issued</td>
- 			<td>bal</td>
- 		</tr>
- 	</thead>
- 	<tbody>
-
- 		
-
- 			<?php 
-			$itemSetpart_res = mysql_query("SELECT * FROM bincard_record  WHERE itemCode =  'SET SP-01'");//All PartSet Display 
-			 
-			while ($itemSetpart = mysql_fetch_array($itemSetpart_res)) 
-			{
-			?>
-			<tr>
-			<td><?php echo $itemSetpart['ItemSetID'] ?></td>
- 			<td><?php echo $itemSetpart['bin_Date'] ?></td>
- 			<td><?php echo $itemSetpart['Supplier'] ?></td>
- 			<td><?php echo $itemSetpart['Descrp'] ?></td>
- 			<td><?php echo $itemSetpart['Serial_Num'] ?></td>
- 			<td><?php echo $itemSetpart['Recpnt'] ?></td>
- 			<td><?php echo $itemSetpart['Qty'] ?></td>
- 			<td><?php echo $itemSetpart['Issued'] ?></td>
- 			<td><?php echo $itemSetpart['Balance'] ?></td>
- 			</tr>
- 			<?php
- 			}  
- 			?>
- 		<tr>
- 			
- 		</tr>
- 	</tbody>
- </table>
-
-
+    <!-- javascripts -->
+    <script src="js/jquery.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <!-- nice scroll -->
+    <script src="js/jquery.scrollTo.min.js"></script>
+    <script src="js/jquery.nicescroll.js" type="text/javascript"></script><!--custome script for all page-->
+    <script src="js/scripts.js"></script>
  </body>
