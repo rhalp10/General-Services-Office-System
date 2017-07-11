@@ -8,6 +8,7 @@ $test = mysql_fetch_array($result);
                 $emp_pgc_record_fullname=$test['fullName'];
                 $emp_pgc_record_office=$test['office'];
                 $emp_pgc_record_designation=$test['designation'];
+                $emp_pgc_record_note=$test['note'];
                
 ?>
 
@@ -192,6 +193,10 @@ $test = mysql_fetch_array($result);
                 <td><input type="text" name="pgc_emp_ac_edit_designation"  class="form-control" required="" value="<?php echo "$emp_pgc_record_designation";?>" ></td>
             </tr>
            <tr>
+           <tr>
+              <td><b>NOTE</b></td>
+                <td><input type="text" name="pgc_emp_ac_edit_note"  class="form-control" required="" value="<?php echo "$emp_pgc_record_note";?>" ></td>
+            </tr>
            <td><input class="btn btn-success "  type="submit" name="Update" value="Update"></td>
            </tr> 
               </table>
