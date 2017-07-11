@@ -92,7 +92,7 @@ include('session.php');
                       </a>
                   </li>
                   <li class="">
-                      <a class="" href="accounts.php">
+                      <a class="" href="account.php">
                           <i class="icon_profile"></i>
                           <span>Account</span>
                       </a>

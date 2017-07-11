@@ -412,7 +412,7 @@ include ('db.php');
     <script src="js/dataTables.bootstrap.min.js"></script>
     <script type="text/javascript">
 
-      $('#myData').dataTable();
+      $('#myData').dataTable();//responsive sorting of data with pagnation and search inputbox
     </script>
 
 

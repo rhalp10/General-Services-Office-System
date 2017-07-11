@@ -686,36 +686,22 @@ while ( $row=mysql_fetch_array($query)) {
 
     <script type="text/javascript" language="javascript" src="js/jquery.js"></script>
     <script type="text/javascript" language="javascript" src="js/jquery.dataTables.js"></script>
-    <script type="text/javascript" language="javascript" >
-  //    $(document).ready(function() {
-  //      var dataTable = $('#employee-grid').DataTable( {
-  //        "processing": true,
-  //        "serverSide": true,
-  //        "ajax":{
-  //          url :"acccard_view_emp-data.php?accID=<?php echo $ID ?>", // json datasource
-  //          type: "post",  // method  , by default get
-  //          error: function(){  // error handling
-  //            $(".employee-grid-error").html("");
-  //            $("#employee-grid").append('<tbody class="employee-grid-error"><tr><th colspan="3">No data found in the server</th></tr></tbody>');
-  //            $("#employee-grid_processing").css("display","none");
-  //            
-  //          }
-  //        }
-  //      } );
-  //    } );
-
-      
-//FOR DELETE FUNCTION RECORD
-function confirmDelete(issued_ID) {
+    <script type="text/javascript" language="javascript" >  
+    //FOR DELETE FUNCTION RECORD
+    function confirmDelete(issued_ID) 
+	{
     
-    var r = confirm('Do you want to delete?');
-    if (r == true) {
-      window.location='acccard_delete_action.php?accID='+issued_ID;
-    } else {
-        window.location='acccard_view.php?accID='+<?php echo $ID;?>;
-    }
-}
-</script>
+    		var r = confirm('Do you want to delete?');
+    		if (r == true) 
+		{
+      		window.location='acccard_delete_action.php?accID='+issued_ID;
+    		} 
+		else 
+		{
+        		window.location='acccard_view.php?accID='+<?php echo $ID;?>;
+    		}
+	}
+    </script>
     <script src="js/bootstrap.min.js"></script>
     <!-- nice scroll -->
     <script src="js/jquery.scrollTo.min.js"></script>
@@ -726,24 +712,25 @@ function confirmDelete(issued_ID) {
     <script src="js/jquery.dataTables.min.js"></script>
     <script src="js/dataTables.bootstrap.min.js"></script>
     <script type="text/javascript">
-  
 
-      $('#myData').dataTable();
-  var datetime = null,
+    $('#myData').dataTable();//responsive sorting of data with pagnation and search inputbox
+
+    var datetime = null,
         date = null;
 
-  var update = function () {
+    var update = function () 
+	{
       date = moment(new Date())
       datetime.html(date.format('dddd, MMMM Do YYYY, h:mm:ss a'));
-  };
+  	};
 
-  $(document).ready(function(){
+    $(document).ready(function(){
       datetime = $('#datetime')
       update();
       setInterval(update, 1000);
-  });
+    });
 
-</script>
+    </script>
 
 
   </body>
