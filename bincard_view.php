@@ -196,7 +196,7 @@ include ('db.php');
 
               echo "<label >$Count</label>";
           ?>
-                     <a class="btn btn-info pull-right" href="" >Print Bincard</a>
+                     <a class="btn btn-info pull-right" href="assets/fpdf/account_report.php" target="_blank">Print Bincard</a>
                         
                           </header>
                          
@@ -303,7 +303,7 @@ include ('db.php');
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal">&times;</button>
-        <h4 class="modal-title">Modal Header</h4>
+        <h4 class="modal-title">Issued Item</h4>
       </div>
       <div class="modal-body">
         <div class="row">
@@ -326,16 +326,9 @@ include ('db.php');
                         </div>
                         <br><br>
                         <div class="form-group">
-                            <label class="col-sm-2 control-label"><b>SUPPLIER</b></label>
+                            <label class="col-sm-2 control-label"><b>RECIPIENT</b></label>
                             <div class="col-sm-10">
                                 <input type="text"  class="form-control" placeholder="Supplier" name="bincard_record_supplier" required="">
-                            </div>
-                        </div>
-                        <br><br>
-                            <div class="form-group">
-                            <label class="col-sm-2 control-label"><b>DESCRIPTION</b></label>
-                            <div class="col-sm-10">
-                                <input type="text"  class="form-control" placeholder="Description" name="bincard_record_description" required="">
                             </div>
                         </div>
                         <br><br>
