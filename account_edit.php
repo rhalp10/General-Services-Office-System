@@ -174,12 +174,15 @@ $test = mysql_fetch_array($result);
           </ol>
         </div>
       </div>
+      
+
+
               <!-- page start--> 
               <form  action="account_edit_action.php?accID=<?php echo "$ID";?>" method="post" name="form1">
               <table class="table table-striped table-advance table-hover ">
               <tr>
               <td><b>NAME</b></td>
-                <td><input type="text" name="account_emp_edit_name"  class="form-control" required="" value="<?php echo "$account_val_fullname";?>"></td>
+                <td><input type="text" name="account_emp_edit_name"  class="form-control" required="" value="<?php echo "$account_val_fullname";?>" onkeyup="letterInputOnly(this);"></td>
               </tr>
               <td><b>AGE</b></td>
                 <td><input type="text" name="account_emp_edit_age"  class="form-control" required="" value="<?php echo "$account_val_age";?>"></td>
@@ -210,11 +213,11 @@ $test = mysql_fetch_array($result);
               </tr>
             </tr>
             <td><b>POSITION</b></td>
-                <td><input type="text" name="account_emp_edit_pos"  class="form-control" required="" value="<?php echo "$account_val_pos";?>"></td>
+                <td><input type="text" name="account_emp_edit_pos"  class="form-control" required="" value="<?php echo "$account_val_pos";?>" onkeyup="letterInputOnly(this);" maxlength="25" ></td>
               </tr>
               </tr>
             <td><b>MOBILE</b></td>
-                <td><input type="text" name="account_emp_edit_mobile"  class="form-control" required="" value="<?php echo "$account_val_mobile";?>"></td>
+                <td><input type="text" name="account_emp_edit_mobile"  class="form-control" required="" value="<?php echo "$account_val_mobile";?>" maxlength="10" onkeyup="numberInputOnly(this);"></td>
               </tr>
            <tr>
            <td><input class="btn btn-success "  type="submit" name="Update" value="Update"> <a class="btn btn-danger"  href="account.php" name="Cancel" value="Cancel">Cancel</a></td>
@@ -284,6 +287,27 @@ $test = mysql_fetch_array($result);
 </div>
 
     <!-- javascripts -->
+    <script type="text/javascript">
+
+            function numberInputOnly(elem) {
+                var validChars = /[0-9]/;
+                var strIn = elem.value;
+                var strOut = '';
+                for(var i=0; i < strIn.length; i++) {
+                  strOut += (validChars.test(strIn.charAt(i)))? strIn.charAt(i) : '';
+                }
+                elem.value = strOut;
+            }
+            function letterInputOnly(elem) {
+                var validChars = /[a-zA-ZñÑ]+/;
+                var strIn = elem.value;
+                var strOut = '';
+                for(var i=0; i < strIn.length; i++) {
+                  strOut += (validChars.test(strIn.charAt(i)))? strIn.charAt(i) : '';
+                }
+                elem.value = strOut;
+            }
+        </script>
     <script src="js/jquery.js"></script>
     <script src="js/bootstrap.min.js"></script>
     <!-- nice scroll -->
