@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 08, 2017 at 04:21 PM
+-- Generation Time: Jul 11, 2017 at 03:28 PM
 -- Server version: 5.6.16
 -- PHP Version: 5.5.11
 
@@ -99,7 +99,7 @@ CREATE TABLE IF NOT EXISTS `emp_accountability_card` (
 --
 
 INSERT INTO `emp_accountability_card` (`ID`, `Emp_ID`, `ItemSetID`, `itemCode`, `ParNo`, `Qty`, `Unit`, `Descrp`, `SN`, `PropNo`, `Amount`, `TransferTo`, `Remarks`, `DateTurnOver`) VALUES
-(1, 1, 'SP-01', 'SET SP-01', 'T-457-16', 1, 'unit', 'Calculator HL-101 10 digits', '1 SN. MMLYKS01623C12311', '1995', 800, '', '', '0000-00-00'),
+(1, 1, 'SP-01', 'SET SP-01', 'T-457-16', 1, 'unit', 'SET1', '1 SN. MMLYKS01623C12311', '1995', 800, '', '', '0000-00-00'),
 (2, 1, 'SP-02', 'PART SP-01', 'T-457-16', 0, 'unit', 'Calculator HL-102 10 digits', '1 SN. MMLYKS01623C12311', 'OT-09-98', 0, '', '', '0000-00-00'),
 (4, 1, 'SP-04', 'PART SP-03', 'T-457-16', 0, 'unit', 'Calculator HL-104 10 digits', '1 SN. MMLYKS01623C12311', 'OT-09-98', 3.40282e38, '', '', '2010-10-30'),
 (5, 1, 'SP-05', 'PART SP-03', 'T-457-16', 0, 'unit', 'Calculator HL-105 10 digits', '1 SN. MMLYKS01623C12311', 'OT-09-98', 3.40282e38, '', '', '2010-10-30'),
@@ -108,12 +108,12 @@ INSERT INTO `emp_accountability_card` (`ID`, `Emp_ID`, `ItemSetID`, `itemCode`, 
 (8, 1, 'SP-08', 'SPART SP-08', 'T-457-16', 0, 'unit', 'Plate No. SCB-831', '1 SN. MMLYKS01623C12311', 'OT-09-98', 321, 'null', '', '0000-00-00'),
 (9, 1, 'SP-09', 'SPART SP-09', 'T-457-16', 0, 'unit', 'Plate No. SCB-831', '1 SN. MMLYKS01623C12311', 'OT-09-98', 0, 'null', '', '0000-00-00'),
 (10, 1, 'SP-10', 'SPART SP-10', 'T-457-16', 0, 'unit', 'Plate No. SCB-833', '1 SN. MMLYKS01623C12311', 'OT-09-98', 0, 'null', '', '0000-00-00'),
-(11, 1, 'SP-11', 'SET SP-11', 'T-457-16', 52, 'unit', 'Plate No. SCB-834', '1 SN. MMLYKS01623C12311', 'OT-09-98', 0, 'null', '', '0058-02-28'),
+(11, 1, 'SP-11', 'SET SP-11', 'T-457-16', 52, 'unit', 'SET2', '1 SN. MMLYKS01623C12311', 'OT-09-98', 0, 'null', '', '0058-02-28'),
 (12, 1, 'SP-12', 'PART SP-11', 'T3', 0, 'unit', 'Plate No. SCB-835', '1 SN. MMLYKS01623C12311', 'OT-09-98', 0, 'null', '33333333333', '0000-00-00'),
 (13, 1, 'SP-13', 'SPART SP-13', 'T-457-16', 1, 'unit', 'Plate No. SCB-836', '1 SN. MMLYKS01623C12311', 'OT-09-98', 0, 'null', '', '0000-00-00'),
 (14, 1, 'SP-14', 'SPART SP-14', 'T-457-16', 1, 'unit', 'Plate No. SCB-837', '1 SN. MMLYKS01623C12311', 'OT-09-98', 0, 'null', 'i and i 9/12/2013', '0000-00-00'),
 (15, 1, 'SP-15', 'SPART SP-15', 'T-457-16', 1, 'unit', 'Calculator HL-107 10 digits', '1 SN. MMLYKS01623C12311', 'OT-09-98', 0, 'Adoracion Mojica', 'Formerly to Adoracion Mojica', '0000-00-00'),
-(16, 1, 'SP-16', 'SET SP-16', 'T-457-16', 5, 'unit', 'Plate No. SCB-838', '1 SN. MMLYKS01623C12311', 'OT-09-98', 0, 'null', '', '0000-00-00'),
+(16, 1, 'SP-16', 'SET SP-16', 'T-457-16', 5, 'unit', 'SET3', '1 SN. MMLYKS01623C12311', 'OT-09-98', 0, 'null', '', '0000-00-00'),
 (18, 1, 'SP-18', 'PART SP-16', 'T-457-16', 0, 'unit', 'Plate No. SCB-840', '1 SN. MMLYKS01623C12311', 'OT-09-98', 0, 'null', '', '2017-06-08'),
 (19, 1, 'SP-19', 'PART SP-16', 'T-457-16', 0, 'unit', 'Plate No. SCB-841', '1 SN. MMLYKS01623C12311', 'OT-09-98', 6, 'null', '', '2017-06-15'),
 (20, 1, 'SP-20', 'PART SP-16', 'T-457-16', 0, 'unit', 'Plate No. SCB-842', '1 SN. MMLYKS01623C12311', 'OT-09-98', 0, 'null', '', '0000-00-00'),
@@ -149,17 +149,17 @@ CREATE TABLE IF NOT EXISTS `emp_accounts_record` (
 --
 
 INSERT INTO `emp_accounts_record` (`accID`, `accLevel`, `username`, `password`, `fullName`, `Age`, `Gender`, `Address`, `Email`, `Pos`, `Mobile`, `image`) VALUES
-(0, '0', 'admin', 'Tzabaoth10', 'Rhalp Darren Cabrera', 20, 'male', 'Blk 38 Lot 11 Phase 2b Brgy Aguado TMC', '555@yahoo.com', '55', '55', 'img/emp_profile/temp.jpg'),
+(0, '0', 'admin', 'Tzabaoth10', 'Rhalp Darren Cabrera', 20, 'male', 'Blk 38 Lot 11 Phase 2b Brgy Aguado TMC', '555@yahoo.com', '55', '0965489844', 'img/emp_profile/temp.jpg'),
 (1, '1', 'employee', 'employee', 'mark', 20, 'Unknown', 'Mars', 'marcalien@gmail.com', 'staff', '09169158798', 'img/emp_profile/temp.jpg'),
 (8, '1', '987', '987', 'yehye', 978, '987', '444444444', '987@yhoo.com', '987', '987', 'img/emp_profile/temp.jpg'),
-(10, '0', 'asasdkld', '321', 'iouqou', 0, 'khakdhk', 'hhhhh', 'oiuoiu@yahoo.com', 'kkjh', 'jkasjd', 'img/emp_profile/temp.jpg'),
-(14, '1', 'iou', '555', 'franz1', 50, 'male', 'Blk 38 Lot 11 Phase 2b Brgy Aguado TMC', 'jalksjd@yahoo.com', 'jklasdjd', 'kljaklsdj', 'img/emp_profile/temp.jpg'),
-(15, '1', '9999', '9', 'tryyyyyyyyyyyyyyyyyyyyy', 50, '9', '9', '987@aksd.com', '9', '9', 'img/emp_profile/temp.jpg'),
-(17, '1', '8', '8', 'panget', 8, '8', '8', '8@yahoo.com', '8', '8', 'img/emp_profile/temp.jpg'),
-(18, '1', 'darren321', '321', 'OMAR DAUD', 15, 'Male', 'NAIC', '321@yahoo.com', '155', '321', 'img/emp_profile/temp.jpg'),
+(10, '0', 'asasdkld', '321', 'iouqou', 0, 'khakdhk', 'hhhhh', 'oiuoiu@yahoo.com', 'kkjh', '0904545454', 'img/emp_profile/temp.jpg'),
+(14, '1', 'iou', '555', 'franz1', 50, 'male', 'Blk 38 Lot 11 Phase 2b Brgy Aguado TMC', 'jalksjd@yahoo.com', 'jklasdjd', '0915611894', 'img/emp_profile/temp.jpg'),
+(15, '1', '9999', '9', 'tryyyyyyyyyyyyyyyyyyyyy', 50, '9', '9', '987@aksd.com', '9', '0905454984', 'img/emp_profile/temp.jpg'),
+(17, '1', '8', '8', 'panget', 8, '8', '8', '8@yahoo.com', '8', '9900000000', 'img/emp_profile/temp.jpg'),
+(18, '1', 'darren321', '321', 'OMAR DAUD', 15, 'Male', 'NAIC', '321@yahoo.com', '155', '0906545644', 'img/emp_profile/temp.jpg'),
 (19, '1', 'rd2h1fs8jk2b6cz', 'yth3xk5slz8bd', 'Omar', 20, 'Male', 'Bucal 3-B, Maragondon, Cavite', 'Omardaud21000@gmail.com', '.....', '09355173381', 'img/emp_profile/temp.jpg'),
-(20, '3', 'bano12315', '55555', 'k4', 4, 'Male', '4k', 'k4@yaho1111.c1om1', '4k', '4k', 'img/emp_profile/temp.jpg'),
-(21, '0', 'Asada', '555', 'Franz Marc Cabrera', 50, 'Male', 'Blk 38 Lot 11 Ph2b Southville2 Trece Martirez City', 'franzmarccabrera123@gmail.com', 'ADMIN', '09169158798', 'img/emp_profile/temp.jpg');
+(20, '3', 'bano12315', '55555', 'asdasdasd', 30, 'Male', 'wazhing', 'k4@yaho1111.c1om1', '4k', '0954564546', 'img/emp_profile/temp.jpg'),
+(21, '0', 'Asada', '555', 'Franz Marc Cabrera', 50, 'Male', 'Blk 38 Lot 11 Ph2b Southville2 Trece Martirez City', 'franzmarccabrera123@gmail.com', 'ADMIN', '0915151613', 'img/emp_profile/temp.jpg');
 
 -- --------------------------------------------------------
 
@@ -174,7 +174,7 @@ CREATE TABLE IF NOT EXISTS `emp_pgc_record` (
   `designation` varchar(100) NOT NULL,
   `note` varchar(50) NOT NULL,
   PRIMARY KEY (`accID`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=29 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=28 ;
 
 --
 -- Dumping data for table `emp_pgc_record`
@@ -195,7 +195,8 @@ INSERT INTO `emp_pgc_record` (`accID`, `fullName`, `office`, `designation`, `not
 (22, 'Omar Raouf A. Daud', 'Property Management Section', 'Administrative Officer III', ''),
 (23, 'Ains Ooal Gown1', '  Nazareth21', 'KAHIT SAAN', ''),
 (24, 'Marc Kevin Manalo', 'BIDA OR FEED', 'BIDA GAMING', ''),
-(26, 'asdasd', 'shet', 'shet', '');
+(26, 'asdasd', 'shet', 'shet', ''),
+(27, '1111111', '11111', '11111', 'retiradp');
 
 -- --------------------------------------------------------
 
@@ -329,8 +330,19 @@ INSERT INTO `invent_custodian_slip` (`ID`, `Qty`, `Unit`, `Descrp`, `Invent_Item
 --
 
 CREATE TABLE IF NOT EXISTS `office_dictionary` (
-  `ID` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `ID` int(11) NOT NULL AUTO_INCREMENT,
+  `officeName` varchar(50) NOT NULL,
+  PRIMARY KEY (`ID`),
+  UNIQUE KEY `officeName` (`officeName`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+
+--
+-- Dumping data for table `office_dictionary`
+--
+
+INSERT INTO `office_dictionary` (`ID`, `officeName`) VALUES
+(1, 'Agency Employee'),
+(2, 'Emergency Employee	');
 
 -- --------------------------------------------------------
 
