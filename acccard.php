@@ -175,7 +175,7 @@ $query=mysql_query($sql);
           <div class="panel">
           <header class="panel-heading tab-bg-primary " style="padding:15px; height: 70px;">
                      <a class="btn btn-success pull-left" href="" data-toggle="modal" data-target="#AddNewPerson">Add new person record</a>
-                     <a class="btn btn-info pull-right" href="assets/fpdf/working-sqltable.php" target="_blank" title="Print" name="submit"><span class="icon_printer"></span> PRINT</a>
+                     <a class="btn btn-info pull-right" href="" data-toggle="modal" data-target="#PrintMethod" ><span class="icon_printer"></span> PRINT</a>
                         
                           </header>
                          
@@ -187,11 +187,13 @@ $query=mysql_query($sql);
               <th>Name</th>
               <th>Office</th>
               <th>Designation</th>
+              <th>Note</th>
               <th>Action</th>
             </tr>
           </thead>
           <tfoot>
             <tr>
+              <th></th>
               <th></th>
               <th></th>
               <th></th>
@@ -209,6 +211,7 @@ $query=mysql_query($sql);
               <td><?php echo $row['fullName'];?></td>
               <td><?php echo $row['office'];?></td>
               <td><?php echo $row['designation'];?></td>
+              <td><?php echo $row['note'];?></td>
               <td>
               <div class="btn-group">
                 <button type="button" class="btn btn-primary">Action</button>
@@ -316,28 +319,28 @@ $query=mysql_query($sql);
                         <div class="form-group">
                             <label class="col-sm-2 control-label"><b>NAME</b></label>
                             <div class="col-sm-10">
-                                <input type="text"  class="form-control" placeholder="Name" name="pgc_emp_ac_name">
+                                <input type="text"  class="form-control" placeholder="Name" name="pgc_emp_ac_name" maxlength="100">
                             </div>
                         </div>
                         <br>
                         <div class="form-group">
                             <label class="col-sm-2 control-label"><b>DESIGNATION</b></label>
                             <div class="col-sm-10">
-                                <input type="text"  class="form-control" placeholder="Designation" name="pgc_emp_ac_designation">
+                                <input type="text"  class="form-control" placeholder="Designation" name="pgc_emp_ac_designation" maxlength="75">
                             </div>
                         </div>
                         <br>
                         <div class="form-group">
                             <label class="col-sm-2 control-label"><b>OFFICE</b></label>
                             <div class="col-sm-10">
-                                <input type="text"  class="form-control" placeholder="Office" name="pgc_emp_ac_office">
+                                <input type="text"  class="form-control" placeholder="Office" name="pgc_emp_ac_office" maxlength="50">
                             </div>
                         </div>
                         <br>  
                         <div class="form-group">
                             <label class="col-sm-2 control-label"><b>NOTE</b></label>
                             <div class="col-sm-10">
-                                <input type="text"  class="form-control" placeholder="Note" name="pgc_emp_ac_Note">
+                                <input type="text"  class="form-control" placeholder="Note" name="pgc_emp_ac_Note" maxlength="50">
                             </div>
                         </div><br><br><br>
                         <div class="form-group">
@@ -347,6 +350,86 @@ $query=mysql_query($sql);
                             <input class="btn btn-success "  type="submit" name="Submit" value="Submit"> 
                             </div>
                         </div>
+                    </form>
+                    </div>
+                </section>
+            </div>
+
+        </div>
+
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+  <!-- PRINT METHOD MODAL -->
+<div id="PrintMethod" class="modal fade " role="dialog">
+  <div class="modal-dialog" style="width: 800px; height: 900px;">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Print Method</h4>
+      </div>
+      <div class="modal-body">
+        <div class="row">
+          <div class="col-lg-12">
+                         <header class="panel-heading">
+                             <H1><center>PGC EMPLOYEE ACCOUNTABILITY CARD<br><h2 style="font-size: 30px; ">PROVINCE OF CAVITE</h2></center></H1>
+                             
+                          </header>
+                <section class="panel">
+                        <header class="panel-heading">
+                         Method Type:
+                         </header>
+                    <div class="panel-body">
+                     <form action="acccard_add_new_action.php" method="post" name="form1">
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label"><b>DATE</b></label>
+                            <div class="col-sm-5">
+                                <input class="form-control"  type="month" name="Print" value="Print">
+                            </div>
+                            <input class="btn btn-info col-sm-4"  type="submit" name="Print" value="Print">
+                        </div>
+                        <br><br>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label"><b>DESIGNATION</b></label>
+                            <div class="col-sm-5">
+                                <input class="form-control" type="text" name="">
+                            </div>
+
+                            <input class="btn btn-info col-sm-4"  type="submit" name="Print" value="Print">
+                        </div>
+                        <br><br>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label"><b>OFFICE</b></label>
+                            <div class="col-sm-5">
+                            <select class="form-control"  type="text" name="Print" value="Print">
+                              <option>Agency Employee</option>
+                              <option>Emergency Employee</option>
+                            </select>
+                            </div>
+                            <input class="btn btn-info col-sm-4"  type="submit" name="Print" value="Print">
+                        </div>
+                        <br><br>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label"><b>NOTE</b></label>
+                            
+                            <div class="col-sm-5">
+                            <select class="form-control"  type="text" name="Print" value="Print">
+                              <option>RETIRE</option>
+                              <option>OTHER</option>
+                            </select>
+                            </div>
+                                 <input class="btn btn-info col-sm-4"  type="submit" name="Print" value="Print">
+                        </div><br><br><br>
+
                     </form>
                     </div>
                 </section>
