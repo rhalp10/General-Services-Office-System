@@ -22,7 +22,7 @@ $query = mysql_query($sql);
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="General Services Office Building System">
     <meta name="author" content="Rhalp Darren R. Cabrera / Omar Raouf A. Daud">
-    <link rel="shortcut icon" href="img/favicon.png">
+    <link rel="shortcut icon" href="img/logo.png">
 
     <title>PGC Account Card View</title>
 
@@ -179,7 +179,7 @@ $query = mysql_query($sql);
                     <ol class="breadcrumb">
                         <li><i class="fa fa-home"></i><a href="index.php">Dashboard</a></li>
                         <li><i class="icon_documents_alt"></i><a href="acccard.php">PGC Employee Accountability Card</a></li>
-                        <li><i class="fa fa-user-md"></i><a href="acccard_view.php">PGC Employee Accountability Card View</a></li>
+                        <li><i class="fa fa-user-md"></i>PGC Employee Accountability Card View</li>
                     </ol>
                 </div>
             </div>
@@ -200,8 +200,9 @@ $query = mysql_query($sql);
                                      <span><i class="icon_calendar"></i><div id="datetime" style="margin-top: -13px; margin-left: 16px;"></div></span>
 
                                 </h6>
-
+                                <a href="" class="btn btn-success" data-toggle="modal" data-target="#AddItem" >Add Item</a>
                             </div>
+
                             
                                         <a class="btn btn-info pull-right" href="assets/fpdf/acccard_person_report1.php?accID=<?php echo $ID ?>" title="Print" target="_blank"><span class="icon_printer"></span> PRINT</a>
                           </div>
@@ -221,18 +222,6 @@ $query = mysql_query($sql);
                                       <a data-toggle="tab" href="#recent-activity">
                                           
                                           Accountability Card
-                                      </a>
-                                  </li>
-                                  <li>
-                                      <a href="" data-toggle="modal" data-target="#AddNewSet" class="btn-success">
-                                          <i class="icon-user"></i>
-                                          Add Set Item
-                                      </a>
-                                  </li>
-                                  <li>
-                                      <a href="" data-toggle="modal" data-target="#AddNewSingleItem" class="btn-success">
-                                          <i class="icon-user"></i>
-                                          Add Single Item
                                       </a>
                                   </li>
                               </ul>
@@ -266,183 +255,162 @@ $query = mysql_query($sql);
                                         </thead>
                                         <tbody>
                                         <?php 
-while ( $row=mysql_fetch_array($query)) {
+while ( $row=mysql_fetch_array($query)) 
+{//FIRST WHILE FOR FETCHING ALL SET DATA
 
-  $accID = $row['Emp_ID'];
-  if ("SET ".$row['ItemSetID'] == $row['itemCode'])//SET
-      {
-        if ($row['DateTurnOver'] == '0000-00-00'  && $row['TransferTo'] == 'null' || $row['TransferTo'] == ' ' )
-        {
-        ?>
 
-        <tr>
+  if ("SET ".$row['ItemSetID'] == $row['itemCode'])//SET ITEMS
+  {
+  if ($row['DateTurnOver'] == '0000-00-00'  && $row['TransferTo'] == 'null' || $row['TransferTo'] == ' ' )
+         {
+    //COLOR BLACK FONT
 
-          <td><?php echo $row['PropNo'];?></td>
-          <?php
-          if ($row['Qty'] == 0) {
-            ?>
-            <td></td>
-            <?php
-          }
-          else
-          {
-            ?>
-            <td><?php echo $row['Qty']." ".$row['Unit']; ?></td>
-            <?php
-          } 
           ?>
-
-          <td><?php echo $row['Descrp']; ?></td>
-          <td><?php echo $row['SN']; ?></td>
-          <td><?php echo $row['PropNo']; ?></td>
+          <tr>
+          <td><font color="black"><?php echo $row['ParNo']?></font></td>
+          <td><font color="black"><?php echo $row['Qty']." ".$row['Unit']?></font></td>
+          <td><font color="black"><?php echo $row['Descrp']?></font></td>
+          <td><font color="black"><?php echo $row['ParNo']?></font></td>
+          <td><font color="black"><?php echo $row['SN']?></font></td>
           <?php 
-          if ($row["Amount"] == 0) 
-            {
-              ?>
-              <td></td>
-              <?php
-            }
-            else
-            {
-              ?>
-              <td><?php echo $row['Amount']; ?></td>
-              <?php
-            }
-
-          if ($row['TransferTo'] == 'null') 
+          if($row['Amount'] == 0)
           {
-              ?>
-              <td></td>
-              <?php
-          }
-          else
-          {
-              ?>
-              <td><?php echo $row['TransferTo']; ?></td>
-              <?php
-
-          }
-          if ($row['DateTurnOver'] == '0000-00-00') 
-          {
-              ?>
-              <td></td>
-              <?php
-
-          }
-          else
-          {
-              ?>
-              <td><?php echo $row['DateTurnOver']; ?></td>
-              <?php
-
-          }
-          ?>
-          <td><?php echo $row['Remarks']; ?></td>
-          <td>
-            <div class="btn-group">
-            <button type="button" class="btn btn-primary">Action</button>
-            <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              <span class="caret"></span>
-              <span class="sr-only">Toggle Dropdown</span>
-            </button>
-            <ul class="dropdown-menu">
-              <li><a href="acccard_view_edit-issued-data.php?issuedID=<?php echo "$issued_ID";?>">Edit</a></li>
-              <li role="separator" class="divider"></li>
-              <li><a onclick="confirmDelete(<?php echo $accID; ?>)">Delete</a></li>
-            </ul>
-          </div>
-          </td>
-
-      </tr>
-      <?php 
-        }
-        else
-        {
-          ?>
-
-        <tr>
-
-          <td><?php echo $row['PropNo'];?></td>
-          <?php
-          if ($row['Qty'] == 0) {
             ?>
-            <td></td>
+            <td><font color="black"></font></td>
             <?php
           }
           else
           {
             ?>
-            <td><?php echo $row['Qty']." ".$row['Unit']; ?></td>
+            <td><font color="black"><?php echo $row['Amount']?></font></td>
             <?php
-          } 
+          }
           ?>
-
-          <td><?php echo $row['Descrp']; ?></td>
-          <td><?php echo $row['SN']; ?></td>
-          <td><?php echo $row['PropNo']; ?></td>
           <?php 
-          if ($row["Amount"] == 0) 
-            {
-              ?>
-              <td></td>
-              <?php
-            }
-            else
-            {
-              ?>
-              <td><?php echo $row['Amount']; ?></td>
-              <?php
-            }
-
-          if ($row['TransferTo'] == 'null') 
+          if($row['TransferTo'] == 'null')
           {
-              ?>
-              <td></td>
-              <?php
+            ?>
+            <td><font color="black"></font></td>
+            <?php
           }
           else
           {
-              ?>
-              <td><?php echo $row['TransferTo']; ?></td>
-              <?php
-
-          }
-          if ($row['DateTurnOver'] == '0000-00-00') 
-          {
-              ?>
-              <td></td>
-              <?php
-
-          }
-          else
-          {
-              ?>
-              <td><?php echo $row['DateTurnOver']; ?></td>
-              <?php
-
+            ?>
+            <td><font color="black"><?php echo $row['TransferTo']?></font></td>
+            <?php
           }
           ?>
-          <td><?php echo $row['Remarks']; ?></td>
+           <?php 
+          if($row['DateTurnOver'] == '0000-00-00')
+          {
+            ?>
+            <td><font color="black"></font></td>
+            <?php
+          }
+          else
+          {
+            ?>
+            <td><font color="black"><?php echo $row['DateTurnOver']?></font></td>
+            <?php
+          }
+          ?>
+          <td><font color="black"><?php echo $row['Remarks']?></font></td>
           <td>
-            <div class="btn-group">
-            <button type="button" class="btn btn-primary">Action</button>
-            <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              <span class="caret"></span>
-              <span class="sr-only">Toggle Dropdown</span>
-            </button>
-            <ul class="dropdown-menu">
-              <li><a href="acccard_view_edit-issued-data.php?issuedID=<?php echo "$issued_ID";?>">Edit</a></li>
-              <li role="separator" class="divider"></li>
-              <li><a onclick="confirmDelete(<?php echo $accID; ?>)">Delete</a></li>
-            </ul>
-          </div>
-          </td>
+                <div class="btn-group">
+                  <button type="button" class="btn btn-primary">Action</button>
+                  <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <span class="caret"></span>
+                    <span class="sr-only">Toggle Dropdown</span>
+                  </button>
+                  <ul class="dropdown-menu">
+                    <li><a href="bincard_view.php?ID=<?php echo $ID; ?>">View</a></li>
+                    <li><a href="bincard_edit.php?ID=<?php echo $ID; ?>">Edit</a></li>
+                    <li role="separator" class="divider"></li>
+                    <li><a onclick="confirmDelete(<?php echo $accID; ?>)">Delete</a></li>
+                  </ul>
+                </div>
+                </td>
+              </td>
+          </tr>
+          <?php
 
-      </tr>
-      <?php 
-        }
-      }
-}
+    }
+    else
+    {
+      //COLOR RED FONT
+         ?>
+          <tr>
+          <td><font color="red"><?php echo $row['ParNo']?></font></td>
+          <td><font color="red"><?php echo $row['Qty']." ".$row['Unit']?></font></td>
+          <td><font color="red"><?php echo $row['Descrp']?></font></td>
+          <td><font color="red"><?php echo $row['ParNo']?></font></td>
+          <td><font color="red"><?php echo $row['SN']?></font></td>
+          <?php 
+          if($row['Amount'] == 0)
+          {
+            ?>
+            <td><font color="red"></font></td>
+            <?php
+          }
+          else
+          {
+            ?>
+            <td><font color="red"><?php echo $row['Amount']?></font></td>
+            <?php
+          }
+          ?>
+          <?php 
+          if($row['TransferTo'] == 'null')
+          {
+            ?>
+            <td><font color="red"></font></td>
+            <?php
+          }
+          else
+          {
+            ?>
+            <td><font color="red"><?php echo $row['TransferTo']?></font></td>
+            <?php
+          }
+          ?>
+          <?php 
+          if($row['DateTurnOver'] == '0000-00-00')
+          {
+            ?>
+            <td><font color="red"></font></td>
+            <?php
+          }
+          else
+          {
+            ?>
+            <td><font color="red"><?php echo $row['DateTurnOver']?></font></td>
+            <?php
+          }
+          ?>
+          <td><font color="red"><?php echo $row['Remarks']?></font></td>
+          <td>
+                <div class="btn-group">
+                  <button type="button" class="btn btn-primary">Action</button>
+                  <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <span class="caret"></span>
+                    <span class="sr-only">Toggle Dropdown</span>
+                  </button>
+                  <ul class="dropdown-menu">
+                    <li><a href="bincard_view.php?ID=<?php echo $ID; ?>">View</a></li>
+                    <li><a href="bincard_edit.php?ID=<?php echo $ID; ?>">Edit</a></li>
+                    <li role="separator" class="divider"></li>
+                    <li><a onclick="confirmDelete(<?php echo $accID; ?>)">Delete</a></li>
+                  </ul>
+                </div>
+                </td>
+              </td>
+          </tr>
+      <?php
+    }
+  }
+
+}// END FIRST WHILE
+
 ?>
                                         </tbody>
                                         <tfoot>
@@ -484,7 +452,7 @@ while ( $row=mysql_fetch_array($query)) {
 
 
 <!-- Modal for Set Item-->
-<div id="AddNewSet" class="modal fade " role="dialog">
+<div id="AddItem" class="modal fade " role="dialog">
   <div class="modal-dialog" style="width: 1300px; height: 900px;">
 
     <!-- Modal content-->
@@ -514,10 +482,10 @@ while ( $row=mysql_fetch_array($query)) {
                             </thead>
                              <tbody>
                               <tr>
-                              <td><input type="" name="" value=""></td>
-                              <td><input type="" name="" value=""></td>
-                              <td><input type="" name="" value=""></td>
-                              <td><input type="" name="" value=""></td>
+                              <td><input  class="form-control" type="" name="" value="" ></td>
+                              <td><input  class="form-control" type="" name="" value="" onkeyup="numberInputOnly(this);"></td>
+                              <td><input  class="form-control" type="" name="" value="" onkeyup="letterInputOnly(this);"></td>
+                              <td><input  class="form-control" type="" name="" value="" ></td>
                               </tr>
                               </tbody>
                         </table>
@@ -536,61 +504,24 @@ while ( $row=mysql_fetch_array($query)) {
                           <tbody>
                             
                               <tr>
-                              <td><input type="" name="" value=""></td>
-                              <td><input type="" name="" value=""></td>
-                              <td><input type="" name="" value=""></td>
-                              <td><input type="" name="" value=""></td>
-                              <td><input type="" name="" value=""></td>
+                              <td><input  class="form-control" type="" name="" value=""></td>
+                              <td><input  class="form-control" type="" name="" value="" onkeyup="numberInputOnly(this);"></td>
+                              <td><input  class="form-control" type="" name="" value="" onkeyup="letterInputOnly(this);"></td>
+                              <td><input  class="form-control" type="" name="" value="" ></td>
+                              <td><input  class="form-control" type="date" name="" value="" ></td>
                             </tr>
                           </tbody>
                         </table>
-
-                            
+                        <div class="col-sm-offset-4">
+                           <input class="btn btn-success col-sm-2" type="button" name="Submit" value="Submit"><span class="col-sm-1"></span><input class="btn btn-danger col-sm-2" type="button" name="Cancel" value="Cancel" data-dismiss="modal">
+                           </div>
                     </form>
                     </div>
                 </section>
             </div>
 
         </div>
-     <div class="row">
-          <div class="col-lg-12">
-                        
-                <section class="panel">
-                        <header class="panel-heading">
-                         Part Set Info:
-                         </header>
-                    <div class="panel-body">
-                     <form action="" method="post" name="form1">
-                        <table class="table table-striped table-advance table-hover">
-                          <thead>
-                           
-                            <tr>
-                              <td  class="col-sm-1">DESCRIPTION</td>
-                              <td  class="col-sm-1">PROP NO.</td>
-                              <td  class="col-sm-1">TRANSFER TO</td>
-                              <td  class="col-sm-1">REMARKS</td>
-                              <td  class="col-sm-1">DATE TURN OVER</td>
-                            </tr>
-                            </tr>
-                          </thead>
-                          <tbody>
-                            
-                              <tr>
-                              <td><input type="" name="" value=""></td>
-                              <td><input type="" name="" value=""></td>
-                              <td><input type="" name="" value=""></td>
-                              <td><input type="" name="" value=""></td>
-                              <td><input type="" name="" value=""></td>
-                            </tr>
-                          </tbody>
-                        </table>
-                        
-                    </form>
-                    </div>
-                </section>
-            </div>
-
-        </div>
+     
 
 
       </div>
@@ -602,69 +533,6 @@ while ( $row=mysql_fetch_array($query)) {
   </div>
 </div>
 <!--End of Modal Set-->
-<!-- Modal FOR FOR SINGLE ITEM-->
-<div id="AddNewSingleItem" class="modal fade " role="dialog">
-  <div class="modal-dialog" style="width: 800px; height: 900px;">
-
-    <!-- Modal content-->
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal">&times;</button>
-        <h4 class="modal-title">Add Single Item</h4>
-      </div>
-      <div class="modal-body">
-        <div class="row">
-          <div class="col-lg-12">
-                         
-                <section class="panel">
-                        <header class="panel-heading">
-                         Item Info:
-                         </header>
-                    <div class="panel-body">
-                     <form action="" method="post" name="form1">
-                        <div class="form-group">
-                            <label class="col-sm-2 control-label"><b>NAME</b></label>
-                            <div class="col-sm-10">
-                                <input type="text"  class="form-control" placeholder="Name" name="pgc_emp_ac_name">
-                            </div>
-                        </div>
-                        <br><br>
-                        <div class="form-group">
-                            <label class="col-sm-2 control-label"><b>DESIGNATION</b></label>
-                            <div class="col-sm-10">
-                                <input type="text"  class="form-control" placeholder="Designation" name="pgc_emp_ac_designation">
-                            </div>
-                        </div>
-                        <br><br>
-                        <div class="form-group">
-                            <label class="col-sm-2 control-label"><b>OFFICE</b></label>
-                            <div class="col-sm-10">
-                                <input type="text"  class="form-control" placeholder="Office" name="pgc_emp_ac_office">
-                            </div>
-                        </div><br><br><br>
-                        <div class="form-group">
-                            <label class="col-sm-2 control-label"></label>
-                            <div class="col-sm-10">
-                                
-                    <input class="btn btn-success "  type="submit" name="Submit" value="Submit"> 
-                            </div>
-                        </div>
-                    </form>
-                    </div>
-                </section>
-            </div>
-
-        </div>
-
-
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-      </div>
-    </div>
-
-  </div>
-</div>
 
 
 
@@ -687,6 +555,24 @@ while ( $row=mysql_fetch_array($query)) {
     <script type="text/javascript" language="javascript" src="js/jquery.js"></script>
     <script type="text/javascript" language="javascript" src="js/jquery.dataTables.js"></script>
     <script type="text/javascript" language="javascript" >  
+      function numberInputOnly(elem) {
+                var validChars = /[0-9]/;
+                var strIn = elem.value;
+                var strOut = '';
+                for(var i=0; i < strIn.length; i++) {
+                  strOut += (validChars.test(strIn.charAt(i)))? strIn.charAt(i) : '';
+                }
+                elem.value = strOut;
+            }
+            function letterInputOnly(elem) {
+                var validChars = /[a-zA-ZñÑ]+/;
+                var strIn = elem.value;
+                var strOut = '';
+                for(var i=0; i < strIn.length; i++) {
+                  strOut += (validChars.test(strIn.charAt(i)))? strIn.charAt(i) : '';
+                }
+                elem.value = strOut;
+            }
     //FOR DELETE FUNCTION RECORD
     function confirmDelete(issued_ID) 
 	{

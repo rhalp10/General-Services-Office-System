@@ -13,7 +13,7 @@ $query = mysql_query($sql);
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="General Services Office Building System">
     <meta name="author" content="Rhalp Darren R. Cabrera / Omar Raouf A. Daud">
-    <link rel="shortcut icon" href="img/favicon.png">
+    <link rel="shortcut icon" href="img/logo.png">
 
     <title>BIN Card</title>
 
@@ -207,7 +207,7 @@ $query = mysql_query($sql);
               <td><?php echo  $row["Supplier"];?></td>
               <td><?php echo  $row["Descrp"];?></td>
               <td><?php echo  $row["Qty"];?></td>
-              <td><?php echo  $row["Issued"];?></td>
+              <td><?php echo  $row['Issued'];?></td>
               <td><?php echo  $row["Balance"];?></td>
               <td>
                 <div class="btn-group">
@@ -220,7 +220,7 @@ $query = mysql_query($sql);
                     <li><a href="bincard_view.php?ID=<?php echo $ID; ?>">View</a></li>
                     <li><a href="bincard_edit.php?ID=<?php echo $ID; ?>">Edit</a></li>
                     <li role="separator" class="divider"></li>
-                    <li><a onclick="confirmDelete(<?php echo $accID; ?>)">Delete</a></li>
+                    <li><a onclick="confirmDelete(<?php echo $ID; ?>)">Delete</a></li>
                   </ul>
                 </div>
                 </td>
@@ -271,7 +271,7 @@ $query = mysql_query($sql);
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal">&times;</button>
-        <h4 class="modal-title">Modal Header</h4>
+        <h4 class="modal-title">Add New Bin</h4>
       </div>
       <div class="modal-body">
         <div class="row">

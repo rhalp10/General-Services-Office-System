@@ -19,7 +19,7 @@ $test = mysql_fetch_array($result);
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="General Services Office Building System">
     <meta name="author" content="Rhalp Darren R. Cabrera / Omar Raouf A. Daud">
-    <link rel="shortcut icon" href="img/favicon.png">
+    <link rel="shortcut icon" href="img/logo.png">
 
     <title>Edit PGC Account Card</title>
 
@@ -182,20 +182,21 @@ $test = mysql_fetch_array($result);
               <table class="table table-striped table-advance table-hover ">
                  <tr>
               <td><b>NAME</b></td>
-                <td><input type="text" name="pgc_emp_ac_edit_name"  class="form-control" required="" value="<?php echo "$emp_pgc_record_fullname";?>"></td>
+                <td><input type="text" name="pgc_emp_ac_edit_name"  class="form-control" required="" value="<?php echo "$emp_pgc_record_fullname";?>" onkeyup="letterInputOnly(this);"></td>
             </tr>
              <tr>
               <td><b>OFFICE</b></td>
-                <td><input type="text" name="pgc_emp_ac_edit_office"  class="form-control" required="" value="<?php echo " $emp_pgc_record_office";?>" ></td>
+                <td><input type="text" name="pgc_emp_ac_edit_office"  class="form-control" required="" value="<?php echo " $emp_pgc_record_office";?>" onkeyup="letterInputOnly(this);"></td>
             </tr>
              <tr>
               <td><b>DESIGNATION</b></td>
-                <td><input type="text" name="pgc_emp_ac_edit_designation"  class="form-control" required="" value="<?php echo "$emp_pgc_record_designation";?>" ></td>
+                <td><input type="text" name="pgc_emp_ac_edit_designation"  class="form-control" required="" value="<?php echo "$emp_pgc_record_designation";?>" onkeyup="letterInputOnly(this);"></td>
             </tr>
            <tr>
            <tr>
               <td><b>NOTE</b></td>
-                <td><input type="text" name="pgc_emp_ac_edit_note"  class="form-control" required="" value="<?php echo "$emp_pgc_record_note";?>" ></td>
+                <td><input type="text" name="pgc_emp_ac_edit_note"  class="form-control" value="<?php echo "$emp_pgc_record_note";?>" onkeyup="letterInputOnly(this);"></td>
+
             </tr>
            <td><input class="btn btn-success "  type="submit" name="Update" value="Update"></td>
            </tr> 
@@ -218,6 +219,29 @@ $test = mysql_fetch_array($result);
   </section>
   <!-- container section end -->
     <!-- javascripts -->
+    <script type="text/javascript">
+      
+ //NUMBER ONLY
+  function numberInputOnly(elem) {
+                var validChars = /[0-9]/;
+                var strIn = elem.value;
+                var strOut = '';
+                for(var i=0; i < strIn.length; i++) {
+                  strOut += (validChars.test(strIn.charAt(i)))? strIn.charAt(i) : '';
+                }
+                elem.value = strOut;
+            }
+  //LETTER ONLY
+   function letterInputOnly(elem) {
+                var validChars = /[a-zA-ZñÑ ]+/;
+                var strIn = elem.value;
+                var strOut = '';
+                for(var i=0; i < strIn.length; i++) {
+                  strOut += (validChars.test(strIn.charAt(i)))? strIn.charAt(i) : '';
+                }
+                elem.value = strOut;
+            }
+    </script>
     <script src="js/jquery.js"></script>
     <script src="js/bootstrap.min.js"></script>
     <!-- nice scroll -->

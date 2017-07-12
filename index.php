@@ -39,7 +39,7 @@ if(isset($_SESSION['login_user']))
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="General Services Office Building System">
     <meta name="author" content="Rhalp Darren R. Cabrera / Omar Raouf A. Daud">
-    <link rel="shortcut icon" href="img/favicon.png">
+    <link rel="shortcut icon" href="img/logo.png">
 
     <title>Index</title>
 

@@ -12,7 +12,7 @@ $query=mysql_query($sql);
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="General Services Office Building System">
     <meta name="author" content="Rhalp Darren R. Cabrera / Omar Raouf A. Daud">
-    <link rel="shortcut icon" href="img/favicon.png">
+    <link rel="shortcut icon" href="img/logo.png">
 
     <title>PGC Account Card</title>
 
@@ -319,21 +319,21 @@ $query=mysql_query($sql);
                         <div class="form-group">
                             <label class="col-sm-2 control-label"><b>NAME</b></label>
                             <div class="col-sm-10">
-                                <input type="text"  class="form-control" placeholder="Name" name="pgc_emp_ac_name" maxlength="100">
+                                <input type="text"  class="form-control" placeholder="Name" name="pgc_emp_ac_name" maxlength="100" onkeyup="letterInputOnly(this);">
                             </div>
                         </div>
                         <br>
                         <div class="form-group">
                             <label class="col-sm-2 control-label"><b>DESIGNATION</b></label>
                             <div class="col-sm-10">
-                                <input type="text"  class="form-control" placeholder="Designation" name="pgc_emp_ac_designation" maxlength="75">
+                                <input type="text"  class="form-control" placeholder="Designation" name="pgc_emp_ac_designation" maxlength="75" onkeyup="letterInputOnly(this);">
                             </div>
                         </div>
                         <br>
                         <div class="form-group">
                             <label class="col-sm-2 control-label"><b>OFFICE</b></label>
                             <div class="col-sm-10">
-                                <input type="text"  class="form-control" placeholder="Office" name="pgc_emp_ac_office" maxlength="50">
+                                <input type="text"  class="form-control" placeholder="Office" name="pgc_emp_ac_office" maxlength="50" onkeyup="letterInputOnly(this);">
                             </div>
                         </div>
                         <br>  
@@ -471,8 +471,8 @@ $query=mysql_query($sql);
     //  } );
 
       
-//FOR DELETE FUNCTION RECORD
-function confirmDelete(id) {
+ //FOR DELETE FUNCTION RECORD
+ function confirmDelete(id) {
     
     var r = confirm('Do you want to delete?');
     if (r == true) {
@@ -481,6 +481,26 @@ function confirmDelete(id) {
         window.location='acccard.php';
     }
 }
+ //NUMBER ONLY
+  function numberInputOnly(elem) {
+                var validChars = /[0-9]/;
+                var strIn = elem.value;
+                var strOut = '';
+                for(var i=0; i < strIn.length; i++) {
+                  strOut += (validChars.test(strIn.charAt(i)))? strIn.charAt(i) : '';
+                }
+                elem.value = strOut;
+            }
+  //LETTER ONLY
+   function letterInputOnly(elem) {
+                var validChars = /[a-zA-ZñÑ ]+/;
+                var strIn = elem.value;
+                var strOut = '';
+                for(var i=0; i < strIn.length; i++) {
+                  strOut += (validChars.test(strIn.charAt(i)))? strIn.charAt(i) : '';
+                }
+                elem.value = strOut;
+            }
 
     </script>
     <script src="js/bootstrap.min.js"></script>

@@ -11,8 +11,10 @@ include ('db.php');
               $row1=mysql_fetch_array($query1);
               $balance = $row1['Qty'];
               $totalQty = $row1['Qty'];
+              $balanceUpdate =  $row1['Qty'];
               $Count = mysql_num_rows($query);
               $issuedCount = 0;
+              $issuedUpdate = 0;
               ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -21,7 +23,7 @@ include ('db.php');
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="General Services Office Building System">
     <meta name="author" content="Rhalp Darren R. Cabrera / Omar Raouf A. Daud">
-    <link rel="shortcut icon" href="img/favicon.png">
+    <link rel="shortcut icon" href="img/logo.png">
 
     <title>BIN Card Issued</title>
 
@@ -176,7 +178,8 @@ include ('db.php');
           <h3 class="page-header"><i class="fa fa-clipboard"></i> Bincard Management</h3>
           <ol class="breadcrumb">
             <li><i class="fa fa-home"></i><a href="index.php">Dashboard</a></li>
-            <li><i class="fa fa-clipboard"></i>Bincard Management</li>
+            <li><i class="fa fa-clipboard"></i><a href="bincard.php">Bincard Management</a></li>
+            <li><i class="fa fa-clipboard"></i>Issued Item</a></li>
           </ol>
         </div>
       </div>
@@ -258,6 +261,12 @@ include ('db.php');
                 </td>
               </tr>
               <?php 
+
+              //$issuedUpdate = $issuedUpdate+$row['qty']; 
+             // $balanceUpdate = $balanceUpdate - $issuedUpdate;
+              //$sqlUpdate = "UPDATE  bincard_record";
+              //$sqlUpdate = " SET  Issued =  '$issuedUpdate', Balance = ' $balanceUpdate' WHERE  ID = '$ID'";
+              //$updateRes = mysql_query($sqlUpdate);
               }
 
               ?>
@@ -317,25 +326,25 @@ include ('db.php');
                          Client Info:
                          </header>
                     <div class="panel-body">
-                     <form action="bincard_add_new_action.php" method="post" name="form1">
+                     <form action="bincard_view_add_new_action.php?ID=<?php echo $ID ?>" method="post" name="form1">
                         <div class="form-group">
                             <label class="col-sm-2 control-label"><b>DATE</b></label>
                             <div class="col-sm-10">
-                                <input type="date"  class="form-control" placeholder="Bin Date" name="bincard_record_date" required="">
+                                <input type="date"  class="form-control" placeholder="Bin Date" name="binitem_issued_date" required="">
                             </div>
                         </div>
                         <br><br>
                         <div class="form-group">
                             <label class="col-sm-2 control-label"><b>RECIPIENT</b></label>
                             <div class="col-sm-10">
-                                <input type="text"  class="form-control" placeholder="Supplier" name="bincard_record_supplier" required="">
+                                <input type="text"  class="form-control" placeholder="Supplier" name="binitem_issued_recpnt" required="">
                             </div>
                         </div>
                         <br><br>
                         <div class="form-group">
                             <label class="col-sm-2 control-label"><b>QUANTITY</b></label>
                             <div class="col-sm-10">
-                                <input type="text"  class="form-control" placeholder="Quantity" name="bincard_record_qty" required="">
+                                <input type="text"  class="form-control" placeholder="Quantity" name="binitem_issued_qty" required="">
                             </div>
                         </div>
                         <br><br><br>
@@ -388,7 +397,7 @@ include ('db.php');
         
         var r = confirm('Do you want to delete?');
         if (r == true) {
-          window.location='bincard_delete_action.php?ID='+issued_ID;
+          window.location='bincard_view_delete_action.php?issuedID='+issued_ID+'&ID='+<?php echo $ID;?>;
         } else {
             window.location='bincard_view.php?ID='+<?php echo $ID;?>;
         }
