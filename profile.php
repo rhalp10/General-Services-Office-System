@@ -178,8 +178,8 @@ $rows = mysql_num_rows($result);
                 <div class="col-lg-12">
                     <h3 class="page-header"><i class="fa fa-user-md"></i> Profile</h3>
                     <ol class="breadcrumb">
-                        <li><i class="fa fa-home"></i><a href="index.php">Home</a></li>
-                        <li><i class="fa fa-user-md"></i><a href="profile.php">Profile</a></li>
+                        <li><i class="fa fa-home"></i><a href="index.php">Dashboard</a></li>
+                        <li><i class="fa fa-user-md"></i>Profile</li>
                     </ol>
                 </div>
             </div>
@@ -214,12 +214,7 @@ $rows = mysql_num_rows($result);
                     <section class="panel">
                           <header class="panel-heading tab-bg-info">
                               <ul class="nav nav-tabs">
-                                  <li class="active">
-                                      <a data-toggle="tab" href="#recent-activity">
-                                          <i class="icon-home"></i>
-                                          Accountability Card
-                                      </a>
-                                  </li>
+                                  
                                   <li>
                                       <a data-toggle="tab" href="#profile">
                                           <i class="icon-user"></i>
@@ -236,81 +231,8 @@ $rows = mysql_num_rows($result);
                           </header>
                           <div class="panel-body">
                               <div class="tab-content">
-                                  <div id="recent-activity" class="tab-pane active">
-                                      <div class="profile-activity">                                          
-                                          <div class="row">
-                            <div class="col-lg-12">
-                                <section class="panel">
-                                    <header class="panel-heading">
-                                       Receive From:
-                                    </header>
-                                    <div class="panel-body">
-                                      <div class="panel-heading pull-right"><strong>NOTE: Red means Unserviceable</strong></div>
-                                          <table class="table table-striped table-advance table-hover">
-                                           <tbody>
-                                              <tr>
-                                                <th class="col-sm-1"> PAR/ICS NO</th>
-                                                <th class="col-sm-1"> QTY</th>
-                                                <th class="col-sm-1"> UNIT</th>
-                                                <th class="col-sm-2"> DESCRIPTION</th>
-                                                <th class="col-sm-1"> PROP NO.</th>
-                                                <th class="col-sm-1"> AMOUNT</th>
-                                                <th class="col-sm-1"> TRANSFER TO</th>
-                                                <th class="col-sm-1"> REMARKS</th>
-                                                <th class="col-sm-1"> DATE TURN OVER</th>
-                                              </tr>
-                                                 <?php
-                                              $result=mysql_query("SELECT * FROM emp_accountability_card WHERE Emp_ID ='$Emp_ID' ");
-                                              
-                                              while($test = mysql_fetch_array($result))
-                                              {
-
-                                                   if ($test['DateTurnOver'] == '0000-00-00'  && $test['TransferTo'] == 'null' || $test['TransferTo'] == ' ' ){
-                                                    
-                                                    echo"<td><font color='black'>" .$test['ParNo']."</font></td>";
-                                                    echo"<td><font color='black'>". $test['Qty']. "</font></td>";   
-                                                    echo"<td><font color='black'>" .$test['Unit']."</font></td>";
-                                                    echo"<td><font color='black'>" .$test['Descrp']."</font></td>";
-                                                    echo"<td><font color='black'>" .$test['PropNo']."</font></td>";
-                                                    echo"<td><font color='black'>" .$test['Amount']."</font></td>";   
-                                                    echo"<td><font color='black'> </font></td>";   
-                                                    echo"<td><font color='black'>" .$test['Remarks']."</font></td>";   
-                                                    echo"<td><font color='black'>" .$test['DateTurnOver']."</font></td>";    
-                                                    echo "</tr>"; }
-
-                                                  
-                                                  else
-                                                  {
-                                                    echo "<tr >"; 
-                                                    echo"<td><font color='red'>" .$test['ParNo']."</font></td>";
-                                                    echo"<td><font color='red'>". $test['Qty']. "</font></td>";   
-                                                    echo"<td><font color='red'>" .$test['Unit']."</font></td>";
-                                                    echo"<td><font color='red'>" .$test['Descrp']."</font></td>";
-                                                    echo"<td><font color='red'>" .$test['PropNo']."</font></td>";
-                                                    echo"<td><font color='red'>" .$test['Amount']."</font></td>";   
-                                                    echo"<td><font color='red'>" .$test['TransferTo']."</font></td>";
-                                                    echo"<td><font color='red'>" .$test['Remarks']."</font></td>";
-                                                    echo"<td><font color='red'>" .$test['DateTurnOver']."</font></td>";    
-                                                    echo "</tr>";
-                                                  }  
-                                                                                  
-
-                                                }
-                                              
-                                              ?>
-                                           </tbody>
-
-                                        </table>
-                                        <a class="btn btn-info pull-right" href="" title="Print" name="submit"><span class="icon_printer"></span> PRINT</a>
-                                    </div>
-                                </section>
-                            </div>
-                        </div>
-
-                                      </div>
-                                  </div>
-                                  <!-- profile -->
-                                  <div id="profile" class="tab-pane">
+                                  
+                                  <div id="profile" class="tab-pane active">
                                     <section class="panel">
                                       <div class="bio-graph-heading">
                                                

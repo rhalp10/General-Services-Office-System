@@ -261,7 +261,7 @@ while ( $row=mysql_fetch_array($query))
 
   if ("SET ".$row['ItemSetID'] == $row['itemCode'])//SET ITEMS
   {
-  if ($row['DateTurnOver'] == '0000-00-00'  && $row['TransferTo'] == 'null' || $row['TransferTo'] == ' ' )
+  if ($row['DateTurnOver'] == '0000-00-00 00:00:00'  && $row['TransferTo'] == 'null' || $row['TransferTo'] == ' ' )
          {
     //COLOR BLACK FONT
 
@@ -333,6 +333,7 @@ while ( $row=mysql_fetch_array($query))
               </td>
           </tr>
           <?php
+          
 
     }
     else

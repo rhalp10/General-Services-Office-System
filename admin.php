@@ -144,21 +144,24 @@ include('session.php');
       <!--main content start-->
 
       <section id="main-content">
+
           <section class="wrapper">
-		     <div>
-                <center > <img src="img/logo.png" style="width: 300px; margin-left: -1400px; margin-top: -
-                100px;">
-               <h1 style="margin-top: -200px;">PROVINCIAL GOVERNMENT OF CAVITE</h1> 
-               <h2> General Services Office</h2> </center>
-          </div>
-              <!-- page start-->
+		     <section class="wrapper">
+            <div class="col-sm-12" style="font-size: 25px; font-family: Lato;"><img src="img/logo.png" class="col-sm-2"><h1 class="col-sm-10" style="margin-left: -50px;"><center> PROVINCE GOVERNMENT OF CAVITE<br><h2>General Services Office</h2></center></h1>
+            </div>
              <br>
              <br>
              <br>
              <br>
              <br>
              <br> 
+         </section>
+              <!-- page start-->
+             
+             
+                <div class="panel-body">
               <div class="panel panel-default">
+
                 <div class="panel-heading" style="font-size: 25px; font-family: Lato;">MISSION</div>
                 <div class="panel-body"><h3>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;To deliver prompt, effective amd eficient services in the field of procurement,supply,property, records, human resources,facility improvement and community services.</h3></div>
               </div>

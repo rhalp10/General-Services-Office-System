@@ -308,14 +308,14 @@ $query=mysql_query($sql);
                         <div class="form-group">
                             <label class="col-sm-2 control-label"><b>FULL NAME</b></label>
                             <div class="col-sm-10">
-                                <input type="text"  class="form-control" placeholder="Full Name" name="account_add_name" required="">
+                                <input type="text"  class="form-control" placeholder="Full Name" name="account_add_name" required="" onkeyup="letterInputOnly(this);">
                             </div>
                         </div>
                         <br>
                         <div class="form-group">
                             <label class="col-sm-2 control-label"><b>EMAIL</b></label>
                             <div class="col-sm-10">
-                                <input type="email"  class="form-control" placeholder="Email" name="account_add_email" required="">
+                                <input type="email"  class="form-control" placeholder="Email" name="account_add_email" required="" >
                             </div>
                         </div>
                         <br>
@@ -329,14 +329,14 @@ $query=mysql_query($sql);
                         <div class="form-group">
                             <label class="col-sm-2 control-label"><b>MOBILE #</b></label>
                             <div class="col-sm-10">
-                                <input type="text"  class="form-control" placeholder="Mobile #" name="account_add_mobile" required="">
+                                <input type="text"  class="form-control" placeholder="Mobile #" name="account_add_mobile" required="" onkeyup="numberInputOnly(this);">
                             </div>
                         </div>
                         <br>
                         <div class="form-group">
                             <label class="col-sm-2 control-label"><b>AGE</b></label>
                             <div class="col-sm-10">
-                                <input type="text"  class="form-control" placeholder="Age" name="account_add_age" required="">
+                                <input type="text"  class="form-control" placeholder="Age" name="account_add_age" required="" onkeyup="numberInputOnly(this);">
                             </div>
                         </div>
                         <br>
@@ -353,7 +353,7 @@ $query=mysql_query($sql);
                         <div class="form-group">
                             <label class="col-sm-2 control-label"><b>POSITION</b></label>
                             <div class="col-sm-10">
-                                <input type="text"  class="form-control" placeholder="Position" name="account_add_position" required="">
+                                <input type="text"  class="form-control" placeholder="Position" name="account_add_position" required="" onkeyup="letterInputOnly(this);">
                             </div>
                         </div><br>
                         <div class="form-group">
@@ -416,6 +416,27 @@ function confirmDelete(id) {
         window.location='account.php';
     }
 }
+
+ //NUMBER ONLY
+  function numberInputOnly(elem) {
+                var validChars = /[0-9]/;
+                var strIn = elem.value;
+                var strOut = '';
+                for(var i=0; i < strIn.length; i++) {
+                  strOut += (validChars.test(strIn.charAt(i)))? strIn.charAt(i) : '';
+                }
+                elem.value = strOut;
+            }
+  //LETTER ONLY
+   function letterInputOnly(elem) {
+                var validChars = /[a-zA-ZñÑ ]+/;
+                var strIn = elem.value;
+                var strOut = '';
+                for(var i=0; i < strIn.length; i++) {
+                  strOut += (validChars.test(strIn.charAt(i)))? strIn.charAt(i) : '';
+                }
+                elem.value = strOut;
+            }
     </script>
     <script src="js/bootstrap.min.js"></script>
     <!-- nice scroll -->

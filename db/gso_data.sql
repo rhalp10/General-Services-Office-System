@@ -1,13 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 3.4.5
+-- version 4.1.12
 -- http://www.phpmyadmin.net
 --
--- Host: localhost
--- Generation Time: Jul 12, 2017 at 10:24 AM
--- Server version: 5.5.16
--- PHP Version: 5.3.8
+-- Host: 127.0.0.1
+-- Generation Time: Jul 14, 2017 at 10:39 AM
+-- Server version: 5.6.16
+-- PHP Version: 5.5.11
 
-SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
 
 
@@ -98,7 +98,8 @@ CREATE TABLE IF NOT EXISTS `emp_accountability_card` (
   `Amount` float NOT NULL,
   `TransferTo` varchar(100) NOT NULL,
   `Remarks` varchar(200) NOT NULL,
-  `DateTurnOver` date NOT NULL,
+  `DateAdded` datetime NOT NULL,
+  `DateTurnOver` datetime NOT NULL,
   PRIMARY KEY (`ID`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=27 ;
 
@@ -106,27 +107,27 @@ CREATE TABLE IF NOT EXISTS `emp_accountability_card` (
 -- Dumping data for table `emp_accountability_card`
 --
 
-INSERT INTO `emp_accountability_card` (`ID`, `Emp_ID`, `ItemSetID`, `itemCode`, `ParNo`, `Qty`, `Unit`, `Descrp`, `SN`, `PropNo`, `Amount`, `TransferTo`, `Remarks`, `DateTurnOver`) VALUES
-(1, 1, 'SP-01', 'SET SP-01', 'T-457-16', 1, 'unit', 'SET1', '1 SN. MMLYKS01623C12311', '1995', 800, '', '', '0000-00-00'),
-(2, 1, 'SP-02', 'PART SP-01', 'T-457-16', 0, 'unit', 'Calculator HL-102 10 digits', '1 SN. MMLYKS01623C12311', 'OT-09-98', 0, '', '', '0000-00-00'),
-(4, 1, 'SP-04', 'SET SP-04', 'T-457-16', 0, 'unit', 'Calculator HL-104 10 digits', '1 SN. MMLYKS01623C12311', 'OT-09-98', 3.40282e38, '', '', '2010-10-30'),
-(5, 1, 'SP-05', 'PART SP-04', 'T-457-16', 0, 'unit', 'Calculator HL-105 10 digits', '1 SN. MMLYKS01623C12311', 'OT-09-98', 3.40282e38, '', '', '2010-10-30'),
-(6, 1, 'SP-06', 'PART SP-04', 'T-457-16', 0, 'unit', 'Calculator HL-106 10 digits', '1 SN. MMLYKS01623C12311', 'OT-09-98', 0, 'null', '', '0000-00-00'),
-(7, 1, 'SP-07', 'PART SP-04', 'T-457-16', 0, 'unit', 'Plate No. SCB-830', '1 SN. MMLYKS01623C12311', 'OT-09-98', 0, 'null', '', '0000-00-00'),
-(8, 1, 'SP-08', 'SET SP-08', 'T-457-16', 0, 'unit', 'Plate No. SCB-831', '1 SN. MMLYKS01623C12311', 'OT-09-98', 321, 'null', '', '0000-00-00'),
-(9, 1, 'SP-09', 'SET SP-09', 'T-457-16', 0, 'unit', 'Plate No. SCB-831', '1 SN. MMLYKS01623C12311', 'OT-09-98', 0, 'null', '', '0000-00-00'),
-(10, 1, 'SP-10', 'SET SP-10', 'T-457-16', 0, 'unit', 'Plate No. SCB-833', '1 SN. MMLYKS01623C12311', 'OT-09-98', 0, 'null', '', '0000-00-00'),
-(11, 1, 'SP-11', 'SET SP-11', 'T-457-16', 52, 'unit', 'SET2', '1 SN. MMLYKS01623C12311', 'OT-09-98', 0, 'null', '', '0058-02-28'),
-(12, 1, 'SP-12', 'PART SP-11', 'T3', 0, 'unit', 'Plate No. SCB-835', '1 SN. MMLYKS01623C12311', 'OT-09-98', 0, 'null', '33333333333', '0000-00-00'),
-(13, 23, 'SP-13', 'SET SP-13', 'T-457-16', 1, 'unit', 'Plate No. SCB-836', '1 SN. MMLYKS01623C12311', 'OT-09-98', 0, 'null', '', '0000-00-00'),
-(14, 11, 'SP-14', 'SET SP-14', 'T-457-16', 1, 'unit', 'Plate No. SCB-837', '1 SN. MMLYKS01623C12311', 'OT-09-98', 0, 'null', 'i and i 9/12/2013', '0000-00-00'),
-(15, 1, 'SP-15', 'SET SP-15', 'T-457-16', 1, 'unit', 'Calculator HL-107 10 digits', '1 SN. MMLYKS01623C12311', 'OT-09-98', 0, 'Adoracion Mojica', 'Formerly to Adoracion Mojica', '0000-00-00'),
-(18, 4, 'SP-18', 'PART SP-16', 'T-457-16', 0, 'unit', 'Plate No. SCB-840', '1 SN. MMLYKS01623C12311', 'OT-09-98', 0, 'null', '', '2017-06-08'),
-(19, 4, 'SP-19', 'PART SP-16', 'T-457-16', 0, 'unit', 'Plate No. SCB-841', '1 SN. MMLYKS01623C12311', 'OT-09-98', 6, 'null', '', '2017-06-15'),
-(20, 4, 'SP-20', 'PART SP-16', 'T-457-16', 0, 'unit', 'Plate No. SCB-842', '1 SN. MMLYKS01623C12311', 'OT-09-98', 0, 'null', '', '0000-00-00'),
-(21, 4, 'SP-21', 'PART SP-16', 'T-457-16', 0, 'unit', 'Plate No. SCB-843', '1 SN. MMLYKS01623C12311', 'OT-09-98', 1321, 'null', '', '0000-00-00'),
-(25, 4, 'SP-16', 'SET SP-16', 'T-457-16', 1, 'unit', 'Calculator HL-107 10 digits', '1 SN. MMLYKS01623C12311', 'OT-09-98', 0, 'null', 'Formerly to Adoracion Mojica', '0000-00-00'),
-(26, 4, 'SP-22', 'SET SP-22', 'asd', 1, '', '', '', '', 0, 'null', '', '0000-00-00');
+INSERT INTO `emp_accountability_card` (`ID`, `Emp_ID`, `ItemSetID`, `itemCode`, `ParNo`, `Qty`, `Unit`, `Descrp`, `SN`, `PropNo`, `Amount`, `TransferTo`, `Remarks`, `DateAdded`, `DateTurnOver`) VALUES
+(1, 1, 'SP-01', 'SET SP-01', 'T-457-16', 1, 'unit', 'SET1', '1 SN. MMLYKS01623C12311', '1995', 800, '', '', '2017-07-14 01:00:00', '1899-11-30 00:00:00'),
+(2, 1, 'SP-02', 'PART SP-01', 'T-457-16', 0, 'unit', 'PART OT SET 1', '1 SN. MMLYKS01623C12311', 'OT-09-98', 0, '', '', '2017-07-14 01:00:00', '0000-00-00 00:00:00'),
+(4, 1, 'SP-04', 'SET SP-04', 'T-457-16', 0, 'unit', 'SET 4', '1 SN. MMLYKS01623C12311', 'OT-09-98', 3.40282e38, '', '', '2017-07-14 01:00:00', '2010-10-30 00:00:00'),
+(5, 1, 'SP-05', 'PART SP-04', 'T-457-16', 0, 'unit', 'PART OF SET 4', '1 SN. MMLYKS01623C12311', 'OT-09-98', 3.40282e38, '', '', '2017-07-14 01:00:00', '2010-10-30 00:00:00'),
+(6, 1, 'SP-06', 'PART SP-04', 'T-457-16', 0, 'unit', 'PART OF SET 4', '1 SN. MMLYKS01623C12311', 'OT-09-98', 0, 'null', '', '2017-07-14 01:00:00', '0000-00-00 00:00:00'),
+(7, 1, 'SP-07', 'PART SP-04', 'T-457-16', 0, 'unit', 'PART OF SET 4', '1 SN. MMLYKS01623C12311', 'OT-09-98', 0, 'null', '', '2017-07-14 01:00:00', '0000-00-00 00:00:00'),
+(8, 1, 'SP-08', 'SET SP-08', 'T-457-16', 0, 'unit', 'SET 8', '1 SN. MMLYKS01623C12311', 'OT-09-98', 321, 'null', '', '2017-07-14 01:00:00', '0000-00-00 00:00:00'),
+(9, 1, 'SP-09', 'SET SP-09', 'T-457-16', 0, 'unit', 'SET 9', '1 SN. MMLYKS01623C12311', 'OT-09-98', 0, 'null', '', '2017-07-14 01:00:00', '0000-00-00 00:00:00'),
+(10, 1, 'SP-10', 'SET SP-10', 'T-457-16', 0, 'unit', 'SET 10', '1 SN. MMLYKS01623C12311', 'OT-09-98', 0, 'null', '', '2017-07-14 01:00:00', '0000-00-00 00:00:00'),
+(11, 1, 'SP-11', 'SET SP-11', 'T-457-16', 52, 'unit', 'SET 11', '1 SN. MMLYKS01623C12311', 'OT-09-98', 0, 'null', '', '2017-07-14 01:00:00', '0058-02-28 00:00:00'),
+(12, 1, 'SP-12', 'PART SP-11', 'T3', 0, 'unit', 'PART OF SET 11', '1 SN. MMLYKS01623C12311', 'OT-09-98', 0, 'null', '33333333333', '2017-07-14 01:00:00', '0000-00-00 00:00:00'),
+(13, 1, 'SP-13', 'SET SP-13', 'T-457-16', 1, 'unit', 'SET 13', '1 SN. MMLYKS01623C12311', 'OT-09-98', 0, 'null', '', '2017-07-14 01:00:00', '0000-00-00 00:00:00'),
+(14, 1, 'SP-14', 'SET SP-14', 'T-457-16', 1, 'unit', 'SET 14', '1 SN. MMLYKS01623C12311', 'OT-09-98', 0, 'null', 'i and i 9/12/2013', '2017-07-14 01:00:00', '0000-00-00 00:00:00'),
+(15, 1, 'SP-15', 'SET SP-15', 'T-457-16', 1, 'unit', 'SET 15', '1 SN. MMLYKS01623C12311', 'OT-09-98', 0, 'Adoracion Mojica', 'Formerly to Adoracion Mojica', '2017-07-14 01:00:00', '0000-00-00 00:00:00'),
+(18, 1, 'SP-18', 'SET SP-16', 'T-457-16', 0, 'unit', 'SET 16', '1 SN. MMLYKS01623C12311', 'OT-09-98', 0, 'null', '', '2017-07-14 01:00:00', '2017-06-08 00:00:00'),
+(19, 1, 'SP-19', 'PART SP-16', 'T-457-16', 0, 'unit', 'PART OF SET 16', '1 SN. MMLYKS01623C12311', 'OT-09-98', 6, 'null', '', '2017-07-14 01:00:00', '2017-06-15 00:00:00'),
+(20, 1, 'SP-20', 'PART SP-16', 'T-457-16', 0, 'unit', 'PART OF SET 16', '1 SN. MMLYKS01623C12311', 'OT-09-98', 0, 'null', '', '2017-07-14 01:00:00', '0000-00-00 00:00:00'),
+(21, 1, 'SP-21', 'PART SP-16', 'T-457-16', 0, 'unit', 'PART OF SET 16', '1 SN. MMLYKS01623C12311', 'OT-09-98', 1321, 'null', '', '2017-07-14 01:00:00', '0000-00-00 00:00:00'),
+(25, 1, 'SP-16', 'PART SP-16', 'T-457-16', 1, 'unit', 'PART OF SET 16', '1 SN. MMLYKS01623C12311', 'OT-09-98', 0, 'null', 'Formerly to Adoracion Mojica', '2017-07-14 01:00:00', '0000-00-00 00:00:00'),
+(26, 1, 'SP-22', 'SET SP-22', '', 1, 'unit', 'SET22', '1 SN. MMLYKS01623C12311', 'OT-09-98', 0, 'null', '', '2017-07-15 00:00:00', '0000-00-00 00:00:00');
 
 -- --------------------------------------------------------
 
@@ -149,14 +150,14 @@ CREATE TABLE IF NOT EXISTS `emp_accounts_record` (
   `image` varchar(250) NOT NULL,
   PRIMARY KEY (`accID`),
   UNIQUE KEY `User` (`username`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=22 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=38 ;
 
 --
 -- Dumping data for table `emp_accounts_record`
 --
 
 INSERT INTO `emp_accounts_record` (`accID`, `accLevel`, `username`, `password`, `fullName`, `Age`, `Gender`, `Address`, `Email`, `Pos`, `Mobile`, `image`) VALUES
-(0, '0', 'admin', 'Tzabaoth10', 'Rhalp Darren Cabrera', 20, 'male', 'Blk 38 Lot 11 Phase 2b Brgy Aguado TMC', '555@yahoo.com', '55', '0965489844', 'img/emp_profile/temp.jpg'),
+(0, '0', 'admin', 'Tzabaoth10', 'Rhalp Darren Cabrera', 20, 'Male', 'Blk 38 Lot 11 Phase 2b Brgy Aguado TMC', 'rhalpdarrencabrera@gmail.com', 'ADMIN', '0965489844', 'img/emp_profile/temp.jpg'),
 (1, '1', 'employee', 'employee', 'mark', 20, 'Unknown', 'Mars', 'marcalien@gmail.com', 'staff', '09169158798', 'img/emp_profile/temp.jpg'),
 (8, '1', '987', '987', 'yehye', 978, '987', '444444444', '987@yhoo.com', '987', '0905454587', 'img/emp_profile/temp.jpg'),
 (10, '0', 'asasdkld', '321', 'iouqou', 0, 'khakdhk', 'hhhhh', 'oiuoiu@yahoo.com', 'kkjh', '0904545454', 'img/emp_profile/temp.jpg'),
@@ -166,7 +167,10 @@ INSERT INTO `emp_accounts_record` (`accID`, `accLevel`, `username`, `password`, 
 (18, '1', 'darren321', '321', 'OMAR DAUD', 15, 'Male', 'NAIC', '321@yahoo.com', '155', '0906545644', 'img/emp_profile/temp.jpg'),
 (19, '1', 'rd2h1fs8jk2b6cz', 'yth3xk5slz8bd', 'Omar', 20, 'Male', 'Bucal 3-B, Maragondon, Cavite', 'Omardaud21000@gmail.com', '.....', '09355173381', 'img/emp_profile/temp.jpg'),
 (20, '3', 'bano12315', '55555', 'asdasdasd', 30, 'Male', 'wazhing', 'k4@yaho1111.c1om1', '4k', '0954564546', 'img/emp_profile/temp.jpg'),
-(21, '0', 'Asada', '555', 'Franz Marc Cabrera', 50, 'Male', 'Blk 38 Lot 11 Ph2b Southville2 Trece Martirez City', 'franzmarccabrera123@gmail.com', 'ADMIN', '0915151613', 'img/emp_profile/temp.jpg');
+(21, '0', 'Asada', '555', 'Franz Marc Cabrera', 50, 'Male', 'Blk 38 Lot 11 Ph2b Southville2 Trece Martirez City', 'franzmarccabrera123@gmail.com', 'ADMIN', '0915151613', 'img/emp_profile/temp.jpg'),
+(22, '0', 'franz123', '321', 'Franz Marc Cabrera', 31, 'Male', 'as32d1as321d', 'franzmarccabrera123@gmail.com', 'asdasd', '04a4sd08498', 'img/emp_profile/temp.jpg'),
+(23, '3', 'ds3a21', '321', 'as32d1', 20, 'Male', 'asd32as1d51asd14', 'a23s1d@yahoo.com', 'asdasd', '561651adasd', 'img/emp_profile/temp.jpg'),
+(37, '0', 'as32d1a1', 'w', 's', 1, 'Male', 'aw', 'wwwwwwww@yahoo.com', 'd', '040084', 'img/emp_profile/temp.jpg');
 
 -- --------------------------------------------------------
 
@@ -308,7 +312,7 @@ INSERT INTO `invent_241-1-07-06-010_motor_vehicles` (`ID`, `No`, `Type_of_Vehicl
 --
 
 CREATE TABLE IF NOT EXISTS `invent_custodian_slip` (
-  `ID` int(11) NOT NULL,
+  `ID` int(11) NOT NULL AUTO_INCREMENT,
   `Qty` int(11) NOT NULL,
   `Unit` varchar(50) NOT NULL,
   `Descrp` varchar(250) NOT NULL,
@@ -320,16 +324,26 @@ CREATE TABLE IF NOT EXISTS `invent_custodian_slip` (
   `ReceivedFrom_Name` varchar(50) NOT NULL,
   `ReceivedFrom_Position` varchar(50) NOT NULL,
   `ReceiveFrom_Date` date NOT NULL,
-  `ICS` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `ICS` int(11) NOT NULL,
+  `DateAdded` varchar(30) NOT NULL,
+  PRIMARY KEY (`ID`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=15 ;
 
 --
 -- Dumping data for table `invent_custodian_slip`
 --
 
-INSERT INTO `invent_custodian_slip` (`ID`, `Qty`, `Unit`, `Descrp`, `Invent_Item_No`, `Ez_Useful_Life`, `ReceivedBy_Name`, `ReceivedBy_Position`, `ReceiveBy_Date`, `ReceivedFrom_Name`, `ReceivedFrom_Position`, `ReceiveFrom_Date`, `ICS`) VALUES
-(0, 0, 'sdas', 'dasd', 'asdas', 'dasdasd', 'asdasda', 'asdasdasd', '2017-06-01', 'asdasd', 'asdasd', '2017-06-08', 0),
-(0, 0, 'dsadasd', 'dasdasd', 'asdasd', 'asdasd', 'qwdqwd', 'wqdqwd', '0055-05-05', 'da5wd5aw5d', '5aw5daw5d5555', '2017-05-31', 0);
+INSERT INTO `invent_custodian_slip` (`ID`, `Qty`, `Unit`, `Descrp`, `Invent_Item_No`, `Ez_Useful_Life`, `ReceivedBy_Name`, `ReceivedBy_Position`, `ReceiveBy_Date`, `ReceivedFrom_Name`, `ReceivedFrom_Position`, `ReceiveFrom_Date`, `ICS`, `DateAdded`) VALUES
+(2, 1, '1', '1', '1', '1', '1', '1', '2017-07-12', '1', '1', '2017-07-07', 1, ''),
+(3, 1, 'unit', '1', '1', '1', '1', '1', '2017-07-12', '1', '1', '2017-07-07', 1, ''),
+(7, 21, 'pc', '2132', '321', '321', '321', '321', '2017-07-16', '321', '321', '2017-06-28', 213123, ''),
+(8, 3213, 'unit', '13123', '123', '123', 'dsasd', 'asdsad', '2017-07-12', 'asdasd', 'qweqwe', '2017-07-03', 123213, ''),
+(9, 4, 'unit', 'xx', 'xx', 'x', 'x', 'x', '2017-07-19', 'xcvxcx', 'x', '2017-07-06', 0, ''),
+(10, 2, 'unit', '321', '321', '321', '321', '3213', '0311-02-12', '32132', '1231', '2017-07-13', 2147483647, ''),
+(11, 12, 'unit', '12', '132', '213', '213', '123', '2017-07-04', '213', '213', '0213-11-30', 231, 'asdasdsad'),
+(12, 21, 'unit', '32', '32', '32', 'hahah', 'hahah', '2017-07-20', 'hahah', 'hahah', '2017-07-12', 34234, 'GETDATE()'),
+(13, 1, 'unit', '2', '2', '2', 'GETDATE()', 'GETDATE()', '2017-07-06', 'GETDATE()', 'GETDATE()', '2017-06-28', 321, 'Array'),
+(14, 10, 'unit', '10', '10', '10', '10', '10', '2017-07-06', 'asd', 'asdasd', '2017-07-06', 23, '');
 
 -- --------------------------------------------------------
 
