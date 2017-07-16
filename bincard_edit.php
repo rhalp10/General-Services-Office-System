@@ -121,7 +121,7 @@ $test = mysql_fetch_array($result);
                           <li><a class="" href="accreceipt.php">Accountability Receipt</a></li>
                           <li><a class="" href="returnslip.php">Return Slip</a></li>
                           <li><a class="" href="bincard.php"><span>Bincard</span></a></li>
-                          <li><a class="" href="Custodian.php">Custodian Slip</a></li>
+                          <li><a class="" href="ics.php">Custodian Slip</a></li>
                       </ul>
                   </li>
                              
@@ -131,20 +131,25 @@ $test = mysql_fetch_array($result);
                           <span>Employee  List</span>
                       </a>
                   </li>
-                  
+                  <li class="">
+                      <a class="" href="office.php">
+                          <i class="icon_building_alt"></i>
+                          <span>Office  List</span>
+                      </a>
+                  </li>
                   <li class="sub-menu ">
                       <a href="javascript:;" class="">
-                          <i class="icon_documents_alt"></i>
+                          <i class="icon_datareport"></i>
                           <span>Report</span>
                           <span class="menu-arrow arrow_carrot-right"></span>
                       </a>
-                      <ul class="sub">                     
+                      <ul class="sub">                           
                           <li><a class="" href="account_report.php">Account</a></li>
                           <li><a class="" href="acccard_report.php">PGC Account Card</a></li>
                           <li><a class="" href="accreceipt_report.php">Accountability Receipt</a></li>
                           <li><a class="" href="returnslip_report.php">Return Slip</a></li>
                           <li><a class="" href="bincard_report.php"><span>Bincard</span></a></li>
-                          <li><a class="" href="Custodian_report.php">Custodian Slip</a></li>
+                          <li><a class="" href="ics.php">Custodian Slip</a></li>
                       </ul>
                   </li>
                   

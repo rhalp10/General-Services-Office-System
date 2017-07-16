@@ -1,6 +1,7 @@
 <?php
 include('session.php');
 
+include('db.php');
 $totalresult = mysql_query("SELECT * FROM emp_accounts_record");
 $totalAcc = mysql_num_rows($totalresult);
 $adminresult = mysql_query("SELECT * FROM emp_accounts_record WHERE accLevel = 0");
@@ -18,6 +19,10 @@ $AdminPercentageJS="$AdminPercentage";
 $js_outAdmin = json_encode($AdminPercentageJS);
 $EmployeePercentageJS="$EmployeePercentage";
 $js_outEmp = json_encode($EmployeePercentageJS);
+
+$sql = "SELECT *";
+$sql.=" FROM emp_accounts_record";
+$query=mysql_query($sql);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -41,6 +46,8 @@ $js_outEmp = json_encode($EmployeePercentageJS);
     <!-- Custom styles -->
     <link href="css/style.css" rel="stylesheet">
     <link href="css/style-responsive.css" rel="stylesheet" />
+
+    <link href="css/dataTables.bootstrap.min.css" rel="stylesheet">
 
   <script src="js/Chart.js"></script>
 
@@ -132,7 +139,7 @@ $js_outEmp = json_encode($EmployeePercentageJS);
                           <li><a class="" href="accreceipt.php">Accountability Receipt</a></li>
                           <li><a class="" href="returnslip.php">Return Slip</a></li>
                           <li><a class="" href="bincard.php"><span>Bincard</span></a></li>
-                          <li><a class="" href="Custodian.php">Custodian Slip</a></li>
+                          <li><a class="" href="ics.php">Custodian Slip</a></li>
                       </ul>
                   </li>
                              
@@ -142,20 +149,25 @@ $js_outEmp = json_encode($EmployeePercentageJS);
                           <span>Employee  List</span>
                       </a>
                   </li>
-                  
+                  <li class="">
+                      <a class="" href="office.php">
+                          <i class="icon_building_alt"></i>
+                          <span>Office  List</span>
+                      </a>
+                  </li>
                   <li class="sub-menu ">
                       <a href="javascript:;" class="">
-                          <i class="icon_documents_alt"></i>
+                          <i class="icon_datareport"></i>
                           <span>Report</span>
                           <span class="menu-arrow arrow_carrot-right"></span>
                       </a>
-                      <ul class="sub">                          
+                      <ul class="sub">                           
                           <li><a class="" href="account_report.php">Account</a></li>
                           <li><a class="" href="acccard_report.php">PGC Account Card</a></li>
                           <li><a class="" href="accreceipt_report.php">Accountability Receipt</a></li>
                           <li><a class="" href="returnslip_report.php">Return Slip</a></li>
                           <li><a class="" href="bincard_report.php"><span>Bincard</span></a></li>
-                          <li><a class="" href="Custodian_report.php">Custodian Slip</a></li>
+                          <li><a class="" href="ics.php">Custodian Slip</a></li>
                       </ul>
                   </li>
                   
@@ -173,18 +185,72 @@ $js_outEmp = json_encode($EmployeePercentageJS);
 					<h3 class="page-header"><i class="fa fa fa-clipboard"></i> ACCOUNT MANAGEMENT REPORT</h3>
 					<ol class="breadcrumb">
 						<li><i class="fa fa-home"></i><a href="index.php">Dashboard</a></li>
-						<li><i class="fa fa-clipboard"></i><a href="account_report.php">Account Management Report</a></li>
+						<li><i class="fa fa-clipboard"></i>Account Management Report</li>
 					</ol>
 				</div>
 			</div>
               <!-- page start-->
-             <canvas id="canvas" height="500" width="500"></canvas>
-             <?php 
-             
-  echo "Admin: <b>$totaladmin</b> &nbsp;";
-  echo "Employee: <b>$totalemp</b>&nbsp;";
-  echo "Total Registered Account: <b>$totalAcc</b>";
-             ?>
+              <div class="column">
+                <div class="col-sm-3">
+                  <canvas id="canvas" height="250" width="250"></canvas>
+                    <div class="row">
+                      <div class="col-sm-12">
+                     <?php 
+                      echo "Admin: <b>$totaladmin</b> &nbsp;";
+                      echo "Employee: <b>$totalemp</b>&nbsp;";
+                      echo "Total Registered Account: <b>$totalAcc</b>";
+                     ?>
+                     </div>
+                    </div>
+                </div>
+              </div>
+              
+             <div class="column">
+             <div class="col-sm-9">
+             <table id="myData"  class="table table-bordered table-advance table-hover ">
+                                <thead>
+                                  <tr>
+                                      <th class="col-sm-2"> Name</th>
+                                      <th class="col-sm-1"> Age</th>
+                                      <th class="col-sm-1"> Gender</th>
+                                      <th class="col-sm-1"> Username</th>
+                                      <th class="col-sm-3"> Email</th>
+                                      <th class="col-sm-3"> Address</th>
+                                      <th class="col-sm-1"> Mobile #</th>
+                                  </tr>
+                                </thead>
+                                <tfoot>
+                                  <tr>
+                                    <th></th>
+                                    <th></th>
+                                    <th></th>
+                                    <th></th>
+                                    <th></th>
+                                    <th></th>
+                                  </tr>
+                                </tfoot>
+                                <tbody>
+                                <?php 
+                                while( $row=mysql_fetch_array($query) ) { 
+                                $accID = $row['accID'];
+                                ?>
+                                  <tr>
+                                    <td><?php echo $row["fullName"];?></td>
+                                    <td><?php echo $row["Age"];?></td>
+                                    <td><?php echo $row["Gender"];?></td>
+                                    <td><?php echo $row["username"];?></td>
+                                    <td><?php echo $row["Email"];?></td>
+                                    <td><?php echo $row["Address"];?></td>
+                                    <td><?php echo $row["Mobile"];?></td>
+                                    
+                                  </tr>
+                                  <?php 
+                                  }
+                                  ?>
+                                </tbody>
+                              </table>
+                              </div>
+                              </div>
               <!-- page end-->
           </section>
       </section>
@@ -232,6 +298,12 @@ $js_outEmp = json_encode($EmployeePercentageJS);
     <script src="js/jquery.nicescroll.js" type="text/javascript"></script><!--custome script for all page-->
     <script src="js/scripts.js"></script>
 
+    <script src="js/jquery.dataTables.min.js"></script>
+    <script src="js/dataTables.bootstrap.min.js"></script>
+    <script type="text/javascript">
+
+      $('#myData').dataTable();
+    </script>
 
   </body>
 </html>

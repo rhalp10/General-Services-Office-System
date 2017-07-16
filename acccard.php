@@ -126,7 +126,7 @@ $query=mysql_query($sql);
                           <li><a class="" href="accreceipt.php">Accountability Receipt</a></li>
                           <li><a class="" href="returnslip.php">Return Slip</a></li>
                           <li><a class="" href="bincard.php"><span>Bincard</span></a></li>
-                          <li><a class="" href="Custodian.php">Custodian Slip</a></li>
+                          <li><a class="" href="ics.php">Custodian Slip</a></li>
                           
                       </ul>
                   </li>
@@ -137,20 +137,25 @@ $query=mysql_query($sql);
                           <span>Employee  List</span>
                       </a>
                   </li>
-                  
+                  <li class="">
+                      <a class="" href="office.php">
+                          <i class="icon_building_alt"></i>
+                          <span>Office  List</span>
+                      </a>
+                  </li>
                   <li class="sub-menu ">
                       <a href="javascript:;" class="">
-                          <i class="icon_documents_alt"></i>
+                          <i class="icon_datareport"></i>
                           <span>Report</span>
                           <span class="menu-arrow arrow_carrot-right"></span>
                       </a>
-                      <ul class="sub">                          
+                      <ul class="sub">                           
                           <li><a class="" href="account_report.php">Account</a></li>
                           <li><a class="" href="acccard_report.php">PGC Account Card</a></li>
                           <li><a class="" href="accreceipt_report.php">Accountability Receipt</a></li>
                           <li><a class="" href="returnslip_report.php">Return Slip</a></li>
                           <li><a class="" href="bincard_report.php"><span>Bincard</span></a></li>
-                          <li><a class="" href="Custodian_report.php">Custodian Slip</a></li>
+                          <li><a class="" href="ics.php">Custodian Slip</a></li>
                       </ul>
                   </li>
                   
@@ -174,7 +179,7 @@ $query=mysql_query($sql);
       </div>
           <div class="panel">
           <header class="panel-heading tab-bg-primary " style="padding:15px; height: 70px;">
-                     <a class="btn btn-success pull-left" href="" data-toggle="modal" data-target="#AddNewPerson">Add new person record</a>
+                     <a class="btn btn-success pull-left" href="" data-toggle="modal" data-target="#AddNewPerson"><span class="fa fa-plus-circle"></span> Add New Person Record</a>
                      <a class="btn btn-info pull-right" href="" data-toggle="modal" data-target="#PrintMethod" ><span class="icon_printer"></span> PRINT</a>
                         
                           </header>
@@ -223,12 +228,35 @@ $query=mysql_query($sql);
                   <li><a href="acccard_view.php?accID=<?php echo $accID; ?>">View</a></li>
                   <li><a href="acccard_edit.php?accID=<?php echo $accID; ?>">Edit</a></li>
                   <li role="separator" class="divider"></li>
-                  <li><a onclick="confirmDelete(<?php echo $accID; ?>)">Delete</a></li>
+                  <li><a data-toggle="modal" data-target="#delete<?php echo $accID; ?>">Delete</a></li>
                 </ul>
               </div>
               </td>
-
             </tr>
+            <!-- Delete Modal  -->
+            <div id="delete<?php echo $accID; ?>" class="modal fade" role="dialog">
+              <div class="modal-dialog">
+
+                <!-- Modal content-->
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Delete Person Record</h4>
+                  </div>
+                  <div class="modal-body">
+                  <center>
+                  <h1>Are you sure ?</h1>
+                    <a class="btn btn-success" href="acccard_delete_action.php?accID=<?php echo $accID; ?>">DELETE</a>
+                    <a class="btn btn-danger"  data-dismiss="modal">CANCEL</a>
+                    </center>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                  </div>
+                </div>
+
+              </div>
+            </div><!-- End Delete Modal  -->
             <?php
             }
             ?>
@@ -333,7 +361,20 @@ $query=mysql_query($sql);
                         <div class="form-group">
                             <label class="col-sm-2 control-label"><b>OFFICE</b></label>
                             <div class="col-sm-10">
-                                <input type="text"  class="form-control" placeholder="Office" name="pgc_emp_ac_office" maxlength="50" onkeyup="letterInputOnly(this);">
+                            <?php 
+                            $officeRes = mysql_query("SELECT * FROM office_dictionary");
+                          
+                            ?>
+                              <select value="<?php echo $officeVal['officeName'];?>" class="form-control" name="pgc_emp_ac_office">
+                              <?php 
+                                while ($officeVal = mysql_fetch_array($officeRes)) {
+                                  ?>
+                                <option value="<?php echo $officeVal['officeName'];?>"><?php echo $officeVal['officeName'];?></option>
+                                <?php 
+                              }
+                              ?>
+                              </select>
+                              
                             </div>
                         </div>
                         <br>  
@@ -471,7 +512,7 @@ $query=mysql_query($sql);
     //  } );
 
       
- //FOR DELETE FUNCTION RECORD
+ /*OLD  DELETE FUNCTION RECORD
  function confirmDelete(id) {
     
     var r = confirm('Do you want to delete?');
@@ -481,6 +522,7 @@ $query=mysql_query($sql);
         window.location='acccard.php';
     }
 }
+*/
  //NUMBER ONLY
   function numberInputOnly(elem) {
                 var validChars = /[0-9]/;

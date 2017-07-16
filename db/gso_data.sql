@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 14, 2017 at 10:39 AM
+-- Generation Time: Jul 14, 2017 at 05:17 PM
 -- Server version: 5.6.16
 -- PHP Version: 5.5.11
 
@@ -122,10 +122,10 @@ INSERT INTO `emp_accountability_card` (`ID`, `Emp_ID`, `ItemSetID`, `itemCode`, 
 (13, 1, 'SP-13', 'SET SP-13', 'T-457-16', 1, 'unit', 'SET 13', '1 SN. MMLYKS01623C12311', 'OT-09-98', 0, 'null', '', '2017-07-14 01:00:00', '0000-00-00 00:00:00'),
 (14, 1, 'SP-14', 'SET SP-14', 'T-457-16', 1, 'unit', 'SET 14', '1 SN. MMLYKS01623C12311', 'OT-09-98', 0, 'null', 'i and i 9/12/2013', '2017-07-14 01:00:00', '0000-00-00 00:00:00'),
 (15, 1, 'SP-15', 'SET SP-15', 'T-457-16', 1, 'unit', 'SET 15', '1 SN. MMLYKS01623C12311', 'OT-09-98', 0, 'Adoracion Mojica', 'Formerly to Adoracion Mojica', '2017-07-14 01:00:00', '0000-00-00 00:00:00'),
-(18, 1, 'SP-18', 'SET SP-16', 'T-457-16', 0, 'unit', 'SET 16', '1 SN. MMLYKS01623C12311', 'OT-09-98', 0, 'null', '', '2017-07-14 01:00:00', '2017-06-08 00:00:00'),
-(19, 1, 'SP-19', 'PART SP-16', 'T-457-16', 0, 'unit', 'PART OF SET 16', '1 SN. MMLYKS01623C12311', 'OT-09-98', 6, 'null', '', '2017-07-14 01:00:00', '2017-06-15 00:00:00'),
-(20, 1, 'SP-20', 'PART SP-16', 'T-457-16', 0, 'unit', 'PART OF SET 16', '1 SN. MMLYKS01623C12311', 'OT-09-98', 0, 'null', '', '2017-07-14 01:00:00', '0000-00-00 00:00:00'),
-(21, 1, 'SP-21', 'PART SP-16', 'T-457-16', 0, 'unit', 'PART OF SET 16', '1 SN. MMLYKS01623C12311', 'OT-09-98', 1321, 'null', '', '2017-07-14 01:00:00', '0000-00-00 00:00:00'),
+(18, 1, 'SP-18', 'SET SP-16', 'T-457-16', 12, 'unit', 'SET 16', '1 SN. MMLYKS01623C12311', 'OT-09-98', 0, 'null', '', '2017-07-14 01:00:00', '2017-06-08 00:00:00'),
+(19, 1, 'SP-19', 'PART SP-16', 'T-457-16', 1, 'unit', 'PART OF SET 16', '1 SN. MMLYKS01623C12311', 'OT-09-98', 6, 'null', '', '2017-07-14 01:00:00', '2017-06-15 00:00:00'),
+(20, 1, 'SP-20', 'PART SP-16', 'T-457-16', 1, 'unit', 'PART OF SET 16', '1 SN. MMLYKS01623C12311', 'OT-09-98', 0, 'null', '', '2017-07-14 01:00:00', '0000-00-00 00:00:00'),
+(21, 1, 'SP-21', 'PART SP-16', 'T-457-16', 1, 'unit', 'PART OF SET 16', '1 SN. MMLYKS01623C12311', 'OT-09-98', 1321, 'null', '', '2017-07-14 01:00:00', '0000-00-00 00:00:00'),
 (25, 1, 'SP-16', 'PART SP-16', 'T-457-16', 1, 'unit', 'PART OF SET 16', '1 SN. MMLYKS01623C12311', 'OT-09-98', 0, 'null', 'Formerly to Adoracion Mojica', '2017-07-14 01:00:00', '0000-00-00 00:00:00'),
 (26, 1, 'SP-22', 'SET SP-22', '', 1, 'unit', 'SET22', '1 SN. MMLYKS01623C12311', 'OT-09-98', 0, 'null', '', '2017-07-15 00:00:00', '0000-00-00 00:00:00');
 
@@ -150,7 +150,7 @@ CREATE TABLE IF NOT EXISTS `emp_accounts_record` (
   `image` varchar(250) NOT NULL,
   PRIMARY KEY (`accID`),
   UNIQUE KEY `User` (`username`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=38 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=39 ;
 
 --
 -- Dumping data for table `emp_accounts_record`
@@ -166,11 +166,10 @@ INSERT INTO `emp_accounts_record` (`accID`, `accLevel`, `username`, `password`, 
 (17, '1', '8', '8', 'panget', 8, '8', '8', '8@yahoo.com', '8', '9900000000', 'img/emp_profile/temp.jpg'),
 (18, '1', 'darren321', '321', 'OMAR DAUD', 15, 'Male', 'NAIC', '321@yahoo.com', '155', '0906545644', 'img/emp_profile/temp.jpg'),
 (19, '1', 'rd2h1fs8jk2b6cz', 'yth3xk5slz8bd', 'Omar', 20, 'Male', 'Bucal 3-B, Maragondon, Cavite', 'Omardaud21000@gmail.com', '.....', '09355173381', 'img/emp_profile/temp.jpg'),
-(20, '3', 'bano12315', '55555', 'asdasdasd', 30, 'Male', 'wazhing', 'k4@yaho1111.c1om1', '4k', '0954564546', 'img/emp_profile/temp.jpg'),
 (21, '0', 'Asada', '555', 'Franz Marc Cabrera', 50, 'Male', 'Blk 38 Lot 11 Ph2b Southville2 Trece Martirez City', 'franzmarccabrera123@gmail.com', 'ADMIN', '0915151613', 'img/emp_profile/temp.jpg'),
 (22, '0', 'franz123', '321', 'Franz Marc Cabrera', 31, 'Male', 'as32d1as321d', 'franzmarccabrera123@gmail.com', 'asdasd', '04a4sd08498', 'img/emp_profile/temp.jpg'),
-(23, '3', 'ds3a21', '321', 'as32d1', 20, 'Male', 'asd32as1d51asd14', 'a23s1d@yahoo.com', 'asdasd', '561651adasd', 'img/emp_profile/temp.jpg'),
-(37, '0', 'as32d1a1', 'w', 's', 1, 'Male', 'aw', 'wwwwwwww@yahoo.com', 'd', '040084', 'img/emp_profile/temp.jpg');
+(37, '0', 'as32d1a1', 'w', 's', 1, 'Male', 'aw', 'wwwwwwww@yahoo.com', 'd', '040084', 'img/emp_profile/temp.jpg'),
+(38, '0', 'yoshi1859', '321', 'asdasd', 2, 'Male', 'asd32as1d51asd14', 'asd@gmail.com', 'sss', '2', 'img/emp_profile/temp.jpg');
 
 -- --------------------------------------------------------
 
@@ -185,7 +184,7 @@ CREATE TABLE IF NOT EXISTS `emp_pgc_record` (
   `designation` varchar(100) NOT NULL,
   `note` varchar(50) NOT NULL,
   PRIMARY KEY (`accID`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=29 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=33 ;
 
 --
 -- Dumping data for table `emp_pgc_record`
@@ -207,8 +206,9 @@ INSERT INTO `emp_pgc_record` (`accID`, `fullName`, `office`, `designation`, `not
 (23, 'Ains Ooal Gown1', ' Nazareth', 'KAHIT SAAN', 'dasd'),
 (24, 'Marc Kevin Manalo', 'BIDA OR FEED', 'BIDA GAMING', ''),
 (26, 'wazhin', 'xhing', 'Ceeeeeeeerrrrrrrrrrrrbellllllllls', 'wazak'),
-(27, '1111111', '11111', '11111', 'retiradp'),
-(28, 'arc', 'Arc', 'Arc', 'Arc');
+(29, 'aaaaaaaaaaaa', 'Emergency Employee	', 'ddd', 'zxc'),
+(30, 'acs', 'Agency Employee', 'ccccc', 's'),
+(32, 'Crispin Octa', 'Agency Employee', 'upuan', 'wala');
 
 -- --------------------------------------------------------
 
@@ -356,7 +356,7 @@ CREATE TABLE IF NOT EXISTS `office_dictionary` (
   `officeName` varchar(50) NOT NULL,
   PRIMARY KEY (`ID`),
   UNIQUE KEY `officeName` (`officeName`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=12 ;
 
 --
 -- Dumping data for table `office_dictionary`
@@ -422,6 +422,7 @@ CREATE TABLE IF NOT EXISTS `property_return_slip_record` (
   `ReceiveFrom_Name` varchar(50) NOT NULL,
   `ReceiveFrom_Position` varchar(50) NOT NULL,
   `ReceiveFrom_Date` date NOT NULL,
+  `DateAdded` datetime NOT NULL,
   PRIMARY KEY (`ID`),
   KEY `prs_purpose_dictionary` (`PurposeID`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
@@ -430,8 +431,8 @@ CREATE TABLE IF NOT EXISTS `property_return_slip_record` (
 -- Dumping data for table `property_return_slip_record`
 --
 
-INSERT INTO `property_return_slip_record` (`ID`, `LGU_Name`, `PurposeID`, `Qty`, `Unit`, `Descrp`, `Serial_Num`, `Prop_Number`, `MrNo`, `Name_of_Enduser`, `Unit_Value`, `Total_Value`, `Status`, `ReceiveBy_Name`, `ReceiveBy_Position`, `ReceiveBy_Date`, `ReceiveFrom_Name`, `ReceiveFrom_Position`, `ReceiveFrom_Date`) VALUES
-(1, 'Lumil NHS, Silang', 3, 1, 'unit', 'Lenovo Tab-A7-30 Mld. Lenovo A3300-GV', 'SN-HGC7VGW7', '', 'T-192-15', 'Lucia M. Diesta', 0, 7095, 'Unserviceable', '', '', '0000-00-00', '', '', '0000-00-00');
+INSERT INTO `property_return_slip_record` (`ID`, `LGU_Name`, `PurposeID`, `Qty`, `Unit`, `Descrp`, `Serial_Num`, `Prop_Number`, `MrNo`, `Name_of_Enduser`, `Unit_Value`, `Total_Value`, `Status`, `ReceiveBy_Name`, `ReceiveBy_Position`, `ReceiveBy_Date`, `ReceiveFrom_Name`, `ReceiveFrom_Position`, `ReceiveFrom_Date`, `DateAdded`) VALUES
+(1, 'Lumil NHS, Silang', 3, 1, 'unit', 'Lenovo Tab-A7-30 Mld. Lenovo A3300-GV', 'SN-HGC7VGW7', '', 'T-192-15', 'Lucia M. Diesta', 0, 7095, 'Unserviceable', '', '', '0000-00-00', '', '', '0000-00-00', '0000-00-00 00:00:00');
 
 -- --------------------------------------------------------
 

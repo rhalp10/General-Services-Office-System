@@ -138,7 +138,7 @@ $rows = mysql_num_rows($result);
                           <li><a class="" href="accreceipt.php">Accountability Receipt</a></li>
                           <li><a class="" href="returnslip.php">Return Slip</a></li>
                           <li><a class="" href="bincard.php"><span>Bincard</span></a></li>
-                          <li><a class="" href="Custodian.php">Custodian Slip</a></li>
+                          <li><a class="" href="ics.php">Custodian Slip</a></li>
                       </ul>
                   </li>
                              
@@ -148,20 +148,25 @@ $rows = mysql_num_rows($result);
                           <span>Employee  List</span>
                       </a>
                   </li>
-                  
+                  <li class="">
+                      <a class="" href="office.php">
+                          <i class="icon_building_alt"></i>
+                          <span>Office  List</span>
+                      </a>
+                  </li>
                   <li class="sub-menu ">
                       <a href="javascript:;" class="">
-                          <i class="icon_documents_alt"></i>
+                          <i class="icon_datareport"></i>
                           <span>Report</span>
                           <span class="menu-arrow arrow_carrot-right"></span>
                       </a>
-                      <ul class="sub">                 
+                      <ul class="sub">                           
                           <li><a class="" href="account_report.php">Account</a></li>
                           <li><a class="" href="acccard_report.php">PGC Account Card</a></li>
                           <li><a class="" href="accreceipt_report.php">Accountability Receipt</a></li>
                           <li><a class="" href="returnslip_report.php">Return Slip</a></li>
                           <li><a class="" href="bincard_report.php"><span>Bincard</span></a></li>
-                          <li><a class="" href="Custodian_report.php">Custodian Slip</a></li>
+                          <li><a class="" href="ics.php">Custodian Slip</a></li>
                       </ul>
                   </li>
                   
@@ -326,7 +331,7 @@ $rows = mysql_num_rows($result);
                                                   
                                                   <div class="form-group">
                                                       <div class="col-lg-offset-2 col-lg-10">
-                                                         <input class="btn btn-primary"  type="submit" name="ProfileEdit" value="Update">
+                                                         <input class="btn btn-success"  type="submit" name="ProfileEdit" value="Update">
                                                           <button href="profile.php" type="button" class="btn btn-danger">Cancel</button>
                                                       </div>
                                                   </div>

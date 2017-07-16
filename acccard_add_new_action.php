@@ -25,7 +25,7 @@ if(isset($_POST['Submit']))
                 if(empty($pgc_emp_ac_office)) 
                 {
                     echo "<script>alert('Office is Empty!');
-                                                window.location='acccardx.php';
+                                                window.location='acccard.php';
                                             </script>";
                 }
                 

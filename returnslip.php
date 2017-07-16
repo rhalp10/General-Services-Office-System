@@ -106,7 +106,7 @@ include('session.php');
                           <li><a class="" href="accreceipt.php">Accountability Receipt</a></li>
                           <li><a class="" href="returnslip.php">Return Slip</a></li>
                           <li><a class="" href="bincard.php"><span>Bincard</span></a></li>
-                          <li><a class="" href="Custodian.php">Custodian Slip</a></li>
+                          <li><a class="" href="ics.php">Custodian Slip</a></li>
                       </ul>
                   </li>
                              
@@ -116,20 +116,25 @@ include('session.php');
                           <span>Employee  List</span>
                       </a>
                   </li>
-                  
+                  <li class="">
+                      <a class="" href="office.php">
+                          <i class="icon_building_alt"></i>
+                          <span>Office  List</span>
+                      </a>
+                  </li>
                   <li class="sub-menu ">
                       <a href="javascript:;" class="">
-                          <i class="icon_documents_alt"></i>
+                          <i class="icon_datareport"></i>
                           <span>Report</span>
                           <span class="menu-arrow arrow_carrot-right"></span>
                       </a>
-                      <ul class="sub">                   
+                      <ul class="sub">                           
                           <li><a class="" href="account_report.php">Account</a></li>
                           <li><a class="" href="acccard_report.php">PGC Account Card</a></li>
                           <li><a class="" href="accreceipt_report.php">Accountability Receipt</a></li>
                           <li><a class="" href="returnslip_report.php">Return Slip</a></li>
                           <li><a class="" href="bincard_report.php"><span>Bincard</span></a></li>
-                          <li><a class="" href="Custodian_report.php">Custodian Slip</a></li>
+                          <li><a class="" href="ics.php">Custodian Slip</a></li>
                       </ul>
                   </li>
                   
@@ -165,7 +170,7 @@ include('session.php');
                            <div class="form-group">
                                 <label class="col-sm-3 control-label">Name of Local Government Unit:</label>
                                     <div class="col-sm-7">
-                                    <input type="text" name="prop_return_slip_lguName" class="form-control" name="prop_return_slip_nameLGU" required="">
+                                    <input type="text" name="prop_return_slip_lguName" class="form-control" name="prop_return_slip_nameLGU" required="" placeholder="Name of Local Government Unit">
                                     </div>
                             </div>
                            <div class="form-group">
@@ -192,19 +197,19 @@ include('session.php');
                            <tbody class="col-sm-12">
                               <tr >
                                  <th class="col-sm-1"><i class="icon_clipboard"></i> Quantity</th>
-                                 <th class="col-sm-1"><i class="icon_profile"></i> Unit</th>
-                                 <th class="col-sm-4"><i class="icon_lock_alt"></i> Description</th>
-                                 <th class="col-sm-1"><i class="icon_mail_alt"></i> Serial Number</th>
-                                 <th class="col-sm-1"><i class="icon_mail_alt"></i> Property No.</th>
+                                 <th class="col-sm-1"><i class="icon_datareport_alt"></i> Unit</th>
+                                 <th class="col-sm-4"><i class="icon_chat_alt"></i> Description</th>
+                                 <th class="col-sm-1"><i class="icon_easel_alt"></i> Serial Number</th>
+                                 <th class="col-sm-1"><i class="icon_id-2"></i> Property No.</th>
                                  
                                  
                               </tr>
                               <tr>
-                                <td><input type="text" name="prop_return_slip_qty" class="form-control"></td>
-                                <td><input type="text" name="prop_return_slip_unit" class="form-control"></td>
-                                <td><input type="text" name="prop_return_slip_descrp" class="form-control"></td>
-                                <td><input type="text" name="prop_return_slip_serialnum" class="form-control"></td>
-                                <td><input type="text" name="prop_return_slip_propno" class="form-control"></td>
+                                <td><input type="text" name="prop_return_slip_qty" class="form-control" placeholder="Qty"></td>
+                                <td><input type="text" name="prop_return_slip_unit" class="form-control" placeholder="Unit"></td>
+                                <td><input type="text" name="prop_return_slip_descrp" class="form-control" placeholder="Description"></td>
+                                <td><input type="text" name="prop_return_slip_serialnum" class="form-control" placeholder="Serial Number"></td>
+                                <td><input type="text" name="prop_return_slip_propno" class="form-control" placeholder="Property Number"></td>
                               </tr>
                            </tbody>
                           
@@ -214,15 +219,15 @@ include('session.php');
                          <table class="table table-striped table-advance table-hover ">
                            <tbody class="col-sm-12">
                                 <tr>
-                                 <th class="col-sm-1"><i class="icon_mail_alt"></i> M.R. No.</th>
-                                 <th class="col-sm-1"><i class="icon_mail_alt"></i> Name Of End-User</th>
-                                 <th class="col-sm-1"><i class="icon_mail_alt"></i> Unit Vaule</th>
-                                 <th class="col-sm-1"><i class="icon_mail_alt"></i> Total Value</th></tr>
+                                 <th class="col-sm-1"><i class="icon_id"></i> PAR. No.</th>
+                                 <th class="col-sm-1"><i class="icon_puzzle"></i> Name Of End-User</th>
+                                 <th class="col-sm-1"><i class="icon_wallet_alt"></i> Unit Value</th>
+                                 <th class="col-sm-1"><i class="icon_currency_alt"></i> Total Value</th></tr>
                               <tr>
-                                <td><input type="text" name="prop_return_slip_mrno" class="form-control" required=""></td>
-                                <td><input type="text" name="prop_return_slip_NameOfEndUser" class="form-control" required=""></td>
-                                <td><input type="" name="prop_return_slip_UnitValue" class="form-control" required=""></td>
-                                <td><input type="text" name="prop_return_slip_TotalValue" class="form-control" required=""></td>
+                                <td><input type="text" name="prop_return_slip_par" class="form-control" required="" placeholder="PAR. Number"></td>
+                                <td><input type="text" name="prop_return_slip_NameOfEndUser" class="form-control" required="" placeholder="Name Of End-User"></td>
+                                <td><input type="" name="prop_return_slip_UnitValue" class="form-control" required="" placeholder="Unit Value"></td>
+                                <td><input type="text" name="prop_return_slip_TotalValue" class="form-control" required="" placeholder="Total Value"></td>
                               </tr>
                            </tbody>
                           

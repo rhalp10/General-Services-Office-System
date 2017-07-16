@@ -126,7 +126,7 @@ $query=mysql_query($sql);
                           <li><a class="" href="accreceipt.php">Accountability Receipt</a></li>
                           <li><a class="" href="returnslip.php">Return Slip</a></li>
                           <li><a class="" href="bincard.php"><span>Bincard</span></a></li>
-                          <li><a class="" href="Custodian.php">Custodian Slip</a></li>
+                          <li><a class="" href="ics.php">Custodian Slip</a></li>
                           
                       </ul>
                   </li>
@@ -137,20 +137,25 @@ $query=mysql_query($sql);
                           <span>Employee  List</span>
                       </a>
                   </li>
-                  
+                  <li class="">
+                      <a class="" href="office.php">
+                          <i class="icon_building_alt"></i>
+                          <span>Office  List</span>
+                      </a>
+                  </li>
                   <li class="sub-menu ">
                       <a href="javascript:;" class="">
-                          <i class="icon_documents_alt"></i>
+                          <i class="icon_datareport"></i>
                           <span>Report</span>
                           <span class="menu-arrow arrow_carrot-right"></span>
                       </a>
-                      <ul class="sub">                          
+                      <ul class="sub">                           
                           <li><a class="" href="account_report.php">Account</a></li>
                           <li><a class="" href="acccard_report.php">PGC Account Card</a></li>
                           <li><a class="" href="accreceipt_report.php">Accountability Receipt</a></li>
                           <li><a class="" href="returnslip_report.php">Return Slip</a></li>
                           <li><a class="" href="bincard_report.php"><span>Bincard</span></a></li>
-                          <li><a class="" href="Custodian_report.php">Custodian Slip</a></li>
+                          <li><a class="" href="ics.php">Custodian Slip</a></li>
                       </ul>
                   </li>
                   
@@ -174,7 +179,7 @@ $query=mysql_query($sql);
       </div>
           <div class="panel">
           <header class="panel-heading tab-bg-primary " style="padding:15px; height: 70px;">
-                     <a class="btn btn-success pull-left" href="" data-toggle="modal" data-target="#AddNewICS">Add ICS Record</a>
+                     <a class="btn btn-success pull-left" href="" data-toggle="modal" data-target="#AddNewICS"><span class="fa fa-plus-circle"></span> Add ICS Record</a>
                         
                           </header>
                          
@@ -327,19 +332,19 @@ $query=mysql_query($sql);
                             <tr>
                                 <th class="col-sm-1"><i class="icon_clipboard"></i> Quantity</th>
                                 <th class="col-sm-1"><i class="icon_datareport_alt "></i> Unit</th>
-                                <th class="col-sm-4"><i class="icon_documents_alt"></i> Description</th>
-                                <th class="col-sm-2"><i class="icon_drawer_alt"></i> Inventory Item No.</th>
+                                <th class="col-sm-4"><i class="icon_chat_alt"></i> Description</th>
+                                <th class="col-sm-2"><i class="icon_id"></i> Inventory Item No.</th>
                                 <th class="col-sm-2"><i class="icon_hourglass"></i> Estimated Useful Life</th>
                               </tr>
                               <tr>
-                                <td><input type="text" name="custodian_slip_qty" class="form-control"  required=""></td>
+                                <td><input type="text" name="custodian_slip_qty" class="form-control"  required="" placeholder="Qty"></td>
                                 <td><select  name="custodian_slip_unit" class="form-control" required="" value="custodian_slip_unit">
                                   <option value="unit">Unit</option>
                                   <option value="pc">Pc.</option>
                                 </select></td>
-                                <td><input type="text" name="custodian_slip_descrp" class="form-control"  required=""></td>
-                                <td><input type="text" name="custodian_slip_inventItemNo" class="form-control"  required=""></td>
-                                <td><input type="text" name="custodian_slip_EzLife" class="form-control"  required=""></td>
+                                <td><input type="text" name="custodian_slip_descrp" class="form-control"  required="" placeholder="Description"></td>
+                                <td><input type="text" name="custodian_slip_inventItemNo" class="form-control"  required="" placeholder="Inventory Item No."></td>
+                                <td><input type="text" name="custodian_slip_EzLife" class="form-control"  required="" placeholder="Estimated Useful Life"></td>
                               </tr>
                              </table>
                              <hr>
@@ -407,11 +412,6 @@ $query=mysql_query($sql);
                                                 </div>
                                             </div>
                                             <div>
-                                              <input type="text" name="custodian_slip_dateAdd" value="" >
-
-                                                    
-                                              
-
                                             </div>
                                     </div>
                                 </section>
@@ -467,7 +467,7 @@ $query=mysql_query($sql);
     if (r == true) {
       window.location='ics_delete_action.php?icsID='+id;
     } else {
-        window.location='Custodian.php';
+        window.location='ics.php';
     }
 }
  //NUMBER ONLY

@@ -10,7 +10,7 @@ if(isset($_POST['Submit']))
     $prop_return_slip_descrp = $_POST['prop_return_slip_descrp'];
     $prop_return_slip_serialnum = $_POST['prop_return_slip_serialnum'];
     $prop_return_slip_propno = $_POST['prop_return_slip_propno'];
-    $prop_return_slip_mrno = $_POST['prop_return_slip_mrno'];
+    $prop_return_slip_mrno = $_POST['prop_return_slip_par'];
     $prop_return_slip_NameOfEndUser = $_POST['prop_return_slip_NameOfEndUser'];
     $prop_return_slip_UnitValue = $_POST['prop_return_slip_UnitValue'];
     $prop_return_slip_TotalValue = $_POST['prop_return_slip_TotalValue'];

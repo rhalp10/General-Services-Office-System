@@ -127,7 +127,7 @@ $query=mysql_query($sql);
                           <li><a class="" href="accreceipt.php">Accountability Receipt</a></li>
                           <li><a class="" href="returnslip.php">Return Slip</a></li>
                           <li><a class="" href="bincard.php"><span>Bincard</span></a></li>
-                          <li><a class="" href="Custodian.php">Custodian Slip</a></li>
+                          <li><a class="" href="ics.php">Custodian Slip</a></li>
                       </ul>
                   </li>
                              
@@ -137,10 +137,15 @@ $query=mysql_query($sql);
                           <span>Employee  List</span>
                       </a>
                   </li>
-                  
+                  <li class="">
+                      <a class="" href="office.php">
+                          <i class="icon_building_alt"></i>
+                          <span>Office  List</span>
+                      </a>
+                  </li>
                   <li class="sub-menu ">
                       <a href="javascript:;" class="">
-                          <i class="icon_documents_alt"></i>
+                          <i class="icon_datareport"></i>
                           <span>Report</span>
                           <span class="menu-arrow arrow_carrot-right"></span>
                       </a>
@@ -150,7 +155,7 @@ $query=mysql_query($sql);
                           <li><a class="" href="accreceipt_report.php">Accountability Receipt</a></li>
                           <li><a class="" href="returnslip_report.php">Return Slip</a></li>
                           <li><a class="" href="bincard_report.php"><span>Bincard</span></a></li>
-                          <li><a class="" href="Custodian_report.php">Custodian Slip</a></li>
+                          <li><a class="" href="ics.php">Custodian Slip</a></li>
                       </ul>
                   </li>
                   
@@ -178,7 +183,7 @@ $query=mysql_query($sql);
                   <div class="col-lg-12">
                       <section class="panel">
                            <header class="panel-heading tab-bg-primary " style="padding:15px; height: 70px;">
-                       <a class="btn btn-success pull-left" href="" data-toggle="modal" data-target="#addNewUser">Add New Account</a>
+                       <a class="btn btn-success pull-left" href="" data-toggle="modal" data-target="#addNewUser"><span class="fa fa-plus-circle"></span> Add New Account</a>
                         <a class="btn btn-info pull-right" href="assets/fpdf/account_report.php" target="_blank" title="Print" name="submit"><span class="icon_printer"></span> PRINT</a>
                           
                           </header>
@@ -227,11 +232,35 @@ $query=mysql_query($sql);
                                         <li><a href="account_view.php?accID=<?php echo $accID; ?>">View</a></li>
                                         <li><a href="account_edit.php?accID=<?php echo $accID; ?>">Edit</a></li>
                                         <li role="separator" class="divider"></li>
-                                        <li><a onclick="confirmDelete(<?php echo $accID; ?>)">Delete</a></li>
+                                        <li><a data-toggle="modal" data-target="#delete<?php echo $accID; ?>">Delete</a></li>
                                       </ul>
                                     </div>
                                     </td>
                                   </tr>
+                                   <!-- Delete Modal  -->
+                                  <div id="delete<?php echo $accID; ?>" class="modal fade" role="dialog">
+                                    <div class="modal-dialog">
+
+                                      <!-- Modal content-->
+                                      <div class="modal-content">
+                                        <div class="modal-header">
+                                          <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                          <h4 class="modal-title">Delete Account</h4>
+                                        </div>
+                                        <div class="modal-body">
+                                        <center>
+                                        <h1>Are you sure ?</h1>
+                                          <a class="btn btn-success" href="account_delete_action.php?accID=<?php echo $accID; ?>">DELETE</a>
+                                          <a class="btn btn-danger"  data-dismiss="modal">CANCEL</a>
+                                          </center>
+                                        </div>
+                                        <div class="modal-footer">
+                                          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                        </div>
+                                      </div>
+
+                                    </div>
+                                  </div><!-- End Delete Modal  -->
                                   <?php 
                                   }
                                   ?>
@@ -371,8 +400,11 @@ $query=mysql_query($sql);
                         <div class="form-group">
                             <label class="col-sm-2 control-label"></label>
                             <div class="col-sm-10">  
-                                <input class="btn btn-success "  type="submit" name="Submit" value="Submit"> 
+                                <input class="btn btn-success "  type="submit" name="Submit" value="Submit">
+                                <a class="btn btn-danger"  data-dismiss="modal">CANCEL</a>
+
                             </div>
+                            <br>
                         </div>
                     </form>
       </div>
