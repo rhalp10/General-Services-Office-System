@@ -97,10 +97,9 @@ if(isset($_POST['Submit']))
 		else
 		{
 			//query
-			$date = "123";
-			$sql = "INSERT INTO invent_custodian_slip(ICS,Qty,Unit,Descrp,Invent_Item_No,Ez_Useful_Life,ReceivedBy_Name,ReceivedBy_Position,ReceiveBy_Date,ReceivedFrom_Name,ReceivedFrom_Position,ReceiveFrom_Date,DateAdded)"; 
+			$sql = "INSERT INTO invent_custodian_slip(ICS,Qty,Unit,Descrp,Invent_Item_No,Ez_Useful_Life,ReceivedBy_Name,ReceivedBy_Position,ReceiveBy_Date,ReceivedFrom_Name,ReceivedFrom_Position,ReceiveFrom_Date)"; 
 
-			$sql.= "VALUES ('$custodian_slip_ICS','$custodian_slip_qty','$custodian_slip_unit','$custodian_slip_descrp','$custodian_slip_inventItemNo','$custodian_slip_EzLife','$custodian_slip_receiveBy_name','$custodian_slip_receiveBy_position','$custodian_slip_receiveBy_date','$custodian_slip_receiveFrom_name','$custodian_slip_receiveFrom_position','$custodian_slip_receiveFrom_date',$date";
+			$sql.= "VALUES ('$custodian_slip_ICS','$custodian_slip_qty','$custodian_slip_unit','$custodian_slip_descrp','$custodian_slip_inventItemNo','$custodian_slip_EzLife','$custodian_slip_receiveBy_name','$custodian_slip_receiveBy_position','$custodian_slip_receiveBy_date','$custodian_slip_receiveFrom_name','$custodian_slip_receiveFrom_position','$custodian_slip_receiveFrom_date'";
 			$res = mysql_query($sql);
 			//display success messages
 	        echo "<script>alert('Data added successfully');
