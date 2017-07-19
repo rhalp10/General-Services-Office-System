@@ -1,42 +1,45 @@
 # Changelog
-GSO_System v 1.51
+GSO_System v 0.51
 ## [Unreleased]
 
-## [1.01] - 06-14-17
-	- unang araw ko sa ojt at d namin alam ang aming gagawin , nag hintay ng gagawin.. pag tapos mag pasa ng letter, at pag dating ng tanghali kinausap lang kami para isipan ng gagawin at naisip nilang hindi related sa course namin ung mga ginagawa nila, tapos naisip ni mam kung marunong ba raw kami mag gawa ng database , iyun naging related na sa course namin at dun na nag simula ang pakikipagusap namin kay mam tungkol sa system ng kanilang office, and we create just a simple html preview with css 
-## [1.02] - 06-15-17)
-	-second day we have download some assets na kailangan sa system na gagawin, pero bago kami makagawa ng system kailangan namin ng pc uupuan pero walang bakante, dahil dun nag isip nalang kami ng kung paano magagawa ng tama ung database ng system, humingi kami ng iba't-ibang klase forms ng office nila at ni analyze kung paano magagawan ng tables sa database at kung paano mai-aaply sa system.  
-## [1.03] - 06-16-17
-	- nagawa na namin yung rought database then gumawa ng connection ng database sa system.
-## [1.04] - 06-19-17
-	- ginawa na namin lahat ng design ng system at nagawa na namin ng iba't-ibang forms ang system pero halos UI palang at walang function
-## [1.05] - 06-21-17
-	- Making the database much more responsive and stablishing different access in different users with specific task,
-## [1.10] - 06-22-17
+## [0.01] - 06-14-17
+	- Gathering Information
+## [0.02] - 06-15-17)
+	- Adding Template Assets 
+## [0.03] - 06-16-17
+	- Rought Database
+	- Database Connection
+## [0.04] - 06-19-17
+	- Create UI Forms Without Function
+## [0.05] - 06-21-17
+	- Making the database much more responsive
+	- Stablishing different access in different users with specific task
+## [0.10] - 06-22-17
 ### Added
-	- Adding moment.js para may orasan na nagalaw  at ginagawang mas responsive ung php codes ng system per forms
-## [1.11] - 06-27-17
+	- Adding moment.js for moving time 
+	- responsive php codes of system per forms
+## [0.11] - 06-27-17
 ### Added
 	- Adding some buttons like add,edit,view,delete  without function
-## [1.20] - 06-28-17
+## [0.20] - 06-28-17
 ### Added
 	- Adding search,pagination,desc and asc of data item list
-## [1.3] - 06-29-17
+## [0.30] - 06-29-17
 ### Added
 	- Adding some php action in function buttons 
-## [1.31] - 06-30-17
+## [0.31] - 06-30-17
 	- Trying to connect ajax code to make print function per form record,
-## [1.32] - 07-03-17
+## [0.32] - 07-03-17
 ### Added
 	- Add jsPDFmaster, but failed to adopt and trying jsPDFmin plugin still failed with tutorials
-## [1.33] - 07-04-17
+## [0.33] - 07-04-17
 	- Creating PDF Possible display of data connected to database 
-## [1.34] - 07-05-17
+## [0.34] - 07-05-17
 	- Nested While Fetched Query Works displaying sets with his parts  
-## [1.4] - 07-06-17
+## [0.40] - 07-06-17
 ### Added
 	- FPDF plugin for print 
-## [1.41] - 07-07-17
+## [0.41] - 07-07-17
 ### Added
 	- modals,add datatables update plugin
 	- dataTables_filter > Label > input css styles
@@ -47,7 +50,7 @@ GSO_System v 1.51
 	- acccard_add_new_action.php
 ### Remove
 	- Remove old data display replaced by json datatables
-## [1.42] - 07-10-17
+## [0.42] - 07-10-17
 ### Added
 	- Add modal update for change password
 ### Update
@@ -57,7 +60,7 @@ GSO_System v 1.51
 	- Update functions most of this function problems is sql query mispelled or mistype 
 ### Remove
 	- Remove Inventory Type
-## [1.43] - 07-11-17
+## [0.43] - 07-11-17
 ### Added
 	- Add Print Method Modal
 	- Add onkeyup Event in different inputs
@@ -66,7 +69,7 @@ GSO_System v 1.51
 	- While using updated datatables all data fetched miss position displayed
 	- Update display tables 
 	- Adopt New dataTables.bootstraps responsive sorting of data with pagnation and search inputBox
-## [1.44] - 07-12-17
+## [0.44] - 07-12-17
 ### Added
 	- Add icon
 ### Update
@@ -75,34 +78,34 @@ GSO_System v 1.51
 	- Removing excess sample
 ### Fix
 	- Fixing labels and form group
-## [1.45] - 07-13-17
+## [0.45] - 07-13-17
 ### Fix
 	- Fixing Sql Query for  Accountability Card View set details with parts using datatables
-## [1.46] - 07-14-17
+## [0.46] - 07-14-17
 ### Update
 	- Update Side LInk with updated bootstrap plugins,add new office management forms to edit,delete and add new office
-## [1.47] - 07-17-17
+## [0.47] - 07-17-17
 ### Change
 	- Change Jscript onclick Delete function to Bootstrap Modal
-## [1.48] - 07-18-17
+## [0.48] - 07-18-17
 ### Added
 	- Add assets/FPDF/bincard_print.php
 	- Add assets/FPDF/returnslip_print.php
 ### Update
 	- ICS and PRS, Update Table 
-## [1.49] - 07-19-17
+## [0.49] - 07-19-17
 ### Added
 	- Add ICS_edit_action.php
 	- Add assets/FPDF/ics_print.php
 ### Update
 	- Update PRS Add Function
 	- Update View Edit button Function of ICS.php
-## [1.5] - 07-20-17
+## [0.50] - 07-20-17
 ### Added
 	- Add Employee List Modal
 	- Add Employee List Datatable[Search,Pagnation]
 	- Add Function Button
-## [1.51] - 07-21-17
+## [0.51] - 07-21-17
 ### Finalizing
 	- Finalizing Account Management
 	- Finalizing Accountability Card
