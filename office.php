@@ -141,7 +141,7 @@ $query=mysql_query($sql);
                           <li><a class="" href="accreceipt_report.php">Accountability Receipt</a></li>
                           <li><a class="" href="returnslip_report.php">Return Slip</a></li>
                           <li><a class="" href="bincard_report.php"><span>Bincard</span></a></li>
-                          <li><a class="" href="ics.php">Custodian Slip</a></li>
+                          <li><a class="" href="ics_report.php">Custodian Slip</a></li>
                       </ul>
                   </li>
                   
@@ -229,8 +229,7 @@ $query=mysql_query($sql);
                                         </div>
                                         <br>
                                         <br>
-
-                                            <input class="btn btn-success col-xs-3"  type="submit" name="Update" value="Update">
+                                            <input class="btn btn-success col-md-offset-3 col-xs-3"  type="submit" name="Update" value="Update">
                                             <input type="button" class="btn btn-danger col-xs-3"  data-dismiss="modal" value="Cancel" style="margin-left: 10px;">
                                         <br>
                                         <br>
@@ -304,8 +303,8 @@ $query=mysql_query($sql);
     <label for="email">Office Name:</label>
     <input type="text" class="form-control" name="office_add">
   </div>
-  <input type="submit" class="btn btn-success" name="Submit">
-  <a class="btn btn-danger"  data-dismiss="modal">Cancel</a>
+  <input type="submit" class="btn btn-success col-md-offset-3 col-xs-3" name="Submit"><input type="button" class="btn btn-danger col-xs-3"  data-dismiss="modal" value="Cancel">
+  
 
 </form>
 

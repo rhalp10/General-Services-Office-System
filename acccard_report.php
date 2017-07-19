@@ -1,44 +1,10 @@
 <?php
-include('session.php');
-$result = mysql_query("SELECT * FROM emp_accounts_record WHERE username  = '$login_session'");
-$test = mysql_fetch_array($result);
-$rows = mysql_num_rows($result);
-                $Emp_ID=$test['accID'];
-                $accLevel=$test['accLevel'];
-                $username=$test['username'] ;
-                $password= $test['password'] ;                  
-                $email=$test['Email'] ;
-                $fullname=$test['fullName'] ;
-                $age=$test['Age'];
-                $gender=$test['Gender'] ;
-                $contact=$test['Mobile'] ;
-                $address=$test['Address'] ;
-                $position=$test['Pos'] ;
-                $img_profile=$test['image'];
-                if ($accLevel == '0') {
-                    $Level = 'Admin';
-                    
-                }
-                elseif ($accLevel = '1') {
-                    $Level = 'Employee';
-                    
-                }
 
-                elseif ($accLevel = '2') {
-                    $Level = 'other';
-                    
-                }
-                else {
-                     
-                }
+include('session.php');
 include('db.php');
 $sql = "SELECT *";
 $sql.=" FROM emp_pgc_record";
 $query=mysql_query($sql);
-
-$sql1 = "SELECT *";
-$sql1.=" FROM office_dictionary";
-$query1=mysql_query($sql1);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -190,7 +156,7 @@ $query1=mysql_query($sql1);
                           <li><a class="" href="accreceipt_report.php">Accountability Receipt</a></li>
                           <li><a class="" href="returnslip_report.php">Return Slip</a></li>
                           <li><a class="" href="bincard_report.php"><span>Bincard</span></a></li>
-                          <li><a class="" href="ics.php">Custodian Slip</a></li>
+                          <li><a class="" href="ics_report.php">Custodian Slip</a></li>
                       </ul>
                   </li>
                   
@@ -205,58 +171,62 @@ $query1=mysql_query($sql1);
         <section class="wrapper">
          <div class="row">
         <div class="col-lg-12">
-          <h3 class="page-header"><i class="fa fa fa-clipboard"></i> Accountability Card Report</h3>
+          <h3 class="page-header"><i class="fa fa-clipboard"></i> PGC Accountability Card Report</h3>
           <ol class="breadcrumb">
             <li><i class="fa fa-home"></i><a href="index.php">Dashboard</a></li>
-            <li><i class="fa fa-clipboard"></i>Account Card Report</li>
+            <li><i class="fa fa-clipboard"></i>PGC Accountability Card Report</li>
           </ol>
         </div>
       </div>
           <div class="panel">
           <header class="panel-heading tab-bg-primary " style="padding:15px; height: 70px;">
-                     
                      <a class="btn btn-info pull-right" href="" data-toggle="modal" data-target="#PrintMethod" ><span class="icon_printer"></span> PRINT</a>
                         
                           </header>
+                         
+                    
                     <div >
-                      <table id="myData"  class="table table-striped table-advance table-hover ">
-                                      <thead>
-                                        <tr>
-                                          <th>Name</th>
-                                          <th>Office</th>
-                                          <th>Designation</th>
-                                          <th>Note</th>
-                                        </tr>
-                                      </thead>
-                                      <tfoot>
-                                        <tr>
-                                          <th></th>
-                                          <th></th>
-                                          <th></th>
-                                          <th></th>
-                                        </tr>
-                                      </tfoot>
-                                      <tbody>
-                                      <?php 
-                                       while( $row=mysql_fetch_array($query) ) 
-                                       { 
+      <table id="myData"  class="table table-bordered table-advance table-hover  dataTable">
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Office</th>
+              <th>Designation</th>
+              <th>Note</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tfoot>
+            <tr>
+              <th></th>
+              <th></th>
+              <th></th>
+              <th></th>
+              <th></th>
+            </tr>
+          </tfoot>
+          <tbody>
+          <?php 
+           while( $row=mysql_fetch_array($query) ) 
+           { 
 
-                                       $accID = $row['accID'];
-                                      ?>
-                                        <tr>
-                                          <td><?php echo $row['fullName'];?></td>
-                                          <td><?php echo $row['office'];?></td>
-                                          <td><?php echo $row['designation'];?></td>
-                                          <td><?php echo $row['note'];?></td>
-                                          
+           $accID = $row['accID'];
+          ?>
+            <tr>
+              <td><?php echo $row['fullName'];?></td>
+              <td><?php echo $row['office'];?></td>
+              <td><?php echo $row['designation'];?></td>
+              <td><?php echo $row['note'];?></td>
+              <td>
+                <button type="button" class="btn btn-primary">View</button>
+              </td>
+            </tr>
+            <?php
+            }
+            ?>
+          </tbody>
 
-                                        </tr>
-                                        <?php
-                                        }
-                                        ?>
-                                      </tbody>
-
-                                  </table>
+      </table>
     </div>
 
           
@@ -289,106 +259,6 @@ $query1=mysql_query($sql1);
 
 
 
-  <!-- UPDATEModal -->
-<div id="myModal" class="modal fade " role="dialog">
-  <div class="modal-dialog" style="width: 800px; height: 900px;">
-
-    <!-- Modal content-->
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal">&times;</button>
-        <h4 class="modal-title">Modal Header</h4>
-      </div>
-      <div class="modal-body">
-        
-      UPDATE
-
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-      </div>
-    </div>
-
-  </div>
-</div>
-
-
-
-
-  <!-- Modal -->
-<div id="AddNewPerson" class="modal fade " role="dialog">
-  <div class="modal-dialog" style="width: 800px; height: 900px;">
-
-    <!-- Modal content-->
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal">&times;</button>
-        <h4 class="modal-title">ADD NEW PERSON</h4>
-      </div>
-      <div class="modal-body">
-        <div class="row">
-          <div class="col-lg-12">
-                         <header class="panel-heading">
-                             <H1><center>PGC EMPLOYEE ACCOUNTABILITY CARD<br><h2 style="font-size: 30px; ">PROVINCE OF CAVITE</h2></center></H1>
-                             
-                          </header>
-                <section class="panel">
-                        <header class="panel-heading">
-                         Client Info:
-                         </header>
-                    <div class="panel-body">
-                     <form action="acccard_add_new_action.php" method="post" name="form1">
-                        <div class="form-group">
-                            <label class="col-sm-2 control-label"><b>NAME</b></label>
-                            <div class="col-sm-10">
-                                <input type="text"  class="form-control" placeholder="Name" name="pgc_emp_ac_name" maxlength="100" onkeyup="letterInputOnly(this);">
-                            </div>
-                        </div>
-                        <br>
-                        <div class="form-group">
-                            <label class="col-sm-2 control-label"><b>DESIGNATION</b></label>
-                            <div class="col-sm-10">
-                                <input type="text"  class="form-control" placeholder="Designation" name="pgc_emp_ac_designation" maxlength="75" onkeyup="letterInputOnly(this);">
-                            </div>
-                        </div>
-                        <br>
-                        <div class="form-group">
-                            <label class="col-sm-2 control-label"><b>OFFICE</b></label>
-                            <div class="col-sm-10">
-                                <input type="text"  class="form-control" placeholder="Office" name="pgc_emp_ac_office" maxlength="50" onkeyup="letterInputOnly(this);">
-                            </div>
-                        </div>
-                        <br>  
-                        <div class="form-group">
-                            <label class="col-sm-2 control-label"><b>NOTE</b></label>
-                            <div class="col-sm-10">
-                                <input type="text"  class="form-control" placeholder="Note" name="pgc_emp_ac_Note" maxlength="50">
-                            </div>
-                        </div><br><br><br>
-                        <div class="form-group">
-                            <label class="col-sm-2 control-label"></label>
-                            <div class="col-sm-10">
-                                
-                            <input class="btn btn-success "  type="submit" name="Submit" value="Submit"> 
-                            </div>
-                        </div>
-                    </form>
-                    </div>
-                </section>
-            </div>
-
-        </div>
-
-
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-      </div>
-    </div>
-
-  </div>
-</div>
-
   <!-- PRINT METHOD MODAL -->
 <div id="PrintMethod" class="modal fade " role="dialog">
   <div class="modal-dialog" style="width: 800px; height: 900px;">
@@ -403,7 +273,7 @@ $query1=mysql_query($sql1);
         <div class="row">
           <div class="col-lg-12">
                          <header class="panel-heading">
-                             <H1><center>ACCOUNTABILITY CARD<br><h2 style="font-size: 30px; ">Print Method</h2></center></H1>
+                             <H1><center>PGC EMPLOYEE ACCOUNTABILITY CARD<br><h2 style="font-size: 30px; ">PROVINCE OF CAVITE</h2></center></H1>
                              
                           </header>
                 <section class="panel">
@@ -411,19 +281,19 @@ $query1=mysql_query($sql1);
                          Method Type:
                          </header>
                     <div class="panel-body">
-                     <form action="acccard_report_print-action.php" method="post" name="form1">
+                     <form action="acccard_printMethod_action.php" method="post" name="form1">
                         <div class="form-group">
                             <label class="col-sm-3 control-label"><b>DATE</b></label>
                             <div class="col-sm-5">
-                                <input class="form-control"  type="month" name="date" value="Print">
+                                <input class="form-control"  type="month" name="PrintMonth_val" value="Print">
                             </div>
-                            <input class="btn btn-info col-sm-4"  type="submit" name="PrintDate" value="Print">
+                            <input class="btn btn-info col-sm-4"  type="submit" name="PrintMonth" value="Print">
                         </div>
                         <br><br>
                         <div class="form-group">
                             <label class="col-sm-3 control-label"><b>DESIGNATION</b></label>
                             <div class="col-sm-5">
-                                <input class="form-control" type="text" name="designation">
+                                <input class="form-control" type="text" name="PrintDesignation_val">
                             </div>
 
                             <input class="btn btn-info col-sm-4"  type="submit" name="PrintDesignation" value="Print">
@@ -432,7 +302,7 @@ $query1=mysql_query($sql1);
                         <div class="form-group">
                             <label class="col-sm-3 control-label"><b>OFFICE</b></label>
                             <div class="col-sm-5">
-                            <select class="form-control"  type="text" name="office" value="Print">
+                            <select class="form-control"  type="text" name="PrintOffice_val" value="Print">
                               <option>Agency Employee</option>
                               <option>Emergency Employee</option>
                             </select>
@@ -444,7 +314,7 @@ $query1=mysql_query($sql1);
                             <label class="col-sm-3 control-label"><b>NOTE</b></label>
                             
                             <div class="col-sm-5">
-                            <select class="form-control"  type="text" name="note" value="Print">
+                            <select class="form-control"  type="text" name="PrintNote_val" value="Print">
                               <option>RETIRE</option>
                               <option>OTHER</option>
                             </select>
@@ -472,7 +342,6 @@ $query1=mysql_query($sql1);
 
 
 
-
     <script type="text/javascript" language="javascript" src="js/jquery.js"></script>
     <script type="text/javascript" language="javascript" src="js/jquery.dataTables.js"></script>
     <script type="text/javascript" language="javascript" >
@@ -494,7 +363,7 @@ $query1=mysql_query($sql1);
     //  } );
 
       
- //FOR DELETE FUNCTION RECORD
+ /*OLD  DELETE FUNCTION RECORD
  function confirmDelete(id) {
     
     var r = confirm('Do you want to delete?');
@@ -504,6 +373,7 @@ $query1=mysql_query($sql1);
         window.location='acccard.php';
     }
 }
+*/
  //NUMBER ONLY
   function numberInputOnly(elem) {
                 var validChars = /[0-9]/;
@@ -537,7 +407,6 @@ $query1=mysql_query($sql1);
     <script type="text/javascript">
 
       $('#myData').dataTable();
-
     </script>
 
   </body>

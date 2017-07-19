@@ -14,7 +14,7 @@ $query=mysql_query($sql);
     <meta name="author" content="Rhalp Darren R. Cabrera / Omar Raouf A. Daud">
     <link rel="shortcut icon" href="img/logo.png">
 
-    <title>Inventory Custodian Slip</title>
+    <title>Inventory Custodian Slip Report</title>
 
     <!-- Bootstrap CSS -->    
     <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -179,9 +179,7 @@ $query=mysql_query($sql);
       </div>
           <div class="panel">
           <header class="panel-heading tab-bg-primary " style="padding:15px; height: 70px;">
-                     <a class="btn btn-success pull-left" href="" data-toggle="modal" data-target="#AddNewICS"><span class="fa fa-plus-circle"></span> Add ICS Record</a>
-                     <a class="btn btn-info pull-right" href="assets/fpdf/ics_print.php" target="_blank" title="Print" name="submit"><span class="icon_printer"></span> PRINT</a>
-                        
+                        <a class="btn btn-info pull-right" href="assets/fpdf/account_report.php" target="_blank" title="Print" name="submit"><span class="icon_printer"></span> PRINT</a>
                           </header>
                          
                     
@@ -195,19 +193,15 @@ $query=mysql_query($sql);
               <th>Position</th>
               <th>Date</th>
               <th>Description</th>
-              <th>Action</th>
             </tr>
           </thead>
           <tfoot>
             <tr>
               <th></th>
-
               <th></th>
               <th></th>
               <th></th>
-              <th></th>
-              <th></th>
-              <th></th>
+              <th></th>              
               <th></th>
             </tr>
           </tfoot>
@@ -219,55 +213,16 @@ $query=mysql_query($sql);
            $icsID = $row['ID'];
           ?>
             <tr>
+
               <td><?php echo $row['DateAdded'];?></td>
               <td><?php echo $row['ICS'];?></td>
-              <td><?php echo $row['ReceivedBy_Name'];?></td>  
+              <td><?php echo $row['ReceivedBy_Name'];?></td>
               <td><?php echo $row['ReceivedBy_Position'];?></td>
               <td><?php echo $row['ReceiveBy_Date'];?></td>
+
               <td><?php echo $row['Descrp'];?></td>
-              <td>
-              <div class="btn-group">
-                <button type="button" class="btn btn-primary">Action</button>
-                <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  <span class="caret"></span>
-                  <span class="sr-only">Toggle Dropdown</span>
-                </button>
-                <ul class="dropdown-menu">
-                  <li><a href="ics_view.php?icsID=<?php echo $icsID; ?>">View</a></li>
-                  <li><a href="ics_edit.php?icsID=<?php echo $icsID; ?>">Edit</a></li>
-                  <li><a href="ics_edit.php?icsID=<?php echo $icsID; ?>">Print</a></li>
-                  <li role="separator" class="divider"></li>
-                  <li><a data-toggle="modal" data-target="#delete<?php echo $icsID; ?>">Delete</a></li>
-                </ul>
-              </div>
-              </td>
 
             </tr>
-
-                                   <!-- Delete Modal  -->
-                                  <div id="delete<?php echo $icsID; ?>" class="modal fade" role="dialog">
-                                    <div class="modal-dialog">
-
-                                      <!-- Modal content-->
-                                      <div class="modal-content">
-                                        <div class="modal-header">
-                                          <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                          <h4 class="modal-title">Delete Account</h4>
-                                        </div>
-                                        <div class="modal-body">
-                                        <center>
-                                        <h1>Are you sure ?</h1>
-                                          <a class="btn btn-success" href="ics_delete_action.php?icsID=<?php echo $icsID; ?>">DELETE</a>
-                                          <a class="btn btn-danger"  data-dismiss="modal">CANCEL</a>
-                                          </center>
-                                        </div>
-                                        <div class="modal-footer">
-                                          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                                        </div>
-                                      </div>
-
-                                    </div>
-                                  </div><!-- End Delete Modal  -->
             <?php
             }
             ?>
@@ -306,10 +261,33 @@ $query=mysql_query($sql);
 
 
 
+  <!-- UPDATEModal -->
+<div id="myModal" class="modal fade " role="dialog">
+  <div class="modal-dialog" style="width: 800px; height: 900px;">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Modal Header</h4>
+      </div>
+      <div class="modal-body">
+        
+      UPDATE
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+
+  </div>
+</div>
 
 
 
-  <!-- ADD FORM Modal -->
+
+  <!-- Modal -->
 <div id="AddNewICS" class="modal fade " role="dialog">
   <div class="modal-dialog" style="width: 1000px; height: 900px;">
 
@@ -413,11 +391,8 @@ $query=mysql_query($sql);
                                             </div>
                                             <div class="form-group">
                                                 <label class="col-sm-2 control-label"></label>
-                                                <div class="col-sm-1">  
+                                                <div class="col-sm-2">  
                                                     <input class="btn btn-success "  type="submit" name="Submit" value="Submit"> 
-
-                                                </div><div class="col-sm-2">  
-                                                    <input class="btn btn-danger "  type="submit" name="Cancel" value="Cancel" data-dismiss="modal"> 
                                                 </div>
                                             </div>
                                             <div>

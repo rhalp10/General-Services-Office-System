@@ -34,7 +34,16 @@ if(isset($_POST['Submit']))
             $sql ="INSERT INTO bincard_issued_record (bin_ID, recpnt, issued_date, qty)";
             $sql.="VALUES ('$ID','$binitem_issued_recpnt','$binitem_issued_date','$binitem_issued_qty')";
             $result = mysql_query($sql);
-            
+            $sql1 = "SELECT * FROM";
+            $sql1.=" bincard_issued_record";
+            $result1 = mysql_query($sql1);
+            while ($row= mysql_fetch_array($result1))
+            {
+                $addID = $row['ID'];
+            }
+            $sql2 = "UPDATE  bincard_issued_record";
+            $sql2.=" SET ItemSetID = 'SP-$addID',itemCode = 'SET SP-$addID' WHERE ID = '$addID'";
+            $result2 = mysql_query($sql2);
             //display success message
             echo "<script>alert('Data added successfully');
                                             window.location='bincard_view.php?ID=$ID';

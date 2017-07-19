@@ -16,8 +16,6 @@ $conn = mysqli_connect($servername, $username, $password, $dbname) or die("Conne
 	$bincard_update_supplier = $_POST['bincard_edit_supplier'];
 	$bincard_update_descrp = $_POST['bincard_edit_descrp'];
 	$bincard_update_qty = $_POST['bincard_edit_qty'];
-	$bincard_update_issued = $_POST['bincard_edit_issued'];
-	$bincard_update_balance = $_POST['bincard_edit_balance'];
 		if (  empty($bincard_update_date)  || empty($bincard_update_supplier) || empty($bincard_update_descrp) || empty($bincard_update_qty)) 
 		{
 			if (empty($bincard_update_date)) {
@@ -48,15 +46,19 @@ $conn = mysqli_connect($servername, $username, $password, $dbname) or die("Conne
 		else
 		{
 			//query
+			$reqIssued =$_REQUEST['Issued'];
+			$reqBal = $bincard_update_qty - $_REQUEST['Balance'];
+
 			$sql = "UPDATE bincard_record";
-			$sql.=" SET bin_Date = '$bincard_update_date',Supplier = '$bincard_update_supplier',Descrp = '$bincard_update_descrp',Qty = '$bincard_update_qty', Issued = '$bincard_update_issued',Balance = '$bincard_update_balance'  WHERE  ID ='$ID'";
+			$sql.=" SET bin_Date = '$bincard_update_date',Supplier = '$bincard_update_supplier',Descrp = '$bincard_update_descrp',Qty = '$bincard_update_qty', Issued = '$reqIssued', Balance = '$reqBal' WHERE  ID ='$ID'";
 			$query=mysqli_query($conn, $sql);
-			
 			echo "<script>alert('Update info successfully');
                                         window.location='bincard.php';
                                     </script>";
 
 		}
+
+            header("location: bincard.php");
 	}
 
 ?>

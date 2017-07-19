@@ -1,4 +1,5 @@
 <?php
+
 include('session.php');
 include('db.php');
 $sql = "SELECT *";
@@ -155,7 +156,7 @@ $query=mysql_query($sql);
                           <li><a class="" href="accreceipt_report.php">Accountability Receipt</a></li>
                           <li><a class="" href="returnslip_report.php">Return Slip</a></li>
                           <li><a class="" href="bincard_report.php"><span>Bincard</span></a></li>
-                          <li><a class="" href="ics.php">Custodian Slip</a></li>
+                          <li><a class="" href="ics_report.php">Custodian Slip</a></li>
                       </ul>
                   </li>
                   
@@ -173,7 +174,7 @@ $query=mysql_query($sql);
           <h3 class="page-header"><i class="fa fa-clipboard"></i> PGC Account Card Management</h3>
           <ol class="breadcrumb">
             <li><i class="fa fa-home"></i><a href="index.php">Dashboard</a></li>
-            <li><i class="fa fa-clipboard"></i><a href="acccard.php">PGC Account Card Management</a></li>
+            <li><i class="fa fa-clipboard"></i>PGC Account Card Management</li>
           </ol>
         </div>
       </div>
@@ -186,7 +187,7 @@ $query=mysql_query($sql);
                          
                     
                     <div >
-      <table id="myData"  class="table table-striped table-advance table-hover ">
+      <table id="myData"  class="table table-bordered table-advance table-hover  dataTable">
           <thead>
             <tr>
               <th>Name</th>
@@ -430,45 +431,45 @@ $query=mysql_query($sql);
                          Method Type:
                          </header>
                     <div class="panel-body">
-                     <form action="acccard_add_new_action.php" method="post" name="form1">
+                     <form action="acccard_printMethod_action.php" method="post" name="form1">
                         <div class="form-group">
                             <label class="col-sm-3 control-label"><b>DATE</b></label>
                             <div class="col-sm-5">
-                                <input class="form-control"  type="month" name="Print" value="Print">
+                                <input class="form-control"  type="month" name="PrintMonth_val" value="Print">
                             </div>
-                            <input class="btn btn-info col-sm-4"  type="submit" name="Print" value="Print">
+                            <input class="btn btn-info col-sm-4"  type="submit" name="PrintMonth" value="Print">
                         </div>
                         <br><br>
                         <div class="form-group">
                             <label class="col-sm-3 control-label"><b>DESIGNATION</b></label>
                             <div class="col-sm-5">
-                                <input class="form-control" type="text" name="">
+                                <input class="form-control" type="text" name="PrintDesignation_val">
                             </div>
 
-                            <input class="btn btn-info col-sm-4"  type="submit" name="Print" value="Print">
+                            <input class="btn btn-info col-sm-4"  type="submit" name="PrintDesignation" value="Print">
                         </div>
                         <br><br>
                         <div class="form-group">
                             <label class="col-sm-3 control-label"><b>OFFICE</b></label>
                             <div class="col-sm-5">
-                            <select class="form-control"  type="text" name="Print" value="Print">
+                            <select class="form-control"  type="text" name="PrintOffice_val" value="Print">
                               <option>Agency Employee</option>
                               <option>Emergency Employee</option>
                             </select>
                             </div>
-                            <input class="btn btn-info col-sm-4"  type="submit" name="Print" value="Print">
+                            <input class="btn btn-info col-sm-4"  type="submit" name="PrintOffice" value="Print">
                         </div>
                         <br><br>
                         <div class="form-group">
                             <label class="col-sm-3 control-label"><b>NOTE</b></label>
                             
                             <div class="col-sm-5">
-                            <select class="form-control"  type="text" name="Print" value="Print">
+                            <select class="form-control"  type="text" name="PrintNote_val" value="Print">
                               <option>RETIRE</option>
                               <option>OTHER</option>
                             </select>
                             </div>
-                                 <input class="btn btn-info col-sm-4"  type="submit" name="Print" value="Print">
+                                 <input class="btn btn-info col-sm-4"  type="submit" name="PrintNote" value="Print">
                         </div><br><br><br>
 
                     </form>
@@ -535,7 +536,7 @@ $query=mysql_query($sql);
             }
   //LETTER ONLY
    function letterInputOnly(elem) {
-                var validChars = /[a-zA-ZñÑ ]+/;
+                var validChars = /[a-zA-ZñÑ .]+/;
                 var strIn = elem.value;
                 var strOut = '';
                 for(var i=0; i < strIn.length; i++) {

@@ -167,7 +167,7 @@ $query=mysql_query($sql);
                           <li><a class="" href="accreceipt_report.php">Accountability Receipt</a></li>
                           <li><a class="" href="returnslip_report.php">Return Slip</a></li>
                           <li><a class="" href="bincard_report.php"><span>Bincard</span></a></li>
-                          <li><a class="" href="ics.php">Custodian Slip</a></li>
+                          <li><a class="" href="ics_report.php">Custodian Slip</a></li>
                       </ul>
                   </li>
                   
@@ -207,7 +207,7 @@ $query=mysql_query($sql);
               
              <div class="column">
              <div class="col-sm-9">
-             <table id="myData"  class="table table-bordered table-advance table-hover ">
+             <table id="myData"  class="table table-bordered table-advance table-hover  dataTable">
                                 <thead>
                                   <tr>
                                       <th class="col-sm-2"> Name</th>
@@ -221,6 +221,7 @@ $query=mysql_query($sql);
                                 </thead>
                                 <tfoot>
                                   <tr>
+                                    <th></th>
                                     <th></th>
                                     <th></th>
                                     <th></th>

@@ -156,7 +156,7 @@ $test = mysql_fetch_array($result);
                           <li><a class="" href="accreceipt_report.php">Accountability Receipt</a></li>
                           <li><a class="" href="returnslip_report.php">Return Slip</a></li>
                           <li><a class="" href="bincard_report.php"><span>Bincard</span></a></li>
-                          <li><a class="" href="ics.php">Custodian Slip</a></li>
+                          <li><a class="" href="ics_report.php">Custodian Slip</a></li>
                       </ul>
                   </li>
                   

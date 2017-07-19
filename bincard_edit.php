@@ -149,7 +149,7 @@ $test = mysql_fetch_array($result);
                           <li><a class="" href="accreceipt_report.php">Accountability Receipt</a></li>
                           <li><a class="" href="returnslip_report.php">Return Slip</a></li>
                           <li><a class="" href="bincard_report.php"><span>Bincard</span></a></li>
-                          <li><a class="" href="ics.php">Custodian Slip</a></li>
+                          <li><a class="" href="ics_report.php">Custodian Slip</a></li>
                       </ul>
                   </li>
                   
@@ -173,7 +173,7 @@ $test = mysql_fetch_array($result);
         </div>
       </div>
               <!-- page start--> 
-              <form  action="bincard_edit_action.php?accID=<?php echo "$accID";?>" method="post" name="form1">
+              <form  action="bincard_edit_action.php?accID=<?php echo "$accID";?>&Issued=<?php echo "$Issued";?>&Balance=<?php echo "$Balance";?>" method="post" name="form1">
               <table class="table table-striped table-advance table-hover ">
                  <tr>
               <td><b>BIN DATE</b></td>

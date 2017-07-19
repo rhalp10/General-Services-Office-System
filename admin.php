@@ -135,7 +135,7 @@ include('session.php');
                           <li><a class="" href="accreceipt_report.php">Accountability Receipt</a></li>
                           <li><a class="" href="returnslip_report.php">Return Slip</a></li>
                           <li><a class="" href="bincard_report.php"><span>Bincard</span></a></li>
-                          <li><a class="" href="ics.php">Custodian Slip</a></li>
+                          <li><a class="" href="ics_report.php">Custodian Slip</a></li>
                       </ul>
                   </li>
                   
@@ -179,7 +179,7 @@ include('session.php');
           </section>
       </section>
       <!--main content end-->
-      <div class="text-right">
+      <div class="text-center">
             <div class="credits">
                 <!-- 
                     All the links in the footer should remain intact. 
@@ -187,6 +187,9 @@ include('session.php');
                     Licensing information: https://bootstrapmade.com/license/
                     Purchase the pro version form: https://bootstrapmade.com/buy/?theme=NiceAdmin
                 -->
+
+               Rhalp Darren Cabrera & Omar Raouf Daud<br>
+               Copyright 2017
             </div>
         </div>
   </section>

@@ -1,5 +1,9 @@
 <?php
 include('session.php');
+include('db.php');
+$sql = "SELECT *";
+$sql.=" FROM property_return_slip_record";
+$query=mysql_query($sql);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -23,6 +27,8 @@ include('session.php');
     <!-- Custom styles -->
     <link href="css/style.css" rel="stylesheet">
     <link href="css/style-responsive.css" rel="stylesheet" />
+    <!-- dataTables Styles -->
+    <link href="css/dataTables.bootstrap.min.css" rel="stylesheet">
 
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 -->
     <!--[if lt IE 9]>
@@ -134,7 +140,7 @@ include('session.php');
                           <li><a class="" href="accreceipt_report.php">Accountability Receipt</a></li>
                           <li><a class="" href="returnslip_report.php">Return Slip</a></li>
                           <li><a class="" href="bincard_report.php"><span>Bincard</span></a></li>
-                          <li><a class="" href="ics.php">Custodian Slip</a></li>
+                          <li><a class="" href="ics_report.php">Custodian Slip</a></li>
                       </ul>
                   </li>
                   
@@ -157,6 +163,156 @@ include('session.php');
       </div>
               <!-- page start-->
               
+          <div class="panel">
+          <header class="panel-heading tab-bg-primary " style="padding:15px; height: 70px;"> 
+                    <a class="btn btn-success pull-left" href="" data-toggle="modal" data-target="#AddPropSlip" ><span class="fa fa-plus-circle"></span> Add Property Return Slip</a>
+                     <a class="btn btn-info pull-right" href="" data-toggle="modal" data-target="#PrintMethod" ><span class="icon_printer"></span> PRINT</a>
+                        
+                          </header>
+                         
+                    
+                    <div >
+      <table id="myData"  class="table table-bordered table-advance table-hover  dataTable">
+          <thead>
+            <tr>
+              <th>Date Encoded</th>
+              <th>LGU Name</th>
+              <th>PurposeID</th>
+              <th>Qty/Unit</th>
+              <th>Description</th>
+              <th>Name of Enduser </th>
+              <th>ReceiveBy Name</th>
+              <th>ReceiveBy Date</th>
+              <th>Status</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tfoot>
+            <tr>
+              <th></th>
+              <th></th>
+              <th></th>
+              <th></th>
+              <th></th>
+              <th></th>
+              <th></th>
+              <th></th>
+              <th></th>
+            </tr>
+          </tfoot>
+          <tbody>
+          <?php 
+           while( $row=mysql_fetch_array($query) ) 
+           { 
+
+           $ID = $row['ID'];
+          ?>
+            <tr>
+              <td><?php echo $row['DateAdded'];?></td>
+              <td><?php echo $row['LGU_Name'];?></td>
+              <td><?php 
+              $purposeSQL ="SELECT *";
+              $purposeSQL.="  FROM prs_purpose_dictionary";
+              $purposeRes = mysql_query($purposeSQL);
+              while($purposeVal=mysql_fetch_array($purposeRes)) 
+              {
+                if ($row['PurposeID'] == $purposeVal['ID']) 
+                {
+                 echo $purposeVal['Purpose_Type'];
+                }
+                
+              }
+              ?></td>
+              <td><?php echo $row['Qty']." ".$row['Unit'];?></td>
+              <td><?php echo $row['Descrp'];?></td>
+              <td><?php echo $row['Name_of_Enduser'];?></td>
+              <td><?php echo $row['ReceiveBy_Name'];?></td>
+              <td><?php echo $row['ReceiveBy_Date'];?></td>
+              <td><?php echo $row['Status'];?></td>
+              <td>
+                <div class="btn-group">
+                  <button type="button" class="btn btn-primary">Action</button>
+                  <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <span class="caret"></span>
+                    <span class="sr-only">Toggle Dropdown</span>
+                  </button>
+                  <ul class="dropdown-menu">
+                    <li><a href="returnslip_view.php?ID=<?php echo $ID; ?>">View</a></li>
+                    <li><a href="returnslip_edit.php?ID=<?php echo $ID; ?>">Edit</a></li>
+                    <li role="separator" class="divider"></li>
+                    <li><a data-toggle="modal" data-target="#delete<?php echo $ID; ?>">Delete</a></li>
+                  </ul>
+                </div>
+                </td>
+              </tr>
+            </tr>
+
+               <!-- Delete Modal  -->
+              <div id="delete<?php echo $ID; ?>" class="modal fade" role="dialog">
+                <div class="modal-dialog">
+
+                  <!-- Modal content-->
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <button type="button" class="close" data-dismiss="modal">&times;</button>
+                      <h4 class="modal-title">Delete Account Receipt</h4>
+                    </div>
+                    <div class="modal-body">
+                    <center>
+                    <h1>Are you sure ?</h1>
+                      <a class="btn btn-success" href="return_slip_delete_action.php?prsID=<?php echo $ID; ?>">DELETE</a>
+                      <a class="btn btn-danger"  data-dismiss="modal">CANCEL</a>
+                      </center>
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    </div>
+                  </div>
+
+                </div>
+              </div><!-- End Delete Modal  -->
+            <?php
+            }
+            ?>
+          </tbody>
+
+      </table>
+    </div>
+
+          
+            </div>
+              <!-- page end-->
+          </section>
+      </section>
+      <!--main content end-->
+      <div class="text-right">
+            <div class="credits">
+                <!-- 
+                    All the links in the footer should remain intact. 
+                    You can delete the links only if you purchased the pro version.
+                    Licensing information: https://bootstrapmade.com/license/
+                    Purchase the pro version form: https://bootstrapmade.com/buy/?theme=NiceAdmin
+                    <a href="https://bootstrapmade.com/free-business-bootstrap-themes-website-templates/">Business Bootstrap Themes</a> by <a href="https://bootstrapmade.com/">BootstrapMade</a>
+                -->
+                x
+            </div>
+        </div>
+  </section>
+
+
+
+  <!-- Modal -->
+<div id="AddPropSlip" class="modal fade" role="dialog">
+  <div class="modal-dialog" style="width: 1500px; height: 900px;">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Modal Header</h4>
+      </div>
+      <div class="modal-body">
+        
               
               <div class="row">
                   <div class="col-lg-12">
@@ -180,12 +336,12 @@ include('session.php');
                                     
                                      <select class="form-control" name="prop_return_slip_purpose" required="">
                                             <?php 
-                                            $result=mysql_query("SELECT Pupose_Type FROM prs_purpose_dictionary");
+                                            $result=mysql_query("SELECT Purpose_Type FROM prs_purpose_dictionary");
                                           
                                             while($test = mysql_fetch_array($result))
                                             {
                                             ?>
-                                              <option value="<?php echo $test['Pupose_Type']?>"><?php echo $test['Pupose_Type']?></option> 
+                                              <option value="<?php echo $test['ID']?>"><?php echo $test['Purpose_Type']?></option> 
                                              <?php 
                                            }
                                              ?>
@@ -205,8 +361,11 @@ include('session.php');
                                  
                               </tr>
                               <tr>
-                                <td><input type="text" name="prop_return_slip_qty" class="form-control" placeholder="Qty"></td>
-                                <td><input type="text" name="prop_return_slip_unit" class="form-control" placeholder="Unit"></td>
+                                <td><input type="text" name="prop_return_slip_qty" class="form-control" placeholder="Qty"   onkeyup="numberInputOnly(this);"></td>
+                                <td><select  name="prop_return_slip_unit" class="form-control" required="" value="custodian_slip_unit">
+                                  <option value="unit">Unit</option>
+                                  <option value="pc">Pc.</option>
+                                </select></td>
                                 <td><input type="text" name="prop_return_slip_descrp" class="form-control" placeholder="Description"></td>
                                 <td><input type="text" name="prop_return_slip_serialnum" class="form-control" placeholder="Serial Number"></td>
                                 <td><input type="text" name="prop_return_slip_propno" class="form-control" placeholder="Property Number"></td>
@@ -222,12 +381,12 @@ include('session.php');
                                  <th class="col-sm-1"><i class="icon_id"></i> PAR. No.</th>
                                  <th class="col-sm-1"><i class="icon_puzzle"></i> Name Of End-User</th>
                                  <th class="col-sm-1"><i class="icon_wallet_alt"></i> Unit Value</th>
-                                 <th class="col-sm-1"><i class="icon_currency_alt"></i> Total Value</th></tr>
+                                 <th class="col-sm-1"><i class="icon_currency_alt" ></i> Total Value</th></tr>
                               <tr>
                                 <td><input type="text" name="prop_return_slip_par" class="form-control" required="" placeholder="PAR. Number"></td>
-                                <td><input type="text" name="prop_return_slip_NameOfEndUser" class="form-control" required="" placeholder="Name Of End-User"></td>
-                                <td><input type="" name="prop_return_slip_UnitValue" class="form-control" required="" placeholder="Unit Value"></td>
-                                <td><input type="text" name="prop_return_slip_TotalValue" class="form-control" required="" placeholder="Total Value"></td>
+                                <td><input type="text" name="prop_return_slip_NameOfEndUser" class="form-control" required="" placeholder="Name Of End-User"   onkeyup="letterInputOnly(this);"></td>
+                                <td><input type="" name="prop_return_slip_UnitValue" class="form-control" required="" placeholder="Unit Value" onkeyup="numberInputOnly(this);"></td>
+                                <td><input type="text" name="prop_return_slip_TotalValue" class="form-control" required="" placeholder="Total Value" onkeyup="numberInputOnly(this);"></td>
                               </tr>
                            </tbody>
                           
@@ -246,13 +405,13 @@ include('session.php');
                                             <div class="form-group">
                                                 <label class="col-sm-2 control-label">Name</label>
                                                 <div class="col-sm-7">
-                                                    <input type="text"  class="form-control" placeholder="Name" name="prop_return_slip_receiveBy_Name" required="">
+                                                    <input type="text"  class="form-control" placeholder="Name" name="prop_return_slip_receiveBy_Name" required=""  onkeyup="letterInputOnly(this);">
                                                 </div>
                                             </div>
                                             <div class="form-group">
                                                 <label class="col-sm-2 control-label">Position</label>
                                                 <div class="col-sm-7">
-                                                    <input type="text"  class="form-control" placeholder="Position" name="prop_return_slip_receiveBy_Position" required="">
+                                                    <input type="text"  class="form-control" placeholder="Position" name="prop_return_slip_receiveBy_Position" required=""  onkeyup="letterInputOnly(this);">
                                                 </div>
                                             </div>
                                             <div class="form-group">
@@ -285,13 +444,13 @@ include('session.php');
                                             <div class="form-group">
                                                 <label class="col-sm-2 control-label">Name</label>
                                                 <div class="col-sm-7">
-                                                    <input type="text"  class="form-control" placeholder="Name" name="prop_return_slip_receiveFrom_Name" required="">
+                                                    <input type="text"  class="form-control" placeholder="Name" name="prop_return_slip_receiveFrom_Name" required=""  onkeyup="letterInputOnly(this);">
                                                 </div>
                                             </div>
                                             <div class="form-group">
                                                 <label class="col-sm-2 control-label">Position</label>
                                                 <div class="col-sm-7">
-                                                    <input type="text"  class="form-control" placeholder="Position" name="prop_return_slip_receiveFrom_Position" required="">
+                                                    <input type="text"  class="form-control" placeholder="Position" name="prop_return_slip_receiveFrom_Position" required=""  onkeyup="letterInputOnly(this);">
                                                 </div>
                                             </div>
                                             <div class="form-group">
@@ -303,7 +462,8 @@ include('session.php');
                                             <div class="form-group">
                                                 <label class="col-sm-2 control-label"></label>
                                                 <div class="col-sm-2">
-                                                    <input class="btn btn-success "  type="submit" name="Submit" value="Submit"> 
+                                                    <input class="btn btn-success"  type="submit" name="Submit" value="Submit"> 
+                                                     <input class="btn btn-danger"  type="submit" name="Cancel" value="Cancel"  data-dismiss="modal">
                                                 </div>
                                             </div>
                                     </div>
@@ -316,23 +476,14 @@ include('session.php');
                   </div>
               </div>
 
-              <!-- page end-->
-          </section>
-      </section>
-      <!--main content end-->
-      <div class="text-right">
-            <div class="credits">
-                <!-- 
-                    All the links in the footer should remain intact. 
-                    You can delete the links only if you purchased the pro version.
-                    Licensing information: https://bootstrapmade.com/license/
-                    Purchase the pro version form: https://bootstrapmade.com/buy/?theme=NiceAdmin
-                    <a href="https://bootstrapmade.com/free-business-bootstrap-themes-website-templates/">Business Bootstrap Themes</a> by <a href="https://bootstrapmade.com/">BootstrapMade</a>
-                -->
-                x
-            </div>
-        </div>
-  </section>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+
+  </div>
+</div>
   <!-- container section end -->
     <!-- javascripts -->
     <script src="js/jquery.js"></script>
@@ -342,6 +493,34 @@ include('session.php');
     <script src="js/jquery.nicescroll.js" type="text/javascript"></script>
     <!--custome script for all page-->
     <script src="js/scripts.js"></script>
+
+    <script src="js/jquery.dataTables.min.js"></script>
+    <script src="js/dataTables.bootstrap.min.js"></script>
+    <script type="text/javascript">
+      
+   //NUMBER ONLY
+    function numberInputOnly(elem) {
+                  var validChars = /[0-9]/;
+                  var strIn = elem.value;
+                  var strOut = '';
+                  for(var i=0; i < strIn.length; i++) {
+                    strOut += (validChars.test(strIn.charAt(i)))? strIn.charAt(i) : '';
+                  }
+                  elem.value = strOut;
+              }
+    //LETTER ONLY
+     function letterInputOnly(elem) {
+                  var validChars = /[a-zA-ZñÑ ./]+/;
+                  var strIn = elem.value;
+                  var strOut = '';
+                  for(var i=0; i < strIn.length; i++) {
+                    strOut += (validChars.test(strIn.charAt(i)))? strIn.charAt(i) : '';
+                  }
+                  elem.value = strOut;
+              }
+
+      $('#myData').dataTable();
+    </script>
 
 
   </body>

@@ -165,7 +165,7 @@ $query = mysql_query($sql);
                           <li><a class="" href="accreceipt_report.php">Accountability Receipt</a></li>
                           <li><a class="" href="returnslip_report.php">Return Slip</a></li>
                           <li><a class="" href="bincard_report.php"><span>Bincard</span></a></li>
-                          <li><a class="" href="ics.php">Custodian Slip</a></li>
+                          <li><a class="" href="ics_report.php">Custodian Slip</a></li>
                       </ul>
                   </li>
                   
@@ -243,7 +243,7 @@ $query = mysql_query($sql);
                                     </header>
                                     <div class="panel-body">
                                      
-                                      <table id="myData"  class="table table-striped table-advance table-hover ">
+                                      <table id="myData"  class="table table-bordered table-advance table-hover  dataTable">
                                          <thead>
                                            <tr>
                                            <th>PAR #</th>
@@ -328,8 +328,8 @@ while ( $row=mysql_fetch_array($query))
                     <span class="sr-only">Toggle Dropdown</span>
                   </button>
                   <ul class="dropdown-menu">
-                    <li><a href="bincard_view.php?ID=<?php echo $ID; ?>">View</a></li>
-                    <li><a href="bincard_edit.php?ID=<?php echo $ID; ?>">Edit</a></li>
+                    <li><a href="acccard_view-detail.php?ID=<?php echo $ID; ?>">View</a></li>
+                    <li><a href="acccard_edit-detail.php?ID=<?php echo $ID; ?>">Edit</a></li>
                     <li role="separator" class="divider"></li>
                     <li><a onclick="confirmDelete(<?php echo $accID; ?>)">Delete</a></li>
                   </ul>
@@ -402,8 +402,8 @@ while ( $row=mysql_fetch_array($query))
                     <span class="sr-only">Toggle Dropdown</span>
                   </button>
                   <ul class="dropdown-menu">
-                    <li><a href="bincard_view.php?ID=<?php echo $ID; ?>">View</a></li>
-                    <li><a href="bincard_edit.php?ID=<?php echo $ID; ?>">Edit</a></li>
+                    <li><a href="acccard_view-detail.php?ID=<?php echo $ID; ?>">View</a></li>
+                    <li><a href="acccard_edit-detail.php?ID=<?php echo $ID; ?>">Edit</a></li>
                     <li role="separator" class="divider"></li>
                     <li><a onclick="confirmDelete(<?php echo $accID; ?>)">Delete</a></li>
                   </ul>
@@ -476,7 +476,7 @@ while ( $row=mysql_fetch_array($query))
                          Item Set Info:
                          </header>
                     <div class="panel-body">
-                     <form action="" method="post" name="form1">
+                     <form action="acccard_view_add_par-set_action.php?accID=<?php echo $ID;?>" method="post" name="form1">
                      <table class="table table-striped table-advance table-hover">
                          <thead>
                             <tr>
@@ -488,10 +488,13 @@ while ( $row=mysql_fetch_array($query))
                             </thead>
                              <tbody>
                               <tr>
-                              <td><input  class="form-control" type="" name="" value="" ></td>
-                              <td><input  class="form-control" type="" name="" value="" onkeyup="numberInputOnly(this);"></td>
-                              <td><input  class="form-control" type="" name="" value="" onkeyup="letterInputOnly(this);"></td>
-                              <td><input  class="form-control" type="" name="" value="" ></td>
+                              <td><input  class="form-control" type="" name="acccard_view_add_par-Set" value="" ></td>
+                              <td><input  class="form-control" type="" name="acccard_view_add_qty-Set" value="" onkeyup="numberInputOnly(this);"></td>
+                              <td><select  name="acccard_view_add_unit-Set" class="form-control" required="" value="custodian_slip_unit">
+                                  <option value="unit">Unit</option>
+                                  <option value="pc">Pc.</option>
+                                </select></td>
+                              <td><input  class="form-control" type="" name="acccard_view_add_descrp-Set" value="" ></td>
                               </tr>
                               </tbody>
                         </table>
@@ -510,16 +513,16 @@ while ( $row=mysql_fetch_array($query))
                           <tbody>
                             
                               <tr>
-                              <td><input  class="form-control" type="" name="" value=""></td>
-                              <td><input  class="form-control" type="" name="" value="" onkeyup="numberInputOnly(this);"></td>
-                              <td><input  class="form-control" type="" name="" value="" onkeyup="letterInputOnly(this);"></td>
-                              <td><input  class="form-control" type="" name="" value="" ></td>
-                              <td><input  class="form-control" type="date" name="" value="" ></td>
+                              <td><input  class="form-control" type="" name="acccard_view_add_propno-Set" value=""></td>
+                              <td><input  class="form-control" type="" name="acccard_view_add_amount-Set" value="" onkeyup="numberInputOnly(this);"></td>
+                              <td><input  class="form-control" type="" name="acccard_view_add_transferTo-Set" value="" onkeyup="letterInputOnly(this);"></td>
+                              <td><input  class="form-control" type="" name="acccard_view_add_remarks-Set" value="" ></td>
+                              <td><input  class="form-control" type="date" name="acccard_view_add_dateturnOver-Set" value="" ></td>
                             </tr>
                           </tbody>
                         </table>
                         <div class="col-sm-offset-4">
-                           <input class="btn btn-success col-sm-2" type="button" name="Submit" value="Submit"><span class="col-sm-1"></span><input class="btn btn-danger col-sm-2" type="button" name="Cancel" value="Cancel" data-dismiss="modal">
+                           <input class="btn btn-success col-sm-2" type="submit" name="SubmitSet" value="Submit"><span class="col-sm-1"></span><input class="btn btn-danger col-sm-2" type="button" name="Cancel" value="Cancel" data-dismiss="modal">
                            </div>
                     </form>
                     </div>

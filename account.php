@@ -155,7 +155,7 @@ $query=mysql_query($sql);
                           <li><a class="" href="accreceipt_report.php">Accountability Receipt</a></li>
                           <li><a class="" href="returnslip_report.php">Return Slip</a></li>
                           <li><a class="" href="bincard_report.php"><span>Bincard</span></a></li>
-                          <li><a class="" href="ics.php">Custodian Slip</a></li>
+                          <li><a class="" href="ics_report.php">Custodian Slip</a></li>
                       </ul>
                   </li>
                   
@@ -172,7 +172,7 @@ $query=mysql_query($sql);
           <h3 class="page-header"><i class="fa fa-clipboard"></i> Account Management</h3>
           <ol class="breadcrumb">
             <li><i class="fa fa-home"></i><a href="index.php">Dashboard</a></li>
-            <li><i class="fa fa-clipboard"></i><a href="account.php">Account Management</a></li>
+            <li><i class="fa fa-clipboard"></i>Account Management</li>
           </ol>
         </div>
       </div>
@@ -416,6 +416,20 @@ $query=mysql_query($sql);
   </div>
 </div>
   <!-- container section end -->
+  
+      <div class="text-center">
+            <div class="credits">
+                <!-- 
+                    All the links in the footer should remain intact. 
+                    You can delete the links only if you purchased the pro version.
+                    Licensing information: https://bootstrapmade.com/license/
+                    Purchase the pro version form: https://bootstrapmade.com/buy/?theme=NiceAdmin
+                -->
+
+               Rhalp Darren Cabrera & Omar Raouf Daud<br>
+               Copyright 2017
+            </div>
+        </div>
     <!-- javascripts -->
      <script type="text/javascript" language="javascript" src="js/jquery.js"></script>
     <script type="text/javascript" language="javascript" src="js/jquery.dataTables.js"></script>

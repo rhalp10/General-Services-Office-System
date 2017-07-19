@@ -183,27 +183,14 @@ include ('db.php');
           <h3 class="page-header"><i class="fa fa-clipboard"></i> Bincard Management</h3>
           <ol class="breadcrumb">
             <li><i class="fa fa-home"></i><a href="index.php">Dashboard</a></li>
-            <li><i class="fa fa-clipboard"></i><a href="bincard.php">Bincard Management</a></li>
+            <li><i class="fa fa-clipboard"></i><a href="bincard_report.php">Bincard Report</a></li>
             <li><i class="fa fa-clipboard"></i>Issued Item</a></li>
           </ol>
         </div>
       </div>
           <div class="panel">
           <header class="panel-heading tab-bg-primary " style="padding:15px; height: 70px;">
-          <?php 
-          if ($totalQty == $Count) {
-            # code...
-          }
-          else
-          {
-
-          ?>
-                     <a class="btn btn-success pull-left" href="" data-toggle="modal" data-target="#myModal">Issue Bin Record</a>
-          <?php 
-          }
-
-              echo "<label >$Count</label>";
-          ?>
+         
                      <a class="btn btn-info pull-right" href="assets/fpdf/account_report.php" target="_blank">Print Bincard</a>
                         
                           </header>
@@ -218,12 +205,10 @@ include ('db.php');
           <th>Recipient</th>
           <th>Qty</th>
           <th>Balance</th>
-          <th class="col-sm-2">Action</th>
         </tr>
       </thead>
       <tfoot>
         <tr>
-          <th></th>
           <th></th>
           <th></th>
           <th></th>
@@ -250,20 +235,7 @@ include ('db.php');
                 <td><?php echo $row["recpnt"];?></td>
                 <td><?php echo $row["qty"];?></td>
                 <td><?php echo $balance ;?></td>
-                <td>
-                <div class="btn-group">
-                  <button type="button" class="btn btn-primary">Action</button>
-                  <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    <span class="caret"></span>
-                    <span class="sr-only">Toggle Dropdown</span>
-                  </button>
-                  <ul class="dropdown-menu">
-                    <li><a href="bincard_view_edit-issued-data.php?issuedID=<?php echo "$issued_ID";?>&binID=<?php echo $ID?>">Edit</a></li>
-                    <li role="separator" class="divider"></li>
-                    <li><a onclick="confirmDelete(<?php echo $issued_ID; ?>)">Delete</a></li>
-                  </ul>
-                </div>
-                </td>
+                
               </tr>
               <?php 
 

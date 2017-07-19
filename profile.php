@@ -1,7 +1,5 @@
 <?php
 include('session.php');
-
-
 $result = mysql_query("SELECT * FROM emp_accounts_record WHERE username  = '$login_session'");
 $test = mysql_fetch_array($result);
 $rows = mysql_num_rows($result);
@@ -166,7 +164,7 @@ $rows = mysql_num_rows($result);
                           <li><a class="" href="accreceipt_report.php">Accountability Receipt</a></li>
                           <li><a class="" href="returnslip_report.php">Return Slip</a></li>
                           <li><a class="" href="bincard_report.php"><span>Bincard</span></a></li>
-                          <li><a class="" href="ics.php">Custodian Slip</a></li>
+                          <li><a class="" href="ics_report.php">Custodian Slip</a></li>
                       </ul>
                   </li>
                   

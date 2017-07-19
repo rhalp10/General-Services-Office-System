@@ -156,7 +156,7 @@ $query = mysql_query($sql);
                           <li><a class="" href="accreceipt_report.php">Accountability Receipt</a></li>
                           <li><a class="" href="returnslip_report.php">Return Slip</a></li>
                           <li><a class="" href="bincard_report.php"><span>Bincard</span></a></li>
-                          <li><a class="" href="ics.php">Custodian Slip</a></li>
+                          <li><a class="" href="ics_report.php">Custodian Slip</a></li>
                       </ul>
                   </li>
                   
@@ -187,9 +187,10 @@ $query = mysql_query($sql);
                          
                     
                     <div>
-      <table id="myData"  class="table table-bordered table-advance table-hover">
+      <table id="myData"  class="table table-bordered table-advance table-hover  dataTable">
           <thead >
             <tr>
+                <th>Date Encoded</th>
                 <th>Date</th>
                 <th>Supplier</th>
                 <th>Description</th>
@@ -200,7 +201,14 @@ $query = mysql_query($sql);
             </tr>
           </thead>
           <tfoot>
-            
+            <th></th>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th></th>
           </tfoot>
           <tbody>
             <?php 
@@ -208,6 +216,7 @@ $query = mysql_query($sql);
               $ID = $row['ID'];
             ?>
             <tr>
+              <td><?php echo  $row["DateAdded"];?></td>
               <td><?php echo  $row["bin_Date"];?></td>
               <td><?php echo  $row["Supplier"];?></td>
               <td><?php echo  $row["Descrp"];?></td>
@@ -225,13 +234,52 @@ $query = mysql_query($sql);
                     <li><a href="bincard_view.php?ID=<?php echo $ID; ?>">View</a></li>
                     <li><a href="bincard_edit.php?ID=<?php echo $ID; ?>">Edit</a></li>
                     <li role="separator" class="divider"></li>
-                    <li><a onclick="confirmDelete(<?php echo $ID; ?>)">Delete</a></li>
+                  <li><a data-toggle="modal" data-target="#delete<?php echo $ID; ?>">Delete</a></li>
                   </ul>
                 </div>
                 </td>
               </td>
             </tr>
+
+             <!-- Delete Modal  -->
+            <div id="delete<?php echo $ID; ?>" class="modal fade" role="dialog">
+              <div class="modal-dialog">
+
+                <!-- Modal content-->
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Delete Account</h4>
+                  </div>
+                  <div class="modal-body">
+                  <center>
+                  <h1>Are you sure ?</h1>
+                    <a class="btn btn-success" href="bincard_delete_action.php?ID=<?php echo $ID; ?>">DELETE</a>
+                    <a class="btn btn-danger"  data-dismiss="modal">CANCEL</a>
+                    </center>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                  </div>
+                </div>
+
+              </div>
+            </div><!-- End Delete Modal  -->
+
             <?php 
+            $issuedSQL = "SELECT * FROM";
+            $issuedSQL.=" bincard_issued_record WHERE bin_ID = '$ID'";
+            $res1 = mysql_query($issuedSQL);
+            $issued = 0;
+            while ($row1 = mysql_fetch_array($res1))
+            {
+               $issued = $issued + $row1['qty'];
+            }
+            $balance = $row["Qty"]-$issued;
+            $updateSQL="UPDATE bincard_record";
+            $updateSQL.=" SET Balance = '$balance',Issued = '$issued ' WHERE ID = '$ID'";
+            $updateRes = mysql_query($updateSQL);
+
             }
             ?>
           </tbody>
@@ -315,7 +363,7 @@ $query = mysql_query($sql);
                         <div class="form-group">
                             <label class="col-sm-2 control-label"><b>QUANTITY</b></label>
                             <div class="col-sm-10">
-                                <input type="text"  class="form-control" placeholder="Quantity" name="bincard_record_qty" required="">
+                                <input type="text"  class="form-control" placeholder="Quantity" name="bincard_record_qty" required="" onkeyup="numberInputOnly(this);">
                             </div>
                         </div>
                         <br><br><br>
@@ -361,6 +409,26 @@ $query = mysql_query($sql);
       //  } );
      // } );
 
+   //NUMBER ONLY
+    function numberInputOnly(elem) {
+                  var validChars = /[0-9]/;
+                  var strIn = elem.value;
+                  var strOut = '';
+                  for(var i=0; i < strIn.length; i++) {
+                    strOut += (validChars.test(strIn.charAt(i)))? strIn.charAt(i) : '';
+                  }
+                  elem.value = strOut;
+              }
+    //LETTER ONLY
+     function letterInputOnly(elem) {
+                  var validChars = /[a-zA-ZñÑ ./]+/;
+                  var strIn = elem.value;
+                  var strOut = '';
+                  for(var i=0; i < strIn.length; i++) {
+                    strOut += (validChars.test(strIn.charAt(i)))? strIn.charAt(i) : '';
+                  }
+                  elem.value = strOut;
+              }
     //FOR DELETE FUNCTION RECORD
     function confirmDelete(id) {
         

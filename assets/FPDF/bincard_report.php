@@ -9,18 +9,18 @@ include('db.php');
 	$sql="SELECT * ";
 	if ($date_requested != 'null') 
 	{
-		$sql.=" FROM  bincard_record  WHERE  bin_Date LIKE  '$date_requested-%' ";
+		$sql.=" FROM  emp_accountability_card  WHERE  DateAdded LIKE  '$date_requested-%' ";
 	}
 	else if ($designation_requested != 'null') {
-		$sql.=" FROM  bincard_record  WHERE  designation LIKE  '$designation_requested' ";
+		$sql.=" FROM  emp_accountability_card  WHERE  designation LIKE  '$designation_requested' ";
 	}
 
 	else if ($office_requested != 'null') {
-		$sql.=" FROM  bincard_record  WHERE  office LIKE  '$office_requested' ";
+		$sql.=" FROM  emp_accountability_card  WHERE  office LIKE  '$office_requested' ";
 	}
 
 	else if ($note_requested != 'null') {
-		$sql.=" FROM  bincard_record  WHERE  note LIKE  '$note_requested' ";
+		$sql.=" FROM  emp_accountability_card  WHERE  note LIKE  '$note_requested' ";
 	}
 	else
 	{
