@@ -30,8 +30,11 @@ GSO_System v 0.51
 ### Change
 	- Change Jscript onclick Delete function to Bootstrap Modal
 ## [0.46] - 07-14-17
+### Added
+	- Add new office management forms with edit,delete button 
+	- Add new office function button with php action
 ### Update
-	- Update Side LInk with updated bootstrap plugins,add new office management forms to edit,delete and add new office
+	- Update Side LInk with updated bootstrap plugins,
 ## [0.45] - 07-13-17
 ### Fix
 	- Fixing Sql Query for  Accountability Card View set details with parts using datatables
@@ -106,8 +109,9 @@ GSO_System v 0.51
 	- Create UI Forms Without Function
 ## [0.03] - 06-16-17
 	- Rought Database
-	- Database Connection
+	- Stablishing Database Connection
 ## [0.02] - 06-15-17)
-	- Adding Template Assets 
+	- Adding Template Assets and Plugins
+	- Creating Sample System Layout
 ## [0.01] - 06-14-17
-	- Gathering Information
+	- Gathering Information of the office
