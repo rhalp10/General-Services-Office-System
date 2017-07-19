@@ -66,32 +66,44 @@ GSO_System v 1.51
 	- While using updated datatables all data fetched miss position displayed
 	- Update display tables 
 	- Adopt New dataTables.bootstraps responsive sorting of data with pagnation and search inputBox
-	
 ## [1.44] - 07-12-17
-	- Removing excess sample
+### Added
 	- Add icon
+### Update
 	- Update sql
+### Remove
+	- Removing excess sample
+### Fix
 	- Fixing labels and form group
 ## [1.45] - 07-13-17
+### Fix
 	- Fixing Sql Query for  Accountability Card View set details with parts using datatables
 ## [1.46] - 07-14-17
+### Update
 	- Update Side LInk with updated bootstrap plugins,add new office management forms to edit,delete and add new office
 ## [1.47] - 07-17-17
+### Change
 	- Change Jscript onclick Delete function to Bootstrap Modal
 ## [1.48] - 07-18-17
-	- ICS and PRS, Update Table 
+### Added
 	- Add assets/FPDF/bincard_print.php
 	- Add assets/FPDF/returnslip_print.php
+### Update
+	- ICS and PRS, Update Table 
 ## [1.49] - 07-19-17
-	- Update View Edit button Function of ICS.php
+### Added
 	- Add ICS_edit_action.php
-	- Update PRS Add Function
 	- Add assets/FPDF/ics_print.php
+### Update
+	- Update PRS Add Function
+	- Update View Edit button Function of ICS.php
 ## [1.5] - 07-20-17
+### Added
 	- Add Employee List Modal
 	- Add Employee List Datatable[Search,Pagnation]
 	- Add Function Button
 ## [1.51] - 07-21-17
+### Finalizing
 	- Finalizing Account Management
 	- Finalizing Accountability Card
 	- FInalizing Bincard
