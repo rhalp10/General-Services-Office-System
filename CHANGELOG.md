@@ -13,57 +13,60 @@ GSO_System v 1.51
 ## [1.05] - 06-21-17
 	- Making the database much more responsive and stablishing different access in different users with specific task,
 ## [1.10] - 06-22-17
-###Added
+### Added
 	- Adding moment.js para may orasan na nagalaw  at ginagawang mas responsive ung php codes ng system per forms
 ## [1.11] - 06-27-17
-###Added
+### Added
 	- Adding some buttons like add,edit,view,delete  without function
 ## [1.20] - 06-28-17
-###Added
+### Added
 	- Adding search,pagination,desc and asc of data item list
 ## [1.3] - 06-29-17
-###Added
+### Added
 	- Adding some php action in function buttons 
 ## [1.31] - 06-30-17
 	- Trying to connect ajax code to make print function per form record,
 ## [1.32] - 07-03-17
-###Added
+### Added
 	- Add jsPDFmaster, but failed to adopt and trying jsPDFmin plugin still failed with tutorials
 ## [1.33] - 07-04-17
 	- Creating PDF Possible display of data connected to database 
 ## [1.34] - 07-05-17
 	- Nested While Fetched Query Works displaying sets with his parts  
 ## [1.4] - 07-06-17
-###Added
+### Added
 	- FPDF plugin for print 
 ## [1.41] - 07-07-17
-###Added
+### Added
 	- modals,add datatables update plugin
 	- dataTables_filter > Label > input css styles
 	- acccard_person_report.php with sample display 
 	- Jquery.dataTables.css
-###Update
+### Update
 	- Modal Title Header
 	- acccard_add_new_action.php
-###Remove
+### Remove
 	- Remove old data display replaced by json datatables
 ## [1.42] - 07-10-17
-###Added
+### Added
 	- Add modal update for change password
-###Update
+### Update
 	- Update dataTables plugin changed to bootstrap responsive
 	- Update account_edit.php to seperate password function
 	- Update Bincard database table
 	- Update functions most of this function problems is sql query mispelled or mistype 
-###Remove
+### Remove
 	- Remove Inventory Type
 ## [1.43] - 07-11-17
+### Added
+	- Add Print Method Modal
+	- Add onkeyup Event in different inputs
+	- Implement Form Input Letter and Number Restriction 
+### Update
 	- While using updated datatables all data fetched miss position displayed
 	- Update display tables 
 	- Adopt New dataTables.bootstraps responsive sorting of data with pagnation and search inputBox
-	- Add Print Method Modal
-	- Implement Form Input Letter and Number Restriction 
-	- Add onkeyup Event in different inputs
+	
 ## [1.44] - 07-12-17
 	- Removing excess sample
 	- Add icon
