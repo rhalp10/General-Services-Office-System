@@ -1,4 +1,4 @@
-<?php
+ <?php
 include('session.php');
 
 include('db.php');
@@ -181,7 +181,7 @@ $query = mysql_query($sql);
           <div class="panel">
           <header class="panel-heading tab-bg-primary " style="padding:15px; height: 70px;">
                      <a class="btn btn-success pull-left" href="" data-toggle="modal" data-target="#myModal"><span class="fa fa-plus-circle"></span> Add Bin Record</a>
-                     <a class="btn btn-info pull-right" href="" >Print Bincard</a>
+                     <a class="btn btn-info pull-right" href="assets/fpdf/bincard_report.php" target="_BLANK">Print Bincard</a>
                         
                           </header>
                          
