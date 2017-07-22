@@ -186,16 +186,20 @@ $ReceiveFrom_Date = $row['ReceiveFrom_Date'];
               <div class="row">
                   <div class="col-lg-12">
                       <section class="panel">
+                       </header>
+                           <header class="panel-heading tab-bg-primary " style="padding:15px; height: 70px;">
+                     <a class="btn btn-info pull-right" href="assets/fpdf/returnslip_report.php?ID=<?php echo $prsID?>" target="_BLANK">Print Return Slip</a>
+                        
+                          </header>
                           <header class="panel-heading">
                              <H1><center>PROPERTY RETURN SLIP<br><h2 style="font-size: 30px; ">PROVINCE OF CAVITE</h2></center></H1>
-                          </header>
+                         
                           <form class="form-horizontal " method="post" action="returnslip_add_action.php"> <!--Form for the receipt -->
                           <br>
                            <div class="form-group">
                                 <label class="col-sm-3 control-label">Name of Local Government Unit:</label>
                                     <div class="col-sm-7"><label class="control-label"><?php echo "$LGU_Name";?></label>
                                     
-                                    <a href="assets/FPDF/returnslip_print.php" class="btn btn-info pull-right " target="_BLANK"><span class="icon_printer"></span> PRINT</a>
                                     </div>
                             </div>
                            <div class="form-group">
@@ -220,7 +224,7 @@ $ReceiveFrom_Date = $row['ReceiveFrom_Date'];
                                     </div>
                                      
                             </div>
-                          <table class="table table-striped table-advance table-hover ">
+                          <table class="table table-bordered table-advance table-hover  dataTable">
                            <tbody class="col-sm-12">
                               <tr >
                                  <th class="col-sm-1"><i class="icon_clipboard"></i> Quantity</th>
@@ -243,7 +247,7 @@ $ReceiveFrom_Date = $row['ReceiveFrom_Date'];
                           
 
                         </table>
-                         <table class="table table-striped table-advance table-hover ">
+                         <table class="table table-bordered table-advance table-hover  dataTable">
                            <tbody class="col-sm-12">
                                 <tr>
                                  <th class="col-sm-1"><i class="icon_id"></i> PAR. No.</th>
