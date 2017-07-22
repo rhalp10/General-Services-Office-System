@@ -191,7 +191,7 @@ include ('db.php');
           <div class="panel">
           <header class="panel-heading tab-bg-primary " style="padding:15px; height: 70px;">
          
-                     <a class="btn btn-info pull-right" href="assets/fpdf/account_report.php" target="_blank">Print Bincard</a>
+                      <a class="btn btn-info pull-right" href="assets/fpdf/bincard_view_report.php?ID=<?php echo $ID;?>" target="_blank">Print Bincard</a>
                         
                           </header>
                          

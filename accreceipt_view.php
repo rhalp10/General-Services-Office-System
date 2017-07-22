@@ -1,5 +1,21 @@
 <?php
 include('session.php');
+$ID = $_REQUEST['ID'];
+
+$result = mysql_query("SELECT * FROM property_accountability_receipt_record WHERE ID = '$ID'");
+$test = mysql_fetch_array($result);
+$rows = mysql_num_rows($result);
+  $Qty = $test['Qty'];
+  $Unit = $test['Unit'];
+  $Descrp = $test['Descrp'];
+  $PropNo = $test['PropNo'];
+  $ReceivedFrom_Name = $test['ReceivedFrom_Name'];
+  $ReceivedFrom_Position = $test['ReceivedFrom_Position'];
+  $ReceivedFrom_Date = $test['ReceivedFrom_Date'];
+  $ReceivedBy_Name = $test['ReceivedBy_Name'];
+  $ReceivedBy_Position = $test['ReceivedBy_Position'];
+  $ReceivedBy_Date = $test['ReceivedBy_Date'];
+  $PAR = $test['PAR'];
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -184,11 +200,10 @@ include('session.php');
                                  
                               </tr>
                               <tr>
-                                <td><input type="text" name="prop_acc_receipt_qty" class="form-control" required=""></td>
-                                <td> <input type="text" name="prop_acc_receipt_unit" class="form-control" required=""></td>
-                                <td> <input type="" name="prop_acc_receipt_desc" class="form-control" required=""></td>
-                                <td> <input type="text" name="prop_acc_receipt_propno" class="form-control" required=""></td>
-                                <td> <a class="btn btn-success" href="" title="add"><span class="icon_plus_alt"></span> Add</a></td>
+                                <td><label class="control-label"><?php echo $Qty;?></label></td>
+                                <td><label class="control-label"><?php echo $Unit;?></label></td>
+                                <td><label class="control-label"><?php echo $Descrp;?></label></td>
+                                <td><label class="control-label"><?php echo $PropNo;?></label></td>
                               </tr>
                               <tr>
                                 
@@ -208,19 +223,19 @@ include('session.php');
                                             <div class="form-group">
                                                 <label class="col-sm-2 control-label">Name</label>
                                                 <div class="col-sm-7">
-                                                    <input type="text"  class="form-control" placeholder="Name" name="prop_acc_receipt_receivebyname" required="">
+                                                    <td><label class="control-label"><?php echo $ReceivedBy_Name;?></label></td>
                                                 </div>
                                             </div>
                                             <div class="form-group">
                                                 <label class="col-sm-2 control-label">Position</label>
                                                 <div class="col-sm-7">
-                                                    <input type="text"  class="form-control" placeholder="Position" name="prop_acc_receipt_receivebyposition" required="">
+                                                    <td><label class="control-label"><?php echo $ReceivedBy_Position;?></label></td>
                                                 </div>
                                             </div>
                                             <div class="form-group">
                                                 <label class="col-sm-2 control-label">Date</label>
                                                 <div class="col-sm-2">
-                                                    <input type="date"  class="form-control" placeholder="date" name="prop_acc_receipt_receivebydate" required="">
+                                                    <td><label class="control-label"><?php echo $ReceivedBy_Date;?></label></td>
                                                 </div>
                                             </div>
                                             <div class="form-group">
@@ -246,19 +261,19 @@ include('session.php');
                                             <div class="form-group">
                                                 <label class="col-sm-2 control-label">Name</label>
                                                 <div class="col-sm-7">
-                                                    <input type="text"  class="form-control" placeholder="Name" name="prop_acc_receipt_receivefromname" required="">
+                                                    <td><label class="control-label"><?php echo $ReceivedFrom_Name;?></label></td>
                                                 </div>
                                             </div>
                                             <div class="form-group">
                                                 <label class="col-sm-2 control-label">Position</label>
                                                 <div class="col-sm-7">
-                                                    <input type="text"  class="form-control" placeholder="Position" name="prop_acc_receipt_receivefromposition" required="">
+                                                    <td><label class="control-label"><?php echo $ReceivedFrom_Position;?></label></td>
                                                 </div>
                                             </div>
                                             <div class="form-group">
                                                 <label class="col-sm-2 control-label">Date</label>
                                                 <div class="col-sm-2">
-                                                    <input type="date"  class="form-control" placeholder="date" name="prop_acc_receipt_receivefromdate" required="">
+                                                    <td><label class="control-label"><?php echo $ReceivedFrom_Date;?></label></td>
                                                 </div>
                                             </div>
                                             <div class="form-group">

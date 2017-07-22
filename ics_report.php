@@ -173,13 +173,13 @@ $query=mysql_query($sql);
           <h3 class="page-header"><i class="fa fa-clipboard"></i> Inventory Custodian Slip Management</h3>
           <ol class="breadcrumb">
             <li><i class="fa fa-home"></i><a href="index.php">Dashboard</a></li>
-            <li><i class="fa fa-clipboard"></i>Inventory Custodian Slip Management</li>
+            <li><i class="fa fa-clipboard"></i>Inventory Custodian Slip Report</li>
           </ol>
         </div>
       </div>
           <div class="panel">
           <header class="panel-heading tab-bg-primary " style="padding:15px; height: 70px;">
-                        <a class="btn btn-info pull-right" href="assets/fpdf/account_report.php" target="_blank" title="Print" name="submit"><span class="icon_printer"></span> PRINT</a>
+                     <a class="btn btn-info pull-right" href="assets/fpdf/ics_general_print.php" target="_blank" title="Print" name="submit"><span class="icon_printer"></span> PRINT</a> 
                           </header>
                          
                     
@@ -193,6 +193,7 @@ $query=mysql_query($sql);
               <th>Position</th>
               <th>Date</th>
               <th>Description</th>
+              <th>Action</th>
             </tr>
           </thead>
           <tfoot>
@@ -202,6 +203,7 @@ $query=mysql_query($sql);
               <th></th>
               <th></th>
               <th></th>              
+              <th></th>
               <th></th>
             </tr>
           </tfoot>
@@ -221,6 +223,18 @@ $query=mysql_query($sql);
               <td><?php echo $row['ReceiveBy_Date'];?></td>
 
               <td><?php echo $row['Descrp'];?></td>
+              <td><center>
+              <div class="btn-group">
+                <button type="button" class="btn btn-primary">Action</button>
+                <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  <span class="caret"></span>
+                  <span class="sr-only">Toggle Dropdown</span>
+                </button>
+                <ul class="dropdown-menu">
+                  <li><a href="ics_report_view.php?icsID=<?php echo $icsID; ?>">View</a></li>
+                  <li><a href="assets/fpdf/ics_print.php?icsID=<?php echo $icsID; ?>" target="_blank">Print</a></li>
+                </ul>
+              </div></center></td>
 
             </tr>
             <?php

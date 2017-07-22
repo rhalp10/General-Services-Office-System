@@ -202,7 +202,7 @@ $ICS=$test['ICS'];
                                 <label class="control-label"><b>ICS:</b> <?php echo $ICS; ?>
                                 </label></strong></label>
                               <br> <br> <br>
-                            <table class="table table-striped table-advance table-hover ">  
+                            <table class="table table-bordered table-advance table-hover  dataTable">  
                             <tr>
                                 <th class="col-sm-1"><i class="icon_clipboard"></i> Quantity</th>
                                 <th class="col-sm-1"><i class="icon_datareport_alt "></i> Unit</th>

@@ -179,10 +179,6 @@ $query=mysql_query($sql);
                                   <tr>
                                     <th></th>
                                     <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
                                   </tr>
                                 </tfoot>
                                 <tbody>
