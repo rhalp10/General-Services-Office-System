@@ -204,7 +204,7 @@ include ('db.php');
 
               echo "<label >$Count</label>";
           ?>
-                     <a class="btn btn-info pull-right" href="assets/fpdf/account_report.php" target="_blank">Print Bincard</a>
+                     <a class="btn btn-info pull-right" href="assets/fpdf/bincard_view_report.php?ID=<?php echo $ID;?>" target="_blank">Print Bincard</a>
                         
                           </header>
                          
@@ -260,11 +260,40 @@ include ('db.php');
                   <ul class="dropdown-menu">
                     <li><a href="bincard_view_edit-issued-data.php?issuedID=<?php echo "$issued_ID";?>&binID=<?php echo $ID?>">Edit</a></li>
                     <li role="separator" class="divider"></li>
-                    <li><a onclick="confirmDelete(<?php echo $issued_ID; ?>)">Delete</a></li>
+                    <!--<li><a onclick="confirmDelete(<?php echo $issued_ID; ?>)">Delete</a></li> -->
+                    <li><a data-toggle="modal" data-target="#delete<?php echo $issued_ID; ?>">Delete</a></li>
                   </ul>
                 </div>
                 </td>
               </tr>
+
+
+
+             <!-- Delete Modal  -->
+            <div id="delete<?php echo $issued_ID; ?>" class="modal fade" role="dialog">
+              <div class="modal-dialog">
+
+                <!-- Modal content-->
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Delete Account</h4>
+                  </div>
+                  <div class="modal-body">
+                  <center>
+                  <h1>Are you sure ?</h1>
+                    <a class="btn btn-success" href="bincard_view_delete_action.php?issuedID=<?php echo $issued_ID; ?>&ID=<?php echo $ID;?>">DELETE</a>
+                    <a class="btn btn-danger"  data-dismiss="modal">CANCEL</a>
+                    </center>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                  </div>
+                </div>
+
+              </div>
+            </div><!-- End Delete Modal  -->
+
               <?php 
 
               //$issuedUpdate = $issuedUpdate+$row['qty']; 
