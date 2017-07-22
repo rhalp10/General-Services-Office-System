@@ -238,6 +238,7 @@ $query=mysql_query($sql);
                   </button>
                   <ul class="dropdown-menu">
                     <li><a href="returnslip_view.php?ID=<?php echo $ID; ?>">View</a></li>
+                    <li><a href="assets/fpdf/returnslip_report.php?ID=<?php echo $ID?>" target="_BLANK">Print</a></li>
                     <li><a href="returnslip_edit.php?ID=<?php echo $ID; ?>">Edit</a></li>
                     <li role="separator" class="divider"></li>
                     <li><a data-toggle="modal" data-target="#delete<?php echo $ID; ?>">Delete</a></li>
