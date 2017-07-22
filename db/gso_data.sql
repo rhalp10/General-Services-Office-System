@@ -1,13 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 3.4.5
+-- version 4.1.12
 -- http://www.phpmyadmin.net
 --
--- Host: localhost
--- Generation Time: Jul 21, 2017 at 10:27 AM
--- Server version: 5.5.16
--- PHP Version: 5.3.8
+-- Host: 127.0.0.1
+-- Generation Time: Jul 22, 2017 at 01:09 PM
+-- Server version: 5.6.16
+-- PHP Version: 5.5.11
 
-SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
 
 
@@ -36,7 +36,7 @@ CREATE TABLE IF NOT EXISTS `bincard_issued_record` (
   `qty` int(11) NOT NULL,
   `DateAdded` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`ID`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=27 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=35 ;
 
 --
 -- Dumping data for table `bincard_issued_record`
@@ -45,7 +45,11 @@ CREATE TABLE IF NOT EXISTS `bincard_issued_record` (
 INSERT INTO `bincard_issued_record` (`ID`, `ItemSetID`, `itemCode`, `bin_ID`, `recpnt`, `issued_date`, `qty`, `DateAdded`) VALUES
 (24, 'SP-24', 'SET SP-24', 16, 'omar', '2017-07-21', 5, '2017-07-19 01:17:53'),
 (25, 'SP-25', 'SET SP-25', 16, 'darren', '2017-07-08', 4, '2017-07-19 01:18:13'),
-(26, 'SP-26', 'SET SP-26', 16, 'franz', '2017-07-08', 1, '2017-07-19 02:21:28');
+(26, 'SP-26', 'SET SP-26', 16, 'franz', '2017-07-08', 1, '2017-07-19 02:21:28'),
+(31, 'SP-31', 'SET SP-31', 17, 'asd', '2017-07-14', 3, '2017-07-22 07:02:37'),
+(32, 'SP-32', 'SET SP-32', 18, 'HERO', '2017-07-07', 20, '2017-07-22 07:48:30'),
+(33, 'SP-33', 'SET SP-33', 19, 'FRANZ', '2017-07-01', 500, '2017-07-22 07:49:29'),
+(34, 'SP-34', 'SET SP-34', 19, 'AUBREY', '2017-07-21', 50, '2017-07-22 07:49:42');
 
 -- --------------------------------------------------------
 
@@ -63,14 +67,17 @@ CREATE TABLE IF NOT EXISTS `bincard_record` (
   `Balance` float NOT NULL,
   `DateAdded` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`ID`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=17 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=20 ;
 
 --
 -- Dumping data for table `bincard_record`
 --
 
 INSERT INTO `bincard_record` (`ID`, `bin_Date`, `Supplier`, `Descrp`, `Qty`, `Issued`, `Balance`, `DateAdded`) VALUES
-(16, '2017-07-14', '21351', 'laptop', '30', 10, 20, '2017-07-19 02:53:59');
+(16, '2017-07-14', '21351', 'laptop', '30', 10, 20, '2017-07-19 02:53:59'),
+(17, '2017-07-08', '21', 'asd', '30', 3, 27, '2017-07-22 07:03:33'),
+(18, '2017-07-08', 'FRANZ', 'ASO', '50', 20, 30, '2017-07-22 07:48:56'),
+(19, '2017-07-13', 'PAPA', 'ISDA', '1500', 550, 950, '2017-07-22 07:49:56');
 
 -- --------------------------------------------------------
 
@@ -143,7 +150,6 @@ CREATE TABLE IF NOT EXISTS `emp_accounts_record` (
 --
 
 INSERT INTO `emp_accounts_record` (`accID`, `accLevel`, `username`, `password`, `fullName`, `Age`, `Gender`, `Address`, `Email`, `Pos`, `Mobile`, `image`) VALUES
-(0, '0', 'admin', 'Tzabaoth10', 'Rhalp Darren Cabrera', 20, 'male', 'Blk 38 Lot 11 Phase 2b Brgy Aguado TMC', '555@yahoo.com', '55', '0965489844', 'img/emp_profile/temp.jpg'),
 (1, '1', 'employee', 'employee', 'mark', 20, 'Unknown', 'Mars', 'marcalien@gmail.com', 'staff', '09169158798', 'img/emp_profile/temp.jpg'),
 (10, '0', 'asasdkld', '321', 'iouqou', 0, 'khakdhk', 'hhhhh', 'oiuoiu@yahoo.com', 'kkjh', '0904545454', 'img/emp_profile/temp.jpg'),
 (14, '1', 'iou', '555', 'franz1', 50, 'male', 'Blk 38 Lot 11 Phase 2b Brgy Aguado TMC', 'jalksjd@yahoo.com', 'jklasdjd', '0915611894', 'img/emp_profile/temp.jpg'),
@@ -293,7 +299,7 @@ CREATE TABLE IF NOT EXISTS `invent_custodian_slip` (
   `ICS` int(11) NOT NULL,
   `DateAdded` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`ID`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=6 ;
 
 --
 -- Dumping data for table `invent_custodian_slip`
@@ -315,7 +321,7 @@ CREATE TABLE IF NOT EXISTS `invent_custodian_slip_descrp` (
   `Descrp` varchar(50) NOT NULL,
   `Invent_Item_No` varchar(50) NOT NULL,
   PRIMARY KEY (`ID`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=11 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=13 ;
 
 --
 -- Dumping data for table `invent_custodian_slip_descrp`
@@ -378,8 +384,7 @@ INSERT INTO `property_accountability_receipt_record` (`ID`, `Qty`, `Unit`, `Desc
 (2, 0, 'asdas', 'dasdas', 'dasdasd', '65464', '65465', '0054-06-04', 'sad', '545', '0064-04-05', 'a'),
 (3, 123123, '12312312', '3123123', '123123123', '123123', 'qweqweqwe', '0000-00-00', '12312312', '3123123', '0123-03-12', '123'),
 (4, 2147483647, 'wrwerwer', '123123123', 'werwerwerw12313123', 'oiuoiwurquiow', 'uqwioruqioewuu', '0000-00-00', 'iauoiuseowueiru', 'iouwioeurweiruio', '0000-00-00', '1234123'),
-(5, 23, 'unit', 'asdj', 'hasd', 'sadas', 'dasdasd', '2017-07-13', 'xxx', 'asdas', '2017-07-11', '123r'),
-(6, 2314567, 'q', 'q', 'q', 'q', 'q', '2017-07-06', 'q', 'q', '2017-07-04', 'q');
+(5, 23, 'unit', 'asdj', 'hasd', 'sadas', 'dasdasd', '2017-07-13', 'xxx', 'asdas', '2017-07-11', '123r');
 
 -- --------------------------------------------------------
 
@@ -410,7 +415,7 @@ CREATE TABLE IF NOT EXISTS `property_return_slip_record` (
   `DateAdded` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`ID`),
   KEY `prs_purpose_dictionary` (`PurposeID`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=22 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=27 ;
 
 --
 -- Dumping data for table `property_return_slip_record`
@@ -418,7 +423,8 @@ CREATE TABLE IF NOT EXISTS `property_return_slip_record` (
 
 INSERT INTO `property_return_slip_record` (`ID`, `LGU_Name`, `PurposeID`, `Qty`, `Unit`, `Descrp`, `Serial_Num`, `Prop_Number`, `ParNo`, `Name_of_Enduser`, `Unit_Value`, `Total_Value`, `Status`, `ReceiveBy_Name`, `ReceiveBy_Position`, `ReceiveBy_Date`, `ReceiveFrom_Name`, `ReceiveFrom_Position`, `ReceiveFrom_Date`, `DateAdded`) VALUES
 (1, 'Lumil NHS, Silang', 2, 1, 'unit', 'Lenovo Tab-A7-30 Mld. Lenovo A3300-GV', 'SN-HGC7VGW7', 'd213', 'T-192-15', 'Lucia M. Diesta', 0, 7095, 'Unserviceable', 'xcv', 'wadasd', '2017-07-19', 'sddasd', 'xcxvcx', '2017-07-19', '2017-07-19 06:26:34'),
-(21, 'XWWWWWWWWWWWWWW ', 3, 1, 'unit', 'asdasD', '2ADAWD', 'DAWD', 'ASDASD', 'AWD', 2313, 123, 'Unserviceable', 'asdASD', 'asdaSD', '2017-07-07', '2017-07-07', 'asdASD', '2017-07-13', '2017-07-21 07:50:54');
+(21, 'XWWWWWWWWWWWWWW ', 3, 1, 'unit', 'asdasD', '2ADAWD', 'DAWD', 'ASDASD', 'AWD', 2313, 123, 'Unserviceable', 'asdASD', 'asdaSD', '2017-07-07', 'asd', 'asdASD', '2017-07-13', '2017-07-22 10:49:59'),
+(22, 'asd ', 3, 21, 'unit', 'asd', 'zxczc', 'zxczxczxc', 'asd3124', 'cfdsf', 2344324, 4234, 'Unserviceable', 'sdfawe', 'qweqwe', '2017-07-03', 'adsad', 'adawd', '2017-07-14', '2017-07-22 10:50:02');
 
 -- --------------------------------------------------------
 
