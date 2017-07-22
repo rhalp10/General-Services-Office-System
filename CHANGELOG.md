@@ -8,8 +8,9 @@
 -------
 ## [0.60] - 07-22-17
 ### Added
-	- bincard_view.php Add delete modal
+[#54](https://github.com/rhalp10/General-Services-Office-System/commit/216891c3d2c01c5f7ddecf5810adaaca12142d02)	- bincard_view.php Add delete modal
 [#48](https://github.com/rhalp10/General-Services-Office-System/commit/4248e3d2daa3c0ead0092937c652bcd4312ccac4)	- accreceipt delete function 
+	
 	- ICS Report Print
 	- PRS Report Print
 	- PRS General Report Print
