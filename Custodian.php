@@ -1,23 +1,9 @@
 <?php
 include('session.php');
-
-$icsID =$_REQUEST['icsID'];
-$result = mysql_query("SELECT * FROM invent_custodian_slip WHERE ID = '$icsID'");
-$test = mysql_fetch_array($result);
-$ICS=$test['ICS'];
-      $Qty=$test['Qty'];
-      $Unit=$test['Unit'];
-      $Descrp=$test['Descrp'];
-      $Invent_Item_No=$test['Invent_Item_No'];
-      $Ez_Useful_Life=$test['Ez_Useful_Life'];
-      $ReceivedBy_Name=$test['ReceivedBy_Name'];
-      $ReceivedBy_Position=$test['ReceivedBy_Position'];
-      $ReceivedBy_Date=$test['ReceiveBy_Date'];
-      $ReceivedFrom_Name=$test['ReceivedFrom_Name'];
-      $ReceivedFrom_Position=$test['ReceivedFrom_Position'];
-      $ReceivedFrom_Date=$test['ReceiveFrom_Date'];
-
-
+include('db.php');
+$sql = "SELECT *";
+$sql.=" FROM emp_pgc_record";
+$query=mysql_query($sql);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -28,7 +14,7 @@ $ICS=$test['ICS'];
     <meta name="author" content="Rhalp Darren R. Cabrera / Omar Raouf A. Daud">
     <link rel="shortcut icon" href="img/logo.png">
 
-    <title>ICS Edit</title>
+    <title>PGC Account Card</title>
 
     <!-- Bootstrap CSS -->    
     <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -42,7 +28,7 @@ $ICS=$test['ICS'];
     <link href="css/style.css" rel="stylesheet">
     <link href="css/style-responsive.css" rel="stylesheet" />
 
-    <link rel="stylesheet" type="text/css" href="css/jquery.dataTables.css">
+    <link href="css/dataTables.bootstrap.min.css" rel="stylesheet">
 
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 -->
     <!--[if lt IE 9]>
@@ -50,10 +36,23 @@ $ICS=$test['ICS'];
       <script src="js/respond.min.js"></script>
       <script src="js/lte-ie7.js"></script>
     <![endif]-->
+       <style type="text/css">
+      .dataTables_filter{
+        font-family: lato;
+        
+      }
+      .dataTables_filter > label > input{
+    
+    padding: 5px 20px;
+    margin: 8px 0;
+    box-sizing: border-box;
+
+      }
+    </style>
   </head>
+
   <body>
-  
-<!-- container section start -->
+  <!-- container section start -->
   <section id="container" class="">
       <!--header start-->
       
@@ -104,7 +103,7 @@ $ICS=$test['ICS'];
           <div id="sidebar"  class="nav-collapse ">
               <!-- sidebar menu start-->
               <ul class="sidebar-menu">                
-                  <li class="active">
+                  <li class="">
                       <a class="" href="admin.php">
                           <i class="icon_house_alt"></i>
                           <span>Dashboard</span>
@@ -123,11 +122,12 @@ $ICS=$test['ICS'];
                           <span class="menu-arrow arrow_carrot-right"></span>
                       </a>
                       <ul class="sub">
-                          <li><a class="" href="acccard.php">Accountability Card</a></li>
+                          <li><a class="" href="acccard.php">PGC Account Card</a></li>
                           <li><a class="" href="accreceipt.php">Accountability Receipt</a></li>
                           <li><a class="" href="returnslip.php">Return Slip</a></li>
                           <li><a class="" href="bincard.php"><span>Bincard</span></a></li>
-                          <li><a class="" href="ics.php">Custodian Slip</a></li>
+                          <li><a class="" href="Custodian.php">Custodian Slip</a></li>
+                          
                       </ul>
                   </li>
                              
@@ -137,25 +137,20 @@ $ICS=$test['ICS'];
                           <span>Employee  List</span>
                       </a>
                   </li>
-                  <li class="">
-                      <a class="" href="office.php">
-                          <i class="icon_building_alt"></i>
-                          <span>Office  List</span>
-                      </a>
-                  </li>
+                  
                   <li class="sub-menu ">
                       <a href="javascript:;" class="">
-                          <i class="icon_datareport"></i>
+                          <i class="icon_documents_alt"></i>
                           <span>Report</span>
                           <span class="menu-arrow arrow_carrot-right"></span>
                       </a>
-                      <ul class="sub">                           
+                      <ul class="sub">                          
                           <li><a class="" href="account_report.php">Account</a></li>
                           <li><a class="" href="acccard_report.php">PGC Account Card</a></li>
-                          <li><a class="" href="accreceipt_report.php">Accountability Receipt</a></li>
-                          <li><a class="" href="returnslip_report.php">Return Slip</a></li>
+                          <li><a class="" href="par_report.php">Accountability Receipt</a></li>
+                          <li><a class="" href="return_slip_report.php">Return Slip</a></li>
                           <li><a class="" href="bincard_report.php"><span>Bincard</span></a></li>
-                          <li><a class="" href="ics_report.php">Custodian Slip</a></li>
+                          <li><a class="" href="Custodian_report.php">Custodian Slip</a></li>
                       </ul>
                   </li>
                   
@@ -167,26 +162,152 @@ $ICS=$test['ICS'];
 
       <!--main content start-->
       <section id="main-content">
-          <section class="wrapper">
-      <div class="row">
+        <section class="wrapper">
+         <div class="row">
         <div class="col-lg-12">
-          <h3 class="page-header"><i class="fa fa fa-bars"></i>EDIT</h3>
+          <h3 class="page-header"><i class="fa fa-clipboard"></i> Inventory Custodian Slip Management</h3>
           <ol class="breadcrumb">
             <li><i class="fa fa-home"></i><a href="index.php">Dashboard</a></li>
-            <li><i class="fa fa-clipboard"></i><a href="ics.php">Inventory Custodian Slip Management</a></li>
-            <li><i class="fa fa-clipboard"></i>Inventory Custodian Slip Edit</li>
-
+            <li><i class="fa fa-clipboard"></i>Inventory Custodian Slip Management</li>
           </ol>
         </div>
       </div>
-              <!-- page start--> 
-              
+          <div class="panel">
+          <header class="panel-heading tab-bg-primary " style="padding:15px; height: 70px;">
+                     <a class="btn btn-success pull-left" href="" data-toggle="modal" data-target="#AddNewICS">Add ICS Record</a>
+                        
+                          </header>
+                         
+                    
+                    <div >
+      <table id="myData"  class="table table-striped table-advance table-hover ">
+          <thead>
+            <tr>
+              <th>ICS#</th>
+              <th>Receive By</th>
+              <th>Position</th>
+              <th>Date</th>
+              <th>Description</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tfoot>
+            <tr>
+              <th></th>
+              <th></th>
+              <th></th>
+              <th></th>
+              <th></th>
+            </tr>
+          </tfoot>
+          <tbody>
+          <?php 
+           while( $row=mysql_fetch_array($query) ) 
+           { 
+
+           $accID = $row['accID'];
+          ?>
+            <tr>
+              <td><?php echo $row['fullName'];?></td>
+              <td><?php echo $row['office'];?></td>
+              <td><?php echo $row['designation'];?></td>
+              <td><?php echo $row['note'];?></td>
+              <td></td>
+              <td>
+              <div class="btn-group">
+                <button type="button" class="btn btn-primary">Action</button>
+                <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  <span class="caret"></span>
+                  <span class="sr-only">Toggle Dropdown</span>
+                </button>
+                <ul class="dropdown-menu">
+                  <li><a href="acccard_view.php?accID=<?php echo $accID; ?>">View</a></li>
+                  <li><a href="acccard_edit.php?accID=<?php echo $accID; ?>">Edit</a></li>
+                  <li><a href="acccard_edit.php?accID=<?php echo $accID; ?>">Print</a></li>
+                  <li role="separator" class="divider"></li>
+                  <li><a onclick="confirmDelete(<?php echo $accID; ?>)">Delete</a></li>
+                </ul>
+              </div>
+              </td>
+
+            </tr>
+            <?php
+            }
+            ?>
+          </tbody>
+
+      </table>
+    </div>
+
+          
+            </div>
+          </section>
+      </section>
+      <!--main content end-->
+
+
+
+
+
+
+
+       <div class="text-center">
+            <div class="credits">
+                <!-- 
+                    All the links in the footer should remain intact. 
+                    You can delete the links only if you purchased the pro version.
+                    Licensing information: https://bootstrapmade.com/license/
+                    Purchase the pro version form: https://bootstrapmade.com/buy/?theme=NiceAdmin
+                -->
+               Rhalp Darren Cabrera & Omar Raouf Daud<br>
+               Copyright 2017
+            </div>
+        </div>
+  </section>
+  <!-- container section end -->
+
+
+
+
+  <!-- UPDATEModal -->
+<div id="myModal" class="modal fade " role="dialog">
+  <div class="modal-dialog" style="width: 800px; height: 900px;">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Modal Header</h4>
+      </div>
+      <div class="modal-body">
+        
+      UPDATE
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+
+
+
+  <!-- Modal -->
+<div id="AddNewICS" class="modal fade " role="dialog">
+  <div class="modal-dialog" style="width: 1000px; height: 900px;">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Inventory Custodian Slip Form</h4>
+      </div>
+      <div class="modal-body">
         <div class="row">
           <div class="col-lg-12">
-
-          <header class="panel-heading tab-bg-primary " style="padding:15px; height: 70px;">
-          
-           </header>
                          <header class="panel-heading">
                              <H1><center>INVENTORY CUSTODIAN SLIP<br></center></H1>
                              
@@ -196,82 +317,24 @@ $ICS=$test['ICS'];
                          Client Info:
                          </header>
                     <div class="panel-body">
-                     <form class="form-horizontal " method="post" action="ics_edit_action.php?icsID=<?php echo "$icsID";?>"> 
-                              <label class="col-sm-2 control-label pull-right"><strong><input type="text" name="custodian_slip_ICS" class="form-control" placeholder="ICS Number" value="<?php echo $ICS; ?>"></strong></label>
+                     <form class="form-horizontal " method="post" action="Custodian_add_action.php"> 
+                              <label class="col-sm-3 control-label pull-right"><strong><input type="text" name="custodian_slip_ICS" class="form-control" placeholder="ICS Number"></strong></label>
                               <br> <br> <br>
                             <table class="table table-striped table-advance table-hover ">  
                             <tr>
                                 <th class="col-sm-1"><i class="icon_clipboard"></i> Quantity</th>
                                 <th class="col-sm-1"><i class="icon_datareport_alt "></i> Unit</th>
-                                <th class="col-sm-4"><i class="icon_chat_alt"></i> Description</th>
-                                <th class="col-sm-2"><i class="icon_id"></i> Inventory Item No.</th>
+                                <th class="col-sm-4"><i class="icon_documents_alt"></i> Description</th>
+                                <th class="col-sm-2"><i class="icon_drawer_alt"></i> Inventory Item No.</th>
                                 <th class="col-sm-2"><i class="icon_hourglass"></i> Estimated Useful Life</th>
                               </tr>
                               <tr>
-
-                                <td><input type="text" name="custodian_slip_qty" class="form-control"  required="" placeholder="Qty" value="<?php echo $Qty; ?>"></td>
-                                <td><select  name="custodian_slip_unit" class="form-control" required="" value="<?php echo $Unit; ?>">
-                                  <option value="unit">Unit</option>
-                                  <option value="pc">Pc.</option>
-                                </select></td>
-                                <td><input type="text" name="custodian_slip_descrp" class="form-control"  required="" placeholder="Description" value="<?php echo $Descrp; ?>"></td>
-                                <td><input type="text" name="custodian_slip_inventItemNo" class="form-control"  required="" placeholder="Inventory Item No." value="<?php echo $Invent_Item_No; ?>"></td>
-                                <td><input type="text" name="custodian_slip_EzLife" class="form-control"  required="" placeholder="Estimated Useful Life" value="<?php echo $Ez_Useful_Life; ?>"></td>
+                                <td><input type="text" name="custodian_slip_qty" class="form-control"></td>
+                                <td><input type="text" name="custodian_slip_unit" class="form-control"></td>
+                                <td><input type="text" name="custodian_slip_descrp" class="form-control"></td>
+                                <td><input type="text" name="custodian_slip_inventItemNo" class="form-control"></td>
+                                <td><input type="text" name="custodian_slip_EzLife" class="form-control"></td>
                               </tr>
-                              <?php 
-                              $res1 = mysql_query("SELECT * FROM invent_custodian_slip_descrp where icsID = '$icsID' ");
-                              $eCount = 0;
-                              while ($row = mysql_fetch_array($res1))
-                              {
-                                $eCount = $eCount+ 1;
-
-                              ?>
-                              <tr>
-                                <td></td>
-                                <td></td>
-                                <td><input type="" class="form-control" name="descrp<?php echo $eCount; ?>" value="<?php echo $row['Descrp'];  ?>" disabled></td>
-                                <td><input type="" class="form-control" name="itemNo<?php echo $eCount; ?>" value="<?php echo $row['Invent_Item_No']; ?>" disabled></td>
-                                <td><a class="btn btn-info" data-toggle="modal" data-target="#editDescrp<?php echo $row['ID'] ?>"> Edit</a></td>
-                              </tr>                        
-                                <!-- Edit Item Desc Modal -->
-                                <div id="editDescrp<?php echo $row['ID'] ?>" class="modal fade" role="dialog">
-                                  <div class="modal-dialog">
-
-                                    <!-- Modal content-->
-                                    <div class="modal-content">
-                                      <div class="modal-header">
-                                        <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                        <h4 class="modal-title">Modal Header</h4>
-                                      </div>
-                                      <div class="modal-body">
-                                        <?php  $editID = $row['ID'];
-                                        $res2 = mysql_query("SELECT * FROM invent_custodian_slip_descrp where ID = '".$row['ID']."' ");
-                                        $row1 = mysql_fetch_array($res2)
-                                        
-                                        ?>
-                                           <form method="POST" action="ics_edit_desc_action.php?ID=<?php echo $row['ID']?>" >
-                                           <label class="control-label">Description</label>
-                                             <input class="form-control" type="text" name="edit_desc<?php echo $row['ID'] ?>" value="<?php echo $row1['Descrp']?>">
-                                             
-                                           <label class="control-label">Inventory Item No.</label>
-                                             <input class="form-control" type="text" name="edit_itemNo<?php echo $row['ID'] ?>" value="<?php echo $row1['Invent_Item_No']?>">
-                                             <br>
-                                             <input type="Submit" name="Submit" value="Submit" class="btn btn-success">
-                                             <input type="button" name="Cancel" value="Cancel" class="btn btn-danger" data-dismiss="modal">
-                                           </form>
-                                           
-                                      </div>
-                                      <div class="modal-footer">
-                                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                                      </div>
-                                    </div>
-
-                                  </div>
-                                </div>
-                                <?php  
-
-                               }
-                              ?>
                              </table>
                              <hr>
                           <div class="row">
@@ -284,20 +347,20 @@ $ICS=$test['ICS'];
                                             <div class="form-group">
                                                 <label class="col-sm-2 control-label">Name</label>
                                                 <div class="col-sm-7">
-                                                <input class="form-control" type="text" name="ReceivedBy_Name" value="<?php echo $ReceivedBy_Name; ?>">
+                                                    <input type="text"  class="form-control" placeholder="Name" name="custodian_slip_receiveBy_name">
                                                 </div>
                                             </div>
                                             <div class="form-group">
                                                 <label class="col-sm-2 control-label">Position</label>
                                                 <div class="col-sm-7">
-                                                    <input class="form-control" type="text" name="ReceivedBy_Pos" value="<?php echo $ReceivedBy_Position; ?>">
+                                                    <input type="text"  class="form-control" placeholder="Position" name="custodian_slip_receiveBy_position">
                                                 </div>
                                             </div>
                                             <div class="form-group">
                                                 <label class="col-sm-2 control-label">Date</label>
-                                                <div class="col-sm-3">
-                                                   <input class="form-control" type="date" name="ReceivedBy_Date" value="<?php echo $ReceivedBy_Date; ?>">
-                                                   </div>
+                                                <div class="col-sm-2">
+                                                    <input type="date"  class="form-control" placeholder="date" name="custodian_slip_receiveBy_date">
+                                                </div>
                                             </div>
                                            
                                           
@@ -316,31 +379,29 @@ $ICS=$test['ICS'];
                                             <div class="form-group">
                                                 <label class="col-sm-2 control-label">Name</label>
                                                 <div class="col-sm-7">
-                                                <input class="form-control" type="text" name="ReceivedFrom_Name" value="<?php echo $ReceivedFrom_Name; ?>">
+                                                    <input type="text"  class="form-control" placeholder="Name" name="custodian_slip_receiveFrom_name">
                                                 </div>
                                             </div>
                                             <div class="form-group">
                                                 <label class="col-sm-2 control-label">Position</label>
                                                 <div class="col-sm-7">
-                                                   <input class="form-control" type="text" name="ReceivedFrom_Pos" value="<?php echo $ReceivedFrom_Position; ?>">
+                                                    <input type="text"  class="form-control" placeholder="Position" name="custodian_slip_receiveFrom_position">
                                                 </div>
                                             </div>
                                             <div class="form-group">
                                                 <label class="col-sm-2 control-label">Date</label>
-                                                <div class="col-sm-3">
-                                                <input class="form-control" type="date" name="ReceivedFrom_Date" value="<?php echo $ReceivedFrom_Date; ?>">
+                                                <div class="col-sm-2">
+                                                    <input type="date"  class="form-control" placeholder="date" name="custodian_slip_receiveFrom_date">
                                                 </div>
                                             </div>
                                             <div class="form-group">
                                                 <label class="col-sm-2 control-label"></label>
+                                                <div class="col-sm-2">  
+                                                    <input class="btn btn-success "  type="submit" name="Submit" value="Submit"> 
+                                                </div>
                                             </div>
-                                            <div>
-                                            </div>
-                                            <input class="btn btn-success" type="Submit" name="Submit" value="Submit">
-                                            <a href="ics.php" class="btn btn-danger">Cancel</a>
                                     </div>
                                 </section>
-                                
                             </div>
                         </div>
                         </form>
@@ -349,33 +410,86 @@ $ICS=$test['ICS'];
             </div>
 
         </div>
-              <!-- page end-->
-          </section>
-      </section>
-      <!--main content end-->
-      <div class="text-right">
-            <div class="credits">
-                <!-- 
-                    All the links in the footer should remain intact. 
-                    You can delete the links only if you purchased the pro version.
-                    Licensing information: https://bootstrapmade.com/license/
-                    Purchase the pro version form: https://bootstrapmade.com/buy/?theme=NiceAdmin
-                -->
-            </div>
-        </div>
-  </section>
 
-  <!-- container section end -->
-      <!-- javascripts -->
-    <script type="text/javascript">
-      var dateControl = document.querySelector('input[type="date"]');
-    dateControl.value = '<?php echo "$bin_Date";?>';
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+
+
+
+
+    <script type="text/javascript" language="javascript" src="js/jquery.js"></script>
+    <script type="text/javascript" language="javascript" src="js/jquery.dataTables.js"></script>
+    <script type="text/javascript" language="javascript" >
+    //  $(document).ready(function() {
+    //    var dataTable = $('#employee-grid').DataTable( {
+    //      "processing": true,
+    //      "serverSide": true,
+    //      "ajax":{
+    //        url :"acccard_emp-data.php", // json datasource
+    //        type: "post",  // method  , by default get
+    //        error: function(){  // error handling
+    //          $(".employee-grid-error").html("");
+    //          $("#employee-grid").append('<tbody class="employee-grid-error"><tr><th colspan="3">No data found in the server</th></tr></tbody>');
+    //          $("#employee-grid_processing").css("display","none");
+    //          
+    //        }
+    //      }
+    //    } );
+    //  } );
+
+      
+ //FOR DELETE FUNCTION RECORD
+ function confirmDelete(id) {
+    
+    var r = confirm('Do you want to delete?');
+    if (r == true) {
+      window.location='acccard_delete_action.php?accID='+id;
+    } else {
+        window.location='acccard.php';
+    }
+}
+ //NUMBER ONLY
+  function numberInputOnly(elem) {
+                var validChars = /[0-9]/;
+                var strIn = elem.value;
+                var strOut = '';
+                for(var i=0; i < strIn.length; i++) {
+                  strOut += (validChars.test(strIn.charAt(i)))? strIn.charAt(i) : '';
+                }
+                elem.value = strOut;
+            }
+  //LETTER ONLY
+   function letterInputOnly(elem) {
+                var validChars = /[a-zA-ZñÑ ]+/;
+                var strIn = elem.value;
+                var strOut = '';
+                for(var i=0; i < strIn.length; i++) {
+                  strOut += (validChars.test(strIn.charAt(i)))? strIn.charAt(i) : '';
+                }
+                elem.value = strOut;
+            }
+
     </script>
-    <script src="js/jquery.js"></script>
     <script src="js/bootstrap.min.js"></script>
     <!-- nice scroll -->
     <script src="js/jquery.scrollTo.min.js"></script>
     <script src="js/jquery.nicescroll.js" type="text/javascript"></script><!--custome script for all page-->
     <script src="js/scripts.js"></script>
+
+    <script src="js/jquery.dataTables.min.js"></script>
+    <script src="js/dataTables.bootstrap.min.js"></script>
+    <script type="text/javascript">
+
+      $('#myData').dataTable();
+    </script>
+
   </body>
 </html>

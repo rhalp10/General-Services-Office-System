@@ -1,5 +1,5 @@
 
-System Name: GeneralServicesOffice_System(GSO_System) Ver. 1.51 JUNE 14,2017 - JULY 21,2017
+System Name: GeneralServicesOffice_System(GSO_System) Ver. 1 JUNE 14,2017
 ------------------------------------------------------------
 Hello PICTO Eto Po Ung Ginawa Naming System Sa GSO, Gusto Po Sana Naming Ituloy Ninyo Ito At I Improve Dahil Matagal Na Daw Po Silang Nagrequest Diyan Na Magpagawa Ng System, Kami Po Ay BSIT Pero Papapunta Sa Office Nato Dahil Wala Ng Vacant Sa PICTO Then, Ung Head Dito Sa GSO Ay Naisipang Gumawa Nalang Kami Ng System Para Maging Related Sa COUSE Namin.Naisip po naming gamiting platform ang PHP kasi eto ung isa sa pinakamaganda gamitin sa pag mamanage ng data d ganun kahirap mag code at masmadaling gamitin dahil webbase, kahit walang internet pwede padin naman pong gamitin ung system basta i coconfigure lng na i allowed ung mga ibang PC na mareceive ung link na un sa browser nila..
 ------------------------------------------------------------

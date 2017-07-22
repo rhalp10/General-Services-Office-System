@@ -232,7 +232,7 @@ $query=mysql_query($sql);
 
               <td><?php echo $row['ReceivedFrom_Name'];?></td>
               <td><?php echo $row['ReceivedFrom_Date'];?></td>
-              <td><?php echo $row['ICS'];?></td>
+              <td><?php echo $row['PAR'];?></td>
               <td>
                 <div class="btn-group">
                   <button type="button" class="btn btn-primary">Action</button>
@@ -421,7 +421,7 @@ $query=mysql_query($sql);
                            <div class="form-group pull-right">
                                 
                                     <div class="col-sm-10">
-                                        <input type="text"  class="form-control" placeholder="ICS No." name="prop_acc_receipt_ics_propno" required="">
+                                        <input type="text"  class="form-control" placeholder="PAR No." name="prop_acc_receipt_ics_propno" required="">
                                     </div>
                             </div>
                           <table class="table table-striped table-advance table-hover">

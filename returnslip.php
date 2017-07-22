@@ -166,7 +166,7 @@ $query=mysql_query($sql);
           <div class="panel">
           <header class="panel-heading tab-bg-primary " style="padding:15px; height: 70px;"> 
                     <a class="btn btn-success pull-left" href="" data-toggle="modal" data-target="#AddPropSlip" ><span class="fa fa-plus-circle"></span> Add Property Return Slip</a>
-                     <a class="btn btn-info pull-right" href="" data-toggle="modal" data-target="#PrintMethod" ><span class="icon_printer"></span> PRINT</a>
+                     <a class="btn btn-info pull-right" href="assets/FPDF/returnslip_general_print.php" target="_BLANK"><span class="icon_printer"></span> PRINT</a>
                         
                           </header>
                          
@@ -184,7 +184,7 @@ $query=mysql_query($sql);
               <th>ReceiveBy Name</th>
               <th>ReceiveBy Date</th>
               <th>Status</th>
-              <th>Action</th>
+              <th class="col-sm-1">Action</th>
             </tr>
           </thead>
           <tfoot>
@@ -321,7 +321,7 @@ $query=mysql_query($sql);
                              <H1><center>PROPERTY RETURN SLIP<br><h2 style="font-size: 30px; ">PROVINCE OF CAVITE</h2></center></H1>
                              
                           </header>
-                          <form class="form-horizontal " method="post" action="returnslip_add_action.php"> <!--Form for the receipt -->
+                          <form class="form-horizontal " method="POST" action="returnslip_add_action.php"> <!--Form for the receipt -->
                           <br>
                            <div class="form-group">
                                 <label class="col-sm-3 control-label">Name of Local Government Unit:</label>
@@ -336,12 +336,12 @@ $query=mysql_query($sql);
                                     
                                      <select class="form-control" name="prop_return_slip_purpose" required="">
                                             <?php 
-                                            $result=mysql_query("SELECT Purpose_Type FROM prs_purpose_dictionary");
+                                            $result=mysql_query("SELECT * FROM prs_purpose_dictionary");
                                           
                                             while($test = mysql_fetch_array($result))
                                             {
                                             ?>
-                                              <option value="<?php echo $test['ID']?>"><?php echo $test['Purpose_Type']?></option> 
+                                              <option value="<?php echo $test['ID'];?>"><?php echo $test['Purpose_Type'];?></option> 
                                              <?php 
                                            }
                                              ?>

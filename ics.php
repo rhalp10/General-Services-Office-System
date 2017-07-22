@@ -180,7 +180,7 @@ $query=mysql_query($sql);
           <div class="panel">
           <header class="panel-heading tab-bg-primary " style="padding:15px; height: 70px;">
                      <a class="btn btn-success pull-left" href="" data-toggle="modal" data-target="#AddNewICS"><span class="fa fa-plus-circle"></span> Add ICS Record</a>
-                     <a class="btn btn-info pull-right" href="assets/fpdf/ics_print.php" target="_blank" title="Print" name="submit"><span class="icon_printer"></span> PRINT</a>
+                     <a class="btn btn-info pull-right" href="assets/fpdf/ics_general_print.php" target="_blank" title="Print" name="submit"><span class="icon_printer"></span> PRINT</a>
                         
                           </header>
                          
@@ -235,7 +235,7 @@ $query=mysql_query($sql);
                 <ul class="dropdown-menu">
                   <li><a href="ics_view.php?icsID=<?php echo $icsID; ?>">View</a></li>
                   <li><a href="ics_edit.php?icsID=<?php echo $icsID; ?>">Edit</a></li>
-                  <li><a href="ics_edit.php?icsID=<?php echo $icsID; ?>">Print</a></li>
+                  <li><a href="assets/fpdf/ics_print.php?icsID=<?php echo $icsID; ?>" target="_blank">Print</a></li>
                   <li role="separator" class="divider"></li>
                   <li><a data-toggle="modal" data-target="#delete<?php echo $icsID; ?>">Delete</a></li>
                 </ul>

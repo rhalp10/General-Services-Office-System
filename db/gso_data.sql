@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Jul 19, 2017 at 10:40 AM
+-- Generation Time: Jul 21, 2017 at 10:27 AM
 -- Server version: 5.5.16
 -- PHP Version: 5.3.8
 
@@ -113,14 +113,7 @@ INSERT INTO `emp_accountability_card` (`ID`, `Emp_ID`, `ItemSetID`, `itemCode`, 
 (11, 1, 'SP-11', 'SET SP-11', 'T-457-16', 52, 'unit', 'SET2', '1 SN. MMLYKS01623C12311', 'OT-09-98', 0, 'null', '', '0058-02-28'),
 (12, 1, 'SP-12', 'PART SP-11', 'T3', 0, 'unit', 'Plate No. SCB-835', '1 SN. MMLYKS01623C12311', 'OT-09-98', 0, 'null', '33333333333', '0000-00-00'),
 (13, 23, 'SP-13', 'SET SP-13', 'T-457-16', 1, 'unit', 'Plate No. SCB-836', '1 SN. MMLYKS01623C12311', 'OT-09-98', 0, 'null', '', '0000-00-00'),
-(14, 11, 'SP-14', 'SET SP-14', 'T-457-16', 1, 'unit', 'Plate No. SCB-837', '1 SN. MMLYKS01623C12311', 'OT-09-98', 0, 'null', 'i and i 9/12/2013', '0000-00-00'),
-(15, 1, 'SP-15', 'SET SP-15', 'T-457-16', 1, 'unit', 'Calculator HL-107 10 digits', '1 SN. MMLYKS01623C12311', 'OT-09-98', 0, 'Adoracion Mojica', 'Formerly to Adoracion Mojica', '0000-00-00'),
-(18, 4, 'SP-18', 'PART SP-16', 'T-457-16', 0, 'unit', 'Plate No. SCB-840', '1 SN. MMLYKS01623C12311', 'OT-09-98', 0, 'null', '', '2017-06-08'),
-(19, 4, 'SP-19', 'PART SP-16', 'T-457-16', 0, 'unit', 'Plate No. SCB-841', '1 SN. MMLYKS01623C12311', 'OT-09-98', 6, 'null', '', '2017-06-15'),
-(20, 4, 'SP-20', 'PART SP-16', 'T-457-16', 0, 'unit', 'Plate No. SCB-842', '1 SN. MMLYKS01623C12311', 'OT-09-98', 0, 'null', '', '0000-00-00'),
-(21, 4, 'SP-21', 'PART SP-16', 'T-457-16', 0, 'unit', 'Plate No. SCB-843', '1 SN. MMLYKS01623C12311', 'OT-09-98', 1321, 'null', '', '0000-00-00'),
-(25, 4, 'SP-16', 'SET SP-16', 'T-457-16', 1, 'unit', 'Calculator HL-107 10 digits', '1 SN. MMLYKS01623C12311', 'OT-09-98', 0, 'null', 'Formerly to Adoracion Mojica', '0000-00-00'),
-(26, 4, 'SP-22', 'SET SP-22', 'asd', 1, '', '', '', '', 0, 'null', '', '0000-00-00');
+(15, 1, 'SP-15', 'SET SP-15', 'T-457-16', 1, 'unit', 'Calculator HL-107 10 digits', '1 SN. MMLYKS01623C12311', 'OT-09-98', 0, 'Adoracion Mojica', 'Formerly to Adoracion Mojica', '0000-00-00');
 
 -- --------------------------------------------------------
 
@@ -181,19 +174,7 @@ CREATE TABLE IF NOT EXISTS `emp_pgc_record` (
 --
 
 INSERT INTO `emp_pgc_record` (`accID`, `fullName`, `office`, `designation`, `note`) VALUES
-(1, 'Rhalp Darren R. Cabrera ', 'IT DEP', 'IT DEP', ''),
-(4, 'New Line ', 'New Line', 'New Line', ''),
-(6, 'JOBELLE B. PELINA', 'Agency Employee', 'KAHIT SAAN', ''),
-(11, 'thfghfgh', 'IT DEP', 'fghfghfgh', ''),
-(13, 'Princess Mononoke', 'Agency Employee', 'mountain', ''),
-(14, 'sample 1 sample 2', 'Agency Employee', 'dasdasd', ''),
-(16, 'Mark Christopher dArc', 'Agency Employee', 'hgh', ''),
-(17, 'xfgdfjk', 'IT DEP', 'hdfsdf', ''),
-(18, 'sdfsdfsdf', 'IT DEP', 'sdfsdfs', ''),
-(22, 'Omar Raouf A. Daud', 'Property Management Section', 'Administrative Officer III', ''),
-(24, 'Marc Kevin Manalo', 'BIDA OR FEED', 'BIDA GAMING', ''),
-(26, 'wazhin', 'xhing', 'Ceeeeeeeerrrrrrrrrrrrbellllllllls', 'wazak'),
-(32, 'Omar Daud', 'iouiqwioeioqweiouiuo', 'oiqweoiqwioeijo', 'iuoiouqwuioeiuoqwioeiuoqwe');
+(1, 'Rhalp Darren R. Cabrera ', 'IT DEP', 'IT DEP', '');
 
 -- --------------------------------------------------------
 
@@ -319,8 +300,31 @@ CREATE TABLE IF NOT EXISTS `invent_custodian_slip` (
 --
 
 INSERT INTO `invent_custodian_slip` (`ID`, `Qty`, `Unit`, `Descrp`, `Invent_Item_No`, `Ez_Useful_Life`, `ReceivedBy_Name`, `ReceivedBy_Position`, `ReceiveBy_Date`, `ReceivedFrom_Name`, `ReceivedFrom_Position`, `ReceiveFrom_Date`, `ICS`, `DateAdded`) VALUES
-(1, 1, 'unit', 'wazhing', '213', '2', 'wazhing', 'asdasd', '0000-00-00', 'sadsad', 'zxc', '0000-00-00', 3123, '2017-07-19 00:31:03'),
-(4, 30, 'unit', 'Bagong Tabas', 's2x52', '2', 'mark', 'mark', '2017-07-20', 'omar', 'omar', '2017-07-09', 2131561, '2017-07-19 05:32:53');
+(1, 2, 'unit', 'KOTCHENG KUBA', '213', '2', 'RHALP DARREN R. CABRERA', 'ADMIN', '2017-07-05', 'ENGR. ENRICO M. ALVAREZ', 'General Services Officer', '2017-07-12', 3123, '2017-07-21 07:24:02'),
+(4, 30, 'unit', 'Bagong Tabas', 's2x52', '2', 'MARK', 'EMPLOYEE', '2017-07-20', 'RHALP DARREN CABRERA', 'ADMIN', '2017-07-09', 2131561, '2017-07-21 02:38:32');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `invent_custodian_slip_descrp`
+--
+
+CREATE TABLE IF NOT EXISTS `invent_custodian_slip_descrp` (
+  `ID` int(11) NOT NULL AUTO_INCREMENT,
+  `icsID` int(11) NOT NULL,
+  `Descrp` varchar(50) NOT NULL,
+  `Invent_Item_No` varchar(50) NOT NULL,
+  PRIMARY KEY (`ID`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=11 ;
+
+--
+-- Dumping data for table `invent_custodian_slip_descrp`
+--
+
+INSERT INTO `invent_custodian_slip_descrp` (`ID`, `icsID`, `Descrp`, `Invent_Item_No`) VALUES
+(1, 1, 'Color: White', ''),
+(9, 1, 'Engine No: QR20730030A', ''),
+(10, 1, 'asdasd', '');
 
 -- --------------------------------------------------------
 
@@ -361,19 +365,21 @@ CREATE TABLE IF NOT EXISTS `property_accountability_receipt_record` (
   `ReceivedBy_Name` varchar(50) NOT NULL,
   `ReceivedBy_Position` varchar(50) NOT NULL,
   `ReceivedBy_Date` date NOT NULL,
-  `ICS` varchar(12) NOT NULL,
+  `PAR` varchar(12) NOT NULL,
   PRIMARY KEY (`ID`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=7 ;
 
 --
 -- Dumping data for table `property_accountability_receipt_record`
 --
 
-INSERT INTO `property_accountability_receipt_record` (`ID`, `Qty`, `Unit`, `Descrp`, `PropNo`, `ReceivedFrom_Name`, `ReceivedFrom_Position`, `ReceivedFrom_Date`, `ReceivedBy_Name`, `ReceivedBy_Position`, `ReceivedBy_Date`, `ICS`) VALUES
+INSERT INTO `property_accountability_receipt_record` (`ID`, `Qty`, `Unit`, `Descrp`, `PropNo`, `ReceivedFrom_Name`, `ReceivedFrom_Position`, `ReceivedFrom_Date`, `ReceivedBy_Name`, `ReceivedBy_Position`, `ReceivedBy_Date`, `PAR`) VALUES
 (1, 0, 'asdas', 'dasd', 'asdasd', 'asd', 'asdasd', '2017-06-14', '132', '3', '0321-01-13', 'asdasd'),
 (2, 0, 'asdas', 'dasdas', 'dasdasd', '65464', '65465', '0054-06-04', 'sad', '545', '0064-04-05', 'a'),
 (3, 123123, '12312312', '3123123', '123123123', '123123', 'qweqweqwe', '0000-00-00', '12312312', '3123123', '0123-03-12', '123'),
-(4, 2147483647, 'wrwerwer', '123123123', 'werwerwerw12313123', 'oiuoiwurquiow', 'uqwioruqioewuu', '0000-00-00', 'iauoiuseowueiru', 'iouwioeurweiruio', '0000-00-00', '1234123');
+(4, 2147483647, 'wrwerwer', '123123123', 'werwerwerw12313123', 'oiuoiwurquiow', 'uqwioruqioewuu', '0000-00-00', 'iauoiuseowueiru', 'iouwioeurweiruio', '0000-00-00', '1234123'),
+(5, 23, 'unit', 'asdj', 'hasd', 'sadas', 'dasdasd', '2017-07-13', 'xxx', 'asdas', '2017-07-11', '123r'),
+(6, 2314567, 'q', 'q', 'q', 'q', 'q', '2017-07-06', 'q', 'q', '2017-07-04', 'q');
 
 -- --------------------------------------------------------
 
@@ -404,14 +410,15 @@ CREATE TABLE IF NOT EXISTS `property_return_slip_record` (
   `DateAdded` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`ID`),
   KEY `prs_purpose_dictionary` (`PurposeID`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=9 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=22 ;
 
 --
 -- Dumping data for table `property_return_slip_record`
 --
 
 INSERT INTO `property_return_slip_record` (`ID`, `LGU_Name`, `PurposeID`, `Qty`, `Unit`, `Descrp`, `Serial_Num`, `Prop_Number`, `ParNo`, `Name_of_Enduser`, `Unit_Value`, `Total_Value`, `Status`, `ReceiveBy_Name`, `ReceiveBy_Position`, `ReceiveBy_Date`, `ReceiveFrom_Name`, `ReceiveFrom_Position`, `ReceiveFrom_Date`, `DateAdded`) VALUES
-(1, 'Lumil NHS, Silang', 2, 1, 'unit', 'Lenovo Tab-A7-30 Mld. Lenovo A3300-GV', 'SN-HGC7VGW7', 'd213', 'T-192-15', 'Lucia M. Diesta', 0, 7095, 'Unserviceable', 'xcv', 'wadasd', '2017-07-19', 'sddasd', 'xcxvcx', '2017-07-19', '2017-07-19 06:26:34');
+(1, 'Lumil NHS, Silang', 2, 1, 'unit', 'Lenovo Tab-A7-30 Mld. Lenovo A3300-GV', 'SN-HGC7VGW7', 'd213', 'T-192-15', 'Lucia M. Diesta', 0, 7095, 'Unserviceable', 'xcv', 'wadasd', '2017-07-19', 'sddasd', 'xcxvcx', '2017-07-19', '2017-07-19 06:26:34'),
+(21, 'XWWWWWWWWWWWWWW ', 3, 1, 'unit', 'asdasD', '2ADAWD', 'DAWD', 'ASDASD', 'AWD', 2313, 123, 'Unserviceable', 'asdASD', 'asdaSD', '2017-07-07', '2017-07-07', 'asdASD', '2017-07-13', '2017-07-21 07:50:54');
 
 -- --------------------------------------------------------
 

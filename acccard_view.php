@@ -209,7 +209,7 @@ $query = mysql_query($sql);
                             </div>
 
                             
-                                        <a class="btn btn-info pull-right" href="assets/fpdf/acccard_person_report1.php?accID=<?php echo $ID ?>" title="Print" target="_blank"><span class="icon_printer"></span> PRINT</a>
+                                        <a class="btn btn-info pull-right" href="assets/fpdf/acccard_person_report.php?accID=<?php echo $ID ?>" title="Print" target="_blank"><span class="icon_printer"></span> PRINT</a>
                           </div>
                     </div>
 
