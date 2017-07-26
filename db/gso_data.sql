@@ -1,13 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 4.1.12
+-- version 3.4.5
 -- http://www.phpmyadmin.net
 --
--- Host: 127.0.0.1
--- Generation Time: Jul 22, 2017 at 01:09 PM
--- Server version: 5.6.16
--- PHP Version: 5.5.11
+-- Host: localhost
+-- Generation Time: Jul 26, 2017 at 10:11 AM
+-- Server version: 5.5.16
+-- PHP Version: 5.3.8
 
-SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
 
 
@@ -36,7 +36,7 @@ CREATE TABLE IF NOT EXISTS `bincard_issued_record` (
   `qty` int(11) NOT NULL,
   `DateAdded` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`ID`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=35 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=36 ;
 
 --
 -- Dumping data for table `bincard_issued_record`
@@ -49,7 +49,8 @@ INSERT INTO `bincard_issued_record` (`ID`, `ItemSetID`, `itemCode`, `bin_ID`, `r
 (31, 'SP-31', 'SET SP-31', 17, 'asd', '2017-07-14', 3, '2017-07-22 07:02:37'),
 (32, 'SP-32', 'SET SP-32', 18, 'HERO', '2017-07-07', 20, '2017-07-22 07:48:30'),
 (33, 'SP-33', 'SET SP-33', 19, 'FRANZ', '2017-07-01', 500, '2017-07-22 07:49:29'),
-(34, 'SP-34', 'SET SP-34', 19, 'AUBREY', '2017-07-21', 50, '2017-07-22 07:49:42');
+(34, 'SP-34', 'SET SP-34', 19, 'AUBREY', '2017-07-21', 50, '2017-07-22 07:49:42'),
+(35, 'SP-35', 'SET SP-35', 20, 'mark1hqfegwubhdijdskml;f,b.sfboiuldfjzgnmcviadfkhu', '2017-07-15', 50, '2017-07-25 06:12:18');
 
 -- --------------------------------------------------------
 
@@ -67,17 +68,20 @@ CREATE TABLE IF NOT EXISTS `bincard_record` (
   `Balance` float NOT NULL,
   `DateAdded` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`ID`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=20 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=23 ;
 
 --
 -- Dumping data for table `bincard_record`
 --
 
 INSERT INTO `bincard_record` (`ID`, `bin_Date`, `Supplier`, `Descrp`, `Qty`, `Issued`, `Balance`, `DateAdded`) VALUES
-(16, '2017-07-14', '21351', 'laptop', '30', 10, 20, '2017-07-19 02:53:59'),
-(17, '2017-07-08', '21', 'asd', '30', 3, 27, '2017-07-22 07:03:33'),
+(16, '2017-07-31', 'OMAR ', 'PC', '40', 10, 30, '2017-07-26 07:34:29'),
+(17, '2017-07-08', 'Ian', 'Mark', '50', 3, 47, '2017-07-26 07:41:41'),
 (18, '2017-07-08', 'FRANZ', 'ASO', '50', 20, 30, '2017-07-22 07:48:56'),
-(19, '2017-07-13', 'PAPA', 'ISDA', '1500', 550, 950, '2017-07-22 07:49:56');
+(19, '2017-07-13', 'PAPA', 'ISDA', '1500', 550, 950, '2017-07-22 07:49:56'),
+(20, '2017-07-15', 'uyhjyuhjnoyhlunjm123123123123', 'iuhjwnsdcuoihjnmsdfuchvhjndsmfxcvhuljsdfngxclhkjn', '123', 50, 73, '2017-07-25 06:12:30'),
+(21, '2017-07-12', 'qewregrdhgfnhdn', 'qwerwgfdbgfvb', '213454', 0, 213454, '2017-07-26 07:34:05'),
+(22, '0056-05-04', 'Ian kun', 'gago', '1000000000', 0, 1000000000, '2017-07-26 07:41:22');
 
 -- --------------------------------------------------------
 
@@ -101,26 +105,15 @@ CREATE TABLE IF NOT EXISTS `emp_accountability_card` (
   `Remarks` varchar(200) NOT NULL,
   `DateTurnOver` date NOT NULL,
   PRIMARY KEY (`ID`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=27 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=32 ;
 
 --
 -- Dumping data for table `emp_accountability_card`
 --
 
 INSERT INTO `emp_accountability_card` (`ID`, `Emp_ID`, `ItemSetID`, `itemCode`, `ParNo`, `Qty`, `Unit`, `Descrp`, `SN`, `PropNo`, `Amount`, `TransferTo`, `Remarks`, `DateTurnOver`) VALUES
-(1, 1, 'SP-01', 'SET SP-01', 'T-457-16', 1, 'unit', 'SET1', '1 SN. MMLYKS01623C12311', '1995', 800, '', '', '0000-00-00'),
-(2, 1, 'SP-02', 'PART SP-01', 'T-457-16', 0, 'unit', 'Calculator HL-102 10 digits', '1 SN. MMLYKS01623C12311', 'OT-09-98', 0, '', '', '0000-00-00'),
-(4, 1, 'SP-04', 'SET SP-04', 'T-457-16', 0, 'unit', 'Calculator HL-104 10 digits', '1 SN. MMLYKS01623C12311', 'OT-09-98', 3.40282e38, '', '', '2010-10-30'),
-(5, 1, 'SP-05', 'PART SP-04', 'T-457-16', 0, 'unit', 'Calculator HL-105 10 digits', '1 SN. MMLYKS01623C12311', 'OT-09-98', 3.40282e38, '', '', '2010-10-30'),
-(6, 1, 'SP-06', 'PART SP-04', 'T-457-16', 0, 'unit', 'Calculator HL-106 10 digits', '1 SN. MMLYKS01623C12311', 'OT-09-98', 0, 'null', '', '0000-00-00'),
-(7, 1, 'SP-07', 'PART SP-04', 'T-457-16', 0, 'unit', 'Plate No. SCB-830', '1 SN. MMLYKS01623C12311', 'OT-09-98', 0, 'null', '', '0000-00-00'),
-(8, 1, 'SP-08', 'SET SP-08', 'T-457-16', 0, 'unit', 'Plate No. SCB-831', '1 SN. MMLYKS01623C12311', 'OT-09-98', 321, 'null', '', '0000-00-00'),
-(9, 1, 'SP-09', 'SET SP-09', 'T-457-16', 0, 'unit', 'Plate No. SCB-831', '1 SN. MMLYKS01623C12311', 'OT-09-98', 0, 'null', '', '0000-00-00'),
-(10, 1, 'SP-10', 'SET SP-10', 'T-457-16', 0, 'unit', 'Plate No. SCB-833', '1 SN. MMLYKS01623C12311', 'OT-09-98', 0, 'null', '', '0000-00-00'),
-(11, 1, 'SP-11', 'SET SP-11', 'T-457-16', 52, 'unit', 'SET2', '1 SN. MMLYKS01623C12311', 'OT-09-98', 0, 'null', '', '0058-02-28'),
-(12, 1, 'SP-12', 'PART SP-11', 'T3', 0, 'unit', 'Plate No. SCB-835', '1 SN. MMLYKS01623C12311', 'OT-09-98', 0, 'null', '33333333333', '0000-00-00'),
-(13, 23, 'SP-13', 'SET SP-13', 'T-457-16', 1, 'unit', 'Plate No. SCB-836', '1 SN. MMLYKS01623C12311', 'OT-09-98', 0, 'null', '', '0000-00-00'),
-(15, 1, 'SP-15', 'SET SP-15', 'T-457-16', 1, 'unit', 'Calculator HL-107 10 digits', '1 SN. MMLYKS01623C12311', 'OT-09-98', 0, 'Adoracion Mojica', 'Formerly to Adoracion Mojica', '0000-00-00');
+(29, 5, 'SP-29', 'SET SP-29', 'RN-038-17', 1, ' unit', '2014 Mitsubishi L300 CC w/ FB Body', 'GT-101-14', '26', 682500, '', '', '0000-00-00'),
+(30, 5, 'SP-30', 'PART SP-29', '993636315', 0, ' pc', 'COLOR:white', '9', '9999', 0, '', '', '0000-00-00');
 
 -- --------------------------------------------------------
 
@@ -143,7 +136,7 @@ CREATE TABLE IF NOT EXISTS `emp_accounts_record` (
   `image` varchar(250) NOT NULL,
   PRIMARY KEY (`accID`),
   UNIQUE KEY `User` (`username`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=24 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=26 ;
 
 --
 -- Dumping data for table `emp_accounts_record`
@@ -153,12 +146,14 @@ INSERT INTO `emp_accounts_record` (`accID`, `accLevel`, `username`, `password`, 
 (1, '1', 'employee', 'employee', 'mark', 20, 'Unknown', 'Mars', 'marcalien@gmail.com', 'staff', '09169158798', 'img/emp_profile/temp.jpg'),
 (10, '0', 'asasdkld', '321', 'iouqou', 0, 'khakdhk', 'hhhhh', 'oiuoiu@yahoo.com', 'kkjh', '0904545454', 'img/emp_profile/temp.jpg'),
 (14, '1', 'iou', '555', 'franz1', 50, 'male', 'Blk 38 Lot 11 Phase 2b Brgy Aguado TMC', 'jalksjd@yahoo.com', 'jklasdjd', '0915611894', 'img/emp_profile/temp.jpg'),
-(15, '1', '9999', '9', 'tryyyyyyyyyyyyyyyyyyyyy', 50, '9', '9', '987@aksd.com', '9', '0905454984', 'img/emp_profile/temp.jpg'),
+(15, '2', 'bincard', 'bincard', 'tryyyyyyyyyyyyyyyyyyyyy', 50, '9', '9', '987@aksd.com', '9', '0905454984', 'img/emp_profile/temp.jpg'),
 (18, '1', 'darren321', '321', 'OMAR DAUD', 15, 'Male', 'NAIC', '321@yahoo.com', '155', '0906545644', 'img/emp_profile/temp.jpg'),
 (19, '1', 'rd2h1fs8jk2b6cz', 'yth3xk5slz8bd', 'Omar', 20, 'Male', 'Bucal 3-B, Maragondon, Cavite', 'Omardaud21000@gmail.com', '.....', '09355173381', 'img/emp_profile/temp.jpg'),
-(21, '0', 'Asada', '555', 'Franz Marc Cabrera', 50, 'Male', 'Blk 38 Lot 11 Ph2b Southville2 Trece Martirez City', 'franzmarccabrera123@gmail.com', 'ADMIN', '0915151613', 'img/emp_profile/temp.jpg'),
+(21, '0', 'admin', 'admin', 'Rhalp Darren Cabrera', 20, 'Male', 'Blk 38 Lot 11 Ph2b Southville2 Trece Martirez City', 'rhalpdarrencabrera@gmail.com', 'ADMIN', '09169158798', 'img/emp_profile/temp.jpg'),
 (22, '0', 'Keita210000', 'darkdemon12', 'Omar', 2147483647, 'Male', 'Bucal 3-B, Maragondon, Cavite', 'omardaud2100000@gmail.com', 'oiadskniqwijooqihweihoqwe', '09355173381', 'img/emp_profile/temp.jpg'),
-(23, '0', 'Keita1200', 'darkdemon12', 'Omar Raouf A. Daud', 20, 'Male', 'bucal 3b maragondon cavite', 'Omardaud21000@gmail.com', 'Kahit ano', '09363398243', 'img/emp_profile/temp.jpg');
+(23, '0', 'Keita1200', 'darkdemon12', 'Omar Raouf A. Daud', 20, 'Male', 'bucal 3b maragondon cavite', 'Omardaud21000@gmail.com', 'Kahit ano', '09363398243', 'img/emp_profile/temp.jpg'),
+(24, '3', 'ac', 'ac', 'ac', 12, 'Male', 'ac', 'ac@yahoo.com', 'asd', '06321351', 'img/emp_profile/temp.jpg'),
+(25, '4', 'icsprspar', 'a', 'icsprspar', 0, 'Male', 'icsprspar', 'icsprspar@gmail.com', 'asd', '09096545184', 'img/emp_profile/temp.jpg');
 
 -- --------------------------------------------------------
 
@@ -173,14 +168,14 @@ CREATE TABLE IF NOT EXISTS `emp_pgc_record` (
   `designation` varchar(100) NOT NULL,
   `note` varchar(50) NOT NULL,
   PRIMARY KEY (`accID`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=33 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=6 ;
 
 --
 -- Dumping data for table `emp_pgc_record`
 --
 
 INSERT INTO `emp_pgc_record` (`accID`, `fullName`, `office`, `designation`, `note`) VALUES
-(1, 'Rhalp Darren R. Cabrera ', 'IT DEP', 'IT DEP', '');
+(5, 'Rhalp Darren R. Cabrera', ' PICTO', 'PCIKONIPUQH WDNYUUQGWD QWDEIBHJLDKNFL', '');
 
 -- --------------------------------------------------------
 
@@ -306,7 +301,7 @@ CREATE TABLE IF NOT EXISTS `invent_custodian_slip` (
 --
 
 INSERT INTO `invent_custodian_slip` (`ID`, `Qty`, `Unit`, `Descrp`, `Invent_Item_No`, `Ez_Useful_Life`, `ReceivedBy_Name`, `ReceivedBy_Position`, `ReceiveBy_Date`, `ReceivedFrom_Name`, `ReceivedFrom_Position`, `ReceiveFrom_Date`, `ICS`, `DateAdded`) VALUES
-(1, 2, 'unit', 'KOTCHENG KUBA', '213', '2', 'RHALP DARREN R. CABRERA', 'ADMIN', '2017-07-05', 'ENGR. ENRICO M. ALVAREZ', 'General Services Officer', '2017-07-12', 3123, '2017-07-21 07:24:02'),
+(1, 2, 'unit', 'KOTCHENG KUBA', '213', '1', 'RHALP DARREN R. CABRERA', 'ADMIN', '2017-07-05', 'ENGR. ENRICO M. ALVAREZ', 'General Services Officer', '2017-07-12', 123, '2017-07-25 06:35:28'),
 (4, 30, 'unit', 'Bagong Tabas', 's2x52', '2', 'MARK', 'EMPLOYEE', '2017-07-20', 'RHALP DARREN CABRERA', 'ADMIN', '2017-07-09', 2131561, '2017-07-21 02:38:32');
 
 -- --------------------------------------------------------
@@ -321,16 +316,18 @@ CREATE TABLE IF NOT EXISTS `invent_custodian_slip_descrp` (
   `Descrp` varchar(50) NOT NULL,
   `Invent_Item_No` varchar(50) NOT NULL,
   PRIMARY KEY (`ID`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=13 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=16 ;
 
 --
 -- Dumping data for table `invent_custodian_slip_descrp`
 --
 
 INSERT INTO `invent_custodian_slip_descrp` (`ID`, `icsID`, `Descrp`, `Invent_Item_No`) VALUES
-(1, 1, 'Color: White', ''),
-(9, 1, 'Engine No: QR20730030A', ''),
-(10, 1, 'asdasd', '');
+(9, 1, 'Engine No: QR20730030A', ' '),
+(10, 1, '123123123', ' x'),
+(13, 5, '123456uiykujrqewrty', 'uyq2wetryt2t341'),
+(14, 5, '1234rweqwe', 'qweqwrqwrqwrqwr'),
+(15, 5, '1234rweqwe', 'qweqwrqwrqwrqwr');
 
 -- --------------------------------------------------------
 
@@ -341,17 +338,65 @@ INSERT INTO `invent_custodian_slip_descrp` (`ID`, `icsID`, `Descrp`, `Invent_Ite
 CREATE TABLE IF NOT EXISTS `office_dictionary` (
   `ID` int(11) NOT NULL AUTO_INCREMENT,
   `officeName` varchar(50) NOT NULL,
+  `officeCode` varchar(100) NOT NULL,
   PRIMARY KEY (`ID`),
   UNIQUE KEY `officeName` (`officeName`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=55 ;
 
 --
 -- Dumping data for table `office_dictionary`
 --
 
-INSERT INTO `office_dictionary` (`ID`, `officeName`) VALUES
-(1, 'Agency Employee'),
-(2, 'Emergency Employee	');
+INSERT INTO `office_dictionary` (`ID`, `officeName`, `officeCode`) VALUES
+(6, 'ACCOUNTING', 'ACCTG'),
+(7, 'ADMINISTRATOR', 'ADMIN'),
+(8, 'AGRICULTURE', 'AGRI'),
+(9, 'ASSESSOR', 'PAO'),
+(10, 'BUDGET', 'PBO'),
+(11, 'TREASURER', 'PTO'),
+(12, 'CAVITE OFFICE OF PUBLIC SAFETY', 'COPS'),
+(13, 'PROVINCIAL PROTECTION OFFICE', 'PPO'),
+(14, 'ROAD SAFETY DIVISION', 'RSD'),
+(15, 'ENVIRONMENTAL PROTECTION OPERATION DIVISION', 'EPOD'),
+(16, 'PROVINCIAL DISASTER AND RISK REDUCTION MANAGEMENT ', 'PDRRMO'),
+(17, 'PROVINCIAL HOUSING AND DEVELOPMENT MANAGEMENT OFFI', 'PHDMO'),
+(18, 'HUMAN RESOURCE MANAGEMENT OFFICE', 'HRMO'),
+(19, 'JAIL', 'JAIL'),
+(20, 'LEGAL', 'LEGAL'),
+(21, 'LIBRARY', 'LIBRARY'),
+(22, 'PUBLIC EMPLOYMENT SERVICES OFFICE', 'PESO'),
+(23, 'PROVINCIAL INFORMATION AND COMMUNICATION AFFAIRS D', 'PICAD'),
+(24, 'PROSECUTOR', 'PROSECUTOR'),
+(25, 'URBAN POOR', 'UPAO'),
+(26, 'GEN. EMILIO AGUINALDO MEMORIAL HOSPITAL', 'GEAMH'),
+(27, 'KOREA-PHILIPPINES FRIENDSHIP PROJECT', 'KPFP'),
+(28, 'BACOOR DISTRICT HOSPITAL', 'BDH'),
+(29, 'CAVITE MUNICIPAL HOSTIPAL', 'CMH'),
+(30, 'DR. OLIVIA SALAMANCA MEMORIAL HOSPITAL', 'DOSMH'),
+(31, 'CARMONA SILANG GMA', 'CARSIGMA'),
+(32, 'KAWIT KALAYAAN HOSPITAL', 'KKH'),
+(33, 'NAIC MEDICARE', 'NM'),
+(34, 'PROVINCIAL ENGINEER OFFICE', 'PEO'),
+(35, 'PROVINCIAL GOVERNMENT AND NATURAL RESOURCES OFFICE', 'PG-ENRO'),
+(36, 'BOARD MEMBER', 'BM'),
+(37, 'SANGGUNIAN PANGLALAWIGAN OF CAVITE', 'SPC'),
+(38, 'OFFICE OF THE PROVINCIAL GOVERNOR', 'OPG'),
+(39, 'OFFICE OF THE PROVINCIAL OF VICE GOVERNOR', 'OPVG'),
+(40, 'VETERINARIAN ', 'VET'),
+(41, 'GENERAL SERVICES OFFICE', 'GSO'),
+(42, 'PROVINCIAL COOPERATIVE LIVELIHOOD AND ENTREPRENEUR', 'PCLEDO'),
+(43, 'PROVINCIAL INFORMATION AND COMMUNICATION TECHNOLOG', 'PICTO'),
+(44, 'PLANNING', 'PPDO'),
+(45, 'POPCOM', 'POPCOM'),
+(46, 'PSWDO', 'PSWDO'),
+(47, 'TOURISM', 'TOURISM'),
+(48, 'PROVINCIAL YOUTH AND SPORTS DEVELOPMENT OFFICE', 'PYSDO'),
+(49, 'CAVITE CENTER FOR MENTAL HEALTH', 'CCMH'),
+(50, 'CAVITE QUALITY MANAGEMENT OFFICE', 'CQMO'),
+(51, 'COMMISSION ON AUDIT', 'COA'),
+(52, 'PHILIPPINE NATIONAL POLICE', 'PNP'),
+(53, 'REGIONAL TRIAL COURT', 'RTC'),
+(54, 'MUNICIPAL TRIAL COURT', 'MTC');
 
 -- --------------------------------------------------------
 
@@ -372,19 +417,16 @@ CREATE TABLE IF NOT EXISTS `property_accountability_receipt_record` (
   `ReceivedBy_Position` varchar(50) NOT NULL,
   `ReceivedBy_Date` date NOT NULL,
   `PAR` varchar(12) NOT NULL,
+  `DateAdded` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`ID`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=7 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=9 ;
 
 --
 -- Dumping data for table `property_accountability_receipt_record`
 --
 
-INSERT INTO `property_accountability_receipt_record` (`ID`, `Qty`, `Unit`, `Descrp`, `PropNo`, `ReceivedFrom_Name`, `ReceivedFrom_Position`, `ReceivedFrom_Date`, `ReceivedBy_Name`, `ReceivedBy_Position`, `ReceivedBy_Date`, `PAR`) VALUES
-(1, 0, 'asdas', 'dasd', 'asdasd', 'asd', 'asdasd', '2017-06-14', '132', '3', '0321-01-13', 'asdasd'),
-(2, 0, 'asdas', 'dasdas', 'dasdasd', '65464', '65465', '0054-06-04', 'sad', '545', '0064-04-05', 'a'),
-(3, 123123, '12312312', '3123123', '123123123', '123123', 'qweqweqwe', '0000-00-00', '12312312', '3123123', '0123-03-12', '123'),
-(4, 2147483647, 'wrwerwer', '123123123', 'werwerwerw12313123', 'oiuoiwurquiow', 'uqwioruqioewuu', '0000-00-00', 'iauoiuseowueiru', 'iouwioeurweiruio', '0000-00-00', '1234123'),
-(5, 23, 'unit', 'asdj', 'hasd', 'sadas', 'dasdasd', '2017-07-13', 'xxx', 'asdas', '2017-07-11', '123r');
+INSERT INTO `property_accountability_receipt_record` (`ID`, `Qty`, `Unit`, `Descrp`, `PropNo`, `ReceivedFrom_Name`, `ReceivedFrom_Position`, `ReceivedFrom_Date`, `ReceivedBy_Name`, `ReceivedBy_Position`, `ReceivedBy_Date`, `PAR`, `DateAdded`) VALUES
+(1, 2, 'pc', 'dasd', 'PropNo', 'RECFROm', 'asdasdasd', '2017-06-14', 'RECBY', 'asdasdasd', '2017-06-14', 'PAR 1', '2017-07-26 07:58:33');
 
 -- --------------------------------------------------------
 
@@ -424,7 +466,9 @@ CREATE TABLE IF NOT EXISTS `property_return_slip_record` (
 INSERT INTO `property_return_slip_record` (`ID`, `LGU_Name`, `PurposeID`, `Qty`, `Unit`, `Descrp`, `Serial_Num`, `Prop_Number`, `ParNo`, `Name_of_Enduser`, `Unit_Value`, `Total_Value`, `Status`, `ReceiveBy_Name`, `ReceiveBy_Position`, `ReceiveBy_Date`, `ReceiveFrom_Name`, `ReceiveFrom_Position`, `ReceiveFrom_Date`, `DateAdded`) VALUES
 (1, 'Lumil NHS, Silang', 2, 1, 'unit', 'Lenovo Tab-A7-30 Mld. Lenovo A3300-GV', 'SN-HGC7VGW7', 'd213', 'T-192-15', 'Lucia M. Diesta', 0, 7095, 'Unserviceable', 'xcv', 'wadasd', '2017-07-19', 'sddasd', 'xcxvcx', '2017-07-19', '2017-07-19 06:26:34'),
 (21, 'XWWWWWWWWWWWWWW ', 3, 1, 'unit', 'asdasD', '2ADAWD', 'DAWD', 'ASDASD', 'AWD', 2313, 123, 'Unserviceable', 'asdASD', 'asdaSD', '2017-07-07', 'asd', 'asdASD', '2017-07-13', '2017-07-22 10:49:59'),
-(22, 'asd ', 3, 21, 'unit', 'asd', 'zxczc', 'zxczxczxc', 'asd3124', 'cfdsf', 2344324, 4234, 'Unserviceable', 'sdfawe', 'qweqwe', '2017-07-03', 'adsad', 'adawd', '2017-07-14', '2017-07-22 10:50:02');
+(22, 'asd ', 3, 21, 'unit', 'asd', 'zxczc', 'zxczxczxc', 'asd3124', 'cfdsf', 2344324, 4234, 'Unserviceable', 'sdfawe', 'qweqwe', '2017-07-03', 'adsad', 'adawd', '2017-07-14', '2017-07-22 10:50:02'),
+(24, '2324567IYGJ ', 1, 31245, 'pc', '13425463574675867OTUK,GM ', 'Q3243564758I', '1342356789', '134253YRTKUFYKG.J,HR', 'WAETSDRYTFHJGKJ', 345678989, 123454, 'Unserviceable', 'qwtrydtjfkhjg.', 'qwetrdyjgkhjlhgfdf', '2017-07-28', '2017-07-28', 'wtresgfdhgfjhkgjg', '2017-07-05', '2017-07-26 07:31:59'),
+(25, 'qerghjfjcbxcf ', 1, 1235436, 'unit', 'hgfgvjhkfkdjshfg', '2345435yyetury', '22435435y657', '23q43w5yer6jtkuyiuoi', 'etrdyfukigjlkh', 345678798, 2147483647, 'Unserviceable', 'wyrdtfuygkjhm', 'wetrsdfhgjhkhjj', '2017-07-17', '2017-07-17', 'dsfghkjhkjgkfuyr', '2017-07-07', '2017-07-26 07:32:48');
 
 -- --------------------------------------------------------
 

@@ -1,35 +1,35 @@
 <?php
 include('session.php');
+/*
+            if ($login_level == '0') //checking if acclevel is equal to 0
+                {   
+                    header("location: admin.php");// retain to admin level 
+                }
+                if ($login_level == '1')  //checking if acclevel is equal to 1
+                {
+                   
+                    header("location: home.php"); // retain to simple employee Level
+                    
+                } 
+                if ($login_level == '2')  //checking if acclevel is equal to 2
+                {
+                     header("location: home.php"); // retain to accountability Level
+                }
+                if ($login_level == '3')  //checking if acclevel is equal to 2
+                {
+                     header("location: home.php"); // retain to bincard Level
+                }
+                if ($login_level== '4')  //checking if acclevel is equal to 2
+                {
+                     header("location: home.php"); // retain to ics/prs/par Level
+                }
+                else
+                {
 
-$issuedID =$_REQUEST['issuedID'];
-$binID = $_REQUEST['binID'];
-$result = mysql_query("SELECT * FROM bincard_issued_record WHERE ID = '$issuedID'");
-$test = mysql_fetch_array($result);
-      $recpnt=$test['recpnt'];
-      $qty=$test['qty'];
-      $issued_date=$test['issued_date'];
+                }
+                */
+                $page = "Dashboard";
 
-$sql1 = "SELECT *";
-$sql1.=" FROM bincard_record WHERE ID = ".$test['bin_ID'];
-$res1 = mysql_query($sql1);
-$test1 = mysql_fetch_array($res1);
-	$descrp = $test1['Descrp'];
-                            
-if ($login_level != '0' ) 
-{
-    if ($login_level == '2') {
-      # code...
-    }
-    else
-    {
-    header("location: index.php");
-    }
-}
-else
-{
-
-}
-$page = "Record";
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -40,7 +40,7 @@ $page = "Record";
     <meta name="author" content="Rhalp Darren R. Cabrera / Omar Raouf A. Daud">
     <link rel="shortcut icon" href="img/logo.png">
 
-    <title>Bincard Edit</title>
+    <title>ADMIN | Index</title>
 
     <!-- Bootstrap CSS -->    
     <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -54,8 +54,6 @@ $page = "Record";
     <link href="css/style.css" rel="stylesheet">
     <link href="css/style-responsive.css" rel="stylesheet" />
 
-    <link rel="stylesheet" type="text/css" href="css/jquery.dataTables.css">
-
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 -->
     <!--[if lt IE 9]>
       <script src="js/html5shiv.js"></script>
@@ -63,9 +61,9 @@ $page = "Record";
       <script src="js/lte-ie7.js"></script>
     <![endif]-->
   </head>
+
   <body>
-  
-<!-- container section start -->
+  <!-- container section start -->
   <section id="container" class="">
       <!--header start-->
       
@@ -78,7 +76,7 @@ $page = "Record";
             <a href="index.php" class="logo">GSO <span class="lite">Admin</span></a>
             <!--logo end-->
 
-            
+
             <div class="top-nav notification-row">                
                 <!-- notificatoin dropdown start-->
                 <ul class="nav pull-right top-menu">
@@ -115,7 +113,7 @@ $page = "Record";
       <aside>
           <div id="sidebar"  class="nav-collapse ">
               <!-- sidebar menu start-->
-              <ul class="sidebar-menu">                
+              <ul class="sidebar-menu">   
                   <?php  
                   if ($login_level == '0')
                   {
@@ -148,53 +146,41 @@ $page = "Record";
       </aside>
       <!--sidebar end-->
 
+   
       <!--main content start-->
+
       <section id="main-content">
+
           <section class="wrapper">
-      <div class="row">
-        <div class="col-lg-12">
-          <h3 class="page-header"><i class="fa fa fa-bars"></i>EDIT</h3>
-          <ol class="breadcrumb">
-            <li><i class="fa fa-home"></i><a href="index.php">Dashboard</a></li>
-            <li><i class="fa fa-clipboard"></i><a href="bincard.php">Bincard Management</a></li>
-            <li><i class="fa fa-clipboard"></i><a href="bincard_view.php?ID=<?php echo $binID?>">Issued Item</a></li>
+         <section class="wrapper">
+            <div class="col-sm-12" style="font-size: 25px; font-family: Lato;"><img src="img/logo.png" class="col-sm-2"><h1 class="col-sm-10" style="margin-left: -50px;"><center> PROVINCE GOVERNMENT OF CAVITE<br><h2>General Services Office</h2></center></h1>
+            </div>
+             <br>
+             <br>
+             <br>
+             <br>
+             <br>
+             <br> 
+         </section>
+              <!-- page start-->
+             
+             
+                <div class="panel-body">
+              <div class="panel panel-default">
 
-            <li><i class="fa fa-clipboard"></i>Issued Item Edit</li>
-          </ol>
-        </div>
-      </div>
-              <!-- page start--> 
-              <form  action="bincard_edit_action.php?accID=<?php echo "$accID";?>" method="post" name="form1">
-              <table class="table table-striped table-advance table-hover ">
-                 <tr>
-              <td><b>ISSUED DATE</b></td>
-                <td><input type="date" name="bincard_edit_date"  class="form-control"  value="<?php echo "$issued_date";?> "></td>
-            </tr>
-
-             <tr>
-              <td><b>DESCRIPTION</b></td>
-                <td><input type="text" name="bincard_edit_descrp"  class="form-control" required="" value="<?php echo "$descrp";?>" disabled></td>
-            </tr>
-
-             <tr>
-              <td><b>RECIPIENT</b></td>
-                <td><input type="text" name="bincard_edit_descrp"  class="form-control" required="" value="<?php echo "$recpnt";?>" ></td>
-            </tr>
-            <tr>
-              <td><b>QUANTITY</b></td>
-                <td><input type="text" name="bincard_edit_qty"  class="form-control" required="" value="<?php echo "$qty";?>" ></td>
-            </tr>
-            <tr>
-           <tr>
-           <td><input class="btn btn-success "  type="submit" name="Update" value="Update"></td>
-           </tr> 
-              </table>
-              </form>
+                <div class="panel-heading" style="font-size: 25px; font-family: Lato;">MISSION</div>
+                <div class="panel-body"><h3>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;To deliver prompt, effective amd eficient services in the field of procurement,supply,property, records, human resources,facility improvement and community services.</h3></div>
+              </div>
+              <br>
+               <div class="panel panel-default ">
+                <div class="panel-heading" style="font-size: 25px; font-family: Lato;">VISION</div>
+                <div class="panel-body"><h3>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;A Strong and dynamic government office tha is adept to modern technology in serving the needs of its clientele.</h3></div>
+              </div>
               <!-- page end-->
           </section>
       </section>
       <!--main content end-->
-      <div class="text-right">
+      <div class="text-center">
             <div class="credits">
                 <!-- 
                     All the links in the footer should remain intact. 
@@ -202,20 +188,21 @@ $page = "Record";
                     Licensing information: https://bootstrapmade.com/license/
                     Purchase the pro version form: https://bootstrapmade.com/buy/?theme=NiceAdmin
                 -->
+
+               Rhalp Darren Cabrera & Omar Raouf Daud<br>
+               Copyright 2017
             </div>
         </div>
   </section>
   <!-- container section end -->
-      <!-- javascripts -->
-    <script type="text/javascript">
-      var dateControl = document.querySelector('input[type="date"]');
-dateControl.value = '<?php echo "$issued_date";?>';
-    </script>
+    <!-- javascripts -->
     <script src="js/jquery.js"></script>
     <script src="js/bootstrap.min.js"></script>
     <!-- nice scroll -->
     <script src="js/jquery.scrollTo.min.js"></script>
     <script src="js/jquery.nicescroll.js" type="text/javascript"></script><!--custome script for all page-->
     <script src="js/scripts.js"></script>
+
+
   </body>
 </html>

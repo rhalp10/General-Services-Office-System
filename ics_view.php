@@ -16,8 +16,22 @@ $ICS=$test['ICS'];
       $ReceivedFrom_Name=$test['ReceivedFrom_Name'];
       $ReceivedFrom_Position=$test['ReceivedFrom_Position'];
       $ReceivedFrom_Date=$test['ReceiveFrom_Date'];
+                            
+if ($login_level != '0' ) 
+{
+    if ($login_level == '4') {
+      # code...
+    }
+    else
+    {
+    header("location: index.php");
+    }
+}
+else
+{
 
-
+}
+$page = "Record";
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -104,60 +118,32 @@ $ICS=$test['ICS'];
           <div id="sidebar"  class="nav-collapse ">
               <!-- sidebar menu start-->
               <ul class="sidebar-menu">                
-                  <li class="active">
-                      <a class="" href="admin.php">
-                          <i class="icon_house_alt"></i>
-                          <span>Dashboard</span>
-                      </a>
-                  </li>
-                  <li class="">
-                      <a class="" href="account.php">
-                          <i class="icon_profile"></i>
-                          <span>Account</span>
-                      </a>
-                  </li>    
-                  <li class="sub-menu">
-                      <a href="javascript:;" class="">
-                          <i class="icon_desktop"></i>
-                          <span>Record</span>
-                          <span class="menu-arrow arrow_carrot-right"></span>
-                      </a>
-                      <ul class="sub">
-                          <li><a class="" href="acccard.php">Accountability Card</a></li>
-                          <li><a class="" href="accreceipt.php">Accountability Receipt</a></li>
-                          <li><a class="" href="returnslip.php">Return Slip</a></li>
-                          <li><a class="" href="bincard.php"><span>Bincard</span></a></li>
-                          <li><a class="" href="ics.php">Custodian Slip</a></li>
-                      </ul>
-                  </li>
-                             
-                  <li class="">
-                      <a class="" href="emplist.php">
-                          <i class="icon_clipboard"></i>
-                          <span>Employee  List</span>
-                      </a>
-                  </li>
-                  <li class="">
-                      <a class="" href="office.php">
-                          <i class="icon_building_alt"></i>
-                          <span>Office  List</span>
-                      </a>
-                  </li>
-                  <li class="sub-menu ">
-                      <a href="javascript:;" class="">
-                          <i class="icon_datareport"></i>
-                          <span>Report</span>
-                          <span class="menu-arrow arrow_carrot-right"></span>
-                      </a>
-                      <ul class="sub">                           
-                          <li><a class="" href="account_report.php">Account</a></li>
-                          <li><a class="" href="acccard_report.php">PGC Account Card</a></li>
-                          <li><a class="" href="accreceipt_report.php">Accountability Receipt</a></li>
-                          <li><a class="" href="returnslip_report.php">Return Slip</a></li>
-                          <li><a class="" href="bincard_report.php"><span>Bincard</span></a></li>
-                          <li><a class="" href="ics_report.php">Custodian Slip</a></li>
-                      </ul>
-                  </li>
+                  <?php  
+                  if ($login_level == '0')
+                  {
+                      include('sidebar-menu_admin.php');
+                  }
+                  if ($login_level == '1')
+                  {
+                      include('sidebar-menu_emp.php');
+                  }
+                  elseif ($login_level == '2')
+                  {
+                      include('sidebar-menu_bin.php');
+                  }
+                  else if ($login_level == '3')
+                  {
+                      include('sidebar-menu_accountability.php');
+                  }
+                  else if ($login_level == '4')
+                  {
+                      include('sidebar-menu_icsprspar.php');
+                  }
+                  else
+                  {
+                     
+                  }
+                  ?>
                   
               </ul>
               <!-- sidebar menu end-->

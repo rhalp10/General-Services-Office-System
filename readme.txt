@@ -1,5 +1,5 @@
 
-System Name: GeneralServicesOffice_System(GSO_System) Ver. 1 JUNE 14,2017
+System Name: GeneralServicesOffice_System(GSO_System) start JUNE 14,2017 Ver. 1 completed on 25/07/17
 ------------------------------------------------------------
 Hello PICTO Eto Po Ung Ginawa Naming System Sa GSO, Gusto Po Sana Naming Ituloy Ninyo Ito At I Improve Dahil Matagal Na Daw Po Silang Nagrequest Diyan Na Magpagawa Ng System, Kami Po Ay BSIT Pero Papapunta Sa Office Nato Dahil Wala Ng Vacant Sa PICTO Then, Ung Head Dito Sa GSO Ay Naisipang Gumawa Nalang Kami Ng System Para Maging Related Sa COUSE Namin.Naisip po naming gamiting platform ang PHP kasi eto ung isa sa pinakamaganda gamitin sa pag mamanage ng data d ganun kahirap mag code at masmadaling gamitin dahil webbase, kahit walang internet pwede padin naman pong gamitin ung system basta i coconfigure lng na i allowed ung mga ibang PC na mareceive ung link na un sa browser nila..
 ------------------------------------------------------------
@@ -42,7 +42,6 @@ Gusto nila pag may laman na ung transfersTO at dateTurnOver Dapat daw ay kulay P
 3. Bincard Parang Tulad Lang Din Ng Sa Accountability Card ung problema
 4.Inventory Record Per 	Land,	Land Improvements, Aquaculture Structures,Other Land Improvements,	Buildings,School Buildings,	Hospital & Health Centers,Other Structures,	Office Equipment,	Furniture & Fixtures,Information & Communication Technology Equipment,	Books,	Machinery,Agricultural & Forestry Equipment,Communication Equipment,Construction & Heavy Equipment,Disaster Response & Rescue Equipment[Firefighting,Flood,Earthquake ,Volcanic ,Landslide ],Medical Equipment,	Military, Police & Security Equipment,	Sports Equipment,	Technical & Scientific Equipment,Other Machinery & Equipment, Motor Vehicles,Watercrafts,Other Property, Plant & Equipment eto ung mga hindi pa nmin nagagawang inventory modules ng system hahah sobrang lawak po kasi pag kami lng dalawa 
 
-
 -------------------------------------------------------------------------------------------------------------------------
 ##FIRST DEVELOPERS
 -	dahil kulang ang oras namin sa pag oojt hindi namin to magagawa ng 100% Fully functional at maging accurate, masyado po kasing malawak ang system na GSO kung buong buo kaya nag focus muna kami dto sa bincard,accountabilitycard,prs,ics,return slip
@@ -52,3 +51,7 @@ Gusto nila pag may laman na ung transfersTO at dateTurnOver Dapat daw ay kulay P
 For File ng Records ng GSO
 	-	Lahat ng Files na ifoforFile may softcopy or SCAN ng document at ma sasave sa SYSTEM para hindi mahirap mag hanap ng record kung hihingi sila ng XEROX copy ng DOCUMENT.
 Cguro While Doing the improvement of this System mag assign nlng po kayo ng OJT din na tulad namin sa office at isang mag momonitor na marunong then para po mas malapit po kayo sa mga taong pwedeng mapag tanungan kung paano tlga sila gumagawa sa loob at para mas lalo po ninyong maunawaan ung manual system nila sa loob
+
+
+
+ung sa sidenav na mga link, palagyan nlng po ng if statement ng levelofaccess para maiwasang mapunta sa ibang page at restiction, then para maging flexible ung report pages sa ibang levelofaccess, kasi un lng din naman un panget naman kung gagawa pa ng bagong page tpos un din ung laman.

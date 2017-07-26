@@ -15,7 +15,22 @@ $rows = mysql_num_rows($result);
   $ReceivedBy_Name = $test['ReceivedBy_Name'];
   $ReceivedBy_Position = $test['ReceivedBy_Position'];
   $ReceivedBy_Date = $test['ReceivedBy_Date'];
-  $PAR = $test['PAR'];
+  $PAR = $test['PAR'];                            
+if ($login_level != '0' ) 
+{
+    if ($login_level == '4') {
+      # code...
+    }
+    else
+    {
+    header("location: index.php");
+    }
+}
+else
+{
+
+}
+$page = "Record";
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -99,60 +114,32 @@ $rows = mysql_num_rows($result);
           <div id="sidebar"  class="nav-collapse ">
               <!-- sidebar menu start-->
               <ul class="sidebar-menu">                
-                  <li class="active">
-                      <a class="" href="admin.php">
-                          <i class="icon_house_alt"></i>
-                          <span>Dashboard</span>
-                      </a>
-                  </li>
-                  <li class="">
-                      <a class="" href="account.php">
-                          <i class="icon_profile"></i>
-                          <span>Account</span>
-                      </a>
-                  </li>    
-                  <li class="sub-menu">
-                      <a href="javascript:;" class="">
-                          <i class="icon_desktop"></i>
-                          <span>Record</span>
-                          <span class="menu-arrow arrow_carrot-right"></span>
-                      </a>
-                      <ul class="sub">
-                         <li><a class="" href="acccard.php">PGC Account Card</a></li>
-                          <li><a class="" href="accreceipt.php">Accountability Receipt</a></li>
-                          <li><a class="" href="returnslip.php">Return Slip</a></li>
-                          <li><a class="" href="bincard.php"><span>Bincard</span></a></li>
-                          <li><a class="" href="ics.php">Custodian Slip</a></li>
-                      </ul>
-                  </li>
-                             
-                  <li class="">
-                      <a class="" href="emplist.php">
-                          <i class="icon_clipboard"></i>
-                          <span>Employee  List</span>
-                      </a>
-                  </li>
-                  <li class="">
-                      <a class="" href="office.php">
-                          <i class="icon_building_alt"></i>
-                          <span>Office  List</span>
-                      </a>
-                  </li>
-                  <li class="sub-menu ">
-                      <a href="javascript:;" class="">
-                          <i class="icon_datareport"></i>
-                          <span>Report</span>
-                          <span class="menu-arrow arrow_carrot-right"></span>
-                      </a>
-                      <ul class="sub">                           
-                          <li><a class="" href="account_report.php">Account</a></li>
-                          <li><a class="" href="acccard_report.php">PGC Account Card</a></li>
-                          <li><a class="" href="accreceipt_report.php">Accountability Receipt</a></li>
-                          <li><a class="" href="returnslip_report.php">Return Slip</a></li>
-                          <li><a class="" href="bincard_report.php"><span>Bincard</span></a></li>
-                          <li><a class="" href="ics_report.php">Custodian Slip</a></li>
-                      </ul>
-                  </li>
+                  <?php  
+                  if ($login_level == '0')
+                  {
+                      include('sidebar-menu_admin.php');
+                  }
+                  if ($login_level == '1')
+                  {
+                      include('sidebar-menu_emp.php');
+                  }
+                  elseif ($login_level == '2')
+                  {
+                      include('sidebar-menu_bin.php');
+                  }
+                  else if ($login_level == '3')
+                  {
+                      include('sidebar-menu_accountability.php');
+                  }
+                  else if ($login_level == '4')
+                  {
+                      include('sidebar-menu_icsprspar.php');
+                  }
+                  else
+                  {
+                    
+                  }
+                  ?>
                   
               </ul>
               <!-- sidebar menu end-->
@@ -178,18 +165,24 @@ $rows = mysql_num_rows($result);
               <div class="row">
                   <div class="col-lg-12">
                       <section class="panel">
+                      
+          <header class="panel-heading tab-bg-primary " style="padding:15px; height: 70px;"> <a class="btn btn-info pull-right" href="assets/FPDF/accreceipt_print.php?ID=<?php echo $ID;?>" target="_BLANK"><span class="icon_printer"></span> PRINT</a>
+                        <!-- 
+                     <a class="btn btn-info pull-right" href="" data-toggle="modal" data-target="#PrintMethod" ><span class="icon_printer"></span> PRINT</a>
+                        -->
+                          </header>
                           <header class="panel-heading">
                              <H1><center>PROPERTY ACCOUNTABILITY RECEIPT<br><h2 style="font-size: 30px; ">PROVINCE OF CAVITE</h2></center></H1>
                              
                           </header>
-                          <form class="form-horizontal " method="post" action="accreceipt_add_action.php"> <!--Form for the receipt -->
+                          <form class="form-horizontal " method="post" action="accreceipt_edit_action.php?ID=<?php echo $ID;?>"> <!--Form for the receipt -->
                            <div class="form-group pull-right">
                                 
                                     <div class="col-sm-10">
-                                        <input type="text"  class="form-control" placeholder="par No." name="prop_acc_receipt_ics_propno" required="" value="<?php echo $PAR;?>">
+                                        <input type="text"  class="form-control" placeholder="par No." name="edit_par" required="" value="<?php echo $PAR;?>">
                                     </div>
                             </div>
-                          <table class="table table-striped table-advance table-hover">
+                          <table class="table table-bordered table-advance table-hover">
                            <tbody>
                               <tr>
                                  <th><i class="icon_clipboard"></i> Quantity</th>
@@ -201,16 +194,16 @@ $rows = mysql_num_rows($result);
                               </tr>
                               <tr>
                                 <td>
-                                <input class="form-control" type="text" name="" value="<?php echo $Qty;?>"> </td>
+                                <input class="form-control" type="text" name="edit_qty" value="<?php echo $Qty;?>"> </td>
                                
                                 <td>
-                                <input class="form-control" type="text" name="" value="<?php echo $Unit;?>"> </td>
+                                <input class="form-control" type="text" name="edit_unit" value="<?php echo $Unit;?>"> </td>
 
                                 <td>
-                                <input class="form-control" type="text" name="" value="<?php echo $Descrp;?>"> </td>
+                                <input class="form-control" type="text" name="edit_descrp" value="<?php echo $Descrp;?>"> </td>
 
                                 <td>
-                                <input class="form-control" type="text" name="" value="<?php echo $PropNo;?>"> </td>
+                                <input class="form-control" type="text" name="edit_propNo" value="<?php echo $PropNo;?>"> </td>
                               </tr>
                               <tr>
                                 
@@ -230,19 +223,19 @@ $rows = mysql_num_rows($result);
                                             <div class="form-group">
                                                 <label class="col-sm-2 control-label">Name</label>
                                                 <div class="col-sm-7">
-                                                    <td><input class="form-control" type="text" name="" value="<?php echo $ReceivedBy_Name;?>"></td>
+                                                    <td><input class="form-control" type="text" name="edit_RecByname" value="<?php echo $ReceivedBy_Name;?>"></td>
                                                 </div>
                                             </div>
                                             <div class="form-group">
                                                 <label class="col-sm-2 control-label">Position</label>
                                                 <div class="col-sm-7">
-                                                    <td><input class="form-control" type="text" name="" value="<?php echo $ReceivedBy_Position;?>"></td>
+                                                    <td><input class="form-control" type="text" name="edit_RecBypos" value="<?php echo $ReceivedBy_Position;?>"></td>
                                                 </div>
                                             </div>
                                             <div class="form-group">
                                                 <label class="col-sm-2 control-label">Date</label>
                                                 <div class="col-sm-2">
-                                                    <td><input class="form-control" type="date" name="" value="<?php echo $ReceivedBy_Date;?>"></td>
+                                                    <td><input class="form-control" type="date" name="edit_RecBydate" value="<?php echo $ReceivedBy_Date;?>"></td>
                                                 </div>
                                             </div>
                                             <div class="form-group">
@@ -268,19 +261,19 @@ $rows = mysql_num_rows($result);
                                             <div class="form-group">
                                                 <label class="col-sm-2 control-label">Name</label>
                                                 <div class="col-sm-7">
-                                                    <td><input class="form-control" type="text" name="" value="<?php echo $ReceivedFrom_Name;?>"></td>
+                                                    <td><input class="form-control" type="text" name="edit_RecFrmname" value="<?php echo $ReceivedFrom_Name;?>"></td>
                                                 </div>
                                             </div>
                                             <div class="form-group">
                                                 <label class="col-sm-2 control-label">Position</label>
                                                 <div class="col-sm-7">
-                                                    <td><input class="form-control" type="text" name="" value="<?php echo $ReceivedFrom_Position;?>"></td>
+                                                    <td><input class="form-control" type="text" name="edit_RecFrmpos" value="<?php echo $ReceivedFrom_Position;?>"></td>
                                                 </div>
                                             </div>
                                             <div class="form-group">
                                                 <label class="col-sm-2 control-label">Date</label>
                                                 <div class="col-sm-2">
-                                                    <td><input class="form-control" type="date" name="" value="<?php echo $ReceivedFrom_Date;?>"></td>
+                                                    <td><input class="form-control" type="date" name="edit_RecFrmdate" value="<?php echo $ReceivedFrom_Date;?>"></td>
                                                 </div>
                                             </div>
                                             <div class="form-group">
@@ -318,6 +311,30 @@ $rows = mysql_num_rows($result);
   </section>
   <!-- container section end -->
     <!-- javascripts -->
+    <script type="text/javascript">
+    function numberInputOnly(elem) {
+        var validChars = /[0-9]/;
+        var strIn = elem.value;
+        var strOut = '';
+        for(var i=0; i < strIn.length; i++) {
+          strOut += (validChars.test(strIn.charAt(i)))? strIn.charAt(i) : '';
+        }
+        elem.value = strOut;
+    }
+    function letterInputOnly(elem) {
+        var validChars = /[a-zA-ZñÑ]+/;
+        var strIn = elem.value;
+        var strOut = '';
+        for(var i=0; i < strIn.length; i++) {
+          strOut += (validChars.test(strIn.charAt(i)))? strIn.charAt(i) : '';
+        }
+        elem.value = strOut;
+    }
+          
+    var dateControl = document.querySelector('input[type="date"]');
+    dateControl.value = '<?php echo "$ReceivedFrom_Date";?>';
+    </script>
+
     <script src="js/jquery.js"></script>
     <script src="js/bootstrap.min.js"></script>
     <!-- nicescroll -->
@@ -325,7 +342,6 @@ $rows = mysql_num_rows($result);
     <script src="js/jquery.nicescroll.js" type="text/javascript"></script>
     <!--custome script for all page-->
     <script src="js/scripts.js"></script>
-
 
   </body>
 </html>

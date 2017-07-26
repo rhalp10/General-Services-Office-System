@@ -82,190 +82,55 @@ $prop=array(//'HeaderColor'=>array(255,150,100),
 while($test = mysql_fetch_array($res))
 {
 	if ("SET ".$test['ItemSetID'] == $test['itemCode'])//SET
-    {
+    {	
 
-        if ($test['DateTurnOver'] == '0000-00-00'  && $test['TransferTo'] == 'null' || $test['TransferTo'] == ' ' )
-        {
-                                                        
-			$pdf->Cell(20,10,$test['ParNo'],1,0,'C');
-			if ($test['Qty'] == 0) 
-			{
-			$pdf->Cell(20,10,' ',1,0,'C');
-			}
-			else 
-			{
-			$pdf->Cell(20,10,$test['Qty'].' '.$test['Unit'],1,0,'C');
-			}
-			$pdf->Cell(80,10,$test['Descrp'],1,0);
-			$pdf->Cell(50,10,$test['SN'],1,0,'C');
-			$pdf->Cell(20,10,$test['PropNo'],1,0,'C');
-			if ($test['Amount'] == 0) 
-			{
-			$pdf->Cell(30,10,' ',1,0,'C');
-			}
-			else 
-			{
-			$pdf->Cell(30,10,$test['Amount'],1,0,'C');
-			}
-			if ($test['TransferTo'] == 'null') 
-			{
-			$pdf->Cell(40,10,' ',1,0);
-			}
-			else 
-			{
-			$pdf->Cell(40,10,$test['TransferTo'],1,0);
-			}
-			
-			if ($test['DateTurnOver'] == '0000-00-00') 
-			{
-			$pdf->Cell(30,10,' ',1,0);
-			}
-			else 
-			{
-			$pdf->Cell(30,10,$test['DateTurnOver'],1,0,'C');
-			}
-			
-			$pdf->Cell(0,10,$test['Remarks'],1,1);
-			//Query for all parts of sets
-            $itemSet = "PART ".$test['ItemSetID'];
-            $result1 = mysql_query("SELECT * FROM emp_accountability_card WHERE itemCode = '$itemSet'");
-            while($test1 = mysql_fetch_array($result1))//PARTS OF SET 
-              { //IF STATEMENT OF DATETURN OVER AND TRANSFER TO
-              	if ($test1['DateTurnOver'] == '0000-00-00'  && $test1['TransferTo'] == 'null' || $test1['TransferTo'] == ' ' )
-                {
-                	$pdf->Cell(20,10,'',1,0,'C');
-					if ($test['Qty'] == 0) 
-					{
-					$pdf->Cell(20,10,' ',1,0,'C');
-					}
-					else 
-					{
-					$pdf->Cell(20,10,'',1,0,'C');
-					}
-					$pdf->Cell(80,10,$test1['Descrp'],1,0);
-					$pdf->Cell(50,10,$test1['SN'],1,0,'C');
-					$pdf->Cell(20,10,$test1['PropNo'],1,0,'C');
-					if ($test1['Amount'] == 0) 
-					{
-					$pdf->Cell(30,10,' ',1,0,'C');
-					}
-					else 
-					{
-					$pdf->Cell(30,10,$test1['Amount'],1,0,'C');
-					}
-					if ($test1['TransferTo'] == 'null') 
-					{
-					$pdf->Cell(40,10,' ',1,0);
-					}
-					else 
-					{
-					$pdf->Cell(40,10,$test1['TransferTo'],1,0);
-					}
-					
-					if ($test1['DateTurnOver'] == '0000-00-00') 
-					{
-					$pdf->Cell(30,10,' ',1,0);
-					}
-					else 
-					{
-					$pdf->Cell(30,10,$test1['DateTurnOver'],1,0,'C');
-					}
-					
-					$pdf->Cell(0,10,$test1['Remarks'],1,1);
-                }
-              }
+		$pdf->Cell(20,10,$test['ParNo'],1,0,'C');
+		$pdf->Cell(20,10,$test['Qty'].' '.$test['Unit'],1,0);
+		$pdf->Cell(80,10,$test['Descrp'],1,0);
+		$pdf->Cell(50,10,$test['SN'],1,0);
+		$pdf->Cell(20,10,$test['PropNo'],1,0);
+		if ($test['Amount'] == '0') {
+		$pdf->Cell(30,10,'',1,0,'C');
 		}
-		else
+		else {
+		$pdf->Cell(30,10,$test['Amount'],1,0,'C');
+		}		
+		$pdf->Cell(40,10,$test['TransferTo'],1,0);
+
+		if ($test['DateTurnOver'] == '0000-00-00') {
+		$pdf->Cell(30,10,'',1,0);
+		}
+		else {
+		$pdf->Cell(30,10,$test['DateTurnOver'],1,0);
+		}	
+		$pdf->Cell(0,10,$test['Remarks'],1,1);
+		$partID = 'PART '.$test['ItemSetID'];
+		$res1 = mysql_query("SELECT * FROM emp_accountability_card");
+		$rows1 = mysql_num_rows($res1);
+		while($test1 = mysql_fetch_array($res1))
 		{
-			//dont print
-			                                           
-			$pdf->Cell(20,10,$test['ParNo'],1,0,'C');
-			if ($test['Qty'] == 0) 
+			if ($partID == $test1['itemCode'])
 			{
-			$pdf->Cell(20,10,' ',1,0,'C');
+			$pdf->Cell(20,10,'',1,0,'C');
+			$pdf->Cell(20,10,$test1['Qty'].' '.$test['Unit'],1,0);
+			$pdf->Cell(80,10,$test1['Descrp'],1,0);
+			$pdf->Cell(50,10,$test1['SN'],1,0);
+			$pdf->Cell(20,10,$test1['PropNo'],1,0);
+			if ($test1['Amount'] == '0') {
+			$pdf->Cell(30,10,'',1,0,'C');
 			}
-			else 
-			{
-			$pdf->Cell(20,10,$test['Qty'].' '.$test['Unit'],1,0,'C');
+			else {
+			$pdf->Cell(30,10,$test1['Amount'],1,0,'C');
+			}	
+			$pdf->Cell(40,10,$test1['TransferTo'],1,0);
+			if ($test1['DateTurnOver'] == '0000-00-00') {
+			$pdf->Cell(30,10,'',1,0);
 			}
-			$pdf->Cell(80,10,$test['Descrp'],1,0);
-			$pdf->Cell(50,10,$test['SN'],1,0,'C');
-			$pdf->Cell(20,10,$test['PropNo'],1,0,'C');
-			if ($test['Amount'] == 0) 
-			{
-			$pdf->Cell(30,10,' ',1,0,'C');
+			else {
+			$pdf->Cell(30,10,$test1['DateTurnOver'],1,0);
+			}	
+			$pdf->Cell(0,10,$test1['Remarks'],1,1);
 			}
-			else 
-			{
-			$pdf->Cell(30,10,$test['Amount'],1,0,'C');
-			}
-			if ($test['TransferTo'] == 'null') 
-			{
-			$pdf->Cell(40,10,' ',1,0);
-			}
-			else 
-			{
-			$pdf->Cell(40,10,$test['TransferTo'],1,0);
-			}
-			
-			if ($test['DateTurnOver'] == '0000-00-00') 
-			{
-			$pdf->Cell(30,10,' ',1,0);
-			}
-			else 
-			{
-			$pdf->Cell(30,10,$test['DateTurnOver'],1,0,'C');
-			}
-			
-			$pdf->Cell(0,10,$test['Remarks'],1,1);
-			//Query for all parts of sets
-            $itemSet = "PART ".$test['ItemSetID'];
-            $result1 = mysql_query("SELECT * FROM emp_accountability_card WHERE itemCode = '$itemSet'");
-            while($test1 = mysql_fetch_array($result1))//PARTS OF SET 
-              { //IF STATEMENT OF DATETURN OVER AND TRANSFER TO
-              	if ($test1['DateTurnOver'] == '0000-00-00'  && $test1['TransferTo'] == 'null' || $test1['TransferTo'] == ' ' )
-                {
-                	$pdf->Cell(20,10,'',1,0,'C');
-					if ($test['Qty'] == 0) 
-					{
-					$pdf->Cell(20,10,' ',1,0,'C');
-					}
-					else 
-					{
-					$pdf->Cell(20,10,'',1,0,'C');
-					}
-					$pdf->Cell(80,10,$test1['Descrp'],1,0);
-					$pdf->Cell(50,10,$test1['SN'],1,0,'C');
-					$pdf->Cell(20,10,$test1['PropNo'],1,0,'C');
-					if ($test1['Amount'] == 0) 
-					{
-					$pdf->Cell(30,10,' ',1,0,'C');
-					}
-					else 
-					{
-					$pdf->Cell(30,10,$test1['Amount'],1,0,'C');
-					}
-					if ($test1['TransferTo'] == 'null') 
-					{
-					$pdf->Cell(40,10,' ',1,0);
-					}
-					else 
-					{
-					$pdf->Cell(40,10,$test1['TransferTo'],1,0);
-					}
-					
-					if ($test1['DateTurnOver'] == '0000-00-00') 
-					{
-					$pdf->Cell(30,10,' ',1,0);
-					}
-					else 
-					{
-					$pdf->Cell(30,10,$test1['DateTurnOver'],1,0,'C');
-					}
-					
-					$pdf->Cell(0,10,$test1['Remarks'],1,1);
-                }
-              }
 		}
 	}
 }

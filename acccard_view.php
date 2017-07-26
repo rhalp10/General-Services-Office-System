@@ -14,6 +14,23 @@ $rows = mysql_num_rows($result);
 $sql = "SELECT *";
 $sql.=" FROM emp_accountability_card WHERE Emp_ID = $ID";
 $query = mysql_query($sql);      
+             
+          
+if ($login_level != '0' ) 
+{
+    if ($login_level == '3') {
+      # code...
+    }
+    else
+    {
+    header("location: index.php");
+    }
+}
+else
+{
+
+}  
+$page = "Record";
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -113,62 +130,33 @@ $query = mysql_query($sql);
       <aside>
           <div id="sidebar"  class="nav-collapse ">
               <!-- sidebar menu start-->
-              <ul class="sidebar-menu">                
-                  <li class="">
-                      <a class="" href="admin.php">
-                          <i class="icon_house_alt"></i>
-                          <span>Dashboard</span>
-                      </a>
-                  </li>
-                  <li class="">
-                      <a class="" href="account.php">
-                          <i class="icon_profile"></i>
-                          <span>Account</span>
-                      </a>
-                  </li>    
-                  <li class="sub-menu">
-                      <a href="javascript:;" class="">
-                          <i class="icon_desktop"></i>
-                          <span>Record</span>
-                          <span class="menu-arrow arrow_carrot-right"></span>
-                      </a>
-                      <ul class="sub">
-                         <li><a class="" href="acccard.php">PGC Account Card</a></li>
-                          <li><a class="" href="accreceipt.php">Accountability Receipt</a></li>
-                          <li><a class="" href="returnslip.php">Return Slip</a></li>
-                          <li><a class="" href="bincard.php"><span>Bincard</span></a></li>
-                          <li><a class="" href="ics.php">Custodian Slip</a></li>
-                      </ul>
-                  </li>
-                             
-                  <li class="">
-                      <a class="" href="emplist.php">
-                          <i class="icon_clipboard"></i>
-                          <span>Employee  List</span>
-                      </a>
-                  </li>
-                  <li class="">
-                      <a class="" href="office.php">
-                          <i class="icon_building_alt"></i>
-                          <span>Office  List</span>
-                      </a>
-                  </li>
-                  <li class="sub-menu ">
-                      <a href="javascript:;" class="">
-                          <i class="icon_datareport"></i>
-                          <span>Report</span>
-                          <span class="menu-arrow arrow_carrot-right"></span>
-                      </a>
-                      <ul class="sub">                           
-                          <li><a class="" href="account_report.php">Account</a></li>
-                          <li><a class="" href="acccard_report.php">PGC Account Card</a></li>
-                          <li><a class="" href="accreceipt_report.php">Accountability Receipt</a></li>
-                          <li><a class="" href="returnslip_report.php">Return Slip</a></li>
-                          <li><a class="" href="bincard_report.php"><span>Bincard</span></a></li>
-                          <li><a class="" href="ics_report.php">Custodian Slip</a></li>
-                      </ul>
-                  </li>
-                  
+            <ul class="sidebar-menu">                
+                  <?php  
+                  if ($login_level == '0')
+                  {
+                      include('sidebar-menu_admin.php');
+                  }
+                  if ($login_level == '1')
+                  {
+                      include('sidebar-menu_emp.php');
+                  }
+                  elseif ($login_level == '2')
+                  {
+                      include('sidebar-menu_bin.php');
+                  }
+                  else if ($login_level == '3')
+                  {
+                      include('sidebar-menu_accountability.php');
+                  }
+                  else if ($login_level == '4')
+                  {
+                      include('sidebar-menu_icsprspar.php');
+                  }
+                  else
+                  {
+                    
+                  }
+                  ?>
               </ul>
               <!-- sidebar menu end-->
           </div>
@@ -180,11 +168,12 @@ $query = mysql_query($sql);
           <section class="wrapper">
           <div class="row">
                 <div class="col-lg-12">
-                    <h3 class="page-header"><i class="fa fa-user-md"></i> Profile View</h3>
+                    <h3 class="page-header"><i class="fa fa-user-md"></i> PGC Accountability Card Management View</h3>
                     <ol class="breadcrumb">
                         <li><i class="fa fa-home"></i><a href="index.php">Dashboard</a></li>
-                        <li><i class="icon_documents_alt"></i><a href="acccard.php">PGC Employee Accountability Card</a></li>
-                        <li><i class="fa fa-user-md"></i>PGC Employee Accountability Card View</li>
+                        <li><i class="fa fa-clipboard"></i><a href="acccard.php">PGC Accountability Card Management</a></li>
+                        <li><i class="fa fa-user-md"></i>PGC Accountability Card View Set</li>
+
                     </ol>
                 </div>
             </div>
@@ -208,7 +197,7 @@ $query = mysql_query($sql);
                                 <a href="" class="btn btn-success" data-toggle="modal" data-target="#AddItem" ><span class="fa fa-plus-circle"></span> Add Item</a>
                             </div>
 
-                            
+                             
                                         <a class="btn btn-info pull-right" href="assets/fpdf/acccard_person_report.php?accID=<?php echo $ID ?>" title="Print" target="_blank"><span class="icon_printer"></span> PRINT</a>
                           </div>
                     </div>
@@ -264,13 +253,14 @@ while ( $row=mysql_fetch_array($query))
 {//FIRST WHILE FOR FETCHING ALL SET DATA
 
 
+
   if ("SET ".$row['ItemSetID'] == $row['itemCode'])//SET ITEMS
   {
-  if ($row['DateTurnOver'] == '0000-00-00 00:00:00'  && $row['TransferTo'] == 'null' || $row['TransferTo'] == ' ' )
-         {
-    //COLOR BLACK FONT
 
-          ?>
+
+     $accID = $row['ID'];
+    ?>
+
           <tr>
           <td><font color="black"><?php echo $row['ParNo']?></font></td>
           <td><font color="black"><?php echo $row['Qty']." ".$row['Unit']?></font></td>
@@ -290,21 +280,9 @@ while ( $row=mysql_fetch_array($query))
             <td><font color="black"><?php echo $row['Amount']?></font></td>
             <?php
           }
-          ?>
-          <?php 
-          if($row['TransferTo'] == 'null')
-          {
-            ?>
-            <td><font color="black"></font></td>
-            <?php
-          }
-          else
-          {
             ?>
             <td><font color="black"><?php echo $row['TransferTo']?></font></td>
-            <?php
-          }
-          ?>
+            
            <?php 
           if($row['DateTurnOver'] == '0000-00-00')
           {
@@ -328,91 +306,40 @@ while ( $row=mysql_fetch_array($query))
                     <span class="sr-only">Toggle Dropdown</span>
                   </button>
                   <ul class="dropdown-menu">
-                    <li><a href="acccard_view-detail.php?ID=<?php echo $ID; ?>">View</a></li>
-                    <li><a href="acccard_edit-detail.php?ID=<?php echo $ID; ?>">Edit</a></li>
+                    <li><a href="acccard_view-detail.php?accID=<?php echo $accID; ?>&empID=<?php echo $ID;?>">View</a></li>
+                    <li><a href="acccard_edit-detail.php?accID=<?php echo $accID; ?>&empID=<?php echo $emp_pgc_record_accID;?>">Edit</a></li>
                     <li role="separator" class="divider"></li>
-                    <li><a onclick="confirmDelete(<?php echo $accID; ?>)">Delete</a></li>
+                    <li><a data-toggle="modal" data-target="#delete<?php echo $accID; ?>">Delete</a></li>
                   </ul>
                 </div>
                 </td>
               </td>
           </tr>
-          <?php
-          
 
-    }
-    else
-    {
-      //COLOR RED FONT
-         ?>
-          <tr>
-          <td><font color="red"><?php echo $row['ParNo']?></font></td>
-          <td><font color="red"><?php echo $row['Qty']." ".$row['Unit']?></font></td>
-          <td><font color="red"><?php echo $row['Descrp']?></font></td>
-          <td><font color="red"><?php echo $row['ParNo']?></font></td>
-          <td><font color="red"><?php echo $row['SN']?></font></td>
-          <?php 
-          if($row['Amount'] == 0)
-          {
-            ?>
-            <td><font color="red"></font></td>
-            <?php
-          }
-          else
-          {
-            ?>
-            <td><font color="red"><?php echo $row['Amount']?></font></td>
-            <?php
-          }
-          ?>
-          <?php 
-          if($row['TransferTo'] == 'null')
-          {
-            ?>
-            <td><font color="red"></font></td>
-            <?php
-          }
-          else
-          {
-            ?>
-            <td><font color="red"><?php echo $row['TransferTo']?></font></td>
-            <?php
-          }
-          ?>
-          <?php 
-          if($row['DateTurnOver'] == '0000-00-00')
-          {
-            ?>
-            <td><font color="red"></font></td>
-            <?php
-          }
-          else
-          {
-            ?>
-            <td><font color="red"><?php echo $row['DateTurnOver']?></font></td>
-            <?php
-          }
-          ?>
-          <td><font color="red"><?php echo $row['Remarks']?></font></td>
-          <td>
-                <div class="btn-group">
-                  <button type="button" class="btn btn-primary">Action</button>
-                  <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    <span class="caret"></span>
-                    <span class="sr-only">Toggle Dropdown</span>
-                  </button>
-                  <ul class="dropdown-menu">
-                    <li><a href="acccard_view-detail.php?ID=<?php echo $ID; ?>">View</a></li>
-                    <li><a href="acccard_edit-detail.php?ID=<?php echo $ID; ?>">Edit</a></li>
-                    <li role="separator" class="divider"></li>
-                    <li><a onclick="confirmDelete(<?php echo $accID; ?>)">Delete</a></li>
-                  </ul>
+                                   <!-- Delete Modal  -->
+          <div id="delete<?php echo $accID; ?>" class="modal fade" role="dialog">
+            <div class="modal-dialog">
+              <!-- Modal content-->
+              <div class="modal-content">
+                <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal">&times;</button>
+                  <h4 class="modal-title">Delete Account</h4>
                 </div>
-                </td>
-              </td>
-          </tr>
-      <?php
-    }
+                <div class="modal-body">
+                <center>
+                <h1>Are you sure ?</h1>
+                  <a class="btn btn-success" href="acccard_view_delete_action.php?accID=<?php echo $accID;?>&ID=<?php echo $ID; ?>">DELETE</a>
+                  <a class="btn btn-danger"  data-dismiss="modal">CANCEL</a>
+                  </center>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+              </div>
+
+            </div>
+          </div><!-- End Delete Modal  -->
+    <?php
   }
 
 }// END FIRST WHILE
@@ -476,7 +403,7 @@ while ( $row=mysql_fetch_array($query))
                          Item Set Info:
                          </header>
                     <div class="panel-body">
-                     <form action="acccard_view_add_par-set_action.php?accID=<?php echo $ID;?>" method="post" name="form1">
+                     <form action="acccard_view_add_par-set_action.php?empID=<?php echo $emp_pgc_record_accID;?>" method="post" name="form1">
                      <table class="table table-striped table-advance table-hover">
                          <thead>
                             <tr>
@@ -484,6 +411,7 @@ while ( $row=mysql_fetch_array($query))
                               <td  class="col-sm-1">QTY</td>
                               <td  class="col-sm-1">UNIT</td>
                               <td  class="col-sm-1">DESCRIPTION</td>
+                              <td  class="col-sm-1">SERIAL #</td>
                             </tr>
                             </thead>
                              <tbody>
@@ -495,6 +423,7 @@ while ( $row=mysql_fetch_array($query))
                                   <option value="pc">Pc.</option>
                                 </select></td>
                               <td><input  class="form-control" type="" name="acccard_view_add_descrp-Set" value="" ></td>
+                              <td><input  class="form-control" type="" name="acccard_view_add_sn-Set" value="" ></td>
                               </tr>
                               </tbody>
                         </table>
@@ -517,7 +446,7 @@ while ( $row=mysql_fetch_array($query))
                               <td><input  class="form-control" type="" name="acccard_view_add_amount-Set" value="" onkeyup="numberInputOnly(this);"></td>
                               <td><input  class="form-control" type="" name="acccard_view_add_transferTo-Set" value="" onkeyup="letterInputOnly(this);"></td>
                               <td><input  class="form-control" type="" name="acccard_view_add_remarks-Set" value="" ></td>
-                              <td><input  class="form-control" type="date" name="acccard_view_add_dateturnOver-Set" value="" ></td>
+                              <td><input  class="form-control" type="date" name="acccard_view_add_turnOver-Set" value="" ></td>
                             </tr>
                           </tbody>
                         </table>

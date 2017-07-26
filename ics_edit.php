@@ -4,7 +4,7 @@ include('session.php');
 $icsID =$_REQUEST['icsID'];
 $result = mysql_query("SELECT * FROM invent_custodian_slip WHERE ID = '$icsID'");
 $test = mysql_fetch_array($result);
-$ICS=$test['ICS'];
+      $ICS=$test['ICS'];
       $Qty=$test['Qty'];
       $Unit=$test['Unit'];
       $Descrp=$test['Descrp'];
@@ -16,8 +16,22 @@ $ICS=$test['ICS'];
       $ReceivedFrom_Name=$test['ReceivedFrom_Name'];
       $ReceivedFrom_Position=$test['ReceivedFrom_Position'];
       $ReceivedFrom_Date=$test['ReceiveFrom_Date'];
+                            
+if ($login_level != '0' ) 
+{
+    if ($login_level == '4') {
+      # code...
+    }
+    else
+    {
+    header("location: index.php");
+    }
+}
+else
+{
 
-
+}
+$page = "Record";
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -104,61 +118,32 @@ $ICS=$test['ICS'];
           <div id="sidebar"  class="nav-collapse ">
               <!-- sidebar menu start-->
               <ul class="sidebar-menu">                
-                  <li class="active">
-                      <a class="" href="admin.php">
-                          <i class="icon_house_alt"></i>
-                          <span>Dashboard</span>
-                      </a>
-                  </li>
-                  <li class="">
-                      <a class="" href="account.php">
-                          <i class="icon_profile"></i>
-                          <span>Account</span>
-                      </a>
-                  </li>    
-                  <li class="sub-menu">
-                      <a href="javascript:;" class="">
-                          <i class="icon_desktop"></i>
-                          <span>Record</span>
-                          <span class="menu-arrow arrow_carrot-right"></span>
-                      </a>
-                      <ul class="sub">
-                          <li><a class="" href="acccard.php">Accountability Card</a></li>
-                          <li><a class="" href="accreceipt.php">Accountability Receipt</a></li>
-                          <li><a class="" href="returnslip.php">Return Slip</a></li>
-                          <li><a class="" href="bincard.php"><span>Bincard</span></a></li>
-                          <li><a class="" href="ics.php">Custodian Slip</a></li>
-                      </ul>
-                  </li>
-                             
-                  <li class="">
-                      <a class="" href="emplist.php">
-                          <i class="icon_clipboard"></i>
-                          <span>Employee  List</span>
-                      </a>
-                  </li>
-                  <li class="">
-                      <a class="" href="office.php">
-                          <i class="icon_building_alt"></i>
-                          <span>Office  List</span>
-                      </a>
-                  </li>
-                  <li class="sub-menu ">
-                      <a href="javascript:;" class="">
-                          <i class="icon_datareport"></i>
-                          <span>Report</span>
-                          <span class="menu-arrow arrow_carrot-right"></span>
-                      </a>
-                      <ul class="sub">                           
-                          <li><a class="" href="account_report.php">Account</a></li>
-                          <li><a class="" href="acccard_report.php">PGC Account Card</a></li>
-                          <li><a class="" href="accreceipt_report.php">Accountability Receipt</a></li>
-                          <li><a class="" href="returnslip_report.php">Return Slip</a></li>
-                          <li><a class="" href="bincard_report.php"><span>Bincard</span></a></li>
-                          <li><a class="" href="ics_report.php">Custodian Slip</a></li>
-                      </ul>
-                  </li>
-                  
+                  <?php  
+                  if ($login_level == '0')
+                  {
+                      include('sidebar-menu_admin.php');
+                  }
+                  if ($login_level == '1')
+                  {
+                      include('sidebar-menu_emp.php');
+                  }
+                  elseif ($login_level == '2')
+                  {
+                      include('sidebar-menu_bin.php');
+                  }
+                  else if ($login_level == '3')
+                  {
+                      include('sidebar-menu_accountability.php');
+                  }
+                  else if ($login_level == '4')
+                  {
+                      include('sidebar-menu_icsprspar.php');
+                  }
+                  else
+                  {
+                     
+                  }
+                  ?>
               </ul>
               <!-- sidebar menu end-->
           </div>
@@ -196,7 +181,7 @@ $ICS=$test['ICS'];
                          Client Info:
                          </header>
                     <div class="panel-body">
-                     <form class="form-horizontal " method="post" action="ics_edit_action.php?icsID=<?php echo "$icsID";?>"> 
+                     <form class="form-horizontal " method="POST" action="ics_edit_action.php?icsID=<?php echo "$icsID";?>"> 
                               <label class="col-sm-2 control-label pull-right"><strong><input type="text" name="custodian_slip_ICS" class="form-control" placeholder="ICS Number" value="<?php echo $ICS; ?>"></strong></label>
                               <br> <br> <br>
                             <table class="table table-striped table-advance table-hover ">  
@@ -241,7 +226,7 @@ $ICS=$test['ICS'];
                                     <div class="modal-content">
                                       <div class="modal-header">
                                         <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                        <h4 class="modal-title">Modal Header</h4>
+                                        <h4 class="modal-title">Description Edit</h4>
                                       </div>
                                       <div class="modal-body">
                                         <?php  $editID = $row['ID'];
@@ -249,7 +234,7 @@ $ICS=$test['ICS'];
                                         $row1 = mysql_fetch_array($res2)
                                         
                                         ?>
-                                           <form method="POST" action="ics_edit_desc_action.php?ID=<?php echo $row['ID']?>" >
+                                           <form method="POST" action="ics_edit_desc_action.php?ID=<?php echo $row['ID']?>&icsID=<?php echo $icsID ?>" >
                                            <label class="control-label">Description</label>
                                              <input class="form-control" type="text" name="edit_desc<?php echo $row['ID'] ?>" value="<?php echo $row1['Descrp']?>">
                                              

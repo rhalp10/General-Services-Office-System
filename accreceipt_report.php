@@ -1,10 +1,10 @@
-<?php
-
+ <?php
 include('session.php');
 include('db.php');
 $sql = "SELECT *";
-$sql.=" FROM property_return_slip_record";
+$sql.=" FROM property_accountability_receipt_record";
 $query=mysql_query($sql);
+ $page = "Report";
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -15,7 +15,7 @@ $query=mysql_query($sql);
     <meta name="author" content="Rhalp Darren R. Cabrera / Omar Raouf A. Daud">
     <link rel="shortcut icon" href="img/logo.png">
 
-    <title>Account Receipt Report</title>
+    <title>Property Account Receipt</title>
 
     <!-- Bootstrap CSS -->    
     <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -104,62 +104,32 @@ $query=mysql_query($sql);
           <div id="sidebar"  class="nav-collapse ">
               <!-- sidebar menu start-->
               <ul class="sidebar-menu">                
-                  <li class="">
-                      <a class="" href="admin.php">
-                          <i class="icon_house_alt"></i>
-                          <span>Dashboard</span>
-                      </a>
-                  </li>
-                  <li class="">
-                      <a class="" href="account.php">
-                          <i class="icon_profile"></i>
-                          <span>Account</span>
-                      </a>
-                  </li>    
-                  <li class="sub-menu">
-                      <a href="javascript:;" class="">
-                          <i class="icon_desktop"></i>
-                          <span>Record</span>
-                          <span class="menu-arrow arrow_carrot-right"></span>
-                      </a>
-                      <ul class="sub">
-                          <li><a class="" href="acccard.php">PGC Account Card</a></li>
-                          <li><a class="" href="accreceipt.php">Accountability Receipt</a></li>
-                          <li><a class="" href="returnslip.php">Return Slip</a></li>
-                          <li><a class="" href="bincard.php"><span>Bincard</span></a></li>
-                          <li><a class="" href="ics.php">Custodian Slip</a></li>
-                          
-                      </ul>
-                  </li>
-                             
-                  <li class="">
-                      <a class="" href="emplist.php">
-                          <i class="icon_clipboard"></i>
-                          <span>Employee  List</span>
-                      </a>
-                  </li>
-                  <li class="">
-                      <a class="" href="office.php">
-                          <i class="icon_building_alt"></i>
-                          <span>Office  List</span>
-                      </a>
-                  </li>
-                  <li class="sub-menu ">
-                      <a href="javascript:;" class="">
-                          <i class="icon_datareport"></i>
-                          <span>Report</span>
-                          <span class="menu-arrow arrow_carrot-right"></span>
-                      </a>
-                      <ul class="sub">                           
-                          <li><a class="" href="account_report.php">Account</a></li>
-                          <li><a class="" href="acccard_report.php">PGC Account Card</a></li>
-                          <li><a class="" href="accreceipt_report.php">Accountability Receipt</a></li>
-                          <li><a class="" href="returnslip_report.php">Return Slip</a></li>
-                          <li><a class="" href="bincard_report.php"><span>Bincard</span></a></li>
-                          <li><a class="" href="ics_report.php">Custodian Slip</a></li>
-                      </ul>
-                  </li>
-                  
+                  <?php  
+                  if ($login_level == '0')
+                  {
+                      include('sidebar-menu_admin.php');
+                  }
+                  if ($login_level == '1')
+                  {
+                      include('sidebar-menu_emp.php');
+                  }
+                  elseif ($login_level == '2')
+                  {
+                      include('sidebar-menu_bin.php');
+                  }
+                  else if ($login_level == '3')
+                  {
+                      include('sidebar-menu_accountability.php');
+                  }
+                  else if ($login_level == '4')
+                  {
+                      include('sidebar-menu_icsprspar.php');
+                  }
+                  else
+                  {
+                    
+                  }
+                  ?>
               </ul>
               <!-- sidebar menu end-->
           </div>
@@ -171,17 +141,19 @@ $query=mysql_query($sql);
         <section class="wrapper">
          <div class="row">
         <div class="col-lg-12">
-          <h3 class="page-header"><i class="fa fa-clipboard"></i> Account Receipt Report</h3>
+          <h3 class="page-header"><i class="fa fa-clipboard"></i>Property Accountability Receipt</h3>
           <ol class="breadcrumb">
             <li><i class="fa fa-home"></i><a href="index.php">Dashboard</a></li>
-            <li><i class="fa fa-clipboard"></i> Account Receipt Report</li>
+            <li><i class="fa fa-clipboard"></i>Property Accountability Receipt</li>
           </ol>
         </div>
       </div>
           <div class="panel">
-          <header class="panel-heading tab-bg-primary " style="padding:15px; height: 70px;">
+          <header class="panel-heading tab-bg-primary " style="padding:15px; height: 70px;"> 
+                     <a class="btn btn-info pull-right" href="assets/FPDF/accreceipt_general_print.php" target="_BLANK"><span class="icon_printer"></span> PRINT</a>
+                        <!-- 
                      <a class="btn btn-info pull-right" href="" data-toggle="modal" data-target="#PrintMethod" ><span class="icon_printer"></span> PRINT</a>
-                        
+                        -->
                           </header>
                          
                     
@@ -189,14 +161,16 @@ $query=mysql_query($sql);
       <table id="myData"  class="table table-bordered table-advance table-hover  dataTable">
           <thead>
             <tr>
-              <th>LGU Name</th>
-              <th>PurposeID</th>
-              <th>Qty/Unit</th>
               <th>Description</th>
-              <th>Name of Enduser </th>
+              <th>Qty/Unit</th>
+              <th>Property No</th>
+
               <th>ReceiveBy Name</th>
               <th>ReceiveBy Date</th>
-              <th>Status</th>
+
+              <th>ReceiveFrom Name</th>
+              <th>ReceiveFrom Date</th>
+              <th>ICS</th>
               <th>Action</th>
             </tr>
           </thead>
@@ -221,19 +195,58 @@ $query=mysql_query($sql);
            $ID = $row['ID'];
           ?>
             <tr>
-              <td><?php echo $row['LGU_Name'];?></td>
-              <td><?php echo $row['PurposeID'];?></td>
-              <td><?php echo $row['Qty']." ".$row['Unit'];?></td>
+
               <td><?php echo $row['Descrp'];?></td>
-              <td><?php echo $row['Name_of_Enduser'];?></td>
-              <td><?php echo $row['ReceiveBy_Name'];?></td>
-              <td><?php echo $row['ReceiveBy_Date'];?></td>
-              <td><?php echo $row['Status'];?></td>
+              <td><?php echo $row['Qty']." ".$row['Unit'];?></td>
+              <td><?php echo $row['PropNo'];?></td>
+              <td><?php echo $row['ReceivedBy_Name'];?></td>
+              <td><?php echo $row['ReceivedBy_Date'];?></td>
+
+              <td><?php echo $row['ReceivedFrom_Name'];?></td>
+              <td><?php echo $row['ReceivedFrom_Date'];?></td>
+              <td><?php echo $row['PAR'];?></td>
               <td>
-                <button type="button" class="btn btn-primary">View</button>
-              </td>
+                <div class="btn-group">
+                  <button type="button" class="btn btn-primary">Action</button>
+                  <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <span class="caret"></span>
+                    <span class="sr-only">Toggle Dropdown</span>
+                  </button>
+                  <ul class="dropdown-menu">
+                    <li><a href="accreceipt_report_view.php?ID=<?php echo $ID; ?>">View</a></li>
+
+                    <li><a href="assets/FPDF/accreceipt_print.php?ID=<?php echo $ID;?>" target="_BLANK">Print</a></li>
+                  
+                  </ul>
+                </div>
+                </td>
+              </tr>
             </tr>
 
+               <!-- Delete Modal  -->
+              <div id="delete<?php echo $ID; ?>" class="modal fade" role="dialog">
+                <div class="modal-dialog">
+
+                  <!-- Modal content-->
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <button type="button" class="close" data-dismiss="modal">&times;</button>
+                      <h4 class="modal-title">Delete Account Receipt</h4>
+                    </div>
+                    <div class="modal-body">
+                    <center>
+                    <h1>Are you sure ?</h1>
+                      <a class="btn btn-success" href="accreceipt_delete_action.php?ID=<?php echo $ID; ?>">DELETE</a>
+                      <a class="btn btn-danger"  data-dismiss="modal">CANCEL</a>
+                      </center>
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    </div>
+                  </div>
+
+                </div>
+              </div><!-- End Delete Modal  -->
             <?php
             }
             ?>
@@ -355,6 +368,147 @@ $query=mysql_query($sql);
 
 
 
+
+<!-- Modal -->
+<div id="AddAccReceipt" class="modal fade" role="dialog">
+  <div class="modal-dialog" style="width: 1200px; height: 900px;">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Add Form </h4>
+      </div>
+      <div class="modal-body">
+
+              
+              <div class="row">
+                  <div class="col-lg-12">
+                      <section class="panel">
+                          <header class="panel-heading">
+                             <H1><center>PROPERTY ACCOUNTABILITY RECEIPT<br><h2 style="font-size: 30px; ">PROVINCE OF CAVITE</h2></center></H1>
+                             
+                          </header>
+                          <form class="form-horizontal " method="post" action="accreceipt_add_action.php"> <!--Form for the receipt -->
+                           <div class="form-group pull-right">
+                                
+                                    <div class="col-sm-10">
+                                        <input type="text"  class="form-control" placeholder="PAR No." name="prop_acc_receipt_ics_propno" required="">
+                                    </div>
+                            </div>
+                          <table class="table table-striped table-advance table-hover">
+                           <tbody>
+                              <tr>
+                                 <th><i class="icon_clipboard"></i> Quantity</th>
+                                 <th><i class="icon_datareport_alt"></i> Unit</th>
+                                 <th><i class="icon_documents_alt"></i> Description</th>
+                                 <th><i class="icon_drawer_alt"></i> Property No.</th>
+                                 <th></th>
+                                 
+                              </tr>
+                              <tr>
+                                <td><input type="text" name="prop_acc_receipt_qty" class="form-control" required="" placeholder="Quantity"></td>
+                                <td> <input type="text" name="prop_acc_receipt_unit" class="form-control" required="" placeholder="Unit"></td>
+                                <td> <input type="" name="prop_acc_receipt_desc" class="form-control" required="" placeholder="Description"></td>
+                                <td> <input type="text" name="prop_acc_receipt_propno" class="form-control" required="" placeholder="Property No"></td>
+                              </tr>
+                              <tr>
+                                
+                              </tr>
+                           </tbody>
+                          
+
+                        </table>
+                       <hr>
+                          <div class="row">
+                            <div class="col-lg-12">
+                                <section class="panel">
+                                    <header class="panel-heading">
+                                       Receive By:
+                                    </header>
+                                    <div class="panel-body">
+                                            <div class="form-group">
+                                                <label class="col-sm-2 control-label">Name</label>
+                                                <div class="col-sm-7">
+                                                    <input type="text"  class="form-control" placeholder="Name" name="prop_acc_receipt_receivebyname" required="">
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="col-sm-2 control-label">Position</label>
+                                                <div class="col-sm-7">
+                                                    <input type="text"  class="form-control" placeholder="Position" name="prop_acc_receipt_receivebyposition" required="">
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="col-sm-2 control-label">Date</label>
+                                                <div class="col-sm-2">
+                                                    <input type="date"  class="form-control" placeholder="date" name="prop_acc_receipt_receivebydate" required="">
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="col-sm-2 control-label"></label>
+                                                <div class="col-sm-2">
+                                                    
+                                                </div>
+                                            </div>
+                                           
+                                          
+                                       
+                                    </div>
+                                </section>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <section class="panel">
+                                    <header class="panel-heading">
+                                       Receive From:
+                                    </header>
+                                    <div class="panel-body">
+                                            <div class="form-group">
+                                                <label class="col-sm-2 control-label">Name</label>
+                                                <div class="col-sm-7">
+                                                    <input type="text"  class="form-control" placeholder="Name" name="prop_acc_receipt_receivefromname" required="">
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="col-sm-2 control-label">Position</label>
+                                                <div class="col-sm-7">
+                                                    <input type="text"  class="form-control" placeholder="Position" name="prop_acc_receipt_receivefromposition" required="">
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="col-sm-2 control-label">Date</label>
+                                                <div class="col-sm-2">
+                                                    <input type="date"  class="form-control" placeholder="date" name="prop_acc_receipt_receivefromdate" required="">
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="col-sm-2 control-label"></label>
+                                                <div class="col-sm-2">
+                                                    <input class="btn btn-success "  type="submit" name="Submit" value="Submit"> 
+                                                    <input class="btn btn-danger "  type="submit" name="Cancel" value="Cancel" data-dismiss="modal"> 
+                                                </div>
+                                            </div>
+                                    </div>
+                                </section>
+                            </div>
+                        </div>
+
+                        </form><!--End of Form for the receipt -->
+                      </section>
+                  </div>
+              </div>
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
     <script type="text/javascript" language="javascript" src="js/jquery.js"></script>
     <script type="text/javascript" language="javascript" src="js/jquery.dataTables.js"></script>
     <script type="text/javascript" language="javascript" >
@@ -387,6 +541,18 @@ $query=mysql_query($sql);
     }
 }
 */
+
+      
+//FOR DELETE FUNCTION RECORD
+function confirmDelete(id) {
+    
+    var r = confirm('Do you want to delete?');
+    if (r == true) {
+      window.location='accreceipt_delete_action.php?ID='+id;
+    } else {
+        window.location='account.php';
+    }
+}
  //NUMBER ONLY
   function numberInputOnly(elem) {
                 var validChars = /[0-9]/;

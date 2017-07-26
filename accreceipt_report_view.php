@@ -16,22 +16,7 @@ $rows = mysql_num_rows($result);
   $ReceivedBy_Position = $test['ReceivedBy_Position'];
   $ReceivedBy_Date = $test['ReceivedBy_Date'];
   $PAR = $test['PAR'];
-               
-if ($login_level != '0' ) 
-{
-    if ($login_level == '4') {
-      # code...
-    }
-    else
-    {
-    header("location: index.php");
-    }
-}
-else
-{
-
-}
-$page = "Record";
+ $page = "Report";
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -155,7 +140,7 @@ $page = "Record";
           <h3 class="page-header"><i class="fa fa-clipboard"></i> PROPERTY ACCOUNTABILITY RECEIPT</h3>
           <ol class="breadcrumb">
             <li><i class="fa fa-home"></i><a href="index.php">Dashboard</a></li>
-            <li><i class="fa fa-clipboard"></i><a href="accreceipt.php">Property Accountability Receipt</a></li>
+            <li><i class="fa fa-clipboard"></i><a href="accreceipt_report.php">Property Accountability Receipt</a></li>
             <li><i class="fa fa-clipboard"></i>Property Accountability Receipt View</li>
           </ol>
         </div>

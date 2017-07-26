@@ -96,9 +96,10 @@ else
 	//Update Query
 	$sql = "UPDATE invent_custodian_slip";
 	$sql.=" SET Qty = '$custodian_slip_qty', Unit = '$custodian_slip_unit', Descrp = '$custodian_slip_descrp',Invent_Item_No = '$custodian_slip_inventItemNo',Ez_Useful_Life = '$custodian_slip_EzLife',ReceivedBy_Name = '$ReceivedBy_Name',ReceivedBy_Position = '$ReceivedBy_Pos',ReceiveBy_Date = '$ReceivedBy_Date',ReceivedFrom_Name = '$ReceivedFrom_Name',ReceivedFrom_Position = '$ReceivedFrom_Pos',ReceiveFrom_Date = '$ReceivedFrom_Date',ICS = '$custodian_slip_ICS' WHERE ID = '$icsID'";
+	$res = mysql_query($sql);
 	//MSG 
 	echo "<script>alert('Update Successfully');
-        window.location='ics.php';
+        window.location='ics_edit.php?icsID=$icsID';
         </script>";
 }
 

@@ -2,6 +2,7 @@
 include('db.php');
 if (isset($_POST['Submit'])) {
 	$office_add = $_POST['office_add'];
+	$office_code = $_POST['office_code'];
 
 	$qr = mysql_query("SELECT * FROM office_dictionary WHERE officeName LIKE '$office_add'");
 	$row = mysql_fetch_array($qr);
@@ -12,8 +13,8 @@ if (isset($_POST['Submit'])) {
 	}
 	else
 	{
-		$sql = "INSERT INTO office_dictionary(officeName)";
-		$sql.="VALUES ('$office_add')";
+		$sql = "INSERT INTO office_dictionary(officeName,officeCode)";
+		$sql.="VALUES ('$office_add','$office_code')";
 		$addRes = mysql_query($sql);
 		echo "<script>alert('Add Successfully!');
                                                 window.location='office.php';

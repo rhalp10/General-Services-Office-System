@@ -3,17 +3,18 @@
 include ("db.php");
 	if(isset($_POST['Submit'])) 
 	{  
-		$prop_acc_receipt_ics_propno = $_POST['prop_acc_receipt_ics_propno'];
-		$prop_acc_receipt_qty = $_POST['prop_acc_receipt_qty'];
-		$prop_acc_receipt_unit = $_POST['prop_acc_receipt_unit'];
-		$prop_acc_receipt_desc = $_POST['prop_acc_receipt_desc'];
-		$prop_acc_receipt_propno = $_POST['prop_acc_receipt_propno'];
-		$prop_acc_receipt_receivebyname = $_POST['prop_acc_receipt_receivebyname'];
-		$prop_acc_receipt_receivebyposition = $_POST['prop_acc_receipt_receivebyposition'];
-		$prop_acc_receipt_receivebydate = $_POST['prop_acc_receipt_receivebydate'];
-		$prop_acc_receipt_receivefromname = $_POST['prop_acc_receipt_receivefromname'];
-		$prop_acc_receipt_receivefromposition = $_POST['prop_acc_receipt_receivefromposition'];
-		$prop_acc_receipt_receivefromdate = $_POST['prop_acc_receipt_receivefromdate'];
+		$ics_propno = $_POST['prop_acc_receipt_ics_propno'];
+		$qty = $_POST['prop_acc_receipt_qty'];
+		$unit = $_POST['prop_acc_receipt_unit'];
+		$desc = $_POST['prop_acc_receipt_desc'];
+		$propno = $_POST['prop_acc_receipt_propno'];
+		$receivebyname = $_POST['prop_acc_receipt_receivebyname'];
+		$receivebyposition = $_POST['prop_acc_receipt_receivebyposition'];
+		$receivebydate = $_POST['prop_acc_receipt_receivebydate'];
+		$receivefromname = $_POST['prop_acc_receipt_receivefromname'];
+		$receivefromposition = $_POST['prop_acc_receipt_receivefromposition'];
+		$receivefromdate = $_POST['prop_acc_receipt_receivefromdate'];
+		/*
 		if (empty($prop_acc_receipt_ics_propno) || empty($prop_acc_receipt_qty) || empty($prop_acc_receipt_unit) || empty($prop_acc_receipt_desc) || empty($prop_acc_receipt_propno) || empty($prop_acc_receipt_receivebyname) || empty($prop_acc_receipt_receivebyposition) || empty($prop_acc_receipt_receivebydate) || empty($prop_acc_receipt_receivefromname) || empty($prop_acc_receipt_receivefromposition) || empty($prop_acc_receipt_receivefromdate)) 
 		{
 			if (empty($prop_acc_receipt_ics_propno)) 
@@ -83,15 +84,17 @@ include ("db.php");
 	                                    </script>";
 			}
 		}
-		else
-		{
+		*/
+		
 			//query
-			$result = mysql_query("INSERT INTO property_accountability_receipt_record(ICS,Qty,Unit,Descrp,PropNo,ReceivedFrom_Name,ReceivedFrom_Position,ReceivedFrom_Date,ReceivedBy_Name,ReceivedBy_Position,ReceivedBy_Date) VALUES ('$prop_acc_receipt_ics_propno','$prop_acc_receipt_qty','$prop_acc_receipt_unit','$prop_acc_receipt_desc','$prop_acc_receipt_propno','$prop_acc_receipt_receivefromname','$prop_acc_receipt_receivefromposition','$prop_acc_receipt_receivefromdate','$prop_acc_receipt_receivebyname','$prop_acc_receipt_receivebyposition','$prop_acc_receipt_receivebydate ')");
+			$sql ="INSERT INTO property_accountability_receipt_record (ID, Qty, Unit, Descrp, PropNo, ReceivedFrom_Name, ReceivedFrom_Position, ReceivedFrom_Date, ReceivedBy_Name, ReceivedBy_Position, ReceivedBy_Date, PAR, DateAdded)";
+			$sql.=" VALUES (NULL, '$qty', '$unit', '$desc', '$propno', '$receivefromname', '$receivefromposition', '$receivefromdate', 'receivebyname', '$receivebyposition', '$receivebydate', '$ics_propno', CURRENT_TIMESTAMP)";
+			$result = mysql_query($sql);
 			//display success message
 	        echo "<script>alert('Data added successfully');
 	                                        window.location='accreceipt.php';
 	                                    </script>";
-		}
+		
 	}
 		
 ?>

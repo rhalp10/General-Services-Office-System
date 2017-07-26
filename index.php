@@ -7,23 +7,30 @@ if(isset($_SESSION['login_user']))
             $db = mysql_select_db("gso_data", $connection);// Selecting Database
             $query = mysql_query("SELECT * FROM `emp_accounts_record` WHERE `username`= '$user'", $connection); //SQL query to fetch information of registerd users and finds user match.
             $rows = mysql_fetch_assoc($query);
+            
                 if ($rows['accLevel'] == '0') //checking if acclevel is equal to 0
                 {   
                     header("location: admin.php");// retain to admin level 
                 }
-                elseif ($rows['accLevel'] == '1')  //checking if acclevel is equal to 1
+                elseif ($rows['accLevel'] == '1') 
                 {
-                   
-                    header("location: student.php"); // retain to student Level
-                    
-                } 
-                elseif ($rows['accLevel'] == '2')  //checking if acclevel is equal to 2
+                    header("location: home.php");
+                }
+                elseif ($rows['accLevel'] == '2') 
                 {
-                     header("location: teacher.php"); // retain to teacher Level
+                     header("location: home.php");
+                }
+                elseif ($rows['accLevel'] == '3') 
+                {
+                     header("location: home.php");
+                }
+                elseif ($rows['accLevel'] == '4') 
+                {
+                     header("location: home.php");
                 }
                 else
                 {
-
+                    
                 }
     
             

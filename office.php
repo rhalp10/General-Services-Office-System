@@ -1,9 +1,14 @@
-<?php
+ <?php
 include('session.php');
 include('db.php');
 $sql = "SELECT *";
 $sql.=" FROM office_dictionary";
 $query=mysql_query($sql);
+if ($login_level != '0') 
+{
+  header("location: index.php");
+}
+$page = "Office";
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -90,61 +95,32 @@ $query=mysql_query($sql);
           <div id="sidebar"  class="nav-collapse ">
               <!-- sidebar menu start-->
               <ul class="sidebar-menu">                
-                  <li class="active">
-                      <a class="" href="admin.php">
-                          <i class="icon_house_alt"></i>
-                          <span>Dashboard</span>
-                      </a>
-                  </li>
-                  <li class="">
-                      <a class="" href="account.php">
-                          <i class="icon_profile"></i>
-                          <span>Account</span>
-                      </a>
-                  </li>    
-                  <li class="sub-menu">
-                      <a href="javascript:;" class="">
-                          <i class="icon_desktop"></i>
-                          <span>Record</span>
-                          <span class="menu-arrow arrow_carrot-right"></span>
-                      </a>
-                      <ul class="sub">
-                          <li><a class="" href="acccard.php">PGC Account Card</a></li>
-                          <li><a class="" href="accreceipt.php">Accountability Receipt</a></li>
-                          <li><a class="" href="returnslip.php">Return Slip</a></li>
-                          <li><a class="" href="bincard.php"><span>Bincard</span></a></li>
-                          <li><a class="" href="ics.php">Custodian Slip</a></li>
-                      </ul>
-                  </li>
-                             
-                  <li class="">
-                      <a class="" href="emplist.php">
-                          <i class="icon_clipboard"></i>
-                          <span>Employee  List</span>
-                      </a>
-                  </li>
-                  <li class="">
-                      <a class="" href="office.php">
-                          <i class="icon_building_alt"></i>
-                          <span>Office  List</span>
-                      </a>
-                  </li>
-                  <li class="sub-menu ">
-                      <a href="javascript:;" class="">
-                          <i class="icon_datareport"></i>
-                          <span>Report</span>
-                          <span class="menu-arrow arrow_carrot-right"></span>
-                      </a>
-                      <ul class="sub">                           
-                          <li><a class="" href="account_report.php">Account</a></li>
-                          <li><a class="" href="acccard_report.php">PGC Account Card</a></li>
-                          <li><a class="" href="accreceipt_report.php">Accountability Receipt</a></li>
-                          <li><a class="" href="returnslip_report.php">Return Slip</a></li>
-                          <li><a class="" href="bincard_report.php"><span>Bincard</span></a></li>
-                          <li><a class="" href="ics_report.php">Custodian Slip</a></li>
-                      </ul>
-                  </li>
-                  
+                  <?php  
+                  if ($login_level == '0')
+                  {
+                      include('sidebar-menu_admin.php');
+                  }
+                  if ($login_level == '1')
+                  {
+                      include('sidebar-menu_emp.php');
+                  }
+                  elseif ($login_level == '2')
+                  {
+                      include('sidebar-menu_bin.php');
+                  }
+                  else if ($login_level == '3')
+                  {
+                      include('sidebar-menu_accountability.php');
+                  }
+                  else if ($login_level == '4')
+                  {
+                      include('sidebar-menu_icsprspar.php');
+                  }
+                  else
+                  {
+                     
+                  }
+                  ?>
               </ul>
               <!-- sidebar menu end-->
           </div>
@@ -171,8 +147,9 @@ $query=mysql_query($sql);
               <table id="myData"  class="table table-bordered table-advance table-hover ">
                                 <thead>
                                   <tr>
-                                      <th class="col-sm-9"> Office Name</th>
-                                      <th class="col-sm-3"> Action</th>
+                                      <th class="col-sm-8"> Office Name</th>
+                                      <th class="col-sm-3"> Office Code</th>
+                                      <th class="col-sm-1"> Action</th>
                                   </tr>
                                 </thead>
                                 <tfoot>
@@ -188,6 +165,7 @@ $query=mysql_query($sql);
                                 ?>
                                   <tr>
                                     <td><?php echo $row["officeName"];?></td>
+                                    <td><?php echo $row["officeCode"];?></td>
 
                                     <td>
                                     <div class="btn-group">
@@ -218,9 +196,12 @@ $query=mysql_query($sql);
                                       <div class="modal-body">
                                         <form  class="form-horizontal" method="post" role="form" action="office_edit_action.php?officeID=<?php echo $officeID; ?>">
                                         <div class="form-group">
-                                          <label class="control-label col-sm-3" for="email">Office Name:</label>
-                                          <div class="col-sm-9">
+                                          <label class="control-label" for="email">Office Name:</label>
+                                          <div>
                                             <input type="text" class="form-control" id="office" placeholder="<?php echo $row["officeName"];?>" name="officeName_edit" value="<?php echo $row["officeName"];?>">
+                                          <label class="control-label" for="email">Office Code:</label>
+                                          <div >
+                                            <input type="text" class="form-control" id="office" placeholder="<?php echo $row["officeName"];?>" name="officeCode_edit" value="<?php echo $row["officeCode"];?>">
                                           </div>
                                         </div>
                                         <br>
@@ -298,6 +279,8 @@ $query=mysql_query($sql);
   <div class="form-group">
     <label for="email">Office Name:</label>
     <input type="text" class="form-control" name="office_add">
+    <label for="email">Office Code:</label>
+    <input type="text" class="form-control" name="office_code">
   </div>
   <input type="submit" class="btn btn-success col-md-offset-3 col-xs-3" name="Submit"><input type="button" class="btn btn-danger col-xs-3"  data-dismiss="modal" value="Cancel">
   

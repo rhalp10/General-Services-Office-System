@@ -42,13 +42,25 @@ if (isset($_POST['submit'])) {
 				elseif ($rows['accLevel'] == '1') 
 				{
 					$_SESSION['login_user']=$username; // Initializing Session
-					header("location: student.php"); // student Level
+					header("location: home.php"); // student Level
 					
 				} 
 				elseif ($rows['accLevel'] == '2') 
 				{
 					$_SESSION['login_user']=$username; // Initializing Session
-					header("location: teacher.php"); // teacher level
+					header("location: home.php"); // teacher level
+
+				} 
+				elseif ($rows['accLevel'] == '3') 
+				{
+					$_SESSION['login_user']=$username; // Initializing Session
+					header("location: home.php"); // teacher level
+
+				} 
+				elseif ($rows['accLevel'] == '4') 
+				{
+					$_SESSION['login_user']=$username; // Initializing Session
+					header("location: home.php"); // teacher level
 
 				} 
 				else 

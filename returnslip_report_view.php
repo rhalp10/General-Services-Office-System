@@ -1,37 +1,29 @@
 <?php
 include('session.php');
-$ID = $_REQUEST['ID'];
-
-$result = mysql_query("SELECT * FROM property_accountability_receipt_record WHERE ID = '$ID'");
-$test = mysql_fetch_array($result);
-$rows = mysql_num_rows($result);
-  $Qty = $test['Qty'];
-  $Unit = $test['Unit'];
-  $Descrp = $test['Descrp'];
-  $PropNo = $test['PropNo'];
-  $ReceivedFrom_Name = $test['ReceivedFrom_Name'];
-  $ReceivedFrom_Position = $test['ReceivedFrom_Position'];
-  $ReceivedFrom_Date = $test['ReceivedFrom_Date'];
-  $ReceivedBy_Name = $test['ReceivedBy_Name'];
-  $ReceivedBy_Position = $test['ReceivedBy_Position'];
-  $ReceivedBy_Date = $test['ReceivedBy_Date'];
-  $PAR = $test['PAR'];
-               
-if ($login_level != '0' ) 
-{
-    if ($login_level == '4') {
-      # code...
-    }
-    else
-    {
-    header("location: index.php");
-    }
-}
-else
-{
-
-}
-$page = "Record";
+$prsID  = $_REQUEST['ID'];
+$sql = "SELECT * ";
+$sql.=" FROM property_return_slip_record WHERE ID = '$prsID'";
+$result = mysql_query($sql);
+$row = mysql_fetch_array($result);
+$LGU_Name = $row['LGU_Name'];
+$PurposeID = $row['PurposeID'];
+$Qty = $row['Qty'];
+$Unit = $row['Unit'];
+$Descrp = $row['Descrp'];
+$Serial_Num = $row['Serial_Num'];
+$Prop_Number = $row['Prop_Number'];
+$ParNo = $row['ParNo'];
+$Name_of_Enduser = $row['Name_of_Enduser'];
+$Unit_Value = $row['Unit_Value'];
+$Total_Value = $row['Total_Value'];
+$Status = $row['Status'];
+$ReceiveBy_Name = $row['ReceiveBy_Name'];
+$ReceiveBy_Position = $row['ReceiveBy_Position'];
+$ReceiveBy_Date = $row['ReceiveBy_Date'];
+$ReceiveFrom_Name = $row['ReceiveFrom_Name'];
+$ReceiveFrom_Position = $row['ReceiveFrom_Position'];
+$ReceiveFrom_Date = $row['ReceiveFrom_Date'];
+ $page = "Report";
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -138,7 +130,7 @@ $page = "Record";
                   }
                   else
                   {
-                    
+                     
                   }
                   ?>
                   
@@ -155,53 +147,98 @@ $page = "Record";
           <h3 class="page-header"><i class="fa fa-clipboard"></i> PROPERTY ACCOUNTABILITY RECEIPT</h3>
           <ol class="breadcrumb">
             <li><i class="fa fa-home"></i><a href="index.php">Dashboard</a></li>
-            <li><i class="fa fa-clipboard"></i><a href="accreceipt.php">Property Accountability Receipt</a></li>
-            <li><i class="fa fa-clipboard"></i>Property Accountability Receipt View</li>
+            <li><i class="fa fa-clipboard"></i><a href="returnslip_report.php">Property Return Slip</a></li>
+            <li><i class="fa fa-clipboard"></i>Property Return Slip View</li>
           </ol>
         </div>
       </div>
               <!-- page start-->
               
               
+              
               <div class="row">
                   <div class="col-lg-12">
                       <section class="panel">
-                       <header class="panel-heading tab-bg-primary " style="padding:15px; height: 70px;"> 
-                     <a class="btn btn-info pull-right" href="assets/FPDF/accreceipt_print.php?ID=<?php echo $ID;?>" target="_BLANK"><span class="icon_printer"></span> PRINT</a>
-                        <!-- 
-                     <a class="btn btn-info pull-right" href="" data-toggle="modal" data-target="#PrintMethod" ><span class="icon_printer"></span> PRINT</a>
-                        -->
+                       </header>
+                           <header class="panel-heading tab-bg-primary " style="padding:15px; height: 70px;">
+                     <a class="btn btn-info pull-right" href="assets/fpdf/returnslip_report.php?ID=<?php echo $prsID?>" target="_BLANK">Print Return Slip</a>
+                        
                           </header>
                           <header class="panel-heading">
-                             <H1><center>PROPERTY ACCOUNTABILITY RECEIPT<br><h2 style="font-size: 30px; ">PROVINCE OF CAVITE</h2></center></H1>
-                             
-                          </header>
-                          <form class="form-horizontal " method="post" action="accreceipt_add_action.php"> <!--Form for the receipt -->
-                           <div class="form-group pull-right" style="margin-right: 25px;">
-                                    <div class="col-sm-12">
-                                        <label class="control-label"><b>PAR:</b> <?php echo $PAR;?></label>
+                             <H1><center>PROPERTY RETURN SLIP<br><h2 style="font-size: 30px; ">PROVINCE OF CAVITE</h2></center></H1>
+                         
+                          <form class="form-horizontal " method="post" action="returnslip_add_action.php"> <!--Form for the receipt -->
+                          <br>
+                           <div class="form-group">
+                                <label class="col-sm-3 control-label">Name of Local Government Unit:</label>
+                                    <div class="col-sm-7"><label class="control-label"><?php echo "$LGU_Name";?></label>
+                                    
                                     </div>
                             </div>
-                          <table class="table table-bordered table-advance table-hover">
-                           <tbody>
-                              <tr>
-                                 <th><i class="icon_clipboard"></i> Quantity</th>
-                                 <th><i class="icon_datareport_alt"></i> Unit</th>
-                                 <th><i class="icon_documents_alt"></i> Description</th>
-                                 <th><i class="icon_drawer_alt"></i> Property No.</th>
+                           <div class="form-group">
+                                <label class="col-sm-3 control-label">Purpose</label>
+                                    <div class="col-sm-2">
+    
+                                    
+                                     <label class="control-label" name="prop_return_slip_purpose" required="">
+                                            <?php 
+                                            $result=mysql_query("SELECT * FROM prs_purpose_dictionary");
+                                          
+                                            while($test = mysql_fetch_array($result))
+                                            {
+                                              if ($PurposeID == $test['ID']) 
+                                              {
+                                                echo $test['Purpose_Type'];
+                                              }
+                                           
+                                            }
+                                             ?>
+                                          </label>
+                                    </div>
+                                     
+                            </div>
+                          <table class="table table-bordered table-advance table-hover  dataTable">
+                           <tbody class="col-sm-12">
+                              <tr >
+                                 <th class="col-sm-1"><i class="icon_clipboard"></i> Quantity</th>
+                                 <th class="col-sm-1"><i class="icon_datareport_alt"></i> Unit</th>
+                                 <th class="col-sm-4"><i class="icon_chat_alt"></i> Description</th>
+                                 <th class="col-sm-1"><i class="icon_easel_alt"></i> Serial Number</th>
+                                 <th class="col-sm-1"><i class="icon_id-2"></i> Property No.</th>
                                  
                                  
                               </tr>
                               <tr>
-                                <td><label class="control-label"><?php echo $Qty;?></label></td>
-                                <td><label class="control-label"><?php echo $Unit;?></label></td>
-                                <td><label class="control-label"><?php echo $Descrp;?></label></td>
-                                <td><label class="control-label"><?php echo $PropNo;?></label></td>
+                                <td><label class="control-label"><?php echo "$Qty";?></label></td>
+                                <td><label class="control-label"><?php echo "$Unit";?></label></td>
+                                <td><label class="control-label"><?php echo "$Descrp";?></label></td>
+                                <td><label class="control-label"><?php echo "$Serial_Num";?></label></td>
+                                <td><label class="control-label"><?php echo "$Prop_Number";?></label></td>
                               </tr>
                            </tbody>
                           
+                          
 
                         </table>
+                         <table class="table table-bordered table-advance table-hover  dataTable">
+                           <tbody class="col-sm-12">
+                                <tr>
+                                 <th class="col-sm-1"><i class="icon_id"></i> PAR. No.</th>
+                                 <th class="col-sm-1"><i class="icon_puzzle"></i> Name Of End-User</th>
+                                 <th class="col-sm-1"><i class="icon_wallet_alt"></i> Unit Value</th>
+                                 <th class="col-sm-1"><i class="icon_currency_alt"></i> Total Value</th></tr>
+                              <tr>
+                                <td><label class="control-label"><?php echo "$ParNo";?></td>
+                                <td><label class="control-label"><?php echo "$Name_of_Enduser";?></td>
+                                <td><label class="control-label"><?php echo "$Unit_Value";?></td>
+                                <td><label class="control-label"><?php echo "$Total_Value";?></td>
+                              </tr>
+                           </tbody>
+                          
+                          
+
+                        </table>
+                        
                        <hr>
                           <div class="row">
                             <div class="col-lg-12">
@@ -213,19 +250,20 @@ $page = "Record";
                                             <div class="form-group">
                                                 <label class="col-sm-2 control-label">Name</label>
                                                 <div class="col-sm-7">
-                                                    <td><label class="control-label"><?php echo $ReceivedBy_Name;?></label></td>
+                                                    <label class="control-label"><?php echo "$ReceiveBy_Name";?>
                                                 </div>
                                             </div>
                                             <div class="form-group">
                                                 <label class="col-sm-2 control-label">Position</label>
                                                 <div class="col-sm-7">
-                                                    <td><label class="control-label"><?php echo $ReceivedBy_Position;?></label></td>
+                                                    <label class="control-label"><?php echo "$ReceiveBy_Position";?>
                                                 </div>
                                             </div>
                                             <div class="form-group">
                                                 <label class="col-sm-2 control-label">Date</label>
                                                 <div class="col-sm-2">
-                                                    <td><label class="control-label"><?php echo $ReceivedBy_Date;?></label></td>
+                                                    
+                                                    <label class="control-label"><?php echo "$ReceiveBy_Date";?>
                                                 </div>
                                             </div>
                                             <div class="form-group">
@@ -241,6 +279,7 @@ $page = "Record";
                                 </section>
                             </div>
                         </div>
+
                         <div class="row">
                             <div class="col-lg-12">
                                 <section class="panel">
@@ -251,24 +290,25 @@ $page = "Record";
                                             <div class="form-group">
                                                 <label class="col-sm-2 control-label">Name</label>
                                                 <div class="col-sm-7">
-                                                    <td><label class="control-label"><?php echo $ReceivedFrom_Name;?></label></td>
+                                                    <label class="control-label"><?php echo "$ReceiveFrom_Name";?>
                                                 </div>
                                             </div>
                                             <div class="form-group">
                                                 <label class="col-sm-2 control-label">Position</label>
                                                 <div class="col-sm-7">
-                                                    <td><label class="control-label"><?php echo $ReceivedFrom_Position;?></label></td>
+                                                    <label class="control-label"><?php echo "$ReceiveFrom_Position";?>
                                                 </div>
                                             </div>
                                             <div class="form-group">
                                                 <label class="col-sm-2 control-label">Date</label>
                                                 <div class="col-sm-2">
-                                                    <td><label class="control-label"><?php echo $ReceivedFrom_Date;?></label></td>
+                                                    <label class="control-label"><?php echo "$ReceiveFrom_Date";?>
                                                 </div>
                                             </div>
                                             <div class="form-group">
                                                 <label class="col-sm-2 control-label"></label>
                                                 <div class="col-sm-2">
+                                                    
                                                 </div>
                                             </div>
                                     </div>
@@ -280,6 +320,7 @@ $page = "Record";
                       </section>
                   </div>
               </div>
+
 
               <!-- page end-->
           </section>

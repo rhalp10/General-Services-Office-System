@@ -1,19 +1,35 @@
 # Changelog
-[GSO_System v 0.60](https://github.com/rhalp10/General-Services-Office-System)
+[GSO_System v 0.98](https://github.com/rhalp10/General-Services-Office-System) Check the latest commit on github
 =======
 ## [Unreleased]
 -------
-## [0.70] - 07-23-17
+## [1.01] - 07-26-17
+	- page restriction set
+## [1.00] - 07-25-17
+	-	 Version 1 Complete
+## [0.98] - 07-23-17
+### Added
+	- accreceipt_general_print.php
+	- accreceipt_print.php
+### Fix
+	- accreceipt request variable
+### Finalizing
+	- Finalizing Bincard Management
+	- Finalizing Bincard Report
+	- Finalizing Property Accountability Receipt Management
+	- Finalizing Property Accountability Receipt Report
+	- Finalizing Property Return Slip Management
+	- Finalizing Property Return Slip Report
 
 -------
 ## [0.60] - 07-22-17
 ### Added
 	- bincard_view.php Add delete modal
-	- accreceipt delete function 
+	- accreceipt delete function done
 	- ICS Report Print
 	- PRS Report Print
 	- PRS General Report Print
-### FIX
+### Fix
 	- bincard view print
 	- bincard general print
 ### Finalizing
@@ -29,7 +45,7 @@
 ### Change	
 	- accreceipt.php <?php echo $row['ics'];?> to <?php echo $row['PAR'];?>
 	- returnslip `SELECT Purpose_Type FROM prs_purpose_dictionary` change to `SELECT * FROM prs_purpose_dictionary`
-###Fixed
+### Fix
 	- Fixed adding data on returnslip_add_action.php
 -------
 ## [0.50] - 07-20-17

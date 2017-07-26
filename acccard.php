@@ -5,6 +5,22 @@ include('db.php');
 $sql = "SELECT *";
 $sql.=" FROM emp_pgc_record";
 $query=mysql_query($sql);
+              
+if ($login_level != '0' ) 
+{
+    if ($login_level == '3') {
+      # code...
+    }
+    else
+    {
+    header("location: index.php");
+    }
+}
+else
+{
+
+}
+$page = "Record";
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -104,62 +120,31 @@ $query=mysql_query($sql);
           <div id="sidebar"  class="nav-collapse ">
               <!-- sidebar menu start-->
               <ul class="sidebar-menu">                
-                  <li class="">
-                      <a class="" href="admin.php">
-                          <i class="icon_house_alt"></i>
-                          <span>Dashboard</span>
-                      </a>
-                  </li>
-                  <li class="">
-                      <a class="" href="account.php">
-                          <i class="icon_profile"></i>
-                          <span>Account</span>
-                      </a>
-                  </li>    
-                  <li class="sub-menu">
-                      <a href="javascript:;" class="">
-                          <i class="icon_desktop"></i>
-                          <span>Record</span>
-                          <span class="menu-arrow arrow_carrot-right"></span>
-                      </a>
-                      <ul class="sub">
-                          <li><a class="" href="acccard.php">PGC Account Card</a></li>
-                          <li><a class="" href="accreceipt.php">Accountability Receipt</a></li>
-                          <li><a class="" href="returnslip.php">Return Slip</a></li>
-                          <li><a class="" href="bincard.php"><span>Bincard</span></a></li>
-                          <li><a class="" href="ics.php">Custodian Slip</a></li>
-                          
-                      </ul>
-                  </li>
-                             
-                  <li class="">
-                      <a class="" href="emplist.php">
-                          <i class="icon_clipboard"></i>
-                          <span>Employee  List</span>
-                      </a>
-                  </li>
-                  <li class="">
-                      <a class="" href="office.php">
-                          <i class="icon_building_alt"></i>
-                          <span>Office  List</span>
-                      </a>
-                  </li>
-                  <li class="sub-menu ">
-                      <a href="javascript:;" class="">
-                          <i class="icon_datareport"></i>
-                          <span>Report</span>
-                          <span class="menu-arrow arrow_carrot-right"></span>
-                      </a>
-                      <ul class="sub">                           
-                          <li><a class="" href="account_report.php">Account</a></li>
-                          <li><a class="" href="acccard_report.php">PGC Account Card</a></li>
-                          <li><a class="" href="accreceipt_report.php">Accountability Receipt</a></li>
-                          <li><a class="" href="returnslip_report.php">Return Slip</a></li>
-                          <li><a class="" href="bincard_report.php"><span>Bincard</span></a></li>
-                          <li><a class="" href="ics_report.php">Custodian Slip</a></li>
-                      </ul>
-                  </li>
-                  
+                 <?php  
+                  if ($login_level == '0')
+                  {
+                      include('sidebar-menu_admin.php');
+                  }
+                  if ($login_level == '1')
+                  {
+                      include('sidebar-menu_emp.php');
+                  }
+                  elseif ($login_level == '2')
+                  {
+                      include('sidebar-menu_bin.php');
+                  }
+                  else if ($login_level == '3')
+                  {
+                      include('sidebar-menu_accountability.php');
+                  }
+                  else if ($login_level == '4')
+                  {
+                      include('sidebar-menu_icsprspar.php');
+                  }
+                  else
+                  {
+                  }
+                  ?>
               </ul>
               <!-- sidebar menu end-->
           </div>
@@ -171,17 +156,19 @@ $query=mysql_query($sql);
         <section class="wrapper">
          <div class="row">
         <div class="col-lg-12">
-          <h3 class="page-header"><i class="fa fa-clipboard"></i> PGC Account Card Management</h3>
+          <h3 class="page-header"><i class="fa fa-clipboard"></i> PGC Accountability Card Management</h3>
           <ol class="breadcrumb">
             <li><i class="fa fa-home"></i><a href="index.php">Dashboard</a></li>
-            <li><i class="fa fa-clipboard"></i>PGC Account Card Management</li>
+            <li><i class="fa fa-clipboard"></i>PGC Accountability Card Management</li>
           </ol>
         </div>
       </div>
           <div class="panel">
           <header class="panel-heading tab-bg-primary " style="padding:15px; height: 70px;">
                      <a class="btn btn-success pull-left" href="" data-toggle="modal" data-target="#AddNewPerson"><span class="fa fa-plus-circle"></span> Add New Person Record</a>
-                     <a class="btn btn-info pull-right" href="" data-toggle="modal" data-target="#PrintMethod" ><span class="icon_printer"></span> PRINT</a>
+                     <a class="btn btn-info pull-right" href="assets/FPDF/acccard_general_report.php" target="_BLANK"><span class="icon_printer"></span> PRINT</a>
+                     <!--
+                     <a class="btn btn-info pull-right" href="" data-toggle="modal" data-target="#PrintMethod" ><span class="icon_printer"></span> PRINT</a> -->
                         
                           </header>
                          
@@ -227,6 +214,7 @@ $query=mysql_query($sql);
                 </button>
                 <ul class="dropdown-menu">
                   <li><a href="acccard_view.php?accID=<?php echo $accID; ?>">View</a></li>
+                  <li><a href="assets/fpdf/acccard_person_report.php?accID=<?php echo $accID ?>" target="_BLANK">Print</a></li>
                   <li><a href="acccard_edit.php?accID=<?php echo $accID; ?>">Edit</a></li>
                   <li role="separator" class="divider"></li>
                   <li><a data-toggle="modal" data-target="#delete<?php echo $accID; ?>">Delete</a></li>
@@ -366,11 +354,11 @@ $query=mysql_query($sql);
                             $officeRes = mysql_query("SELECT * FROM office_dictionary");
                           
                             ?>
-                              <select value="<?php echo $officeVal['officeName'];?>" class="form-control" name="pgc_emp_ac_office">
+                              <select value="<?php echo $officeVal['officeCode'];?>" class="form-control" name="pgc_emp_ac_office">
                               <?php 
                                 while ($officeVal = mysql_fetch_array($officeRes)) {
                                   ?>
-                                <option value="<?php echo $officeVal['officeName'];?>"><?php echo $officeVal['officeName'];?></option>
+                                <option value="<?php echo $officeVal['officeCode'];?>"><?php echo $officeVal['officeName'];?></option>
                                 <?php 
                               }
                               ?>

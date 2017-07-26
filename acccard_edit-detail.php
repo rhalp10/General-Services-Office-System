@@ -1,23 +1,24 @@
-<?php
+ <?php
 include('session.php');
-
-$issuedID =$_REQUEST['issuedID'];
-$binID = $_REQUEST['binID'];
-$result = mysql_query("SELECT * FROM bincard_issued_record WHERE ID = '$issuedID'");
+$ID =$_REQUEST['accID'];
+$eID = $_REQUEST['empID'];
+$result = mysql_query("SELECT * FROM emp_accountability_card WHERE ID = '$ID'");
 $test = mysql_fetch_array($result);
-      $recpnt=$test['recpnt'];
-      $qty=$test['qty'];
-      $issued_date=$test['issued_date'];
-
-$sql1 = "SELECT *";
-$sql1.=" FROM bincard_record WHERE ID = ".$test['bin_ID'];
-$res1 = mysql_query($sql1);
-$test1 = mysql_fetch_array($res1);
-	$descrp = $test1['Descrp'];
-                            
+                $ParNo=$test['ParNo'];
+                $Qty=$test['Qty'];
+                $Unit=$test['Unit'];
+                $Descrp=$test['Descrp'];
+                $SN=$test['SN'];
+                $PropNo=$test['PropNo'];
+                $Amount=$test['Amount'];
+                $TransferTo=$test['TransferTo'];
+                $Remarks=$test['Remarks'];
+                $DateTurnOver=$test['DateTurnOver'];
+                             
+          
 if ($login_level != '0' ) 
 {
-    if ($login_level == '2') {
+    if ($login_level == '3') {
       # code...
     }
     else
@@ -29,8 +30,10 @@ else
 {
 
 }
+
 $page = "Record";
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -40,7 +43,7 @@ $page = "Record";
     <meta name="author" content="Rhalp Darren R. Cabrera / Omar Raouf A. Daud">
     <link rel="shortcut icon" href="img/logo.png">
 
-    <title>Bincard Edit</title>
+    <title>Edit PGC Account Card</title>
 
     <!-- Bootstrap CSS -->    
     <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -78,7 +81,6 @@ $page = "Record";
             <a href="index.php" class="logo">GSO <span class="lite">Admin</span></a>
             <!--logo end-->
 
-            
             <div class="top-nav notification-row">                
                 <!-- notificatoin dropdown start-->
                 <ul class="nav pull-right top-menu">
@@ -139,7 +141,7 @@ $page = "Record";
                   }
                   else
                   {
-                     
+                    
                   }
                   ?>
               </ul>
@@ -153,40 +155,69 @@ $page = "Record";
           <section class="wrapper">
       <div class="row">
         <div class="col-lg-12">
-          <h3 class="page-header"><i class="fa fa fa-bars"></i>EDIT</h3>
+          <h3 class="page-header"><i class="fa fa fa-clipboard"></i>EDIT ITEM SET</h3>
           <ol class="breadcrumb">
-            <li><i class="fa fa-home"></i><a href="index.php">Dashboard</a></li>
-            <li><i class="fa fa-clipboard"></i><a href="bincard.php">Bincard Management</a></li>
-            <li><i class="fa fa-clipboard"></i><a href="bincard_view.php?ID=<?php echo $binID?>">Issued Item</a></li>
+                        <li><i class="fa fa-home"></i><a href="index.php">Dashboard</a></li>
+                        <li><i class="icon_documents_alt"></i><a href="acccard.php">PGC Accountability Card Management</a></li>
+                        <li><i class="fa fa-user-md"></i><a href="acccard_view.php?accID=<?php echo $eID?>">PGC Employee Accountability Card View Set</a></li>
+                        <li><i class="fa fa-user-md"></i>PGC Employee Accountability Card Edit Set</li>
 
-            <li><i class="fa fa-clipboard"></i>Issued Item Edit</li>
-          </ol>
+                    </ol>
         </div>
       </div>
               <!-- page start--> 
-              <form  action="bincard_edit_action.php?accID=<?php echo "$accID";?>" method="post" name="form1">
+              <form  action="acccard_edit-detail_action.php?accID=<?php echo $ID;?>&empID=<?php echo $eID;?>" method="post" name="form1">
               <table class="table table-striped table-advance table-hover ">
                  <tr>
-              <td><b>ISSUED DATE</b></td>
-                <td><input type="date" name="bincard_edit_date"  class="form-control"  value="<?php echo "$issued_date";?> "></td>
+              <td><b>PAR</b></td>
+                <td><input type="text" name="par"  class="form-control" required="" value="<?php echo "$ParNo";?>" ></td>
             </tr>
-
+             <tr>
+              <td><b>QTY</b></td>
+                <td><input type="text" name="qty"  class="form-control" required="" value="<?php echo " $Qty";?>" onkeyup="numberInputOnly(this);"></td>
+            </tr>
+             <tr>
+              <td><b>UNIT</b></td>
+                <td><input type="text" name="unit"  class="form-control" required="" value="<?php echo " $Unit";?>" onkeyup="letterInputOnly(this);"></td>
+            </tr>
              <tr>
               <td><b>DESCRIPTION</b></td>
-                <td><input type="text" name="bincard_edit_descrp"  class="form-control" required="" value="<?php echo "$descrp";?>" disabled></td>
+                <td><input type="text" name="description"  class="form-control" required="" value="<?php echo "$Descrp";?>" ></td>
+            </tr>
+           <tr>
+           <tr>
+              <td><b>SERIAL#</b></td>
+                <td><input type="text" name="serial"  class="form-control" value="<?php echo "$SN";?>""></td>
+
+            </tr>
+           <tr>
+              <td><b>PROP#</b></td>
+                <td><input type="text" name="propno"  class="form-control" value="<?php echo "$PropNo";?>" onkeyup="numberInputOnly(this);"></td>
+
+            </tr>
+           <tr>
+              <td><b>AMOUNT</b></td>
+                <td><input type="text" name="amount"  class="form-control" value="<?php echo "$Amount";?>" onkeyup="numberInputOnly(this);"></td>
+
+            </tr>
+           <tr>
+              <td><b>TRANSFER TO</b></td>
+                <td><input type="text" name="transferto"  class="form-control" value="<?php echo "$TransferTo";?>"></td>
+
             </tr>
 
-             <tr>
-              <td><b>RECIPIENT</b></td>
-                <td><input type="text" name="bincard_edit_descrp"  class="form-control" required="" value="<?php echo "$recpnt";?>" ></td>
-            </tr>
-            <tr>
-              <td><b>QUANTITY</b></td>
-                <td><input type="text" name="bincard_edit_qty"  class="form-control" required="" value="<?php echo "$qty";?>" ></td>
-            </tr>
-            <tr>
            <tr>
+              <td><b>DATE TURNOVER</b></td>
+                <td><input type="text" name="dateturnover"  class="form-control" value="<?php echo "$DateTurnOver";?>" ></td>
+
+            </tr>
+           <tr>
+              <td><b>REMARKS</b></td>
+                <td><input type="text" name="remarks"  class="form-control" value="<?php echo "$Remarks";?>" ></td>
+
+            </tr>
            <td><input class="btn btn-success "  type="submit" name="Update" value="Update"></td>
+           <td></td>
            </tr> 
               </table>
               </form>
@@ -206,10 +237,29 @@ $page = "Record";
         </div>
   </section>
   <!-- container section end -->
-      <!-- javascripts -->
+    <!-- javascripts -->
     <script type="text/javascript">
-      var dateControl = document.querySelector('input[type="date"]');
-dateControl.value = '<?php echo "$issued_date";?>';
+      
+ //NUMBER ONLY
+  function numberInputOnly(elem) {
+                var validChars = /[0-9]/;
+                var strIn = elem.value;
+                var strOut = '';
+                for(var i=0; i < strIn.length; i++) {
+                  strOut += (validChars.test(strIn.charAt(i)))? strIn.charAt(i) : '';
+                }
+                elem.value = strOut;
+            }
+  //LETTER ONLY
+   function letterInputOnly(elem) {
+                var validChars = /[a-zA-ZñÑ ./]+/;
+                var strIn = elem.value;
+                var strOut = '';
+                for(var i=0; i < strIn.length; i++) {
+                  strOut += (validChars.test(strIn.charAt(i)))? strIn.charAt(i) : '';
+                }
+                elem.value = strOut;
+            }
     </script>
     <script src="js/jquery.js"></script>
     <script src="js/bootstrap.min.js"></script>
