@@ -86,7 +86,7 @@ while ($data = mysql_fetch_array($res1))
 		
 }
 	
-for($colCount;$colCount<13;$colCount++)
+for($colCount;$colCount<24;$colCount++)
 	{	
 	$pdf->Cell(25,5,'',1,0);
 	$pdf->Cell(100,5,'',1,0);

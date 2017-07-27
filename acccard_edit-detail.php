@@ -237,35 +237,5 @@ $page = "Record";
         </div>
   </section>
   <!-- container section end -->
-    <!-- javascripts -->
-    <script type="text/javascript">
-      
- //NUMBER ONLY
-  function numberInputOnly(elem) {
-                var validChars = /[0-9]/;
-                var strIn = elem.value;
-                var strOut = '';
-                for(var i=0; i < strIn.length; i++) {
-                  strOut += (validChars.test(strIn.charAt(i)))? strIn.charAt(i) : '';
-                }
-                elem.value = strOut;
-            }
-  //LETTER ONLY
-   function letterInputOnly(elem) {
-                var validChars = /[a-zA-ZñÑ ./]+/;
-                var strIn = elem.value;
-                var strOut = '';
-                for(var i=0; i < strIn.length; i++) {
-                  strOut += (validChars.test(strIn.charAt(i)))? strIn.charAt(i) : '';
-                }
-                elem.value = strOut;
-            }
-    </script>
-    <script src="js/jquery.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-    <!-- nice scroll -->
-    <script src="js/jquery.scrollTo.min.js"></script>
-    <script src="js/jquery.nicescroll.js" type="text/javascript"></script><!--custome script for all page-->
-    <script src="js/scripts.js"></script>
-  </body>
-</html>
+ 
+<?php include ('footer.php');?>
