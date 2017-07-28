@@ -167,13 +167,13 @@ $page = "Record";
                               </tr>
                               <tr>
 
-                                <td><input type="text" name="custodian_slip_qty" class="form-control"  required="" placeholder="Qty" value="<?php echo $Qty; ?>"></td>
+                                <td><input type="text" name="custodian_slip_qty" class="form-control"  required="" placeholder="Qty" value="<?php echo $Qty; ?>" onkeyup="numberInputOnly(this);"></td>
                                 <td><select  name="custodian_slip_unit" class="form-control" required="" value="<?php echo $Unit; ?>">
                                   <option value="unit">Unit</option>
                                   <option value="pc">Pc.</option>
                                 </select></td>
                                 <td><input type="text" name="custodian_slip_descrp" class="form-control"  required="" placeholder="Description" value="<?php echo $Descrp; ?>"></td>
-                                <td><input type="text" name="custodian_slip_inventItemNo" class="form-control"  required="" placeholder="Inventory Item No." value="<?php echo $Invent_Item_No; ?>"></td>
+                                <td><input type="text" name="custodian_slip_inventItemNo" class="form-control"  required="" placeholder="Inventory Item No." value="<?php echo $Invent_Item_No; ?>" onkeyup="numberInputOnly(this);"></td>
                                 <td><input type="text" name="custodian_slip_EzLife" class="form-control"  required="" placeholder="Estimated Useful Life" value="<?php echo $Ez_Useful_Life; ?>"></td>
                               </tr>
                               <?php 
@@ -212,7 +212,7 @@ $page = "Record";
                                              <input class="form-control" type="text" name="edit_desc<?php echo $row['ID'] ?>" value="<?php echo $row1['Descrp']?>">
                                              
                                            <label class="control-label">Inventory Item No.</label>
-                                             <input class="form-control" type="text" name="edit_itemNo<?php echo $row['ID'] ?>" value="<?php echo $row1['Invent_Item_No']?>">
+                                             <input class="form-control" type="text" name="edit_itemNo<?php echo $row['ID'] ?>" value="<?php echo $row1['Invent_Item_No']?>" onkeyup="numberInputOnly(this);">
                                              <br>
                                              <input type="Submit" name="Submit" value="Submit" class="btn btn-success">
                                              <input type="button" name="Cancel" value="Cancel" class="btn btn-danger" data-dismiss="modal">
@@ -242,7 +242,7 @@ $page = "Record";
                                             <div class="form-group">
                                                 <label class="col-sm-2 control-label">Name</label>
                                                 <div class="col-sm-7">
-                                                <input class="form-control" type="text" name="ReceivedBy_Name" value="<?php echo $ReceivedBy_Name; ?>">
+                                                <input class="form-control" type="text" name="ReceivedBy_Name" value="<?php echo $ReceivedBy_Name; ?>" onkeyup="letterInputOnly(this);">
                                                 </div>
                                             </div>
                                             <div class="form-group">
@@ -274,7 +274,7 @@ $page = "Record";
                                             <div class="form-group">
                                                 <label class="col-sm-2 control-label">Name</label>
                                                 <div class="col-sm-7">
-                                                <input class="form-control" type="text" name="ReceivedFrom_Name" value="<?php echo $ReceivedFrom_Name; ?>">
+                                                <input class="form-control" type="text" name="ReceivedFrom_Name" value="<?php echo $ReceivedFrom_Name; ?>" onkeyup="letterInputOnly(this);">
                                                 </div>
                                             </div>
                                             <div class="form-group">

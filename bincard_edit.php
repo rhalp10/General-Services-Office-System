@@ -152,7 +152,7 @@ $page = "Record";
             </tr>
             <tr>
               <td><b>QUANTITY</b></td>
-                <td><input type="text" name="bincard_edit_qty"  class="form-control" required="" value="<?php echo "$Qty";?>" ></td>
+                <td><input type="text" name="bincard_edit_qty"  class="form-control" required="" value="<?php echo "$Qty";?>" onkeyup="numberInputOnly(this);"></td>
             </tr>
             <tr>
               <td><b>ISSUED</b></td>

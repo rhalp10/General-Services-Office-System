@@ -1,4 +1,4 @@
- <?php
+<?php
 include('session.php');
 $ID =$_REQUEST['accID'];
 

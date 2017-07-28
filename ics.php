@@ -289,14 +289,14 @@ $page = "Record";
                                 <th class="col-sm-2"><i class="icon_hourglass"></i> Estimated Useful Life</th>
                               </tr>
                               <tr>
-                                <td><input type="text" name="custodian_slip_qty" class="form-control"  required="" placeholder="Qty"></td>
+                                <td><input type="text" name="custodian_slip_qty" class="form-control"  required="" placeholder="Qty" onkeyup="numberInputOnly(this);"></td>
                                 <td><select  name="custodian_slip_unit" class="form-control" required="" value="custodian_slip_unit">
                                   <option value="unit">Unit</option>
                                   <option value="pc">Pc.</option>
                                 </select></td>
                                 <td><input type="text" name="custodian_slip_descrp" class="form-control"  required="" placeholder="Description"></td>
-                                <td><input type="text" name="custodian_slip_inventItemNo" class="form-control"  required="" placeholder="Inventory Item No."></td>
-                                <td><input type="text" name="custodian_slip_EzLife" class="form-control"  required="" placeholder="Estimated Useful Life"></td>
+                                <td><input type="text" name="custodian_slip_inventItemNo" class="form-control"  required="" placeholder="Inventory Item No." onkeyup="numberInputOnly(this);"></td>
+                                <td><input type="text" name="custodian_slip_EzLife" class="form-control"  required="" placeholder="Estimated Useful Life" ></td>
                               </tr>
                              </table>
                              <hr>
@@ -310,7 +310,7 @@ $page = "Record";
                                             <div class="form-group">
                                                 <label class="col-sm-2 control-label">Name</label>
                                                 <div class="col-sm-7">
-                                                    <input type="text"  class="form-control" placeholder="Name" name="custodian_slip_receiveBy_name"  required="">
+                                                    <input type="text"  class="form-control" placeholder="Name" name="custodian_slip_receiveBy_name"  required="" onkeyup="letterInputOnly(this);">
                                                 </div>
                                             </div>
                                             <div class="form-group">
@@ -342,7 +342,7 @@ $page = "Record";
                                             <div class="form-group">
                                                 <label class="col-sm-2 control-label">Name</label>
                                                 <div class="col-sm-7">
-                                                    <input type="text"  class="form-control" placeholder="Name" name="custodian_slip_receiveFrom_name"  required="">
+                                                    <input type="text"  class="form-control" placeholder="Name" name="custodian_slip_receiveFrom_name"  required="" onkeyup="letterInputOnly(this);">
                                                 </div>
                                             </div>
                                             <div class="form-group">

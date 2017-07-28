@@ -170,16 +170,16 @@ $page = "Record";
                               </tr>
                               <tr>
                                 <td>
-                                <input class="form-control" type="text" name="edit_qty" value="<?php echo $Qty;?>"> </td>
+                                <input class="form-control" type="text" name="edit_qty" value="<?php echo $Qty;?>" onkeyup="numberInputOnly(this);"> </td>
                                
                                 <td>
-                                <input class="form-control" type="text" name="edit_unit" value="<?php echo $Unit;?>"> </td>
+                                <input class="form-control" type="text" name="edit_unit" value="<?php echo $Unit;?>" onkeyup="letterInputOnly(this);"> </td>
 
                                 <td>
                                 <input class="form-control" type="text" name="edit_descrp" value="<?php echo $Descrp;?>"> </td>
 
                                 <td>
-                                <input class="form-control" type="text" name="edit_propNo" value="<?php echo $PropNo;?>"> </td>
+                                <input class="form-control" type="text" name="edit_propNo" value="<?php echo $PropNo;?>" onkeyup="numberInputOnly(this);"> </td>
                               </tr>
                               <tr>
                                 
@@ -199,7 +199,7 @@ $page = "Record";
                                             <div class="form-group">
                                                 <label class="col-sm-2 control-label">Name</label>
                                                 <div class="col-sm-7">
-                                                    <td><input class="form-control" type="text" name="edit_RecByname" value="<?php echo $ReceivedBy_Name;?>"></td>
+                                                    <td><input class="form-control" type="text" name="edit_RecByname" value="<?php echo $ReceivedBy_Name;?>" onkeyup="letterInputOnly(this);"></td>
                                                 </div>
                                             </div>
                                             <div class="form-group">
@@ -237,7 +237,7 @@ $page = "Record";
                                             <div class="form-group">
                                                 <label class="col-sm-2 control-label">Name</label>
                                                 <div class="col-sm-7">
-                                                    <td><input class="form-control" type="text" name="edit_RecFrmname" value="<?php echo $ReceivedFrom_Name;?>"></td>
+                                                    <td><input class="form-control" type="text" name="edit_RecFrmname" value="<?php echo $ReceivedFrom_Name;?>" onkeyup="letterInputOnly(this);"></td>
                                                 </div>
                                             </div>
                                             <div class="form-group">

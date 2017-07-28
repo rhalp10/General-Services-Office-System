@@ -441,7 +441,7 @@ $row=mysql_fetch_array($query);
                           <tbody>
                             
                               <tr>
-                              <td><input  class="form-control" type="" name="acccard_view_add_propno-Set" value=""></td>
+                              <td><input  class="form-control" type="" name="acccard_view_add_propno-Set" value="" onkeyup="numberInputOnly(this);"></td>
                               <td><input  class="form-control" type="" name="acccard_view_add_amount-Set" value="" onkeyup="numberInputOnly(this);"></td>
                               <td><input  class="form-control" type="" name="acccard_view_add_transferTo-Set" value="" onkeyup="letterInputOnly(this);"></td>
                               <td><input  class="form-control" type="" name="acccard_view_add_remarks-Set" value="" ></td>

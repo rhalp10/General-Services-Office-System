@@ -189,14 +189,14 @@ $page = "Record";
                                  
                               </tr>
                               <tr>
-                                <td><input type="text" name="prop_return_slip_qty" class="form-control" placeholder="Qty" value="<?php echo "$Qty";?>"></td>
+                                <td><input type="text" name="prop_return_slip_qty" class="form-control" placeholder="Qty" value="<?php echo "$Qty";?>" onkeyup="numberInputOnly(this);"></td>
                                 <td><select  name="prop_return_slip_unit" class="form-control" required="" value="custodian_slip_unit">
                                   <option value="unit">Unit</option>
                                   <option value="pc">Pc.</option>
                                 </select></td>
                                 <td><input type="text" name="prop_return_slip_descrp" class="form-control" placeholder="Description" value="<?php echo "$Descrp";?>"></td>
                                 <td><input type="text" name="prop_return_slip_serialnum" class="form-control" placeholder="Serial Number" value="<?php echo "$Serial_Num";?>"></td>
-                                <td><input type="text" name="prop_return_slip_propno" class="form-control" placeholder="Property Number" value="<?php echo "$Prop_Number";?>"></td>
+                                <td><input type="text" name="prop_return_slip_propno" class="form-control" placeholder="Property Number" value="<?php echo "$Prop_Number";?>" onkeyup="numberInputOnly(this);"></td>
                               </tr>
                            </tbody>
                           
@@ -233,7 +233,7 @@ $page = "Record";
                                             <div class="form-group">
                                                 <label class="col-sm-2 control-label">Name</label>
                                                 <div class="col-sm-7">
-                                                    <input type="text"  class="form-control" placeholder="Name" name="prop_return_slip_receiveBy_Name" required="" value="<?php echo "$ReceiveBy_Name";?>">
+                                                    <input type="text"  class="form-control" placeholder="Name" name="prop_return_slip_receiveBy_Name" required="" value="<?php echo "$ReceiveBy_Name";?>" onkeyup="letterInputOnly(this);">
                                                 </div>
                                             </div>
                                             <div class="form-group">
@@ -272,7 +272,7 @@ $page = "Record";
                                             <div class="form-group">
                                                 <label class="col-sm-2 control-label">Name</label>
                                                 <div class="col-sm-7">
-                                                    <input type="text"  class="form-control" placeholder="Name" name="prop_return_slip_receiveFrom_Name" required="" value="<?php echo "$ReceiveFrom_Name";?>">
+                                                    <input type="text"  class="form-control" placeholder="Name" name="prop_return_slip_receiveFrom_Name" required="" value="<?php echo "$ReceiveFrom_Name";?>" onkeyup="letterInputOnly(this);">
                                                 </div>
                                             </div>
                                             <div class="form-group">

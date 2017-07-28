@@ -3,34 +3,34 @@ include('session.php');
 $result = mysql_query("SELECT * FROM emp_accounts_record WHERE username  = '$login_session'");
 $test = mysql_fetch_array($result);
 $rows = mysql_num_rows($result);
-                $Emp_ID=$test['accID'];
-                $accLevel=$test['accLevel'];
-                $username=$test['username'] ;
-                $password= $test['password'] ;                  
-                $email=$test['Email'] ;
-                $fullname=$test['fullName'] ;
-                $age=$test['Age'];
-                $gender=$test['Gender'] ;
-                $contact=$test['Mobile'] ;
-                $address=$test['Address'] ;
-                $position=$test['Pos'] ;
-                $img_profile=$test['image'];
-                if ($accLevel == '0') {
-                    $Level = 'Admin';
-                    
-                }
-                elseif ($accLevel = '1') {
-                    $Level = 'Employee';
-                    
-                }
+      $Emp_ID=$test['accID'];
+      $accLevel=$test['accLevel'];
+      $username=$test['username'] ;
+      $password= $test['password'] ;                  
+      $email=$test['Email'] ;
+      $fullname=$test['fullName'] ;
+      $age=$test['Age'];
+      $gender=$test['Gender'] ;
+      $contact=$test['Mobile'] ;
+      $address=$test['Address'] ;
+      $position=$test['Pos'] ;
+      $img_profile=$test['image'];
+      if ($accLevel == '0') {
+          $Level = 'Admin';
+          
+      }
+      elseif ($accLevel = '1') {
+          $Level = 'Employee';
+          
+      }
 
-                elseif ($accLevel = '2') {
-                    $Level = 'other';
-                    
-                }
-                else {
-                     
-                }
+      elseif ($accLevel = '2') {
+          $Level = 'other';
+          
+      }
+      else {
+           
+      }
 $page = "Dashboard"
 ?>
 <!DOCTYPE html>
@@ -86,37 +86,37 @@ $page = "Dashboard"
 
       <!--sidebar start-->
       <aside>
-          <div id="sidebar"  class="nav-collapse ">
-              <!-- sidebar menu start-->
-              <ul class="sidebar-menu">                
-                  <?php  
-                  if ($login_level == '0')
-                  {
-                      include('sidebar-menu_admin.php');
-                  }
-                  if ($login_level == '1')
-                  {
-                      include('sidebar-menu_emp.php');
-                  }
-                  elseif ($login_level == '2')
-                  {
-                      include('sidebar-menu_bin.php');
-                  }
-                  else if ($login_level == '3')
-                  {
-                      include('sidebar-menu_accountability.php');
-                  }
-                  else if ($login_level == '4')
-                  {
-                      include('sidebar-menu_icsprspar.php');
-                  }
-                  else
-                  {
-                     
-                  }
-                  ?>
-              </ul>
-              <!-- sidebar menu end-->
+         <div id="sidebar"  class="nav-collapse ">
+             <!-- sidebar menu start-->
+             <ul class="sidebar-menu">                
+                 <?php  
+                 if ($login_level == '0')
+                 {
+                     include('sidebar-menu_admin.php');
+                 }
+                 if ($login_level == '1')
+                 {
+                     include('sidebar-menu_emp.php');
+                 }
+                 elseif ($login_level == '2')
+                 {
+                     include('sidebar-menu_bin.php');
+                 }
+                 else if ($login_level == '3')
+                 {
+                     include('sidebar-menu_accountability.php');
+                 }
+                 else if ($login_level == '4')
+                 {
+                     include('sidebar-menu_icsprspar.php');
+                 }
+                 else
+                 {
+                    
+                 }
+                 ?>
+             </ul>
+             <!-- sidebar menu end-->
           </div>
       </aside>
       <!--sidebar end-->

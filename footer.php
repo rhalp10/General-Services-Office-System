@@ -15,7 +15,7 @@
             }
   //LETTER ONLY
    function letterInputOnly(elem) {
-                var validChars = /[a-zA-ZñÑ ]+/;
+                var validChars = /[a-zA-ZñÑ .]+/;
                 var strIn = elem.value;
                 var strOut = '';
                 for(var i=0; i < strIn.length; i++) {

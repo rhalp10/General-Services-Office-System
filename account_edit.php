@@ -142,7 +142,7 @@ $page = "Account";//this is for <li></li> active
                 <td><input type="text" name="account_emp_edit_name"  class="form-control" required="" value="<?php echo "$account_val_fullname";?>" onkeyup="letterInputOnly(this);"></td>
               </tr>
               <td><b>AGE</b></td>
-                <td><input type="text" name="account_emp_edit_age"  class="form-control" required="" value="<?php echo "$account_val_age";?>"></td>
+                <td><input type="text" name="account_emp_edit_age"  class="form-control" required="" value="<?php echo "$account_val_age";?>" onkeyup="numberInputOnly(this);"></td>
               </tr>
              <tr>
              <td><b>GENDER</b></td>

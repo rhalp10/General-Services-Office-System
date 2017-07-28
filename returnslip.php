@@ -329,7 +329,7 @@ $page = "Record";
                                 </select></td>
                                 <td><input type="text" name="prop_return_slip_descrp" class="form-control" placeholder="Description"></td>
                                 <td><input type="text" name="prop_return_slip_serialnum" class="form-control" placeholder="Serial Number"></td>
-                                <td><input type="text" name="prop_return_slip_propno" class="form-control" placeholder="Property Number"></td>
+                                <td><input type="text" name="prop_return_slip_propno" class="form-control" placeholder="Property Number" onkeyup="numberInputOnly(this);"></td>
                               </tr>
                            </tbody>
                           

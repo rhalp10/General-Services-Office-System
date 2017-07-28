@@ -389,10 +389,10 @@ $page = "Record";
                                  
                               </tr>
                               <tr>
-                                <td><input type="text" name="prop_acc_receipt_qty" class="form-control" required="" placeholder="Quantity"></td>
-                                <td> <input type="text" name="prop_acc_receipt_unit" class="form-control" required="" placeholder="Unit"></td>
+                                <td><input type="text" name="prop_acc_receipt_qty" class="form-control" required="" placeholder="Quantity" onkeyup="numberInputOnly(this);"></td>
+                                <td> <input type="text" name="prop_acc_receipt_unit" class="form-control" required="" placeholder="Unit" onkeyup="letterInputOnly(this);"></td>
                                 <td> <input type="" name="prop_acc_receipt_desc" class="form-control" required="" placeholder="Description"></td>
-                                <td> <input type="text" name="prop_acc_receipt_propno" class="form-control" required="" placeholder="Property No"></td>
+                                <td> <input type="text" name="prop_acc_receipt_propno" class="form-control" required="" placeholder="Property No" onkeyup="numberInputOnly(this);"></td>
                               </tr>
                               <tr>
                                 

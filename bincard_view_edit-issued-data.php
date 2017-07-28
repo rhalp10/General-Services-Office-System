@@ -152,11 +152,11 @@ $page = "Record";
 
              <tr>
               <td><b>RECIPIENT</b></td>
-                <td><input type="text" name="bincard_edit_descrp"  class="form-control" required="" value="<?php echo "$recpnt";?>" ></td>
+                <td><input type="text" name="bincard_edit_descrp"  class="form-control" required="" value="<?php echo "$recpnt";?>" onkeyup="letterInputOnly(this);"></td>
             </tr>
             <tr>
               <td><b>QUANTITY</b></td>
-                <td><input type="text" name="bincard_edit_qty"  class="form-control" required="" value="<?php echo "$qty";?>" ></td>
+                <td><input type="text" name="bincard_edit_qty"  class="form-control" required="" value="<?php echo "$qty";?>" onkeyup="numberInputOnly(this);"></td>
             </tr>
             <tr>
            <tr>

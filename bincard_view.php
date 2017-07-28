@@ -326,7 +326,7 @@ $page = "Record";
                         <div class="form-group">
                             <label class="col-sm-2 control-label"><b>QUANTITY</b></label>
                             <div class="col-sm-10">
-                                <input type="text"  class="form-control" placeholder="Quantity" name="binitem_issued_qty" required="">
+                                <input type="text"  class="form-control" placeholder="Quantity" name="binitem_issued_qty" required="" onkeyup="numberInputOnly(this);">
                             </div>
                         </div>
                         <br><br><br>

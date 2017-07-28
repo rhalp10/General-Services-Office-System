@@ -193,7 +193,7 @@ $page = "Record";
             </tr>
            <tr>
               <td><b>PROP#</b></td>
-                <td><input type="text" name="propno"  class="form-control" value="<?php echo "$PropNo";?>" ></td>
+                <td><input type="text" name="propno"  class="form-control" value="<?php echo "$PropNo";?>" onkeyup="numberInputOnly(this);"></td>
 
             </tr>
            <tr>
