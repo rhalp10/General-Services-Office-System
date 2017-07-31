@@ -53,7 +53,7 @@ $page = "Record";
                     <li class="dropdown">
                         <a data-toggle="dropdown" class="dropdown-toggle" href="#">
                             <span class="profile-ava">
-                                <img alt="" src="img/avatar-mini2.jpg">
+                                <img alt="" src="<?php echo $login_img; ?>">
                             </span>
                             <span class="username"><?php echo $login_session; ?></span>
                             <b class="caret"></b>
@@ -149,7 +149,7 @@ $page = "Record";
 
               <th>ReceiveFrom Name</th>
               <th>ReceiveFrom Date</th>
-              <th>ICS</th>
+              <th>PAR</th>
               <th>Action</th>
             </tr>
           </thead>
@@ -392,7 +392,7 @@ $page = "Record";
                                 <td><input type="text" name="prop_acc_receipt_qty" class="form-control" required="" placeholder="Quantity" onkeyup="numberInputOnly(this);"></td>
                                 <td> <input type="text" name="prop_acc_receipt_unit" class="form-control" required="" placeholder="Unit" onkeyup="letterInputOnly(this);"></td>
                                 <td> <input type="" name="prop_acc_receipt_desc" class="form-control" required="" placeholder="Description"></td>
-                                <td> <input type="text" name="prop_acc_receipt_propno" class="form-control" required="" placeholder="Property No" onkeyup="numberInputOnly(this);"></td>
+                                <td> <input type="text" name="prop_acc_receipt_propno" class="form-control" placeholder="Property No"></td>
                               </tr>
                               <tr>
                                 

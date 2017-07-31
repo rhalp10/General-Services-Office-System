@@ -50,7 +50,7 @@ $page = "Record";
                     <li class="dropdown">
                         <a data-toggle="dropdown" class="dropdown-toggle" href="#">
                             <span class="profile-ava">
-                                <img alt="" src="img/avatar-mini2.jpg">
+                                <img alt="" src="<?php echo $login_img; ?>">
                             </span>
                             <span class="username"><?php echo $login_session; ?></span>
                             <b class="caret"></b>
@@ -329,7 +329,7 @@ $page = "Record";
                                 </select></td>
                                 <td><input type="text" name="prop_return_slip_descrp" class="form-control" placeholder="Description"></td>
                                 <td><input type="text" name="prop_return_slip_serialnum" class="form-control" placeholder="Serial Number"></td>
-                                <td><input type="text" name="prop_return_slip_propno" class="form-control" placeholder="Property Number" onkeyup="numberInputOnly(this);"></td>
+                                <td><input type="text" name="prop_return_slip_propno" class="form-control" placeholder="Property Number"></td>
                               </tr>
                            </tbody>
                           
@@ -344,8 +344,8 @@ $page = "Record";
                                  <th class="col-sm-1"><i class="icon_wallet_alt"></i> Unit Value</th>
                                  <th class="col-sm-1"><i class="icon_currency_alt" ></i> Total Value</th></tr>
                               <tr>
-                                <td><input type="text" name="prop_return_slip_par" class="form-control" required="" placeholder="PAR. Number"></td>
-                                <td><input type="text" name="prop_return_slip_NameOfEndUser" class="form-control" required="" placeholder="Name Of End-User"   onkeyup="letterInputOnly(this);"></td>
+                                <td><input type="text" name="prop_return_slip_par" class="form-control"  placeholder="PAR. Number"></td>
+                                <td><input type="text" name="prop_return_slip_NameOfEndUser" class="form-control" placeholder="Name Of End-User"   onkeyup="letterInputOnly(this);"></td>
                                 <td><input type="" name="prop_return_slip_UnitValue" class="form-control" required="" placeholder="Unit Value" onkeyup="numberInputOnly(this);"></td>
                                 <td><input type="text" name="prop_return_slip_TotalValue" class="form-control" required="" placeholder="Total Value" onkeyup="numberInputOnly(this);"></td>
                               </tr>
@@ -431,7 +431,17 @@ $page = "Record";
                                 </section>
                             </div>
                         </div>
+                       <div class="form-group">
+                                                <label class="col-sm-2 control-label">Status</label>
+                                                <div class="col-sm-2">
+                                                <select class="form-control" placeholder="Status" name="prop_return_slip_status">
+                                                  <option value="Serviceable">Serviceable</option>
+                                                  <option value="Unserviceable">Unserviceable</option>
+                                                </select>
+                                                    
+                                                </div>
 
+                                            </div>
                         </form><!--End of Form for the receipt -->
                       </section>
                   </div>

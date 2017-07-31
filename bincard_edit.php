@@ -10,6 +10,7 @@ $test = mysql_fetch_array($result);
       $Qty=$test['Qty'];
       $Issued=$test['Issued'];
       $Balance=$test['Balance'];
+      $PoNo=$test['PoNo'];
 
 if ($login_level != '0' ) 
 {
@@ -58,7 +59,7 @@ $page = "Record";
                     <li class="dropdown">
                         <a data-toggle="dropdown" class="dropdown-toggle" href="#">
                             <span class="profile-ava">
-                                <img alt="" src="img/avatar-mini2.jpg">
+                                <img alt="" src="<?php echo $login_img; ?>">
                             </span>
                             <span class="username"><?php echo $login_session; ?></span>
                             <b class="caret"></b>
@@ -127,7 +128,7 @@ $page = "Record";
           <ol class="breadcrumb">
             <li><i class="fa fa-home"></i><a href="index.php">Dashboard</a></li>
             <li><i class="fa fa-clipboard"></i><a href="bincard.php">Bincard</a></li>
-            <li><i class="fa fa-clipboard "></i>Pages</li>
+            <li><i class="fa fa-clipboard "></i>Bincard Edit</li>
           </ol>
         </div>
       </div>
@@ -145,6 +146,10 @@ $page = "Record";
              <tr>
               <td><b>SUPPLIER</b></td>
                 <td><input type="text" name="bincard_edit_supplier"  class="form-control" required="" value="<?php echo "$Supplier";?>" ></td>
+            </tr>
+             <tr>
+              <td><b>P.O. No.</b></td>
+                <td><input type="text" name="bincard_edit_pono"  class="form-control" required="" value="<?php echo "$PoNo";?>" ></td>
             </tr>
              <tr>
               <td><b>DESCRIPTION</b></td>

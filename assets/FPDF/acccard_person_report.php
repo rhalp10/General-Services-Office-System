@@ -37,7 +37,7 @@ class PDF extends FPDF{
 		$this->Cell(0,10,'DESIGNATION: '.$designation,1,1);
 		}
 
-		$this->Cell(20,10,'PR # ',1,0);
+		$this->Cell(20,10,'PAR NO. ',1,0);
 		$this->Cell(20,10,'QTY/UNIT',1,0);
 		$this->Cell(80,10,'DESCRPTION ',1,0);
 		$this->Cell(50,10,'SERIAL NUMBER ',1,0);

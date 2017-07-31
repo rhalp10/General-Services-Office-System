@@ -37,7 +37,7 @@ if ($login_level != '0')
                     <li class="dropdown">
                         <a data-toggle="dropdown" class="dropdown-toggle" href="#">
                             <span class="profile-ava">
-                                <img alt="" src="img/avatar-mini2.jpg">
+                                <img alt="" src="<?php echo $login_img; ?>">
                             </span>
                             <span class="username"><?php echo $login_session; ?></span>
                             <b class="caret"></b>

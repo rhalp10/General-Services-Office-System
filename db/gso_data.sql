@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Jul 27, 2017 at 10:07 AM
+-- Generation Time: Jul 31, 2017 at 09:12 AM
 -- Server version: 5.5.16
 -- PHP Version: 5.3.8
 
@@ -67,21 +67,22 @@ CREATE TABLE IF NOT EXISTS `bincard_record` (
   `Issued` int(10) NOT NULL,
   `Balance` float NOT NULL,
   `DateAdded` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `PoNo` varchar(50) NOT NULL,
   PRIMARY KEY (`ID`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=23 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=26 ;
 
 --
 -- Dumping data for table `bincard_record`
 --
 
-INSERT INTO `bincard_record` (`ID`, `bin_Date`, `Supplier`, `Descrp`, `Qty`, `Issued`, `Balance`, `DateAdded`) VALUES
-(16, '2017-07-31', 'OMAR ', 'PC', '40', 10, 30, '2017-07-26 07:34:29'),
-(17, '2017-07-08', 'Ian', 'Mark', '50', 3, 47, '2017-07-26 07:41:41'),
-(18, '2017-07-08', 'FRANZ', 'ASO', '50', 20, 30, '2017-07-22 07:48:56'),
-(19, '2017-07-13', 'PAPA', 'ISDA', '1500', 550, 950, '2017-07-22 07:49:56'),
-(20, '2017-07-15', 'uyhjyuhjnoyhlunjm123123123123', 'iuhjwnsdcuoihjnmsdfuchvhjndsmfxcvhuljsdfngxclhkjn', '123', 50, 73, '2017-07-25 06:12:30'),
-(21, '2017-07-12', 'qewregrdhgfnhdn', 'qwerwgfdbgfvb', '213454', 0, 213454, '2017-07-26 07:34:05'),
-(22, '0056-05-04', 'Ian kun', 'gago', '1000000000', 0, 1000000000, '2017-07-26 07:41:22');
+INSERT INTO `bincard_record` (`ID`, `bin_Date`, `Supplier`, `Descrp`, `Qty`, `Issued`, `Balance`, `DateAdded`, `PoNo`) VALUES
+(16, '2017-07-31', 'OMAR ', 'PC', '40', 10, 30, '2017-07-31 05:02:59', '3213'),
+(17, '2017-07-08', 'Ian', 'Mark', '50', 3, 47, '2017-07-31 05:05:07', 'xc'),
+(18, '2017-07-08', 'FRANZ', 'ASO', '50', 20, 30, '2017-07-22 07:48:56', ''),
+(19, '2017-07-13', 'PAPA', 'ISDA', '1500', 550, 950, '2017-07-22 07:49:56', ''),
+(20, '2017-07-15', 'uyhjyuhjnoyhlunjm123123123123', 'iuhjwnsdcuoihjnmsdfuchvhjndsmfxcvhuljsdfngxclhkjn', '123', 50, 73, '2017-07-25 06:12:30', ''),
+(21, '2017-07-12', 'qewregrdhgfnhdn', 'qwerwgfdbgfvb', '213454', 0, 213454, '2017-07-26 07:34:05', ''),
+(22, '0056-05-04', 'Ian kun', 'gago', '1000000000', 0, 1000000000, '2017-07-31 05:06:41', '1553');
 
 -- --------------------------------------------------------
 
@@ -105,16 +106,14 @@ CREATE TABLE IF NOT EXISTS `emp_accountability_card` (
   `Remarks` varchar(200) NOT NULL,
   `DateTurnOver` date NOT NULL,
   PRIMARY KEY (`ID`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=33 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=36 ;
 
 --
 -- Dumping data for table `emp_accountability_card`
 --
 
 INSERT INTO `emp_accountability_card` (`ID`, `Emp_ID`, `ItemSetID`, `itemCode`, `ParNo`, `Qty`, `Unit`, `Descrp`, `SN`, `PropNo`, `Amount`, `TransferTo`, `Remarks`, `DateTurnOver`) VALUES
-(29, 5, 'SP-29', 'SET SP-29', 'RN-038-17', 1, ' unit', '2014 Mitsubishi L300 CC w/ FB Body', 'GT-101-14', '26', 682500, '', '', '0000-00-00'),
-(30, 5, 'SP-30', 'PART SP-29', '993636315', 0, ' pc', 'COLOR:white', '9', '9999', 0, '', '', '0000-00-00'),
-(32, 6, 'SP-32', 'SET SP-32', '10000000000000000000000000000000000000000000000000', 500, 'pc', 'tent 10x10', '221564', 'T-53413-4654-17', 1e17, 'indang', 'formerly to fuck you indang', '0004-03-02');
+(35, 7, 'SP-35', 'SET SP-35', 'N-123-17', 1, ' unit', 'tablet', 'cnu521563', '00117', 7499, 'charlotte jean', '', '2017-07-31');
 
 -- --------------------------------------------------------
 
@@ -137,7 +136,7 @@ CREATE TABLE IF NOT EXISTS `emp_accounts_record` (
   `image` varchar(250) NOT NULL,
   PRIMARY KEY (`accID`),
   UNIQUE KEY `User` (`username`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=27 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=28 ;
 
 --
 -- Dumping data for table `emp_accounts_record`
@@ -155,7 +154,8 @@ INSERT INTO `emp_accounts_record` (`accID`, `accLevel`, `username`, `password`, 
 (23, '0', 'Keita1200', 'darkdemon12', 'Omar Raouf A. Daud', 20, 'Male', 'bucal 3b maragondon cavite', 'Omardaud21000@gmail.com', 'Kahit ano', '09363398243', 'img/emp_profile/temp.jpg'),
 (24, '3', 'ac', 'ac', 'Accountability', 21, 'Male', 'Bucal 3-B Maragondon, Cavite', 'omardaud2100@gmail.com', 'Administrative', '06321351', 'img/emp_profile/temp.jpg'),
 (25, '4', 'icsprspar', 'a', 'icsprspar', 0, 'Male', 'icsprspar', 'icsprspar@gmail.com', 'asd', '09096545184', 'img/emp_profile/temp.jpg'),
-(26, '0', 'Godz', '123456789', 'God ', 100, 'Female', 'kaytambog ', 'god@gmail.com', 'God', '123', 'img/emp_profile/temp.jpg');
+(26, '0', 'Godz', '123456789', 'God ', 100, 'Female', 'kaytambog ', 'god@gmail.com', 'God', '123', 'img/emp_profile/temp.jpg'),
+(27, '0', 'asa', 'asa', 'asa', 21, 'Male', 'asa', 'asdasd@yahoo.com', 'as', '9090', 'img/emp_profile/maletmp.png');
 
 -- --------------------------------------------------------
 
@@ -170,15 +170,14 @@ CREATE TABLE IF NOT EXISTS `emp_pgc_record` (
   `designation` varchar(100) NOT NULL,
   `note` varchar(50) NOT NULL,
   PRIMARY KEY (`accID`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=7 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=8 ;
 
 --
 -- Dumping data for table `emp_pgc_record`
 --
 
 INSERT INTO `emp_pgc_record` (`accID`, `fullName`, `office`, `designation`, `note`) VALUES
-(5, 'Rhalp Darren R. Cabrera', ' PICTO', 'PCIKONIPUQH WDNYUUQGWD QWDEIBHJLDKNFL', ''),
-(6, 'Godz', 'UPAO', 'God', 'fuck you indang');
+(7, 'Analie B. Rodil', 'GSO', 'Administrative Officer V', '');
 
 -- --------------------------------------------------------
 
@@ -311,9 +310,7 @@ CREATE TABLE IF NOT EXISTS `invent_custodian_slip` (
 --
 
 INSERT INTO `invent_custodian_slip` (`ID`, `Qty`, `Unit`, `Descrp`, `Invent_Item_No`, `Ez_Useful_Life`, `ReceivedBy_Name`, `ReceivedBy_Position`, `ReceiveBy_Date`, `ReceivedFrom_Name`, `ReceivedFrom_Position`, `ReceiveFrom_Date`, `ICS`, `DateAdded`) VALUES
-(1, 2, 'unit', 'KITCHEN BUKAKKE', '213', '1', 'RHALP DARREN R. CABRERA', 'ADMIN', '2017-07-05', 'ENGR. ENRICO M. ALVAREZ', 'General Services Officer', '2017-07-12', 123, '2017-07-27 06:04:11'),
-(4, 30, 'unit', 'Bagong Tabas', 's2x52', '2', 'MARK', 'EMPLOYEE', '2017-07-20', 'RHALP DARREN CABRERA', 'ADMIN', '2017-07-09', 2131561, '2017-07-21 02:38:32'),
-(6, 131, 'unit', 'OPAI DAISUKI 6960292562', '1', '2010', '03', '3', '0022-03-21', '121', '1511311', '0015-11-21', 123, '2017-07-27 06:05:17');
+(4, 30, 'unit', 'Bagong Tabas', 's2x52', '2', 'MARK', 'EMPLOYEE', '2017-07-20', 'RHALP DARREN CABRERA', 'ADMIN', '2017-07-09', 2131561, '2017-07-21 02:38:32');
 
 -- --------------------------------------------------------
 
@@ -352,7 +349,7 @@ CREATE TABLE IF NOT EXISTS `office_dictionary` (
   `officeCode` varchar(100) NOT NULL,
   PRIMARY KEY (`ID`),
   UNIQUE KEY `officeName` (`officeName`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=56 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=55 ;
 
 --
 -- Dumping data for table `office_dictionary`
@@ -407,8 +404,7 @@ INSERT INTO `office_dictionary` (`ID`, `officeName`, `officeCode`) VALUES
 (51, 'COMMISSION ON AUDIT', 'COA'),
 (52, 'PHILIPPINE NATIONAL POLICE', 'PNP'),
 (53, 'REGIONAL TRIAL COURT', 'RTC'),
-(54, 'MUNICIPAL TRIAL COURT', 'MTC'),
-(55, 'CVSU Otaku Society', 'COS');
+(54, 'MUNICIPAL TRIAL COURT', 'MTC');
 
 -- --------------------------------------------------------
 
@@ -431,7 +427,7 @@ CREATE TABLE IF NOT EXISTS `property_accountability_receipt_record` (
   `PAR` varchar(12) NOT NULL,
   `DateAdded` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`ID`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=10 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=11 ;
 
 --
 -- Dumping data for table `property_accountability_receipt_record`
@@ -439,7 +435,7 @@ CREATE TABLE IF NOT EXISTS `property_accountability_receipt_record` (
 
 INSERT INTO `property_accountability_receipt_record` (`ID`, `Qty`, `Unit`, `Descrp`, `PropNo`, `ReceivedFrom_Name`, `ReceivedFrom_Position`, `ReceivedFrom_Date`, `ReceivedBy_Name`, `ReceivedBy_Position`, `ReceivedBy_Date`, `PAR`, `DateAdded`) VALUES
 (1, 2, 'pc', 'dasd', 'PropNo', 'RECFROm', 'asdasdasd', '2017-06-14', 'RECBY', 'asdasdasd', '2017-06-14', 'PAR 1', '2017-07-26 07:58:33'),
-(9, 123, '3', 'fuck you indang', '1546464454', '666+++++++sda', 'sadasd', '0534-05-31', 'receivebyname', 'indang ++++++++', '0000-00-00', 'dsfsdf23r', '2017-07-27 07:53:04');
+(10, 1, 'asda', 'asdas', '', 'dsada', 'dasdasd', '2017-07-05', 'receivebyname', 'asdasd', '2017-07-05', '12312', '2017-07-31 06:14:04');
 
 -- --------------------------------------------------------
 
@@ -470,7 +466,7 @@ CREATE TABLE IF NOT EXISTS `property_return_slip_record` (
   `DateAdded` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`ID`),
   KEY `prs_purpose_dictionary` (`PurposeID`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=28 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=30 ;
 
 --
 -- Dumping data for table `property_return_slip_record`
@@ -480,9 +476,7 @@ INSERT INTO `property_return_slip_record` (`ID`, `LGU_Name`, `PurposeID`, `Qty`,
 (1, 'Lumil NHS, Silang', 2, 1, 'unit', 'Lenovo Tab-A7-30 Mld. Lenovo A3300-GV', 'SN-HGC7VGW7', 'd213', 'T-192-15', 'Lucia M. Diesta', 0, 7095, 'Unserviceable', 'xcv', 'wadasd', '2017-07-19', 'sddasd', 'xcxvcx', '2017-07-19', '2017-07-19 06:26:34'),
 (21, 'XWWWWWWWWWWWWWW ', 3, 1, 'unit', 'asdasD', '2ADAWD', 'DAWD', 'ASDASD', 'AWD', 2313, 123, 'Unserviceable', 'asdASD', 'asdaSD', '2017-07-07', 'asd', 'asdASD', '2017-07-13', '2017-07-22 10:49:59'),
 (22, 'asd ', 3, 21, 'unit', 'asd', 'zxczc', 'zxczxczxc', 'asd3124', 'cfdsf', 2344324, 4234, 'Unserviceable', 'sdfawe', 'qweqwe', '2017-07-03', 'adsad', 'adawd', '2017-07-14', '2017-07-22 10:50:02'),
-(24, '2324567IYGJ ', 1, 31245, 'pc', '13425463574675867OTUK,GM ', 'Q3243564758I', '1342356789', '134253YRTKUFYKG.J,HR', 'WAETSDRYTFHJGKJ', 345678989, 123454, 'Unserviceable', 'qwtrydtjfkhjg.', 'qwetrdyjgkhjlhgfdf', '2017-07-28', '2017-07-28', 'wtresgfdhgfjhkgjg', '2017-07-05', '2017-07-26 07:31:59'),
-(25, 'qerghjfjcbxcf ', 1, 1235436, 'unit', 'hgfgvjhkfkdjshfg', '2345435yyetury', '22435435y657', '23q43w5yer6jtkuyiuoi', 'etrdyfukigjlkh', 345678798, 2147483647, 'Unserviceable', 'wyrdtfuygkjhm', 'wetrsdfhgjhkhjj', '2017-07-17', '2017-07-17', 'dsfghkjhkjgkfuyr', '2017-07-07', '2017-07-26 07:32:48'),
-(27, 'efeg ', 3, 23, 'pc', 'dsfw', 'e233', '3434', 'dsdwwe2', 'ffdsfds', 32423432, 23432234, 'Unserviceable', 'wfwef', 'sdfdsfewf', '1989-04-02', '1989-04-02', 'bitch', '1998-09-08', '2017-07-27 07:54:56');
+(25, 'qerghjfjcbxcf ', 1, 1235436, 'unit', 'hgfgvjhkfkdjshfg', '2345435yyetury', '22435435y657', '23q43w5yer6jtkuyiuoi', 'etrdyfukigjlkh', 345678798, 2147483647, 'Unserviceable', 'wyrdtfuygkjhm', 'wetrsdfhgjhkhjj', '2017-07-17', '2017-07-17', 'dsfghkjhkjgkfuyr', '2017-07-07', '2017-07-26 07:32:48');
 
 -- --------------------------------------------------------
 

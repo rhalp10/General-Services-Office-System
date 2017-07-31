@@ -63,7 +63,7 @@ $page = "Record";
                     <li class="dropdown">
                         <a data-toggle="dropdown" class="dropdown-toggle" href="#">
                             <span class="profile-ava">
-                                <img alt="" src="img/avatar-mini2.jpg">
+                                <img alt="" src="<?php echo $login_img; ?>">
                             </span>
                             <span class="username"><?php echo $login_session; ?></span>
                             <b class="caret"></b>
@@ -402,7 +402,7 @@ while ( $row=mysql_fetch_array($query))
                           <tbody>
                             
                               <tr>
-                              <td><input  class="form-control" type="" name="acccard_view_add_propno-Set" value="" onkeyup="numberInputOnly(this);"></td>
+                              <td><input  class="form-control" type="" name="acccard_view_add_propno-Set" value="" ></td>
                               <td><input  class="form-control" type="" name="acccard_view_add_amount-Set" value="" onkeyup="numberInputOnly(this);"></td>
                               <td><input  class="form-control" type="" name="acccard_view_add_transferTo-Set" value="" onkeyup="letterInputOnly(this);"></td>
                               <td><input  class="form-control" type="" name="acccard_view_add_remarks-Set" value="" ></td>

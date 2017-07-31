@@ -48,7 +48,7 @@ $page = "Record";
                     <li class="dropdown">
                         <a data-toggle="dropdown" class="dropdown-toggle" href="#">
                             <span class="profile-ava">
-                                <img alt="" src="img/avatar-mini2.jpg">
+                                <img alt="" src="<?php echo $login_img; ?>">
                             </span>
                             <span class="username"><?php echo $login_session; ?></span>
                             <b class="caret"></b>
@@ -136,6 +136,7 @@ $page = "Record";
                 <th>Date Encoded</th>
                 <th>Date</th>
                 <th>Supplier</th>
+                <th>P.O. No</th>
                 <th>Description</th>
                 <th>Qty</th>
                <th>Issued</th>
@@ -144,6 +145,7 @@ $page = "Record";
             </tr>
           </thead>
           <tfoot>
+            <th></th>
             <th></th>
             <th></th>
             <th></th>
@@ -162,6 +164,7 @@ $page = "Record";
               <td><?php echo  $row["DateAdded"];?></td>
               <td><?php echo  $row["bin_Date"];?></td>
               <td><?php echo  $row["Supplier"];?></td>
+              <td><?php echo  $row["PoNo"];?></td>
               <td><?php echo  $row["Descrp"];?></td>
               <td><?php echo  $row["Qty"];?></td>
               <td><?php echo  $row['Issued'];?></td>
@@ -293,6 +296,13 @@ $page = "Record";
                             <label class="col-sm-2 control-label"><b>SUPPLIER</b></label>
                             <div class="col-sm-10">
                                 <input type="text"  class="form-control" placeholder="Supplier" name="bincard_record_supplier" required="">
+                            </div>
+                        </div>
+                        <br><br>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label"><b>P.O. NO.</b></label>
+                            <div class="col-sm-10">
+                                <input type="text"  class="form-control" placeholder="Supplier" name="bincard_record_pono" required="">
                             </div>
                         </div>
                         <br><br>

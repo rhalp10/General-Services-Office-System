@@ -8,7 +8,7 @@ if(isset($_POST['Submit']))
     $bincard_record_supplier = $_POST['bincard_record_supplier'];
     $bincard_record_description = $_POST['bincard_record_description'];
     $bincard_record_qty = $_POST['bincard_record_qty'];
-        
+    $bincard_record_pono = $_POST['bincard_record_pono'];
     if (empty($bincard_record_date) || empty($bincard_record_supplier) || empty($bincard_record_description) || empty($bincard_record_qty)) {
             if($bincard_record_date == '0000-00-00') 
             {
@@ -39,8 +39,8 @@ if(isset($_POST['Submit']))
         }
         else
         {
-            $sql ="INSERT INTO bincard_record (bin_Date, Supplier, Descrp, Qty)";
-            $sql.="VALUES ('$bincard_record_date','$bincard_record_supplier','$bincard_record_description','$bincard_record_qty')";
+            $sql ="INSERT INTO bincard_record (bin_Date, Supplier, Descrp, Qty,PoNo)";
+            $sql.="VALUES ('$bincard_record_date','$bincard_record_supplier','$bincard_record_description','$bincard_record_qty','$bincard_record_pono')";
             $result = mysql_query($sql);
             
             //display success message

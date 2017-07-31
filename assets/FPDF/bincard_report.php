@@ -19,7 +19,8 @@ class PDF extends FPDF{
 		$this->SetFont('Times','B',9);
     	$this->Cell(30,8,'Date Encoded',1,0,'C');
     	$this->Cell(50,8,'Supplier',1,0,'C');
-    	$this->Cell(125,8,'Description',1,0,'C');
+    	$this->Cell(25,8,'P.O. No.',1,0,'C');
+    	$this->Cell(100,8,'Description',1,0,'C');
     	$this->Cell(25,8,'Quantity',1,0,'C');
     	$this->Cell(25,8,'Issued',1,0,'C');
     	$this->Cell(35,8,'Balance',1,0,'C');
@@ -60,7 +61,8 @@ while ($row = mysql_fetch_array($res))
 
 		$pdf->Cell(30,8,$row['DateAdded'],1,0,'C');
     	$pdf->Cell(50,8,$row['Supplier'],1,0,'C');
-    	$pdf->Cell(125,8,$row['Descrp'],1,0);
+    	$pdf->Cell(25,8,$row['PoNo'],1,0,'C');
+    	$pdf->Cell(100,8,$row['Descrp'],1,0);
     	$pdf->Cell(25,8,$row['Qty'],1,0,'C');
     	$pdf->Cell(25,8,$row['Issued'],1,0,'C');
     	$pdf->Cell(35,8,$row['Balance'],1,0,'C');

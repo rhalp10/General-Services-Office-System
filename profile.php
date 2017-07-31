@@ -61,7 +61,7 @@ $page = "Dashboard"
                     <li class="dropdown">
                         <a data-toggle="dropdown" class="dropdown-toggle" href="#">
                             <span class="profile-ava">
-                                <img alt="" src="img/avatar-mini2.jpg">
+                                <img alt="" src="<?php echo $login_img; ?>">
                             </span>
                             <span class="username"><?php echo $login_session; ?></span>
                             <b class="caret"></b>
@@ -141,7 +141,7 @@ $page = "Dashboard"
                             <div class="col-lg-2 col-sm-3">
                               <h4><?php echo $fullname; ?></h4>               
                               <div class="follow-ava">
-                                  <img src="img/avatar-mini2.jpg" alt="">
+                                  <img src="<?php echo $login_img; ?>" alt="">
                               </div>
                               <h6><?php echo $position; ?></h6>
                             </div>

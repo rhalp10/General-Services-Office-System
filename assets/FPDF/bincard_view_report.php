@@ -17,13 +17,9 @@ class PDF extends FPDF{
 		$this->Cell(0,0,'Trece Martires City',0,0,'C');
 		$this->Ln(20);
 		$this->SetFont('Times','B',9);
-    	$this->Cell(30,8,'Date Encoded',1,0,'C');
-    	$this->Cell(50,8,'Supplier',1,0,'C');
-    	$this->Cell(85,8,'Description',1,0,'C');
-    	$this->Cell(25,8,'Quantity',1,0,'C');
-    	$this->Cell(35,8,'Issued',1,0,'C');
-    	$this->Cell(35,8,'Balance',1,0,'C');
-    	$this->Cell(65,8,'Bin Date',1,1,'C');
+    	$this->Cell(80,8,'',1,0,'C');
+    	$this->Cell(125,8,'BIN CARD',1,0,'C');
+    	$this->Cell(0,8,'P.O. NO.:',1,1,'C');
 		$this->SetFont('Times','',8);
 
 	}
@@ -66,23 +62,17 @@ include('db.php');
 $pdf->SetFont('Times','',9);
 
 
-
-		$pdf->Cell(30,8,$row1['DateAdded'],1,0,'C');
-    	$pdf->Cell(50,8,$row1['Supplier'],1,0,'C');
-    	$pdf->Cell(85,8,$row1['Descrp'],1,0);
-    	$pdf->Cell(25,8,$row1['Qty'],1,0,'C');
-    	$pdf->Cell(35,8,$row1['Issued'],1,0,'C');
-    	$pdf->Cell(35,8,$row1['Balance'],1,0,'C');
-    	$pdf->Cell(65,8,$row1['bin_Date'],1,1,'C');
-
+    	$pdf->Cell(280,8,$row1['Descrp'],1,0);
+      $pdf->Cell(0,-8,$row1['PoNo'],0,1);
+      $pdf->Cell(0,16,'',1,1);
     	$pdf->SetFont('Times','B',9);
     	$pdf->Cell(30,8,'Date Encoded',1,0,'C');
-    	$pdf->Cell(50,8,'',1,0,'C');
-    	$pdf->Cell(85,8,'',1,0,'C');
+    	$pdf->Cell(50,8,'Supplier',1,0,'C');
+    	$pdf->Cell(85,8,'Description',1,0,'C');
     	$pdf->Cell(60,8,'Recipient',1,0,'C');
     	$pdf->Cell(35,8,'Issued',1,0,'C');
     	$pdf->Cell(35,8,'Balance',1,0,'C');
-    	$pdf->Cell(30,8,'Bin Date',1,1,'C');
+    	$pdf->Cell(0,8,'Bin Date',1,1,'C');
 		$pdf->SetFont('Times','',8);
 
         while( $row=mysql_fetch_array($query)) 
@@ -92,12 +82,12 @@ $pdf->SetFont('Times','',9);
                 $issued_ID = $row['ID'];
 
 				$pdf->Cell(30,8,$row['DateAdded'],1,0,'C');
-		    	$pdf->Cell(50,8,'',1,0,'C');
-		    	$pdf->Cell(85,8,'',1,0);
+		    	$pdf->Cell(50,8,$row1['Supplier'],1,0,'C');
+		    	$pdf->Cell(85,8,$row1['Descrp'],1,0);
 		    	$pdf->Cell(60,8,$row['recpnt'],1,0);
 		    	$pdf->Cell(35,8,$row['qty'],1,0,'C');
 		    	$pdf->Cell(35,8,$balance,1,0,'C');
-		    	$pdf->Cell(30,8,$row['issued_date'],1,1,'C');
+		    	$pdf->Cell(0,8,$row['issued_date'],1,1,'C');
 
 		}
 	

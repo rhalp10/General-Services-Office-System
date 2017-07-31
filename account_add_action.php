@@ -2,7 +2,14 @@
 include("db.php");
 if(isset($_POST['Submit']))
  { 
- 	$account_add_img = "img/emp_profile/temp.jpg";
+    if ($_POST['account_add_gender'] == 'Male') 
+    {
+        $account_add_img = "img/emp_profile/maletmp.png";
+    }
+    else
+    {
+        $account_add_img = "img/emp_profile/femaletmp.png";
+    }
     $account_add_accLevel = $_POST['account_add_Level'];
  	$account_add_username = $_POST['account_add_username'];
     $account_add_name = $_POST['account_add_name'];

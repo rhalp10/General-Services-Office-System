@@ -38,7 +38,7 @@ $query = mysql_query($sql);
                     <li class="dropdown">
                         <a data-toggle="dropdown" class="dropdown-toggle" href="#">
                             <span class="profile-ava">
-                                <img alt="" src="img/avatar-mini2.jpg">
+                                <img alt="" src="<?php echo $login_img; ?>">
                             </span>
                             <span class="username"><?php echo $login_session; ?></span>
                             <b class="caret"></b>
@@ -124,6 +124,7 @@ $query = mysql_query($sql);
             <tr>
                 <th>Date</th>
                 <th>Supplier</th>
+                <th>P.O. No</th>
                 <th>Description</th>
                 <th>Qty</th>
                <th>Issued</th>
@@ -132,6 +133,7 @@ $query = mysql_query($sql);
             </tr>
           </thead>
           <tfoot>
+            <th></th>
             <th></th>
             <th></th>
             <th></th>
@@ -148,6 +150,7 @@ $query = mysql_query($sql);
             <tr>
               <td><?php echo  $row["bin_Date"];?></td>
               <td><?php echo  $row["Supplier"];?></td>
+              <td><?php echo  $row["PoNo"];?></td>
               <td><?php echo  $row["Descrp"];?></td>
               <td><?php echo  $row["Qty"];?></td>
               <td><?php echo  $row['Issued'];?></td>
