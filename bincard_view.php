@@ -131,7 +131,7 @@ $page = "Record";
           <h3 class="page-header"><i class="fa fa-clipboard"></i> Bincard Management</h3>
           <ol class="breadcrumb">
             <li><i class="fa fa-home"></i><a href="index.php">Dashboard</a></li>
-            <li><i class="fa fa-clipboard"></i><a href="bincard.php">Bincard Management</a></li>
+            <li><i class="fa fa-clipboard"></i><a href="bincard.php" >Bincard Management</a></li>
             <li><i class="fa fa-clipboard"></i>Issued Item</a></li>
           </ol>
         </div>
@@ -319,7 +319,7 @@ $page = "Record";
                         <div class="form-group">
                             <label class="col-sm-2 control-label"><b>RECIPIENT</b></label>
                             <div class="col-sm-10">
-                                <input type="text"  class="form-control" placeholder="Supplier" name="binitem_issued_recpnt" required="">
+                                <input type="text"  class="form-control" placeholder="Recipient" name="binitem_issued_recpnt" required="">
                             </div>
                         </div>
                         <br><br>

@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Jul 31, 2017 at 09:12 AM
+-- Generation Time: Aug 01, 2017 at 09:14 AM
 -- Server version: 5.5.16
 -- PHP Version: 5.3.8
 
@@ -36,21 +36,15 @@ CREATE TABLE IF NOT EXISTS `bincard_issued_record` (
   `qty` int(11) NOT NULL,
   `DateAdded` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`ID`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=36 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=38 ;
 
 --
 -- Dumping data for table `bincard_issued_record`
 --
 
 INSERT INTO `bincard_issued_record` (`ID`, `ItemSetID`, `itemCode`, `bin_ID`, `recpnt`, `issued_date`, `qty`, `DateAdded`) VALUES
-(24, 'SP-24', 'SET SP-24', 16, 'omar', '2017-07-21', 5, '2017-07-19 01:17:53'),
-(25, 'SP-25', 'SET SP-25', 16, 'darren', '2017-07-08', 4, '2017-07-19 01:18:13'),
-(26, 'SP-26', 'SET SP-26', 16, 'franz', '2017-07-08', 1, '2017-07-19 02:21:28'),
-(31, 'SP-31', 'SET SP-31', 17, 'asd', '2017-07-14', 3, '2017-07-22 07:02:37'),
-(32, 'SP-32', 'SET SP-32', 18, 'HERO', '2017-07-07', 20, '2017-07-22 07:48:30'),
-(33, 'SP-33', 'SET SP-33', 19, 'FRANZ', '2017-07-01', 500, '2017-07-22 07:49:29'),
-(34, 'SP-34', 'SET SP-34', 19, 'AUBREY', '2017-07-21', 50, '2017-07-22 07:49:42'),
-(35, 'SP-35', 'SET SP-35', 20, 'mark1hqfegwubhdijdskml;f,b.sfboiuldfjzgnmcviadfkhu', '2017-07-15', 50, '2017-07-25 06:12:18');
+(36, 'SP-36', 'SET SP-36', 26, 'junmar', '2017-08-01', 20, '2017-08-01 00:51:03'),
+(37, 'SP-37', 'SET SP-37', 27, 'ANALIE RODIL', '2017-08-01', 1, '2017-08-01 05:37:29');
 
 -- --------------------------------------------------------
 
@@ -69,20 +63,16 @@ CREATE TABLE IF NOT EXISTS `bincard_record` (
   `DateAdded` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `PoNo` varchar(50) NOT NULL,
   PRIMARY KEY (`ID`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=26 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=29 ;
 
 --
 -- Dumping data for table `bincard_record`
 --
 
 INSERT INTO `bincard_record` (`ID`, `bin_Date`, `Supplier`, `Descrp`, `Qty`, `Issued`, `Balance`, `DateAdded`, `PoNo`) VALUES
-(16, '2017-07-31', 'OMAR ', 'PC', '40', 10, 30, '2017-07-31 05:02:59', '3213'),
-(17, '2017-07-08', 'Ian', 'Mark', '50', 3, 47, '2017-07-31 05:05:07', 'xc'),
-(18, '2017-07-08', 'FRANZ', 'ASO', '50', 20, 30, '2017-07-22 07:48:56', ''),
-(19, '2017-07-13', 'PAPA', 'ISDA', '1500', 550, 950, '2017-07-22 07:49:56', ''),
-(20, '2017-07-15', 'uyhjyuhjnoyhlunjm123123123123', 'iuhjwnsdcuoihjnmsdfuchvhjndsmfxcvhuljsdfngxclhkjn', '123', 50, 73, '2017-07-25 06:12:30', ''),
-(21, '2017-07-12', 'qewregrdhgfnhdn', 'qwerwgfdbgfvb', '213454', 0, 213454, '2017-07-26 07:34:05', ''),
-(22, '0056-05-04', 'Ian kun', 'gago', '1000000000', 0, 1000000000, '2017-07-31 05:06:41', '1553');
+(26, '2017-08-31', 'melsheshoe', 'monoblock chairs', '1600', 20, 1580, '2017-08-01 00:51:15', 'po 1600'),
+(27, '2017-01-08', 'NEWLINE TRADING', 'IT EQUIPMENT', '20', 1, 19, '2017-08-01 05:37:59', '03-2017'),
+(28, '2017-08-01', 'MELCHESHOE', 'URATEX MONOBLOCK CHAIR', '8000', 0, 8000, '2017-08-01 05:44:09', '0001');
 
 -- --------------------------------------------------------
 
@@ -106,14 +96,15 @@ CREATE TABLE IF NOT EXISTS `emp_accountability_card` (
   `Remarks` varchar(200) NOT NULL,
   `DateTurnOver` date NOT NULL,
   PRIMARY KEY (`ID`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=36 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=37 ;
 
 --
 -- Dumping data for table `emp_accountability_card`
 --
 
 INSERT INTO `emp_accountability_card` (`ID`, `Emp_ID`, `ItemSetID`, `itemCode`, `ParNo`, `Qty`, `Unit`, `Descrp`, `SN`, `PropNo`, `Amount`, `TransferTo`, `Remarks`, `DateTurnOver`) VALUES
-(35, 7, 'SP-35', 'SET SP-35', 'N-123-17', 1, ' unit', 'tablet', 'cnu521563', '00117', 7499, 'charlotte jean', '', '2017-07-31');
+(35, 7, 'SP-35', 'SET SP-35', 'N-123-17', 1, ' unit', 'tablet', 'cnu521563', '00117', 7499, 'charlotte jean', '', '2017-07-31'),
+(36, 8, 'SP-36', 'SET SP-36', 'T-333-17', 1, 'unit', 'Collapsible tent 10 x 12 x 8.5 ft.', 'n/a', '', 27000, '', 'Formerly to Reymond Ambion', '0000-00-00');
 
 -- --------------------------------------------------------
 
@@ -136,7 +127,7 @@ CREATE TABLE IF NOT EXISTS `emp_accounts_record` (
   `image` varchar(250) NOT NULL,
   PRIMARY KEY (`accID`),
   UNIQUE KEY `User` (`username`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=28 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=29 ;
 
 --
 -- Dumping data for table `emp_accounts_record`
@@ -146,16 +137,17 @@ INSERT INTO `emp_accounts_record` (`accID`, `accLevel`, `username`, `password`, 
 (1, '1', 'employee', 'employee', 'mark', 20, 'Unknown', 'Mars', 'marcalien@gmail.com', 'staff', '09169158798', 'img/emp_profile/temp.jpg'),
 (10, '0', 'asasdkld', '321', 'iouqou', 0, 'khakdhk', 'hhhhh', 'oiuoiu@yahoo.com', 'kkjh', '0904545454', 'img/emp_profile/temp.jpg'),
 (14, '1', 'iou', '555', 'franz1', 50, 'male', 'Blk 38 Lot 11 Phase 2b Brgy Aguado TMC', 'jalksjd@yahoo.com', 'jklasdjd', '0915611894', 'img/emp_profile/temp.jpg'),
-(15, '2', 'bincard', 'bincard', 'tryyyyyyyyyyyyyyyyyyyyy', 50, '9', '9', '987@aksd.com', '9', '0905454984', 'img/emp_profile/temp.jpg'),
-(18, '1', 'darren321', '321', 'OMAR DAUD', 15, 'Male', 'NAIC', '321@yahoo.com', '155', '0906545644', 'img/emp_profile/temp.jpg'),
-(19, '1', 'rd2h1fs8jk2b6cz', 'yth3xk5slz8bd', 'Omar', 20, 'Male', 'Bucal 3-B, Maragondon, Cavite', 'Omardaud21000@gmail.com', '.....', '09355173381', 'img/emp_profile/temp.jpg'),
-(21, '0', 'admin', 'admin', 'Rhalp Darren Cabrera', 20, 'Male', 'Blk 38 Lot 11 Ph2b Southville2 Trece Martirez City', 'rhalpdarrencabrera@gmail.com', 'ADMIN', '09169158798', 'img/emp_profile/temp.jpg'),
-(22, '0', 'Keita210000', 'darkdemon12', 'Omar', 2147483647, 'Male', 'Bucal 3-B, Maragondon, Cavite', 'omardaud2100000@gmail.com', 'oiadskniqwijooqihweihoqwe', '09355173381', 'img/emp_profile/temp.jpg'),
-(23, '0', 'Keita1200', 'darkdemon12', 'Omar Raouf A. Daud', 20, 'Male', 'bucal 3b maragondon cavite', 'Omardaud21000@gmail.com', 'Kahit ano', '09363398243', 'img/emp_profile/temp.jpg'),
-(24, '3', 'ac', 'ac', 'Accountability', 21, 'Male', 'Bucal 3-B Maragondon, Cavite', 'omardaud2100@gmail.com', 'Administrative', '06321351', 'img/emp_profile/temp.jpg'),
+(15, '2', 'bincard', 'bincard', 'Rhalpp', 20, 'Male', 'Blk 38 Lot 11 Ph2b Southville2 Trece Martirez City', 'rhalpdarrencabrera@gmail.com', 'admin', '09169158798', 'img/emp_profile/maletmp.png'),
+(18, '1', 'darren321', '321', 'OMAR DAUD', 15, 'Male', 'NAIC', '321@yahoo.com', '155', '0906545644', 'img/emp_profile/maletmp.png'),
+(19, '1', 'rd2h1fs8jk2b6cz', 'yth3xk5slz8bd', 'Omar', 20, 'Male', 'Bucal 3-B, Maragondon, Cavite', 'Omardaud21000@gmail.com', '.....', '09355173381', 'img/emp_profile/maletmp.png'),
+(21, '0', 'admin', 'admin', 'Rhalp Darren Cabrera', 20, 'Male', 'Blk 38 Lot 11 Ph2b Southville2 Trece Martirez City', 'rhalpdarrencabrera@gmail.com', 'ADMIN', '09169158798', 'img/emp_profile/maletmp.png'),
+(22, '0', 'Keita210000', 'darkdemon12', 'Omar', 2147483647, 'Male', 'Bucal 3-B, Maragondon, Cavite', 'omardaud2100000@gmail.com', 'oiadskniqwijooqihweihoqwe', '09355173381', 'img/emp_profile/maletmp.png'),
+(23, '0', 'Keita1200', 'darkdemon12', 'Omar Raouf A. Daud', 20, 'Male', 'bucal 3b maragondon cavite', 'Omardaud21000@gmail.com', 'Kahit ano', '09363398243', 'img/emp_profile/maletmp.png'),
+(24, '3', 'ac', 'ac', 'Accountability', 21, 'Male', 'Bucal 3-B Maragondon, Cavite', 'omardaud2100@gmail.com', 'Administrative', '06321351', 'img/emp_profile/maletmp.png'),
 (25, '4', 'icsprspar', 'a', 'icsprspar', 0, 'Male', 'icsprspar', 'icsprspar@gmail.com', 'asd', '09096545184', 'img/emp_profile/temp.jpg'),
-(26, '0', 'Godz', '123456789', 'God ', 100, 'Female', 'kaytambog ', 'god@gmail.com', 'God', '123', 'img/emp_profile/temp.jpg'),
-(27, '0', 'asa', 'asa', 'asa', 21, 'Male', 'asa', 'asdasd@yahoo.com', 'as', '9090', 'img/emp_profile/maletmp.png');
+(26, '0', 'Godz', '123456789', 'God ', 100, 'Female', 'kaytambog ', 'god@gmail.com', 'God', '123', 'img/emp_profile/maletmp.png'),
+(27, '0', 'asa', 'asa', 'asa', 21, 'Male', 'asa', 'asdasd@yahoo.com', 'as', '9090', 'img/emp_profile/maletmp.png'),
+(28, '0', 'Anne', 'iloveyou', 'ANALIE RODIL', 51, 'Female', 'Kayquit I Indang Cavite', 'rodil.anne@yahoo.com', 'Administrative Officer V', '09399084592', 'img/emp_profile/femaletmp.png');
 
 -- --------------------------------------------------------
 
@@ -170,14 +162,15 @@ CREATE TABLE IF NOT EXISTS `emp_pgc_record` (
   `designation` varchar(100) NOT NULL,
   `note` varchar(50) NOT NULL,
   PRIMARY KEY (`accID`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=8 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=9 ;
 
 --
 -- Dumping data for table `emp_pgc_record`
 --
 
 INSERT INTO `emp_pgc_record` (`accID`, `fullName`, `office`, `designation`, `note`) VALUES
-(7, 'Analie B. Rodil', 'GSO', 'Administrative Officer V', '');
+(7, 'Analie B. Rodil', 'GSO', 'Administrative Officer V', ''),
+(8, 'Reyniel Ambion', 'SPC', 'Provincial Board Member', '');
 
 -- --------------------------------------------------------
 
@@ -324,7 +317,7 @@ CREATE TABLE IF NOT EXISTS `invent_custodian_slip_descrp` (
   `Descrp` varchar(50) NOT NULL,
   `Invent_Item_No` varchar(50) NOT NULL,
   PRIMARY KEY (`ID`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=16 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=18 ;
 
 --
 -- Dumping data for table `invent_custodian_slip_descrp`
@@ -405,6 +398,27 @@ INSERT INTO `office_dictionary` (`ID`, `officeName`, `officeCode`) VALUES
 (52, 'PHILIPPINE NATIONAL POLICE', 'PNP'),
 (53, 'REGIONAL TRIAL COURT', 'RTC'),
 (54, 'MUNICIPAL TRIAL COURT', 'MTC');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `organizationchart`
+--
+
+CREATE TABLE IF NOT EXISTS `organizationchart` (
+  `ID` int(11) NOT NULL AUTO_INCREMENT,
+  `Name` varchar(100) NOT NULL,
+  `Position` varchar(200) NOT NULL,
+  PRIMARY KEY (`ID`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
+
+--
+-- Dumping data for table `organizationchart`
+--
+
+INSERT INTO `organizationchart` (`ID`, `Name`, `Position`) VALUES
+(1, 'RENATO A. ABUTAN', 'Provincial Administrator'),
+(2, 'ENGR. ENRICO M. ALVAREZ', 'General Services Officer');
 
 -- --------------------------------------------------------
 

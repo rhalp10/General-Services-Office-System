@@ -167,13 +167,10 @@ $page = "Record";
                               </tr>
                               <tr>
 
-                                <td><input type="text" name="custodian_slip_qty" class="form-control"  required="" placeholder="Qty" value="<?php echo $Qty; ?>" onkeyup="numberInputOnly(this);"></td>
-                                <td><select  name="custodian_slip_unit" class="form-control" required="" value="<?php echo $Unit; ?>">
-                                  <option value="unit">Unit</option>
-                                  <option value="pc">Pc.</option>
-                                </select></td>
+                                <td><input type="text" name="custodian_slip_qty" class="form-control"  required="" placeholder="Quantity" value="<?php echo $Qty; ?>" onkeyup="numberInputOnly(this);"></td>
+                                <td><input type="text" name="custodian_slip_unit" class="form-control" required="" placeholder="Unit"></td>
                                 <td><input type="text" name="custodian_slip_descrp" class="form-control"  required="" placeholder="Description" value="<?php echo $Descrp; ?>"></td>
-                                <td><input type="text" name="custodian_slip_inventItemNo" class="form-control"  required="" placeholder="Inventory Item No." value="<?php echo $Invent_Item_No; ?>" onkeyup="numberInputOnly(this);"></td>
+                                <td><input type="text" name="custodian_slip_inventItemNo" class="form-control"  placeholder="Inventory Item No." value="<?php echo $Invent_Item_No; ?>" onkeyup="numberInputOnly(this);"></td>
                                 <td><input type="text" name="custodian_slip_EzLife" class="form-control"  required="" placeholder="Estimated Useful Life" value="<?php echo $Ez_Useful_Life; ?>"></td>
                               </tr>
                               <?php 
@@ -264,6 +261,7 @@ $page = "Record";
                                 </section>
                             </div>
                         </div>
+                        <!--
                         <div class="row">
                             <div class="col-lg-12">
                                 <section class="panel">
@@ -301,6 +299,9 @@ $page = "Record";
                                 
                             </div>
                         </div>
+                        -->
+                                            <input class="btn btn-success" type="Submit" name="Submit" value="Submit">
+                                            <a href="ics.php" class="btn btn-danger">Cancel</a>
                         </form>
                     </div>
                 </section>

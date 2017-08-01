@@ -323,9 +323,7 @@ $page = "Record";
                               </tr>
                               <tr>
                                 <td><input type="text" name="prop_return_slip_qty" class="form-control" placeholder="Qty"   onkeyup="numberInputOnly(this);"></td>
-                                <td><select  name="prop_return_slip_unit" class="form-control" required="" value="custodian_slip_unit">
-                                  <option value="unit">Unit</option>
-                                  <option value="pc">Pc.</option>
+                                <td><input type="text" name="prop_return_slip_unit" class="form-control" required="" >
                                 </select></td>
                                 <td><input type="text" name="prop_return_slip_descrp" class="form-control" placeholder="Description"></td>
                                 <td><input type="text" name="prop_return_slip_serialnum" class="form-control" placeholder="Serial Number"></td>
@@ -394,7 +392,7 @@ $page = "Record";
                                 </section>
                             </div>
                         </div>
-
+                        <!--
                         <div class="row">
                             <div class="col-lg-12">
                                 <section class="panel">
@@ -420,17 +418,12 @@ $page = "Record";
                                                     <input type="date"  class="form-control" placeholder="date" name="prop_return_slip_receiveFrom_Date" required="">
                                                 </div>
                                             </div>
-                                            <div class="form-group">
-                                                <label class="col-sm-2 control-label"></label>
-                                                <div class="col-sm-2">
-                                                    <input class="btn btn-success"  type="submit" name="Submit" value="Submit"> 
-                                                     <input class="btn btn-danger"  type="submit" name="Cancel" value="Cancel"  data-dismiss="modal">
-                                                </div>
-                                            </div>
+                                           
                                     </div>
                                 </section>
                             </div>
                         </div>
+                        -->
                        <div class="form-group">
                                                 <label class="col-sm-2 control-label">Status</label>
                                                 <div class="col-sm-2">
@@ -441,6 +434,13 @@ $page = "Record";
                                                     
                                                 </div>
 
+                                            </div>
+                                             <div class="form-group">
+                                                <label class="col-sm-2 control-label"></label>
+                                                <div class="col-sm-2">
+                                                    <input class="btn btn-success"  type="submit" name="Submit" value="Submit"> 
+                                                     <input class="btn btn-danger"  type="submit" name="Cancel" value="Cancel"  data-dismiss="modal">
+                                                </div>
                                             </div>
                         </form><!--End of Form for the receipt -->
                       </section>

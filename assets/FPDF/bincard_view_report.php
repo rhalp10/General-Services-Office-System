@@ -19,7 +19,7 @@ class PDF extends FPDF{
 		$this->SetFont('Times','B',9);
     	$this->Cell(80,8,'',1,0,'C');
     	$this->Cell(125,8,'BIN CARD',1,0,'C');
-    	$this->Cell(0,8,'P.O. NO.:',1,1,'C');
+    	$this->Cell(0,8,'P.O. NO./C.N. No.:',1,1,'C');
 		$this->SetFont('Times','',8);
 
 	}
@@ -62,9 +62,9 @@ include('db.php');
 $pdf->SetFont('Times','',9);
 
 
-    	$pdf->Cell(280,8,$row1['Descrp'],1,0);
-      $pdf->Cell(0,-8,$row1['PoNo'],0,1);
-      $pdf->Cell(0,16,'',1,1);
+    	$pdf->Cell(285,8,$row1['Descrp'],1,0);
+     	$pdf->Cell(0,-8,$row1['PoNo'],0,1);
+      	$pdf->Cell(0,16,'',1,1);
     	$pdf->SetFont('Times','B',9);
     	$pdf->Cell(30,8,'Date Encoded',1,0,'C');
     	$pdf->Cell(50,8,'Supplier',1,0,'C');
@@ -72,7 +72,7 @@ $pdf->SetFont('Times','',9);
     	$pdf->Cell(60,8,'Recipient',1,0,'C');
     	$pdf->Cell(35,8,'Issued',1,0,'C');
     	$pdf->Cell(35,8,'Balance',1,0,'C');
-    	$pdf->Cell(0,8,'Bin Date',1,1,'C');
+    	$pdf->Cell(0,8,'Issued Date',1,1,'C');
 		$pdf->SetFont('Times','',8);
 
         while( $row=mysql_fetch_array($query)) 

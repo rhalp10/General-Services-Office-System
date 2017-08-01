@@ -217,6 +217,12 @@ $page = "Record";
                                 </section>
                             </div>
                         </div>
+                        <?php   
+                        $result1 = mysql_query("SELECT * FROM organizationchart WHERE ID = '2'");
+                        $test1 = mysql_fetch_array($result1);
+                        $rFname = $test1['Name'];
+                        $rFposition = $test1['Position'];
+                        ?>
                         <div class="row">
                             <div class="col-lg-12">
                                 <section class="panel">
@@ -227,19 +233,19 @@ $page = "Record";
                                             <div class="form-group">
                                                 <label class="col-sm-2 control-label">Name</label>
                                                 <div class="col-sm-7">
-                                                    <td><label class="control-label"><?php echo $ReceivedFrom_Name;?></label></td>
+                                                    <td><label class="control-label"><?php echo $rFname;?></label></td>
                                                 </div>
                                             </div>
                                             <div class="form-group">
                                                 <label class="col-sm-2 control-label">Position</label>
                                                 <div class="col-sm-7">
-                                                    <td><label class="control-label"><?php echo $ReceivedFrom_Position;?></label></td>
+                                                    <td><label class="control-label"><?php echo $rFposition;?></label></td>
                                                 </div>
                                             </div>
                                             <div class="form-group">
                                                 <label class="col-sm-2 control-label">Date</label>
                                                 <div class="col-sm-2">
-                                                    <td><label class="control-label"><?php echo $ReceivedFrom_Date;?></label></td>
+                                                    <td><label class="control-label"><?php echo $ReceivedBy_Date;?></label></td>
                                                 </div>
                                             </div>
                                             <div class="form-group">

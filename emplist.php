@@ -110,7 +110,7 @@ $page = "Employee";
 				</div>
 			</div>
               <!-- page start-->
-              Page content goes here
+              <iframe src="assets/organization-chart/index.html" width="100%" height="600px;"></iframe>
               <!-- page end-->
           </section>
       </section>

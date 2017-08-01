@@ -85,7 +85,10 @@ while ($data = mysql_fetch_array($res1))
     }
 		
 }
-	
+	 					$result1 = mysql_query("SELECT * FROM organizationchart WHERE ID = '2'");
+                        $test1 = mysql_fetch_array($result1);
+                        $rFname = $test1['Name'];
+                        $rFposition = $test1['Position'];
 for($colCount;$colCount<24;$colCount++)
 	{	
 	$pdf->Cell(25,5,'',1,0);
@@ -111,7 +114,7 @@ $pdf->Cell(0,0,'',0,1);
 
 $pdf->SetFont('Times','B',8);
 $pdf->Cell(100,-35,$row['ReceivedBy_Name'],0,0,'C');
-$pdf->Cell(0,-35,$row['ReceivedFrom_Name'],0,0,'C');
+$pdf->Cell(0,-35,$rFname,0,0,'C');
 $pdf->Cell(0,0,'',0,1);
 $pdf->SetFont('Times','',8);
 //names value end
@@ -123,7 +126,7 @@ $pdf->Cell(0,0,'',0,1);
 //cell for position value
 $pdf->SetFont('Times','B',8);
 $pdf->Cell(100,-35,$row['ReceivedBy_Position'],0,0,'C');
-$pdf->Cell(0,-35,$row['ReceivedFrom_Position'],0,0,'C');
+$pdf->Cell(0,-35,$rFposition,0,0,'C');
 $pdf->Cell(0,0,'',0,1);
 $pdf->SetFont('Times','',8);
 //position value end
@@ -135,7 +138,7 @@ $pdf->Cell(0,0,'',0,1);
 //cell for date value
 $pdf->SetFont('Times','B',8);
 $pdf->Cell(100,-25,$row['ReceiveBy_Date'],0,0,'C');
-$pdf->Cell(0,-25,$row['ReceiveFrom_Date'],0,1,'C');
+$pdf->Cell(0,-25,$row['ReceiveBy_Date'],0,1,'C');
 $pdf->Cell(0,0,'',0,1);
 $pdf->SetFont('Times','',8);
 //date value end

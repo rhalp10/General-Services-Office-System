@@ -19,7 +19,7 @@ class PDF extends FPDF{
 		$this->SetFont('Times','B',9);
     	$this->Cell(30,8,'Date Encoded',1,0,'C');
     	$this->Cell(50,8,'Supplier',1,0,'C');
-    	$this->Cell(25,8,'P.O. No.',1,0,'C');
+    	$this->Cell(25,8,'P.O. NO./C.N. No.',1,0,'C');
     	$this->Cell(100,8,'Description',1,0,'C');
     	$this->Cell(25,8,'Quantity',1,0,'C');
     	$this->Cell(25,8,'Issued',1,0,'C');

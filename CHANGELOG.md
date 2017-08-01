@@ -3,6 +3,8 @@
 =======
 ## [Unreleased]
 -------
+## [1.01] - 08-01-17
+	- organizational chart plugin
 ## [1.01] - 07-26-17
 	- page restriction set
 ## [1.00] - 07-25-17

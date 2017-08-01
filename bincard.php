@@ -134,9 +134,9 @@ $page = "Record";
           <thead >
             <tr>
                 <th>Date Encoded</th>
-                <th>Date</th>
+                <th>Date Deliver</th>
                 <th>Supplier</th>
-                <th>P.O. No</th>
+                <th>P.O. NO./C.N. No.</th>
                 <th>Description</th>
                 <th>Qty</th>
                <th>Issued</th>
@@ -286,36 +286,36 @@ $page = "Record";
                     <div class="panel-body">
                      <form action="bincard_add_new_action.php" method="post" name="form1">
                         <div class="form-group">
-                            <label class="col-sm-2 control-label"><b>DATE</b></label>
-                            <div class="col-sm-10">
+                            <label class="col-sm-3 control-label"><b>DATE DELIVER</b></label>
+                            <div class="col-sm-9">
                                 <input type="date"  class="form-control" placeholder="Bin Date" name="bincard_record_date" required="">
                             </div>
                         </div>
                         <br><br>
                         <div class="form-group">
-                            <label class="col-sm-2 control-label"><b>SUPPLIER</b></label>
-                            <div class="col-sm-10">
+                            <label class="col-sm-3 control-label"><b>SUPPLIER</b></label>
+                            <div class="col-sm-9">
                                 <input type="text"  class="form-control" placeholder="Supplier" name="bincard_record_supplier" required="">
                             </div>
                         </div>
                         <br><br>
                         <div class="form-group">
-                            <label class="col-sm-2 control-label"><b>P.O. NO.</b></label>
-                            <div class="col-sm-10">
-                                <input type="text"  class="form-control" placeholder="Supplier" name="bincard_record_pono" required="">
+                            <label class="col-sm-3 control-label"><b>P.O. NO./C.N. No.</b></label>
+                            <div class="col-sm-9">
+                                <input type="text"  class="form-control" placeholder="P.O. NO./C.N. No." name="bincard_record_pono" >
                             </div>
                         </div>
                         <br><br>
                             <div class="form-group">
-                            <label class="col-sm-2 control-label"><b>DESCRIPTION</b></label>
-                            <div class="col-sm-10">
+                            <label class="col-sm-3 control-label"><b>DESCRIPTION</b></label>
+                            <div class="col-sm-9">
                                 <input type="text"  class="form-control" placeholder="Description" name="bincard_record_description" required="">
                             </div>
                         </div>
                         <br><br>
                         <div class="form-group">
-                            <label class="col-sm-2 control-label"><b>QUANTITY</b></label>
-                            <div class="col-sm-10">
+                            <label class="col-sm-3 control-label"><b>QUANTITY</b></label>
+                            <div class="col-sm-9">
                                 <input type="text"  class="form-control" placeholder="Quantity" name="bincard_record_qty" required="" onkeyup="numberInputOnly(this);">
                             </div>
                         </div>

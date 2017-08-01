@@ -378,10 +378,7 @@ while ( $row=mysql_fetch_array($query))
                               <tr>
                               <td><input  class="form-control" type="" name="acccard_view_add_par-Set" value="" ></td>
                               <td><input  class="form-control" type="" name="acccard_view_add_qty-Set" value="" onkeyup="numberInputOnly(this);"></td>
-                              <td><select  name="acccard_view_add_unit-Set" class="form-control" required="" value="custodian_slip_unit">
-                                  <option value="unit">Unit</option>
-                                  <option value="pc">Pc.</option>
-                                </select></td>
+                              <td><input type="text" name="acccard_view_add_unit-Set" class="form-control" required="" ></td>
                               <td><input  class="form-control" type="" name="acccard_view_add_descrp-Set" value="" ></td>
                               <td><input  class="form-control" type="" name="acccard_view_add_sn-Set" value="" ></td>
                               </tr>

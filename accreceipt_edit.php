@@ -227,6 +227,7 @@ $page = "Record";
                                 </section>
                             </div>
                         </div>
+                        <!--
                         <div class="row">
                             <div class="col-lg-12">
                                 <section class="panel">
@@ -262,7 +263,14 @@ $page = "Record";
                                 </section>
                             </div>
                         </div>
-
+                        -->
+                        <div class="form-group">
+                                                <label class="col-sm-2 control-label"></label>
+                                                <div class="col-sm-2">
+                                                    <input class="btn btn-success "  type="submit" name="Submit" value="Submit"> 
+                                                </div>
+                                            </div>
+                                            <br>
                         </form><!--End of Form for the receipt -->
                       </section>
                   </div>
