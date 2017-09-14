@@ -13,8 +13,8 @@ if (isset($_POST['ProfileEdit']))
 	}
 	else
 	{
-		$res = mysql_query("SELECT * FROM emp_accounts_record WHERE accID = '$ID'");
-		$test = mysql_fetch_array($res);
+		$res = mysqli_query($con,"SELECT * FROM emp_accounts_record WHERE accID = '$ID'");
+		$test = mysqli_fetch_array($res);
 		if ($profile_edit_oldpass == $test['password']) 
 		{
 			
@@ -23,7 +23,7 @@ if (isset($_POST['ProfileEdit']))
 				//Query for update profile information
 				$sql = "UPDATE emp_accounts_record ";
 				$sql.= " SET password = '$profile_edit_password' WHERE  accID ='$ID'";
-				$result = mysql_query($sql);
+				$result = mysqli_query($sql);
 				//display success update msg
 				echo "<script>alert('Update info successfully');
 	                                        window.location='profile.php';

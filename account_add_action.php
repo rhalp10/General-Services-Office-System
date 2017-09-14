@@ -97,7 +97,7 @@ if(isset($_POST['Submit']))
             {
                 $sql = "INSERT INTO emp_accounts_record (accLevel, username, password, fullName, Age, Gender, Address, Email, Pos, Mobile, image) ";
                 $sql.= "VALUES ('$account_add_accLevel','$account_add_username','$account_add_password','$account_add_name','$account_add_age','$account_add_gender','$account_add_address','$account_add_email','$account_add_position','$account_add_mobile','$account_add_img')";
-                $result = mysql_query($sql); 
+                $result = mysqli_query($con,$sql); 
                 echo "<script>alert('Register Successfully!');
                                                 window.location='account.php';
                                             </script>";

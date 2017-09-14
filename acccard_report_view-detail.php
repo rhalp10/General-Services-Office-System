@@ -6,7 +6,7 @@ include('db.php');
 $empID = $_REQUEST['ID'];
 $sql = "SELECT *";
 $sql.=" FROM emp_accountability_card WHERE ID = '$accID' ";
-$query = mysql_query($sql);   
+$query = mysqli_query($con,$sql);   
  $page = "Report";   
 ?>
 <!DOCTYPE html>
@@ -164,7 +164,7 @@ $query = mysql_query($sql);
                                     <div class="panel-body">
                                      
                                         <?php 
-$row=mysql_fetch_array($query);
+$row=mysqli_fetch_array($query);
 //FIRST WHILE FOR FETCHING ALL SET DATA
 
 
@@ -243,8 +243,8 @@ $row=mysql_fetch_array($query);
 
       $sql1 = "SELECT *";
       $sql1.=" FROM emp_accountability_card WHERE ItemCode = '$ItemSetID'";
-      $query1 = mysql_query($sql1);                               
-      while ($row1=mysql_fetch_array($query1))  
+      $query1 = mysqli_query($con,$sql1);                               
+      while ($row1=mysqli_fetch_array($query1))  
       {
         ?>
         <tr>

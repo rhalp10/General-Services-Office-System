@@ -3,7 +3,7 @@ include('session.php');
 include('db.php');
 $sql = "SELECT *";
 $sql.=" FROM invent_custodian_slip";
-$query=mysql_query($sql);
+$query=mysqli_query($con,$sql);
  $page = "Report";
 ?>
 <!DOCTYPE html>
@@ -141,7 +141,7 @@ $query=mysql_query($sql);
           </tfoot>
           <tbody>
           <?php 
-           while( $row=mysql_fetch_array($query) ) 
+           while( $row=mysqli_fetch_array($query) ) 
            { 
 
            $icsID = $row['ID'];

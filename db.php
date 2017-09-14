@@ -1,9 +1,4 @@
 <?php  
-	$conn = mysql_connect('localhost', 'root', '');
-	 if (!$conn)
-    {
-	 die('Could not connect: ' . mysql_error());
-	}
-	mysql_select_db("gso_data", $conn);
+	$con = mysqli_connect('localhost','root','','gso_data') or die("ERROR");
 ?>
 

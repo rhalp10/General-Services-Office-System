@@ -11,8 +11,8 @@ if(isset($_POST['Submit']))
 
     $pgc_emp_ac_Note = $_POST['pgc_emp_ac_Note'];
     
-    $result = mysql_query("SELECT * FROM emp_pgc_record WHERE fullName ='$pgc_emp_ac_name'");
-    $test = mysql_fetch_array($result);
+    $result = mysqli_query($con,"SELECT * FROM emp_pgc_record WHERE fullName ='$pgc_emp_ac_name'");
+    $test = mysqli_fetch_array($result);
         if (empty($pgc_emp_ac_name) || empty($pgc_emp_ac_office) || empty($pgc_emp_ac_designation)) 
         {
              if(empty($pgc_emp_ac_name)) 
@@ -47,7 +47,7 @@ if(isset($_POST['Submit']))
         }
         else
         {
-            $result = mysql_query("INSERT INTO emp_pgc_record (fullName,office,designation,note) VALUES ('$pgc_emp_ac_name','$pgc_emp_ac_office','$pgc_emp_ac_designation','$pgc_emp_ac_Note')");
+            $result = mysqli_query($con,"INSERT INTO emp_pgc_record (fullName,office,designation,note) VALUES ('$pgc_emp_ac_name','$pgc_emp_ac_office','$pgc_emp_ac_designation','$pgc_emp_ac_Note')");
             //display success message
             echo "<script>alert('Data added successfully');
                                             window.location='acccard.php';

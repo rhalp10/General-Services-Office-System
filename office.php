@@ -3,7 +3,7 @@ include('session.php');
 include('db.php');
 $sql = "SELECT *";
 $sql.=" FROM office_dictionary";
-$query=mysql_query($sql);
+$query=mysqli_query($con,$sql);
 $page = "Office";
 ?>
 <!DOCTYPE html>
@@ -161,7 +161,7 @@ $page = "Office";
                                 </tfoot>
                                 <tbody>
                                 <?php 
-                                while( $row=mysql_fetch_array($query) ) { 
+                                while( $row=mysqli_fetch_array($query) ) { 
                                   $officeID = $row['ID'];
                                 ?>
                                   <tr>

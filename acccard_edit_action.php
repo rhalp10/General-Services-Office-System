@@ -33,7 +33,7 @@
 			$sql = "UPDATE  emp_pgc_record ";
 			$sql.="SET  fullName =  '$pgc_emp_ac_edit_name',office =  '$pgc_emp_ac_edit_office',designation = '$pgc_emp_ac_edit_designation',note = '$pgc_emp_ac_edit_note' WHERE  accID = '$accID'";
 
-			$result = mysql_query($sql);
+			$result = mysqli_query($con,$sql);
 			echo "<script>alert('Update info successfully');
                                         window.location='acccard.php';
                                     </script>";

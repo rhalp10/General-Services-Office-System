@@ -3,8 +3,8 @@ include('session.php');
 $prsID  = $_REQUEST['ID'];
 $sql = "SELECT * ";
 $sql.=" FROM property_return_slip_record WHERE ID = '$prsID'";
-$result = mysql_query($sql);
-$row = mysql_fetch_array($result);
+$result = mysqli_query($con,$sql);
+$row = mysqli_fetch_array($result);
 $LGU_Name = $row['LGU_Name'];
 $PurposeID = $row['PurposeID'];
 $Qty = $row['Qty'];
@@ -171,9 +171,9 @@ $page = "Record";
                                     
                                      <label class="control-label" name="prop_return_slip_purpose" required="">
                                             <?php 
-                                            $result=mysql_query("SELECT * FROM prs_purpose_dictionary");
+                                            $result=mysqli_query($con,"SELECT * FROM prs_purpose_dictionary");
                                           
-                                            while($test = mysql_fetch_array($result))
+                                            while($test = mysqli_fetch_array($result))
                                             {
                                               if ($PurposeID == $test['ID']) 
                                               {
@@ -269,12 +269,6 @@ $page = "Record";
                             </div>
                         </div>
 
-                          <?php   
-                        $result1 = mysql_query("SELECT * FROM organizationchart WHERE ID = '2'");
-                        $test1 = mysql_fetch_array($result1);
-                        $rFname = $test1['Name'];
-                        $rFposition = $test1['Position'];
-                        ?>
                         <div class="row">
                             <div class="col-lg-12">
                                 <section class="panel">
@@ -285,24 +279,25 @@ $page = "Record";
                                             <div class="form-group">
                                                 <label class="col-sm-2 control-label">Name</label>
                                                 <div class="col-sm-7">
-                                                    <td><label class="control-label"><?php echo $rFname;?></label></td>
+                                                    <label class="control-label"><?php echo "$ReceiveFrom_Name";?>
                                                 </div>
                                             </div>
                                             <div class="form-group">
                                                 <label class="col-sm-2 control-label">Position</label>
                                                 <div class="col-sm-7">
-                                                    <td><label class="control-label"><?php echo $rFposition;?></label></td>
+                                                    <label class="control-label"><?php echo "$ReceiveFrom_Position";?>
                                                 </div>
                                             </div>
                                             <div class="form-group">
                                                 <label class="col-sm-2 control-label">Date</label>
                                                 <div class="col-sm-2">
-                                                    <td><label class="control-label"><?php echo $ReceiveBy_Date;?></label></td>
+                                                    <label class="control-label"><?php echo "$ReceiveFrom_Date";?>
                                                 </div>
                                             </div>
                                             <div class="form-group">
                                                 <label class="col-sm-2 control-label"></label>
                                                 <div class="col-sm-2">
+                                                    
                                                 </div>
                                             </div>
                                     </div>

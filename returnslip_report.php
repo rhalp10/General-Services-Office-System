@@ -3,7 +3,7 @@ include('session.php');
 include('db.php');
 $sql = "SELECT *";
 $sql.=" FROM property_return_slip_record";
-$query=mysql_query($sql);
+$query=mysqli_query($con,$sql);
  $page = "Report";
 ?>
 <!DOCTYPE html>
@@ -147,7 +147,7 @@ $query=mysql_query($sql);
           </tfoot>
           <tbody>
           <?php 
-           while( $row=mysql_fetch_array($query) ) 
+           while( $row=mysqli_fetch_array($query) ) 
            { 
 
            $ID = $row['ID'];
@@ -158,8 +158,8 @@ $query=mysql_query($sql);
               <td><?php 
               $purposeSQL ="SELECT *";
               $purposeSQL.="  FROM prs_purpose_dictionary";
-              $purposeRes = mysql_query($purposeSQL);
-              while($purposeVal=mysql_fetch_array($purposeRes)) 
+              $purposeRes = mysqli_query($con,$purposeSQL);
+              while($purposeVal=mysqli_fetch_array($purposeRes)) 
               {
                 if ($row['PurposeID'] == $purposeVal['ID']) 
                 {

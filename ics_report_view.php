@@ -2,8 +2,8 @@
 include('session.php');
 
 $icsID =$_REQUEST['icsID'];
-$result = mysql_query("SELECT * FROM invent_custodian_slip WHERE ID = '$icsID'");
-$test = mysql_fetch_array($result);
+$result = mysqli_query($con,"SELECT * FROM invent_custodian_slip WHERE ID = '$icsID'");
+$test = mysqli_fetch_array($result);
 $ICS=$test['ICS'];
       $Qty=$test['Qty'];
       $Unit=$test['Unit'];
@@ -173,9 +173,9 @@ $page = "Record";
                                 </label></td>
                               </tr>
                               <?php 
-                              $res1 = mysql_query("SELECT * FROM invent_custodian_slip_descrp where icsID = '$icsID' ");
+                              $res1 = mysqli_query($con,"SELECT * FROM invent_custodian_slip_descrp where icsID = '$icsID' ");
 
-                              while ($row = mysql_fetch_array($res1))
+                              while ($row = mysqli_fetch_array($res1))
                               {
                               ?>
                               <tr>

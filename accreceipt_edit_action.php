@@ -17,7 +17,7 @@ if (isset($_POST['Submit'])) {
 	$sql = "UPDATE property_accountability_receipt_record";
 	$sql.=" SET Qty = '$edit_qty', Unit = '$edit_unit', Descrp = '$edit_descrp', PropNo = '$edit_propNo', ReceivedFrom_Name = '$edit_RecFrmname', ReceivedFrom_Position = '$edit_RecFrmpos', ReceivedFrom_Date = '$edit_RecFrmdate', ReceivedBy_Name = '$edit_RecByname', ReceivedBy_Position = '$edit_RecBypos', ReceivedBy_Date = '$edit_RecBydate', PAR = '$edit_par' WHERE ID = $parID";
 
-	$result = mysql_query($sql);
+	$result = mysqli_query($con,$sql);
 	echo "<script>alert('Update info successfully');
                                         window.location='accreceipt.php';
                                     </script>";

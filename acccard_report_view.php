@@ -3,9 +3,9 @@ include('session.php');
 $ID =$_REQUEST['accID'];
 include('db.php');
 
-$result = mysql_query("SELECT * FROM emp_pgc_record WHERE accID = '$ID'");
-$test = mysql_fetch_array($result);
-$rows = mysql_num_rows($result);
+$result = mysqli_query($con,"SELECT * FROM emp_pgc_record WHERE accID = '$ID'");
+$test = mysqli_fetch_array($result);
+$rows = mysqli_num_rows($result);
                 $emp_pgc_record_accID=$test['accID'];
                 $emp_pgc_record_fullname=$test['fullName'] ;
                 $emp_pgc_record_office=$test['office'];
@@ -13,7 +13,7 @@ $rows = mysql_num_rows($result);
 
 $sql = "SELECT *";
 $sql.=" FROM emp_accountability_card WHERE Emp_ID = $ID";
-$query = mysql_query($sql); 
+$query = mysqli_query($sql); 
  $page = "Report";     
 ?>
 <!DOCTYPE html>

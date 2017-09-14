@@ -4,9 +4,9 @@ include('session.php');
 
 $ID =$_REQUEST['accID'];
 
-$result = mysql_query("SELECT * FROM emp_accounts_record WHERE accID = '$ID'");
-$test = mysql_fetch_array($result);
-$rows = mysql_num_rows($result);
+$result = mysqli_query($con,"SELECT * FROM emp_accounts_record WHERE accID = '$ID'");
+$test = mysqli_fetch_array($result);
+$rows = mysqli_num_rows($result);
                 $emp_acc_record_accID=$test['accID'];
                 $emp_acc_record_accLevel=$test['accLevel'];
                 $emp_acc_record_username=$test['username'];

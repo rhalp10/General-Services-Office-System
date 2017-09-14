@@ -2,9 +2,9 @@
 include('session.php');
 $ID = $_REQUEST['ID'];
 
-$result = mysql_query("SELECT * FROM property_accountability_receipt_record WHERE ID = '$ID'");
-$test = mysql_fetch_array($result);
-$rows = mysql_num_rows($result);
+$result = mysqli_query($con,"SELECT * FROM property_accountability_receipt_record WHERE ID = '$ID'");
+$test = mysqli_fetch_array($result);
+$rows = mysqli_num_rows($result);
   $Qty = $test['Qty'];
   $Unit = $test['Unit'];
   $Descrp = $test['Descrp'];
@@ -227,7 +227,6 @@ $page = "Record";
                                 </section>
                             </div>
                         </div>
-                        <!--
                         <div class="row">
                             <div class="col-lg-12">
                                 <section class="panel">
@@ -263,14 +262,7 @@ $page = "Record";
                                 </section>
                             </div>
                         </div>
-                        -->
-                        <div class="form-group">
-                                                <label class="col-sm-2 control-label"></label>
-                                                <div class="col-sm-2">
-                                                    <input class="btn btn-success "  type="submit" name="Submit" value="Submit"> 
-                                                </div>
-                                            </div>
-                                            <br>
+
                         </form><!--End of Form for the receipt -->
                       </section>
                   </div>

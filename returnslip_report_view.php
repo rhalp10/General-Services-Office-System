@@ -3,8 +3,8 @@ include('session.php');
 $prsID  = $_REQUEST['ID'];
 $sql = "SELECT * ";
 $sql.=" FROM property_return_slip_record WHERE ID = '$prsID'";
-$result = mysql_query($sql);
-$row = mysql_fetch_array($result);
+$result = mysqli_query($con,$sql);
+$row = mysqli_fetch_array($result);
 $LGU_Name = $row['LGU_Name'];
 $PurposeID = $row['PurposeID'];
 $Qty = $row['Qty'];
@@ -158,9 +158,9 @@ $ReceiveFrom_Date = $row['ReceiveFrom_Date'];
                                     
                                      <label class="control-label" name="prop_return_slip_purpose" required="">
                                             <?php 
-                                            $result=mysql_query("SELECT * FROM prs_purpose_dictionary");
+                                            $result=mysqli_query($con,"SELECT * FROM prs_purpose_dictionary");
                                           
-                                            while($test = mysql_fetch_array($result))
+                                            while($test = mysqli_fetch_array($result))
                                             {
                                               if ($PurposeID == $test['ID']) 
                                               {

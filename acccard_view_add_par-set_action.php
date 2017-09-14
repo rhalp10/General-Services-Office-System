@@ -65,18 +65,18 @@
             $sql.=" VALUES ('$empID','$Par_Set_value','$Qty_Set_value','$Unit_Set_value','$Descrp_Set_value','$sn_Set_value','$PropNo_Set_value','$Amount_Set_value','$TransferTo_Set_value','$Remarks_Set_value','$dateTurnOver_Set_value')";
             */
             $sql.=" VALUES (NULL, '$empID', 'ItemSetID', 'itemCode', '$Par_Set_value', '$Qty_Set_value', '$Unit_Set_value', '$Descrp_Set_value', '$sn_Set_value', '$PropNo_Set_value', '$Amount_Set_value', '$TransferTo_Set_value', '$Remarks_Set_value', '$dateTurnOver_Set_value')";
-            $result = mysql_query($sql);
+            $result = mysqli_query($con,$sql);
             
             $sql1 = "SELECT * FROM";
             $sql1.=" emp_accountability_card";
-            $result1 = mysql_query($sql1);
-            while ($row= mysql_fetch_array($result1))
+            $result1 = mysqli_query($con,$sql1);
+            while ($row= mysqli_fetch_array($result1))
             {
                 $addID = $row['ID'];
             }
             $sql2 = "UPDATE  emp_accountability_card";
             $sql2.=" SET ItemSetID = 'SP-$addID',itemCode = 'SET SP-$addID' WHERE ID = '$addID'";
-            $result2 = mysql_query($sql2);
+            $result2 = mysqli_query($con,$sql2);
             //display success message
             
             echo "<script>alert('Data added successfully');
@@ -106,18 +106,18 @@
             $sql.=" VALUES ('$empID','$Par_Set_value','$Qty_Set_value','$Unit_Set_value','$Descrp_Set_value','$sn_Set_value','$PropNo_Set_value','$Amount_Set_value','$TransferTo_Set_value','$Remarks_Set_value','$dateTurnOver_Set_value')";
             */
             $sql.=" VALUES (NULL, '$empID', 'ItemSetID', 'itemCode', '$Qty_Set_value', '$Unit_Set_value', '$Descrp_Set_value', '$sn_Set_value', '$PropNo_Set_value', '$Amount_Set_value', '$TransferTo_Set_value', '$Remarks_Set_value', '$dateTurnOver_Set_value')";
-            $result = mysql_query($sql);
+            $result = mysqli_query($con,$sql);
             
             $sql1 = "SELECT * FROM";
             $sql1.=" emp_accountability_card";
-            $result1 = mysql_query($sql1);
-            while ($row= mysql_fetch_array($result1))
+            $result1 = mysqli_query($con,$sql1);
+            while ($row= mysqli_fetch_array($result1))
             {
                 $addID = $row['ID'];
             }
             $sql2 = "UPDATE  emp_accountability_card";
             $sql2.=" SET ItemSetID = 'SP-$addID',itemCode = 'PART $set' WHERE ID = '$addID'";
-            $result2 = mysql_query($sql2);
+            $result2 = mysqli_query($con,$sql2);
             //display success message
             
             echo "<script>alert('Data added successfully');

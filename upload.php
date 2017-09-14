@@ -7,7 +7,7 @@ if (isset($post['upload']))
 {
     $target = "images/".basename($_FILES['image']['name']);
 
-    $db = mysql_connect("localhost","root","gso_data");
+    $db = mysqli_connect("localhost","root","gso_data");
 
     $image = $_FILE['image']['name'];
     $text = $_POST['text'];

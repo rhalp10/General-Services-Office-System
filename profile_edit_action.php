@@ -62,7 +62,7 @@ if (isset($_POST['ProfileEdit']))
 			//Query for update profile information
 			$sql = "UPDATE emp_accounts_record ";
 			$sql.= " SET fullName ='$profile_edit_name' , Age='$profile_edit_age', Gender='$profile_edit_gender', Address='$profile_edit_address', Email='$profile_edit_email', Pos='$profile_edit_position', Mobile='$profile_edit_mobile' WHERE  accID ='$ID'";
-			$result = mysql_query($sql);
+			$result = mysqli_query($con,$sql);
 			//display success update msg
 			echo "<script>alert('Update info successfully');
                                         window.location='profile.php';

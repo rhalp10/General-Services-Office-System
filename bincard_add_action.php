@@ -75,12 +75,12 @@ if(isset($_POST['Submit'])) {
         //insert data to database
         if (empty($pgc_emp_ac_dateturnover) || empty($pgc_emp_ac_transferto)) 
         {
-            $result = mysql_query("INSERT INTO emp_accountability_card(Emp_ID,ParNo,Qty,Unit,Descrp,SN,PropNo,Amount,TransferTo,Remarks,DateTurnOver) 
+            $result = mysqli_query($con,"INSERT INTO emp_accountability_card(Emp_ID,ParNo,Qty,Unit,Descrp,SN,PropNo,Amount,TransferTo,Remarks,DateTurnOver) 
             VALUES('$Emp_ID','$pgc_emp_ac_parno','$pgc_emp_ac_qty','$pgc_emp_ac_unit','$pgc_emp_ac_descrp','$pgc_emp_ac_sn','$pgc_emp_ac_propno','$pgc_emp_ac_amount','null','$pgc_emp_ac_remarks','0000-00-00')");
         }
         else
         {
-             $result = mysql_query("INSERT INTO emp_accountability_card(Emp_ID,ParNo,Qty,Unit,Descrp,PropNo,Amount,TransferTo,Remarks,DateTurnOver) 
+             $result = mysqli_query($con,"INSERT INTO emp_accountability_card(Emp_ID,ParNo,Qty,Unit,Descrp,PropNo,Amount,TransferTo,Remarks,DateTurnOver) 
             VALUES('$Emp_ID','$pgc_emp_ac_parno','$pgc_emp_ac_qty','$pgc_emp_ac_unit','$pgc_emp_ac_descrp','$pgc_emp_ac_sn','$pgc_emp_ac_propno','$pgc_emp_ac_amount','$pgc_emp_ac_transferto','$pgc_emp_ac_remarks','$pgc_emp_ac_dateturnover')");
         }
        

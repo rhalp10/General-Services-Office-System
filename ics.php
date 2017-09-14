@@ -3,7 +3,7 @@ include('session.php');
 include('db.php');
 $sql = "SELECT *";
 $sql.=" FROM invent_custodian_slip";
-$query=mysql_query($sql);
+$query=mysqli_query($con,$sql);
 if ($login_level != '0' ) 
 {
     if ($login_level == '4') {
@@ -159,7 +159,7 @@ $page = "Record";
           </tfoot>
           <tbody>
           <?php 
-           while( $row=mysql_fetch_array($query) ) 
+           while( $row=mysqli_fetch_array($query) ) 
            { 
 
            $icsID = $row['ID'];
@@ -290,14 +290,16 @@ $page = "Record";
                               </tr>
                               <tr>
                                 <td><input type="text" name="custodian_slip_qty" class="form-control"  required="" placeholder="Qty" onkeyup="numberInputOnly(this);"></td>
-                                <td><input type="" name="custodian_slip_unit" class="form-control" required="" ></td>
+                                <td><select  name="custodian_slip_unit" class="form-control" required="" value="custodian_slip_unit">
+                                  <option value="unit">Unit</option>
+                                  <option value="pc">Pc.</option>
+                                </select></td>
                                 <td><input type="text" name="custodian_slip_descrp" class="form-control"  required="" placeholder="Description"></td>
-                                <td><input type="text" name="custodian_slip_inventItemNo" class="form-control"  placeholder="Inventory Item No." onkeyup="numberInputOnly(this);"></td>
+                                <td><input type="text" name="custodian_slip_inventItemNo" class="form-control"  required="" placeholder="Inventory Item No." onkeyup="numberInputOnly(this);"></td>
                                 <td><input type="text" name="custodian_slip_EzLife" class="form-control"  required="" placeholder="Estimated Useful Life" ></td>
                               </tr>
                              </table>
                              <hr>
-
                           <div class="row">
                             <div class="col-lg-12">
                                 <section class="panel">
@@ -329,7 +331,7 @@ $page = "Record";
                                     </div>
                                 </section>
                             </div>
-                        </div><!--
+                        </div>
                         <div class="row">
                             <div class="col-lg-12">
                                 <section class="panel">
@@ -371,16 +373,6 @@ $page = "Record";
                                 
                             </div>
                         </div>
-                        -->
-                        <div class="form-group">
-                                                <label class="col-sm-2 control-label"></label>
-                                                <div class="col-sm-1">  
-                                                    <input class="btn btn-success "  type="submit" name="Submit" value="Submit"> 
-
-                                                </div><div class="col-sm-2">  
-                                                    <input class="btn btn-danger "  type="submit" name="Cancel" value="Cancel" data-dismiss="modal"> 
-                                                </div>
-                                            </div>
                         </form>
                     </div>
                 </section>

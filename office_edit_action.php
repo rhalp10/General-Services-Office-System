@@ -18,7 +18,7 @@
       $sql = "UPDATE  office_dictionary ";
       $sql.="SET  officeName =  '$officeName_edit' ,officeCode = '$officeCode_edit' WHERE ID = '$officeID'";
 
-      $result = mysql_query($sql);
+      $result = mysqli_query($con,$sql);
       echo "<script>alert('Update info successfully');
                                         window.location='office.php';
                                     </script>";                              

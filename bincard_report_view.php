@@ -4,15 +4,15 @@ $ID = $_REQUEST['ID'];
 include ('db.php');
               $sql = "SELECT *";
               $sql.=" FROM bincard_issued_record WHERE bin_ID = $ID";
-              $query = mysql_query($sql);
+              $query = mysqli_query($con,$sql);
               $sql1 = "SELECT *";
               $sql1.=" FROM bincard_record WHERE ID = $ID";
-              $query1 = mysql_query($sql1);
-              $row1=mysql_fetch_array($query1);
+              $query1 = mysqli_query($con,$sql1);
+              $row1=mysqli_fetch_array($query1);
               $balance = $row1['Qty'];
               $totalQty = $row1['Qty'];
               $balanceUpdate =  $row1['Qty'];
-              $Count = mysql_num_rows($query);
+              $Count = mysqli_num_rows($query);
               $issuedCount = 0;
               $issuedUpdate = 0;
  $page = "Report";
@@ -156,7 +156,7 @@ include ('db.php');
          <?php 
               
 
-              while( $row=mysql_fetch_array($query)) 
+              while( $row=mysqli_fetch_array($query)) 
               {
 
                 $issuedCount = $issuedCount+1; 

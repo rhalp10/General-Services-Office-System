@@ -7,7 +7,7 @@ include('db.php');
 
 $sql = "SELECT *";
 $sql.=" FROM emp_accountability_card WHERE ID = '$accID' ";
-$query = mysql_query($sql); 
+$query = mysqli_query($con,$sql); 
               
           
 if ($login_level != '0' ) 
@@ -181,7 +181,7 @@ $page = "Record";
                                     <div class="panel-body">
                                      
                                         <?php 
-$row=mysql_fetch_array($query);
+$row=mysqli_fetch_array($query);
 //FIRST WHILE FOR FETCHING ALL SET DATA
 
 
@@ -261,8 +261,8 @@ $row=mysql_fetch_array($query);
 
       $sql1 = "SELECT *";
       $sql1.=" FROM emp_accountability_card WHERE ItemCode = '$ItemSetID'";
-      $query1 = mysql_query($sql1);                               
-      while ($row1=mysql_fetch_array($query1))  
+      $query1 = mysqli_query($con,$sql1);                               
+      while ($row1=mysqli_fetch_array($query1))  
       {
           $ID = $row1['ID'];
         ?>
@@ -417,7 +417,10 @@ $row=mysql_fetch_array($query);
                              <tbody>
                               <tr>
                               <td><input  class="form-control" type="" name="acccard_view_add_qty-Set" value="" onkeyup="numberInputOnly(this);"></td>
-                              <td><input type="text" name="acccard_view_add_unit-Set" class="form-control" required=""></td>
+                              <td><select  name="acccard_view_add_unit-Set" class="form-control" required="" value="custodian_slip_unit">
+                                  <option value="unit">Unit</option>
+                                  <option value="pc">Pc.</option>
+                                </select></td>
                               <td><input  class="form-control" type="" name="acccard_view_add_descrp-Set" value="" ></td>
                               <td><input  class="form-control" type="" name="acccard_view_add_sn-Set" value="" ></td>
                               </tr>

@@ -2,12 +2,12 @@
 include('session.php');
 
 include('db.php');
-$totalresult = mysql_query("SELECT * FROM emp_accounts_record");
-$totalAcc = mysql_num_rows($totalresult);
-$adminresult = mysql_query("SELECT * FROM emp_accounts_record WHERE accLevel = 0");
-$totaladmin = mysql_num_rows($adminresult);
-$empresult = mysql_query("SELECT * FROM emp_accounts_record WHERE accLevel = 1 or accLevel = 2 or accLevel = 3");
-$totalemp = mysql_num_rows($empresult);
+$totalresult = mysqli_query($con,"SELECT * FROM emp_accounts_record");
+$totalAcc = mysqli_num_rows($totalresult);
+$adminresult = mysqli_query($con,"SELECT * FROM emp_accounts_record WHERE accLevel = 0");
+$totaladmin = mysqli_num_rows($adminresult);
+$empresult = mysqli_query($con,"SELECT * FROM emp_accounts_record WHERE accLevel = 1 or accLevel = 2 or accLevel = 3");
+$totalemp = mysqli_num_rows($empresult);
 
 $totalValue = 500;
 $currentValue = 30;
@@ -22,7 +22,7 @@ $js_outEmp = json_encode($EmployeePercentageJS);
 
 $sql = "SELECT *";
 $sql.=" FROM emp_accounts_record";
-$query=mysql_query($sql);
+$query=mysqli_query($con,$sql);
 
  $page = "Report";
 ?>
@@ -185,7 +185,7 @@ $query=mysql_query($sql);
                                 </tfoot>
                                 <tbody>
                                 <?php 
-                                while( $row=mysql_fetch_array($query) ) { 
+                                while( $row=mysqli_fetch_array($query) ) { 
                                 $accID = $row['accID'];
                                 ?>
                                   <tr>

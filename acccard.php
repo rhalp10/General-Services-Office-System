@@ -4,7 +4,7 @@ include('session.php');
 include('db.php');
 $sql = "SELECT *";
 $sql.=" FROM emp_pgc_record";
-$query=mysql_query($sql);
+$query=mysqli_query($con,$sql);
               
 if ($login_level != '0' ) 
 {
@@ -156,7 +156,7 @@ $page = "Record";
           </tfoot>
           <tbody>
           <?php 
-           while( $row=mysql_fetch_array($query) ) 
+           while( $row=mysqli_fetch_array($query) ) 
            { 
 
            $accID = $row['accID'];

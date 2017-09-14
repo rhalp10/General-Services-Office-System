@@ -41,7 +41,7 @@ if(isset($_POST['Submit']))
         {
             $sql ="INSERT INTO bincard_record (bin_Date, Supplier, Descrp, Qty,PoNo)";
             $sql.="VALUES ('$bincard_record_date','$bincard_record_supplier','$bincard_record_description','$bincard_record_qty','$bincard_record_pono')";
-            $result = mysql_query($sql);
+            $result = mysqli_query($con,$sql);
             
             //display success message
             echo "<script>alert('Data added successfully');

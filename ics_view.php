@@ -2,8 +2,8 @@
 include('session.php');
 
 $icsID =$_REQUEST['icsID'];
-$result = mysql_query("SELECT * FROM invent_custodian_slip WHERE ID = '$icsID'");
-$test = mysql_fetch_array($result);
+$result = mysqli_query($con,"SELECT * FROM invent_custodian_slip WHERE ID = '$icsID'");
+$test = mysqli_fetch_array($result);
 $ICS=$test['ICS'];
       $Qty=$test['Qty'];
       $Unit=$test['Unit'];
@@ -187,9 +187,9 @@ $page = "Record";
                                 </label></td>
                               </tr>
                               <?php 
-                              $res1 = mysql_query("SELECT * FROM invent_custodian_slip_descrp where icsID = '$icsID' ");
+                              $res1 = mysqli_query($con,"SELECT * FROM invent_custodian_slip_descrp where icsID = '$icsID' ");
 
-                              while ($row = mysql_fetch_array($res1))
+                              while ($row = mysqli_fetch_array($res1))
                               {
                               ?>
                               <tr>
@@ -272,12 +272,7 @@ $page = "Record";
                                     </div>
                                 </section>
                             </div>
-                        </div>              <?php   
-                        $result1 = mysql_query("SELECT * FROM organizationchart WHERE ID = '2'");
-                        $test1 = mysql_fetch_array($result1);
-                        $rFname = $test1['Name'];
-                        $rFposition = $test1['Position'];
-                        ?>
+                        </div>
                         <div class="row">
                             <div class="col-lg-12">
                                 <section class="panel">
@@ -288,31 +283,36 @@ $page = "Record";
                                             <div class="form-group">
                                                 <label class="col-sm-2 control-label">Name</label>
                                                 <div class="col-sm-7">
-                                                    <td><label class="control-label"><?php echo $rFname;?></label></td>
+                                                    
+                                                <label class="control-label"><?php echo $ReceivedFrom_Name; ?>
+                                                </label>
                                                 </div>
                                             </div>
                                             <div class="form-group">
                                                 <label class="col-sm-2 control-label">Position</label>
                                                 <div class="col-sm-7">
-                                                    <td><label class="control-label"><?php echo $rFposition;?></label></td>
+                                                    
+                                                <label class="control-label"><?php echo $ReceivedFrom_Position; ?>
+                                                </label>
                                                 </div>
                                             </div>
                                             <div class="form-group">
                                                 <label class="col-sm-2 control-label">Date</label>
-                                                <div class="col-sm-2">
-                                                    <td><label class="control-label"><?php echo $ReceivedBy_Date;?></label></td>
+                                                <div class="col-sm-3">
+                                                <label class="control-label"><?php echo $ReceivedFrom_Date; ?>
+                                                </label>
                                                 </div>
                                             </div>
                                             <div class="form-group">
                                                 <label class="col-sm-2 control-label"></label>
-                                                <div class="col-sm-2">
-                                                </div>
+                                            </div>
+                                            <div>
                                             </div>
                                     </div>
                                 </section>
+                                
                             </div>
                         </div>
-
                         </form>
                     </div>
                 </section>

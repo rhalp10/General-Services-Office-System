@@ -4,7 +4,7 @@ include('session.php');
 include('db.php');
 $sql = "SELECT *";
 $sql.=" FROM bincard_record";
-$query = mysql_query($sql);
+$query = mysqli_query($con,$sql);
 if ($login_level != '0') 
 {
     if ($login_level == '2') {
@@ -134,9 +134,9 @@ $page = "Record";
           <thead >
             <tr>
                 <th>Date Encoded</th>
-                <th>Date Deliver</th>
+                <th>Date</th>
                 <th>Supplier</th>
-                <th>P.O. NO./C.N. No.</th>
+                <th>P.O. No</th>
                 <th>Description</th>
                 <th>Qty</th>
                <th>Issued</th>
@@ -157,7 +157,7 @@ $page = "Record";
           </tfoot>
           <tbody>
             <?php 
-            while( $row=mysql_fetch_array($query)) {  
+            while( $row=mysqli_fetch_array($query)) {  
               $ID = $row['ID'];
             ?>
             <tr>
@@ -215,16 +215,16 @@ $page = "Record";
             <?php 
             $issuedSQL = "SELECT * FROM";
             $issuedSQL.=" bincard_issued_record WHERE bin_ID = '$ID'";
-            $res1 = mysql_query($issuedSQL);
+            $res1 = mysqli_query($con,$issuedSQL);
             $issued = 0;
-            while ($row1 = mysql_fetch_array($res1))
+            while ($row1 = mysqli_fetch_array($res1))
             {
                $issued = $issued + $row1['qty'];
             }
             $balance = $row["Qty"]-$issued;
             $updateSQL="UPDATE bincard_record";
             $updateSQL.=" SET Balance = '$balance',Issued = '$issued ' WHERE ID = '$ID'";
-            $updateRes = mysql_query($updateSQL);
+            $updateRes = mysqli_query($con,$updateSQL);
 
             }
             ?>
@@ -286,36 +286,36 @@ $page = "Record";
                     <div class="panel-body">
                      <form action="bincard_add_new_action.php" method="post" name="form1">
                         <div class="form-group">
-                            <label class="col-sm-3 control-label"><b>DATE DELIVER</b></label>
-                            <div class="col-sm-9">
+                            <label class="col-sm-2 control-label"><b>DATE</b></label>
+                            <div class="col-sm-10">
                                 <input type="date"  class="form-control" placeholder="Bin Date" name="bincard_record_date" required="">
                             </div>
                         </div>
                         <br><br>
                         <div class="form-group">
-                            <label class="col-sm-3 control-label"><b>SUPPLIER</b></label>
-                            <div class="col-sm-9">
+                            <label class="col-sm-2 control-label"><b>SUPPLIER</b></label>
+                            <div class="col-sm-10">
                                 <input type="text"  class="form-control" placeholder="Supplier" name="bincard_record_supplier" required="">
                             </div>
                         </div>
                         <br><br>
                         <div class="form-group">
-                            <label class="col-sm-3 control-label"><b>P.O. NO./C.N. No.</b></label>
-                            <div class="col-sm-9">
-                                <input type="text"  class="form-control" placeholder="P.O. NO./C.N. No." name="bincard_record_pono" >
+                            <label class="col-sm-2 control-label"><b>P.O. NO.</b></label>
+                            <div class="col-sm-10">
+                                <input type="text"  class="form-control" placeholder="Supplier" name="bincard_record_pono" required="">
                             </div>
                         </div>
                         <br><br>
                             <div class="form-group">
-                            <label class="col-sm-3 control-label"><b>DESCRIPTION</b></label>
-                            <div class="col-sm-9">
+                            <label class="col-sm-2 control-label"><b>DESCRIPTION</b></label>
+                            <div class="col-sm-10">
                                 <input type="text"  class="form-control" placeholder="Description" name="bincard_record_description" required="">
                             </div>
                         </div>
                         <br><br>
                         <div class="form-group">
-                            <label class="col-sm-3 control-label"><b>QUANTITY</b></label>
-                            <div class="col-sm-9">
+                            <label class="col-sm-2 control-label"><b>QUANTITY</b></label>
+                            <div class="col-sm-10">
                                 <input type="text"  class="form-control" placeholder="Quantity" name="bincard_record_qty" required="" onkeyup="numberInputOnly(this);">
                             </div>
                         </div>

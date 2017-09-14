@@ -19,7 +19,7 @@ if (isset($_POST['Update'])) {
 	$dateturnover = $_POST['dateturnover'];
 $sql = "UPDATE emp_accountability_card";
 $sql.=" SET ParNo = '$par', Qty = '$qty', Unit = '$unit',Descrp = '$description',SN = '$serial', PropNo = '$propno', Amount= '$amount', TransferTo = '$transferto',Remarks = '$remarks', DateTurnOver = '$dateturnover' WHERE ID = '$accID'";
-$res = mysql_query($sql);
+$res = mysqli_query($con,$sql);
     echo "<script>alert('Update successfully');
                                         window.location='acccard_view.php?accID=$empID';
                                     </script>";

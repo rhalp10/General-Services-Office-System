@@ -3,7 +3,7 @@ include('session.php');
 include('db.php');
 $sql = "SELECT *";
 $sql.=" FROM emp_accounts_record";
-$query=mysql_query($sql);
+$query=mysqli_query($con,$sql);
 if ($login_level != '0') 
 {
   header("location: index.php");
@@ -150,7 +150,7 @@ $page = "Account";//this is for <li></li> active
                                 </tfoot>
                                 <tbody>
                                 <?php 
-                                while( $row=mysql_fetch_array($query) ) { 
+                                while( $row=mysqli_fetch_array($query) ) { 
                                 $accID = $row['accID'];
                                 ?>
                                   <tr>

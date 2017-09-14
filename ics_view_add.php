@@ -6,7 +6,7 @@ if (isset($_POST['Submit'])) {
 	$itemNo = $_POST['icsView_ItemNo'];
 	$sql = "INSERT INTO invent_custodian_slip_descrp (icsID,Descrp,Invent_Item_No)";
 	$sql.=" VALUES ('$icsID','$Descrp','$itemNo')";
-	$res = mysql_query($sql);
+	$res = mysqli_query($con,$sql);
 	echo "<script>alert('Item Descrp Successfuly Add');
 	                                     window.location='ics_view.php?icsID=$icsID';
 	                                 </script>";

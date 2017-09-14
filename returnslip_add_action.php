@@ -26,7 +26,7 @@ if(isset($_POST['Submit']))
     $sql = "INSERT INTO property_return_slip_record (ID, LGU_Name, PurposeID, Qty, Unit, Descrp, Serial_Num, Prop_Number, ParNo, Name_of_Enduser, Unit_Value, Total_Value, Status, ReceiveBy_Name, ReceiveBy_Position, ReceiveBy_Date, ReceiveFrom_Name, ReceiveFrom_Position, ReceiveFrom_Date, DateAdded)";
 
     $sql.=" VALUES (NULL, '$prop_return_slip_lguName ', '$prop_return_slip_purpose', '$prop_return_slip_qty', '$prop_return_slip_unit', '$prop_return_slip_descrp', '$prop_return_slip_serialnum', '$prop_return_slip_propno', '$prop_return_slip_par', '$prop_return_slip_NameOfEndUser', '$prop_return_slip_UnitValue', '$prop_return_slip_TotalValue', '$prop_return_slip_status', '$prop_return_slip_receiveBy_Name', '$prop_return_slip_receiveBy_Position', '$prop_return_slip_receiveBy_Date', '$prop_return_slip_receiveBy_Date', '$prop_return_slip_receiveFrom_Position', '$prop_return_slip_receiveFrom_Date', CURRENT_TIMESTAMP)";
-    $result = mysql_query($sql);
+    $result = mysqli_query($con,$sql);
    //display success message
    echo "<script>alert('Data added successfully');
                               window.location='returnslip.php';

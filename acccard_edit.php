@@ -2,8 +2,8 @@
 include('session.php');
 $ID =$_REQUEST['accID'];
 
-$result = mysql_query("SELECT * FROM emp_pgc_record WHERE accID = '$ID'");
-$test = mysql_fetch_array($result);
+$result = mysqli_query($con,"SELECT * FROM emp_pgc_record WHERE accID = '$ID'");
+$test = mysqli_fetch_array($result);
                 $emp_pgc_record_accID=$test['accID'];
                 $emp_pgc_record_fullname=$test['fullName'];
                 $emp_pgc_record_office=$test['office'];

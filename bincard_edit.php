@@ -2,8 +2,8 @@
 include('session.php');
 
 $accID =$_REQUEST['ID'];
-$result = mysql_query("SELECT * FROM bincard_record WHERE ID = '$accID'");
-$test = mysql_fetch_array($result);
+$result = mysqli_query($con,"SELECT * FROM bincard_record WHERE ID = '$accID'");
+$test = mysqli_fetch_array($result);
       $bin_Date=$test['bin_Date'];
       $Supplier=$test['Supplier'];
       $Descrp=$test['Descrp'];

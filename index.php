@@ -1,12 +1,11 @@
 <?php
 include('login_action.php'); // Includes Login Script
-if(isset($_SESSION['login_user']))
+if(isset($login_session))
 {           
             $user=$_SESSION['login_user'];// passing the session user to new user variable
-            $connection = mysql_connect("localhost", "root", ""); // Establishing Connection with Server by passing server_name, user_id and password as a parameter
-            $db = mysql_select_db("gso_data", $connection);// Selecting Database
-            $query = mysql_query("SELECT * FROM `emp_accounts_record` WHERE `username`= '$user'", $connection); //SQL query to fetch information of registerd users and finds user match.
-            $rows = mysql_fetch_assoc($query);
+            include('db.php');
+            $query = mysqli_query($con,"SELECT * FROM `emp_accounts_record` WHERE `username`= '$user'", $connection); //SQL query to fetch information of registerd users and finds user match.
+            $rows = mysqli_fetch_assoc($query);
             
                 if ($rows['accLevel'] == '0') //checking if acclevel is equal to 0
                 {   

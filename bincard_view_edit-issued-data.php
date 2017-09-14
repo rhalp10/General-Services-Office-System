@@ -3,16 +3,16 @@ include('session.php');
 
 $issuedID =$_REQUEST['issuedID'];
 $binID = $_REQUEST['binID'];
-$result = mysql_query("SELECT * FROM bincard_issued_record WHERE ID = '$issuedID'");
-$test = mysql_fetch_array($result);
+$result = mysqli_query($con,"SELECT * FROM bincard_issued_record WHERE ID = '$issuedID'");
+$test = mysqli_fetch_array($result);
       $recpnt=$test['recpnt'];
       $qty=$test['qty'];
       $issued_date=$test['issued_date'];
 
 $sql1 = "SELECT *";
 $sql1.=" FROM bincard_record WHERE ID = ".$test['bin_ID'];
-$res1 = mysql_query($sql1);
-$test1 = mysql_fetch_array($res1);
+$res1 = mysqli_query($con,$sql1);
+$test1 = mysqli_fetch_array($res1);
 	$descrp = $test1['Descrp'];
                             
 if ($login_level != '0' ) 

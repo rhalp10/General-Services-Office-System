@@ -15,14 +15,14 @@ if (isset($_POST['Update']))
 
 	$sql = "SELECT * FROM";
 	$sql.=" emp_accounts_record WHERE accID = '$accID'";
-	$result = mysql_query($sql);
-	$val = mysql_fetch_array($result);
+	$result = mysqli_query($con,$sql);
+	$val = mysqli_fetch_array($result);
 	
 	 
 	 	
 	 		$sql1 = "UPDATE emp_accounts_record";
 			$sql1.= " SET fullName = '$account_emp_update_name',Age = '$account_emp_update_age',Gender = '$account_emp_update_gender',Address = '$account_emp_update_address', Email = '$account_emp_update_email', Pos = '$account_emp_update_pos', Mobile = '$account_emp_update_mobile' WHERE accID = '$accID'";
-			$result1 = mysql_query($sql1);
+			$result1 = mysqli_query($con,$sql1);
 			echo "<script>alert('Update info successfully');
                                         window.location='account.php';
                                     </script>";

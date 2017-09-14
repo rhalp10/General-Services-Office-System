@@ -4,8 +4,8 @@ include('session.php');
 
 $ID =$_REQUEST['accID'];
 
-$result = mysql_query("SELECT * FROM emp_accounts_record WHERE accID = '$ID'");
-$test = mysql_fetch_array($result);
+$result = mysqli_query($con,"SELECT * FROM emp_accounts_record WHERE accID = '$ID'");
+$test = mysqli_fetch_array($result);
                 $name = $test['accID'];
                 $account_val_fullname = $test['fullName'];
                 $account_val_username = $test['username'];

@@ -4,8 +4,8 @@ $ID =$_REQUEST['ID'];
 $accID = $_REQUEST['accID'];
 $empID = $_REQUEST['empID'];
 
-$result = mysql_query("SELECT * FROM emp_accountability_card WHERE ID = '$ID'");
-$test = mysql_fetch_array($result);
+$result = mysqli_query($con,"SELECT * FROM emp_accountability_card WHERE ID = '$ID'");
+$test = mysqli_fetch_array($result);
                 $Qty=$test['Qty'];
                 $Unit=$test['Unit'];
                 $Descrp=$test['Descrp'];

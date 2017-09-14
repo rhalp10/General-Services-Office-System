@@ -4,15 +4,15 @@ $ID = $_REQUEST['ID'];
 include ('db.php');
               $sql = "SELECT *";
               $sql.=" FROM bincard_issued_record WHERE bin_ID = $ID";
-              $query = mysql_query($sql);
+              $query = mysqli_query($con,$sql);
               $sql1 = "SELECT *";
               $sql1.=" FROM bincard_record WHERE ID = $ID";
-              $query1 = mysql_query($sql1);
+              $query1 = mysqli_query($con,$sql1);
               $row1=mysql_fetch_array($query1);
               $balance = $row1['Qty'];
               $totalQty = $row1['Qty'];
               $balanceUpdate =  $row1['Qty'];
-              $Count = mysql_num_rows($query);
+              $Count = mysqli_num_rows($query);
               $issuedCount = 0;
               $issuedUpdate = 0;                            
           
@@ -131,7 +131,7 @@ $page = "Record";
           <h3 class="page-header"><i class="fa fa-clipboard"></i> Bincard Management</h3>
           <ol class="breadcrumb">
             <li><i class="fa fa-home"></i><a href="index.php">Dashboard</a></li>
-            <li><i class="fa fa-clipboard"></i><a href="bincard.php" >Bincard Management</a></li>
+            <li><i class="fa fa-clipboard"></i><a href="bincard.php">Bincard Management</a></li>
             <li><i class="fa fa-clipboard"></i>Issued Item</a></li>
           </ol>
         </div>
@@ -185,7 +185,7 @@ $page = "Record";
          <?php 
               
 
-              while( $row=mysql_fetch_array($query)) 
+              while( $row=mysqli_fetch_array($query)) 
               {
 
                 $issuedCount = $issuedCount+1; 
@@ -319,7 +319,7 @@ $page = "Record";
                         <div class="form-group">
                             <label class="col-sm-2 control-label"><b>RECIPIENT</b></label>
                             <div class="col-sm-10">
-                                <input type="text"  class="form-control" placeholder="Recipient" name="binitem_issued_recpnt" required="">
+                                <input type="text"  class="form-control" placeholder="Supplier" name="binitem_issued_recpnt" required="">
                             </div>
                         </div>
                         <br><br>

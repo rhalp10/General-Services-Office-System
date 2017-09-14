@@ -89,7 +89,7 @@ include ("db.php");
 			//query
 			$sql ="INSERT INTO property_accountability_receipt_record (ID, Qty, Unit, Descrp, PropNo, ReceivedFrom_Name, ReceivedFrom_Position, ReceivedFrom_Date, ReceivedBy_Name, ReceivedBy_Position, ReceivedBy_Date, PAR, DateAdded)";
 			$sql.=" VALUES (NULL, '$qty', '$unit', '$desc', '$propno', '$receivefromname', '$receivefromposition', '$receivefromdate', 'receivebyname', '$receivebyposition', '$receivebydate', '$ics_propno', CURRENT_TIMESTAMP)";
-			$result = mysql_query($sql);
+			$result = mysqli_query($con,$sql);
 			//display success message
 	        echo "<script>alert('Data added successfully');
 	                                        window.location='accreceipt.php';

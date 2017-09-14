@@ -1,8 +1,8 @@
 <?php
 include('session.php');
-$result = mysql_query("SELECT * FROM emp_accounts_record WHERE username  = '$login_session'");
-$test = mysql_fetch_array($result);
-$rows = mysql_num_rows($result);
+$result = mysqli_query($con,"SELECT * FROM emp_accounts_record WHERE username  = '$login_session'");
+$test = mysqli_fetch_array($result);
+$rows = mysqli_num_rows($result);
       $Emp_ID=$test['accID'];
       $accLevel=$test['accLevel'];
       $username=$test['username'] ;
