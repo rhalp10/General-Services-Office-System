@@ -5,6 +5,9 @@ General Services Office System With Help Them To  Manage Their Files Import Data
 [![GitHub forks](https://img.shields.io/github/forks/rhalp10/General-Services-Office-System.svg)](https://github.com/rhalp10/General-Services-Office-System/network)
 [![GitHub stars](https://img.shields.io/github/stars/rhalp10/General-Services-Office-System.svg)](https://github.com/rhalp10/General-Services-Office-System/stargazers)
 [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://raw.githubusercontent.com/rhalp10/General-Services-Office-System/master/LICENSE)
+[![GitHub license](https://img.shields.io/badge/version-v1.01-blue.svg)](https://raw.githubusercontent.com/rhalp10/General-Services-Office-System/master/releases)
+
+
 ## Credits
 - Big thanks to GSO(General Services Office) Employee Who Always Sponsor Food and Just Drop it in front of me ^_^
 - Thanks to Google,Stackoverflow,w3school,Youtube, Free source code  to make this system.
