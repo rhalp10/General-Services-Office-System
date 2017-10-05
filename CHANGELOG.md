@@ -1,7 +1,7 @@
 # Changelog
-[GSO_System v 0.98](https://github.com/rhalp10/General-Services-Office-System) Check the latest commit on github
+[GSO_System v 1.01](https://github.com/rhalp10/General-Services-Office-System) Check the latest commit on github
 =======
-## [Unreleased]
+## [Pre-released]
 -------
 ## [1.01] - 08-01-17
 	- organizational chart plugin
