@@ -1,6 +1,6 @@
 # General-Services-Office-System
 General Services Office System With Help Them To  Manage Their Files Import Data Easily And Generate Report
-
+[![version][version-badge]][CHANGELOG] [![license][license-badge]][LICENSE]
 
 ## Credits
 - Big thanks to GSO(General Services Office) Employee Who Always Sponsor Food and Just Drop it in front of me ^_^
