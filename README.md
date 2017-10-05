@@ -5,7 +5,7 @@ General Services Office System With Help Them To  Manage Their Files Import Data
 [![GitHub forks](https://img.shields.io/github/forks/rhalp10/General-Services-Office-System.svg)](https://github.com/rhalp10/General-Services-Office-System/network)
 [![GitHub stars](https://img.shields.io/github/stars/rhalp10/General-Services-Office-System.svg)](https://github.com/rhalp10/General-Services-Office-System/stargazers)
 [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://raw.githubusercontent.com/rhalp10/General-Services-Office-System/master/LICENSE)
-[![GitHub license](https://img.shields.io/badge/version-v1.01-blue.svg)](https://raw.githubusercontent.com/rhalp10/General-Services-Office-System/master/releases)
+[![GitHub releases](https://img.shields.io/badge/version-v1.01-blue.svg)](https://raw.githubusercontent.com/rhalp10/General-Services-Office-System/master/releases)
 
 
 ## Credits
