@@ -24,7 +24,7 @@
 | ------------- | ------------- | ------------- |
 | **Added**   | accreceipt_general_print.php  | 07-23-17 |
 | **Added**   | accreceipt_print.php  | 07-23-17 |
-| **Fixed**   | accreceipt request variable  | 07-23-17 |
+| **Fix**   | accreceipt request variable  | 07-23-17 |
 | **Finalizing**   | Finalizing Bincard Management  | 07-23-17 |
 | **Finalizing**   | Finalizing Bincard Report  | 07-23-17 |
 | **Finalizing**   | Finalizing Property Accountability Receipt Management  | 07-23-17 |
@@ -41,8 +41,8 @@
 | **Added** | ICS Report Print  | 07-22-17  |
 | **Added** | PRS Report Print  | 07-22-17  |
 | **Added**  | PRS General Report Print  | 07-22-17  |
-| **Fixed** |bincard view print | 07-22-17  |
-| **Fixed** | bincard general print  | 07-22-17  |
+| **Fix** |bincard view print | 07-22-17  |
+| **Fix** | bincard general print  | 07-22-17  |
 | **Finalizing** | Inventory Custodian Slip Management  | 07-22-17  |
 | **Finalizing**  | Finalizing Inventory Custodian Slip Report  | 07-22-17  |
 
@@ -56,63 +56,69 @@
 |  **Added** | accreceipt_delete_action  |  07-21-17  |
 |  **Change** | accreceipt.php <?php echo $row['ics'];?> to <?php echo $row['PAR'];?> |  07-21-17 |
 |  **Change** | returnslip `SELECT Purpose_Type FROM prs_purpose_dictionary` change to `SELECT * FROM prs_purpose_dictionary`  |  07-21-17  |
-|  **Fixed** | Fixed adding data on returnslip_add_action.php |  07-21-17 |
+|  **Fix** | Fixed adding data on returnslip_add_action.php |  07-21-17 |
 
 -------
 
-## [0.50] - 07-20-17
-### Added
-	- Add Employee List Modal
-	- Add Employee List Datatable[Search,Pagnation]
-	- Add Function Button
--------
-## [0.49] - 07-19-17
-### Added
-	- Add ICS_edit_action.php
-	- Add assets/FPDF/ics_print.php
-### Update
-	- Update PRS Add Function
-	- Update View Edit button Function of ICS.php
--------
-## [0.48] - 07-18-17
-### Added
-	- Add assets/FPDF/bincard_print.php
-	- Add assets/FPDF/returnslip_print.php
-### Update
-	- ICS and PRS, Update Table 
--------
-## [0.47] - 07-17-17
-### Change
-	- Change Jscript onclick Delete function to Bootstrap Modal
--------
-## [0.46] - 07-14-17
-### Added
-	- Add new office management forms with edit,delete button 
-	- Add new office function button with php action
-### Update
-	- Update Side LInk with updated bootstrap plugins
--------
-## [0.45] - 07-13-17
-### Fix
-	- Fixing Sql Query for  Accountability Card View set details with parts using datatables
--------
-## [0.44] - 07-12-17
-### Added
-	- Add icon
-### Update
-	- Update sql
-### Remove
-	- Removing excess sample
-### Fix
-	- Fixing labels and form group
+| [0.50] | Commit | Date |
+| ------------- | ------------- | ------------- |
+|  **Added**  | Add Employee List Modal |  07-20-17|
+|  **Added**  | Add Employee List Datatable[Search,Pagnation] |  07-20-17|
+|  **Added**  | Add Function Button  |  07-20-17|
+
 -------
 
+| [0.49] | Commit | Date |
+| ------------- | ------------- | ------------- |
+|  **Added**  | Add ICS_edit_action.php | 07-19-17|
+|  **Added**  | Add assets/FPDF/ics_print.php | 07-19-17|
+|  **Change**  | Update PRS Add Function  | 07-19-17|
+|  **Change**  | Update View Edit button Function of ICS.php  | 07-19-17|
+
+-------
+
+| [0.48] | Commit | Date |
+| ------------- | ------------- | ------------- |
+|  **Added**  | Add assets/FPDF/bincard_print.php | 07-18-17|
+|  **Added**  | Add assets/FPDF/returnslip_print.php | 07-18-17|
+|  **Change**  | ICS and PRS, Update Table  | 07-18-17|
+
+-------
+
+| [0.47] | Commit | Date |
+| ------------- | ------------- | ------------- |
+|  **Change**  | Change Jscript onclick Delete function to Bootstrap Modal | 07-17-17|
+
+-------
+
+| [0.46] | Commit | Date |
+| ------------- | ------------- | ------------- |
+|  **Added**  | Add new office management forms with edit,delete button |07-14-17|
+|  **Added**  | Add new office function button with php action |07-14-17|
+|  **Change**  | Update Side LInk with updated bootstrap plugins |07-14-17|
+
+-------
+
+| [0.45] | Commit | Date |
+| ------------- | ------------- | ------------- |
+|  **Fix**  | FFixing Sql Query for  Accountability Card View set details with parts using datatables |07-13-17|
+
+-------
+
+| [0.44] | Commit | Date |
+| ------------- | ------------- | ------------- |
+|  **Added**  | Add icon  |07-12-17|
+|  **Change**  | Update sql  |07-12-17|
+|  **Remove**  | Removing excess sample  |07-12-17|
+|  **Fix**  | Fixing labels and form group |07-12-17|
+
+-------
 
 | [0.43] | Commit | Date |
 | ------------- | ------------- | ------------- |
 |  **Added**  | Add Print Method Modal  |07-11-17|
 |  **Added**  | Add onkeyup Event in different inputs  |07-11-17|
-|  **Implement**  | Implement Form Input Letter and Number Restriction  |07-11-17|
+|  **Implementation**  | Implement Form Input Letter and Number Restriction  |07-11-17|
 |  **Change**  | while using updated datatables all data fetched miss position displayed |07-11-17|
 |  **Change**  | Update display tables   |07-11-17|
 |  **Change**  | Adopt New dataTables.bootstraps responsive sorting of data with pagnation and search inputBox  |07-11-17|
@@ -222,12 +228,6 @@
 | ------------- | ------------- | ------------- |
 |  **Added**  | Template Assets and Plugins  | 06-15-17  |
 |  **Added**  | Creating Sample System Layout  | 06-15-17  |
-
--------
-| [1.01] | Commit | Date |
-| ------------- | ------------- | ------------- |
-|  **Finalizing**  | Content Cell  | Content Cell  |
-|  **Finalizing**  | Content Cell  | Content Cell  |
 
 -------
 
