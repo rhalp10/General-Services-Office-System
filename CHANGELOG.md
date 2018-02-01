@@ -1,4 +1,4 @@
-# Changelog
+|# Changelog
 [GSO_System v 1.01](https://github.com/rhalp10/General-Services-Office-System) Check the latest commit on github
 =======
 ## [Pre-released]
