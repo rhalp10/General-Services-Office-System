@@ -1,55 +1,65 @@
-|# Changelog
-[GSO_System v 1.01](https://github.com/rhalp10/General-Services-Office-System) Check the latest commit on github
-=======
-## [Pre-released]
--------
-## [1.01] - 08-01-17
-	- organizational chart plugin
-## [1.01] - 07-26-17
-	- page restriction set
-## [1.00] - 07-25-17
-	-	 Version 1 Complete
-## [0.98] - 07-23-17
-### Added
-	- accreceipt_general_print.php
-	- accreceipt_print.php
-### Fix
-	- accreceipt request variable
-### Finalizing
-	- Finalizing Bincard Management
-	- Finalizing Bincard Report
-	- Finalizing Property Accountability Receipt Management
-	- Finalizing Property Accountability Receipt Report
-	- Finalizing Property Return Slip Management
-	- Finalizing Property Return Slip Report
+# Changelog
+
+
+| Version  | Status |
+| ------------- | ------------- |
+| [![Version](https://img.shields.io/badge/%20-v%201.01-orange.svg?style=for-the-badge)](https://github.com/rhalp10/General-Services-Office-System/releases)| [![Status](https://img.shields.io/badge/%20-Pre--release-red.svg?style=for-the-badge)](https://github.com/rhalp10/General-Services-Office-System/releases)|
+
 
 -------
-## [0.60] - 07-22-17
-### Added
-	- bincard_view.php Add delete modal
-	- accreceipt delete function done
-	- ICS Report Print
-	- PRS Report Print
-	- PRS General Report Print
-### Fix
-	- bincard view print
-	- bincard general print
-### Finalizing
-	- Finalizing Inventory Custodian Slip Management
-	- Finalizing Inventory Custodian Slip Report
+
+
+| [1.01] | Commit | Date |
+| ------------- | ------------- | ------------- |
+| **Added**  | organizational chart plugin |08-01-17 |
+| **Added**  | page restriction set|08-01-17 |
+
+| [1.00] | Commit | Date |
+| ------------- | ------------- | ------------- |
+|  **Version**   | Version 1 Complete | 07-25-17  |
+
+-------------
+
+| [0.98] | Commit | Date |
+| ------------- | ------------- | ------------- |
+| **Added**   | accreceipt_general_print.php  | 07-23-17 |
+| **Added**   | accreceipt_print.php  | 07-23-17 |
+| **Fixed**   | accreceipt request variable  | 07-23-17 |
+| **Finalizing**   | Finalizing Bincard Management  | 07-23-17 |
+| **Finalizing**   | Finalizing Bincard Report  | 07-23-17 |
+| **Finalizing**   | Finalizing Property Accountability Receipt Management  | 07-23-17 |
+| **Finalizing**   | Finalizing Property Accountability Receipt Report  | 07-23-17 |
+| **Finalizing**   | Finalizing Property Return Slip Management  | 07-23-17 |
+| **Finalizing**   | Finalizing Property Return Slip Report  | 07-23-17 |
+
 -------
-## [0.51] - 07-21-17
-### Added
-	- ics_view_add
-	- ics_edit_desc_action
-	- ics_view_desc_delete_action
-	- accreceipt_delete_action
-### Change	
-	- accreceipt.php <?php echo $row['ics'];?> to <?php echo $row['PAR'];?>
-	- returnslip `SELECT Purpose_Type FROM prs_purpose_dictionary` change to `SELECT * FROM prs_purpose_dictionary`
-### Fix
-	- Fixed adding data on returnslip_add_action.php
+
+| [0.60]  | Commit | Date |
+| ------------- | ------------- | ------------- |
+| **Added** | bincard_view.php Add delete modal  | 07-22-17  |
+| **Added** | accreceipt delete function done | 07-22-17  |
+| **Added** | ICS Report Print  | 07-22-17  |
+| **Added** | PRS Report Print  | 07-22-17  |
+| **Added**  | PRS General Report Print  | 07-22-17  |
+| **Fixed** |bincard view print | 07-22-17  |
+| **Fixed** | bincard general print  | 07-22-17  |
+| **Finalizing** | Inventory Custodian Slip Management  | 07-22-17  |
+| **Finalizing**  | Finalizing Inventory Custodian Slip Report  | 07-22-17  |
+
 -------
+
+| [0.51] | Commit | Date |
+| ------------- | ------------- | ------------- |
+|  **Added** | ics_view_add |  07-21-17 |
+|  **Added** | ics_edit_desc_action  |  07-21-17  |
+|  **Added** | cs_view_desc_delete_action |  07-21-17 |
+|  **Added** | accreceipt_delete_action  |  07-21-17  |
+|  **Change** | accreceipt.php <?php echo $row['ics'];?> to <?php echo $row['PAR'];?> |  07-21-17 |
+|  **Change** | returnslip `SELECT Purpose_Type FROM prs_purpose_dictionary` change to `SELECT * FROM prs_purpose_dictionary`  |  07-21-17  |
+|  **Fixed** | Fixed adding data on returnslip_add_action.php |  07-21-17 |
+
+-------
+
 ## [0.50] - 07-20-17
 ### Added
 	- Add Employee List Modal
@@ -96,88 +106,133 @@
 ### Fix
 	- Fixing labels and form group
 -------
-## [0.43] - 07-11-17
-### Added
-	- Add Print Method Modal
-	- Add onkeyup Event in different inputs
-	- Implement Form Input Letter and Number Restriction 
-### Update
-	- While using updated datatables all data fetched miss position displayed
-	- Update display tables 
-	- Adopt New dataTables.bootstraps responsive sorting of data with pagnation and search inputBox
+
+
+| [0.43] | Commit | Date |
+| ------------- | ------------- | ------------- |
+|  **Added**  | Add Print Method Modal  |07-11-17|
+|  **Added**  | Add onkeyup Event in different inputs  |07-11-17|
+|  **Implement**  | Implement Form Input Letter and Number Restriction  |07-11-17|
+|  **Change**  | while using updated datatables all data fetched miss position displayed |07-11-17|
+|  **Change**  | Update display tables   |07-11-17|
+|  **Change**  | Adopt New dataTables.bootstraps responsive sorting of data with pagnation and search inputBox  |07-11-17|
+
 -------
-## [0.42] - 07-10-17
-### Added
-	- Add modal update for change password
-### Update
-	- Update dataTables plugin changed to bootstrap responsive
-	- Update account_edit.php to seperate password function
-	- Update Bincard database table
-	- Update functions most of this function problems is sql query mispelled or mistype 
-### Remove
-	- Remove Inventory Type
+
+| [0.42] | Commit | Date |
+| ------------- | ------------- | ------------- |
+|  **Added**  | FPDF plugin for print  |07-10-17|
+|  **Change**  | Update dataTables plugin changed to bootstrap responsive  |07-10-17|
+|  **Change**  | Update account_edit.php to seperate password function  |07-10-17|
+|  **Change**  | Update Bincard database table  |07-10-17|
+|  **Change**  | Update functions most of this function problems is sql query mispelled or mistype   |07-10-17|
+|  **Remove**  | Remove Inventory Type  |07-10-17|
+
 -------
-## [0.41] - 07-07-17
-### Added
-	- modals,add datatables update plugin
-	- dataTables_filter > Label > input css styles
-	- acccard_person_report.php with sample display 
-	- Jquery.dataTables.css
-### Update
-	- Modal Title Header
-	- acccard_add_new_action.php
-### Remove
-	- Remove old data display replaced by json datatables
+
+| [0.41] | Commit | Date |
+| ------------- | ------------- | ------------- |
+|  **Change**  | modals,add datatables update plugin |07-07-17|
+|  **Change**  | dataTables_filter > Label > input css styles  |07-07-17|
+|  **Change**  | acccard_person_report.php with sample display   |07-07-17|
+|  **Added**  | Jquery.dataTables.css  |07-07-17|
+|  **Plugin**  | FPDF plugin for print  |07-07-17|
+|  **Added**  | Modal Title Header  |07-07-17|
+|  **Added**  | acccard_add_new_action.php  |07-07-17|
+|  **Remove**  | Remove old data display replaced by json datatables  |07-07-17|
+
 -------
-## [0.40] - 07-06-17
-### Added
-	- FPDF plugin for print 
+
+| [0.40] | Commit | Date |
+| ------------- | ------------- | ------------- |
+|  **Plugin**  | FPDF plugin for print  |07-06-17|
+
 -------
-## [0.34] - 07-05-17
-	- Nested While Fetched Query Works displaying sets with his parts
-------- 
-## [0.33] - 07-04-17
-	- Creating PDF Possible display of data connected to database
-------- 
-## [0.32] - 07-03-17
-### Added
-	- Add jsPDFmaster, but failed to adopt and trying jsPDFmin plugin still failed with tutorials
+
+| [0.34] | Commit | Date |
+| ------------- | ------------- | ------------- |
+|  **Change**  | Nested While Fetched Query Works displaying sets with his parts  |07-05-17|
+
 -------
-## [0.31] - 06-30-17
-	- Trying to connect ajax code to make print function per form record
+
+| [0.33] | Commit | Date |
+| ------------- | ------------- | ------------- |
+|  **Added**  | Creating PDF Possible display of data connected to database  |07-04-17|
+
 -------
-## [0.30] - 06-29-17
-### Added
-	- Adding some php action in function buttons
-------- 
-## [0.20] - 06-28-17
-### Added
-	- Adding search,pagination,desc and asc of data item list
+
+| [0.32] | Commit | Date |
+| ------------- | ------------- | ------------- |
+|  **Plugin**  | Add jsPDFmaster, but failed to adopt and trying jsPDFmin plugin still failed with tutorials  | 07-03-17|
+
 -------
-## [0.11] - 06-27-17
-### Added
-	- Adding some buttons like add,edit,view,delete  without function
+
+| [0.31] | Commit | Date |
+| ------------- | ------------- | ------------- |
+|  **Implementation**  | Trying to connect ajax code to make print function per form record   | 06-30-17|
+
 -------
-## [0.10] - 06-22-17
-### Added
-	- Adding moment.js for moving time 
-	- responsive php codes of system per forms
+
+| [0.30] | Commit | Date |
+| ------------- | ------------- | ------------- |
+|  **Added**  | Adding some php action in function buttons   |06-29-17|
+
 -------
-## [0.05] - 06-21-17
-	- Making the database much more responsive
-	- Stablishing different access in different users with specific task
+
+| [0.20] | Commit | Date |
+| ------------- | ------------- | ------------- |
+|  **Added**  | Adding search,pagination,desc and asc of data item list   |06-28-17|
+
 -------
-## [0.04] - 06-19-17
-	- Create UI Forms Without Function
+
+| [0.11] | Commit | Date |
+| ------------- | ------------- | ------------- |
+|  **Added**  | Adding some buttons like add,edit,view,delete  without function   |06-22-17 |
+
 -------
-## [0.03] - 06-16-17
-	- Rought Database
-	- Stablishing Database Connection
+
+| [0.10] | Commit | Date |
+| ------------- | ------------- | ------------- |
+|  **Added**  | Adding moment.js for moving time   |06-22-17 |
+|  **Added**  | responsive php codes of system per forms  | 06-22-17 |
+
 -------
-## [0.02] - 06-15-17)
-	- Adding Template Assets and Plugins
-	- Creating Sample System Layout
+
+| [0.05] | Commit | Date |
+| ------------- | ------------- | ------------- |
+|  **Added**  | Making the database much more responsive  | 06-21-17 |
+|  **Added**  | Stablishing different access in different users with specific task  | 06-21-17 |
+
 -------
-## [0.01] - 06-14-17
-	- Gathering Information of the office
+
+| [0.04] | Commit | Date |
+| ------------- | ------------- | ------------- |
+|  **Added**  | Create UI Forms Without Function  | 06-19-17 |
+
 -------
+
+| [0.03] | Commit | Date |
+| ------------- | ------------- | ------------- |
+|  **Added**  | Rought Database  | 06-16-17 |
+|  **Added**  | Stablishing Database Connection  | 06-16-17  |
+
+-------
+
+| [0.02] | Commit | Date |
+| ------------- | ------------- | ------------- |
+|  **Added**  | Template Assets and Plugins  | 06-15-17  |
+|  **Added**  | Creating Sample System Layout  | 06-15-17  |
+
+-------
+| [1.01] | Commit | Date |
+| ------------- | ------------- | ------------- |
+|  **Finalizing**  | Content Cell  | Content Cell  |
+|  **Finalizing**  | Content Cell  | Content Cell  |
+
+-------
+
+| [0.01] | Commit | Date |
+| ------------- | ------------- | ------------- |
+|  **Startup**  | Gathering Information of the office | 06-14-17  |
+
+
