@@ -1,11 +1,11 @@
 # General-Services-Office-System
 General Services Office System With Help Them To  Manage Their Files Import Data Easily And Generate Report
 
-[![GitHub issues](https://img.shields.io/github/issues/rhalp10/General-Services-Office-System.svg)](https://github.com/rhalp10/General-Services-Office-System/issues)
-[![GitHub forks](https://img.shields.io/github/forks/rhalp10/General-Services-Office-System.svg)](https://github.com/rhalp10/General-Services-Office-System/network)
-[![GitHub stars](https://img.shields.io/github/stars/rhalp10/General-Services-Office-System.svg)](https://github.com/rhalp10/General-Services-Office-System/stargazers)
-[![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://raw.githubusercontent.com/rhalp10/General-Services-Office-System/master/LICENSE)
-[![GitHub releases](https://img.shields.io/badge/version-v1.01-blue.svg)](https://raw.githubusercontent.com/rhalp10/General-Services-Office-System/master/releases)
+[![GitHub issues](https://img.shields.io/github/issues/rhalp10/General-Services-Office-System.svg?style=for-the-badge)](https://github.com/rhalp10/General-Services-Office-System/issues)
+[![GitHub forks](https://img.shields.io/github/forks/rhalp10/General-Services-Office-System.svg?style=for-the-badge)](https://github.com/rhalp10/General-Services-Office-System/network)
+[![GitHub stars](https://img.shields.io/github/stars/rhalp10/General-Services-Office-System.svg?style=for-the-badge)](https://github.com/rhalp10/General-Services-Office-System/stargazers)
+[![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg?style=for-the-badge)](https://raw.githubusercontent.com/rhalp10/General-Services-Office-System/master/LICENSE)
+[![GitHub releases](https://img.shields.io/badge/version-v1.01-blue.svg?style=for-the-badge)](https://raw.githubusercontent.com/rhalp10/General-Services-Office-System/master/releases)
 
 
 ## Credits
@@ -18,7 +18,7 @@ Copyright (c) 2010-2016 Rhalp Darren Cabrera, https://github.com/rhalp10/General
 
 Permission is hereby granted, free of charge, to any person obtaining
 a copy of this software and associated documentation files (the
-"Software"), to deal in the Software without restriction, including
+"General Services Office System"), to deal in the Software without restriction, including
 without limitation the rights to use, copy, modify, merge, publish,
 distribute, sublicense, and/or sell copies of the Software, and to
 permit persons to whom the Software is furnished to do so, subject to
@@ -34,3 +34,5 @@ NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE
 LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
 OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
 WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+
+
