@@ -1,5 +1,5 @@
 # General-Services-Office-System
-General Services Office System With Help Them To  Manage Their Files Import Data Easily And Generate Report
+This System Help Them To  Manage Their Import Files & Data Easily And Generate Reports.
 
 [![GitHub issues](https://img.shields.io/github/issues/rhalp10/General-Services-Office-System.svg?style=for-the-badge)](https://github.com/rhalp10/General-Services-Office-System/issues)
 [![GitHub forks](https://img.shields.io/github/forks/rhalp10/General-Services-Office-System.svg?style=for-the-badge)](https://github.com/rhalp10/General-Services-Office-System/network)
